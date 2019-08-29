@@ -44,7 +44,7 @@ class Usuario_model extends CI_Model{
     }
 
     //CONSULTA PARA ACTUALIZAR UN REGISTRO UN REGISTRO DE USUARIO
-    public function actualizarTipoUsuario($data){
+    public function actualizarUsuario($data){
         try {
             $this->db->replace('usuario', $data);
         } catch (mysqli_sql_exception $e) {

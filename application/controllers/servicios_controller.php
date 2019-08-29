@@ -35,7 +35,7 @@ class Servicios_controller extends CI_Controller {
     //METODO QUE AGREGA DATOS A LA BASE DE DATOS USANDO JAVASCRIPTS Y AJAX
     public function agregarServicios(){
         //deberia ir el espacion en blanco?
-        $data=[$_POST['nombre'], $_POST['descripcion']];
+        $data=["", $_POST['nombre'], $_POST['descripcion']];
     
         $this->servicios_model->agregarServicios($data);
         $this->load->view('panelControl/index', $data);
@@ -58,6 +58,7 @@ class Servicios_controller extends CI_Controller {
 
 
 
+    //METODO CON EL QUE SE ACTUALIZA UN REGISTRO DE SERVICIOS
     public function actualizarServicios(){
         
         $data=[$_POST['id_servicios'], $_POST['nombre'], $_POST['descripcion']];

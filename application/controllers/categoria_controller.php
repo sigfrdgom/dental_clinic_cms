@@ -35,7 +35,7 @@ class Categoria_controller extends CI_Controller {
     //METODO QUE AGREGA DATOS CATEGORIA
     public function agregarCategoria(){
         //deberia ir el espacion en blanco?
-        $data=[$_POST['nombre'], $_POST['descripcion']];
+        $data=["", $_POST['nombre'], $_POST['descripcion']];
     
         $this->categoria_model->agregarCategoria($data);
         $this->load->view('panelControl/index', $data);
