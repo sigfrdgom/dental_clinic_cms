@@ -32,7 +32,7 @@ class Publicacion_model extends CI_Model{
     //CONSULTA PARA OBTENER UN REGISTRO DE PUBLICACION
     public function obtenerRegistro($id = ""){
          try {
-            $this->db->select('id_publicacion nombre_publicacion, descripcion, estado, id_usuario, id_categoria, path, fecha_Ingreso');
+            $this->db->select('id_publicacion, id_usuario, id_categoria, id_tipo, titulo, texto_introduccion, contenido, estado, recurso_av_1, recurso_av_2, recurso_av_3, recurso_av_4, fecha_Ingreso');
             $this->db->from('publicacion');
             $this->db->where('id_publicacion', $id);
             $consulta = $this->db->get();

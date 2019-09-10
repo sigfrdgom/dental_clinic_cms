@@ -35,7 +35,7 @@ class Publicacion_controller extends CI_Controller {
     //METODO QUE AGREGA UN REGISTRO PUBLICACION
     public function agregarPublicacion(){
         //deberia ir el espacion en blanco?
-        $data=["", $_POST['nombre_publicacion'], $_POST['descripcion'], $_POST['estado'], $_POST['id_usuario'], $_POST['id_categoria'], $_POST['path'], $_POST['fecha_ingreso']];
+        $data=["", $_POST['id_usuario'], $_POST['id_categoria'], $_POST['id_tipo'], $_POST['titulo'], $_POST['texto_introduccion'], $_POST['contenido'], $_POST['estado'], $_POST['recurso_av_1'], $_POST['recurso_av_2'],  $_POST['recurso_av_3'], $_POST['recurso_av_4'], $_POST['fecha_ingreso']];
     
         $this->publicacion_model->agregarPublicacion($data);
         $this->load->view('panelControl/index', $data);
@@ -59,7 +59,7 @@ class Publicacion_controller extends CI_Controller {
 
     //METODO QUE SE ENCARGA DE ACTUALIZAR UN REGISTRO DE PUBLICACION
     public function actualizarPublicacion(){
-        $data=[$_POST['id_publicacion'], $_POST['nombre_publicacion'], $_POST['descripcion'], $_POST['estado'], $_POST['id_usuario'], $_POST['id_categoria'], $_POST['path'], $_POST['fecha_ingreso']];
+        $data=[$_POST['id_publicacion'], $_POST['id_usuario'], $_POST['id_categoria'], $_POST['id_tipo'], $_POST['titulo'], $_POST['texto_introduccion'], $_POST['contenido'], $_POST['estado'], $_POST['recurso_av_1'], $_POST['recurso_av_2'],  $_POST['recurso_av_3'], $_POST['recurso_av_4'], $_POST['fecha_ingreso']];
     
         $this->publicacion_model-> actualizarPublicacion($data);
         $this->load->view('panelControl/index', $data);
