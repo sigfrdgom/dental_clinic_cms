@@ -33,11 +33,8 @@
         <div class="loader">
             <div class="loader__figure" style="font-size: 10em;">
             </div>
-           <p class="loader__label" ><img src="<?= base_url('assets/images/loader.png')?>"  style="color: blue; margin-top: -50%;">  </p>
-           <p class="loader__label"style="color: blue;" > CLIDESA CMS </p>
-           
-            
-            
+            <p class="loader__label" ><img src="<?= base_url('assets/images/loader.png')?>"  style="color: blue; margin-top: -50%;">  </p>
+            <p class="loader__label"style="color: blue;" > CLIDESA CMS </p>
         </div>
     </div>
     <!-- ============================================================== -->
@@ -77,13 +74,13 @@
                         <!-- ============================================================== -->
                         <!-- Search -->
                         <!-- ============================================================== -->
-                        <li class="nav-item search-box"> <a class="nav-link waves-effect waves-dark" href="<?= base_url('javascript:void(0)')?>"><i class="fa fa-search"></i></a>
+                        <!-- <li class="nav-item search-box"> <a class="nav-link waves-effect waves-dark" href="<?= base_url('javascript:void(0)')?>"><i class="fa fa-search"></i></a>
                             <form class="app-search">
                                 <input type="text" class="form-control" placeholder="Search &amp; enter"> <a class="srh-btn"><i class="fa fa-times"></i></a>
                             </form>
-                        </li>
+                        </li> -->
                     </ul>
-                    <ul class="navbar-nav my-lg-0" style="background: #24264b">
+                    <ul class="navbar-nav my-lg-0 bg-dark" >
                         <!-- ============================================================== -->
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
@@ -110,7 +107,7 @@
                 <a class="nav-toggler waves-effect waves-dark ml-auto hidden-sm-up" href="<?= base_url('javascript:void(0)')?>"><i class="ti-menu ti-close"></i></a>
             </div>
             <!-- Sidebar scroll-->
-            <div class="scroll-sidebar" style="background: #24264b">
+            <div class="scroll-sidebar bg-dark">
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
