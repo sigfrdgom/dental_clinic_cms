@@ -15,13 +15,6 @@ class Cita_controller extends CI_Controller {
         
     }
 
-    
-    //METODO INDEX PARA VER LA PÁGINA PRINCIPAL
-	// public function index()
-	// {
-	// 	$this->load->view('libro/index');
-    // }
-    
 
     //METODO QUE LLAMA LOS DATOS DE LA BASE DE DATOS Y REDICCIONA Y CARGA TODA LA CITA
     public function cargarDatosCita(){ 

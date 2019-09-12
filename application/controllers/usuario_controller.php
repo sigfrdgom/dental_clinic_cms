@@ -16,11 +16,13 @@ class Usuario_controller extends CI_Controller {
     }
 
     
-    //METODO INDEX PARA VER LA PÁGINA PRINCIPAL
-	// public function index()
-	// {
-	// 	$this->load->view('libro/index');
-    // }
+    // METODO INDEX PARA VER LA PÁGINA PRINCIPAL
+	public function carga()
+	{
+		$this->load->view('templates/header');
+		$this->load->view('panelControl/usuarios');
+		$this->load->view('templates/footer');
+    }
     
 
     //METODO QUE LLAMA LOS DATOS DE LA BASE DE DATOS Y REDICCIONA Y CARGA TODA LA USUARIOS
@@ -35,7 +37,7 @@ class Usuario_controller extends CI_Controller {
     //METODO QUE AGREGA UN REGISTRO USUARIO
     public function agregarUsuario(){
         //deberia ir el espacion en blanco?
-        $data=["", $_POST['nombres'], $_POST['apellidos'], $_POST['nombre_usuario'], $_POST['contrasenia'], $_POST['id_tipo_usuario']];
+        $data=["", $_POST['nombres'], $_POST['apellidos'], $_POST['nombre_usuario'], $_POST['contrasenia'], $_POST['tipo_usuario'], $_POST['estado']];
     
         $this->usuario_model->agregarUsuario($data);
         $this->load->view('panelControl/index', $data);

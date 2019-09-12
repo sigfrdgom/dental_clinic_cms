@@ -24,7 +24,7 @@
 //         exit;
 //     }
     
-// }                                                
+// }    
 ?>
 
 
@@ -35,7 +35,11 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <!-- Tell the browser to be responsive to screen width -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="">
+		<meta name="description" content="">
+		
+		 <!-- Bootstrap CSS -->
+    	<link href="<?php echo base_url('assets/css/bootstrap/dist/css/bootstrap.min.css');?> rel="stylesheet" />
+
         <meta name="author" content="">
         <!-- Favicon icon -->
         <link rel="icon" type="image/png" href="<?= base_url('assets/images/favicon.png')?>">
@@ -144,9 +148,9 @@
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
-                        <li> <a class="waves-effect waves-dark" href="<?= base_url('application/views/panelControl/index.php')?>" aria-expanded="false"><i class="fa fa-home text-white" style="font-size: 2em; "></i><span class="hide-menu">HOME</span></a></li>
-                        <li> <a class="waves-effect waves-dark" href="<?= base_url('application/views/panelControl/pages-profile.html')?>" aria-expanded="false"><i class="fa fa-user-circle-o text-white" style="font-size: 2em;  "></i><span class="hide-menu">Perfil</span></a></li>
-                        <li> <a class="waves-effect waves-dark" href="<?= base_url('application/views/panelControl/table-basic.html')?>" aria-expanded="false"><i class="fa fa-users text-white" style="font-size: 2em; "></i><span class="hide-menu"></span>Usuarios</a></li>
+                        <li> <a class="waves-effect waves-dark" href="<?= base_url('')?>" aria-expanded="false"><i class="fa fa-home text-white" style="font-size: 2em; "></i><span class="hide-menu">HOME</span></a></li>
+                        <li> <a class="waves-effect waves-dark" href="<?= base_url('usuario_controller/carga')?>" aria-expanded="false"><i class="fa fa-user-circle-o text-white" style="font-size: 2em;  "></i><span class="hide-menu">Usuarios</span></a></li>
+                        <li> <a class="waves-effect waves-dark" href="<?= base_url('tipoUsuario_controller/carga')?>" aria-expanded="false"><i class="fa fa-users text-white" style="font-size: 2em; "></i><span class="hide-menu"></span>Tipos de usuarios</a></li>
                         <li> <a class="waves-effect waves-dark" href="<?= base_url('application/views/panelControl/icon-fontawesome.html')?>" aria-expanded="false"><i class="fa fa-pencil text-white" style="font-size: 2em;  "></i><span class="hide-menu"></span>Blog</a></li>
                         <li> <a class="waves-effect waves-dark" href="<?= base_url('application/views/panelControl/pages-blank.html')?>" aria-expanded="false"><i class="fa fa-envelope text-white" style="font-size: 2em;  "></i><span class="hide-menu"></span>Mensajes</a></li>
                         <li> <a class="waves-effect waves-dark" href="<?= base_url('application/views/panelControl/pages-blank.html')?>" aria-expanded="false"><i class="fa fa-gear text-white" style="font-size: 2em;; "></i><span class="hide-menu"></span>Configuración</a></li>

@@ -16,11 +16,13 @@ class TipoUsuario_controller extends CI_Controller {
     }
 
     
-    //METODO INDEX PARA VER LA PÁGINA PRINCIPAL
-	// public function index()
-	// {
-	// 	$this->load->view('libro/index');
-    // }
+    // METODO INDEX PARA VER LA PÁGINA PRINCIPAL
+	public function carga()
+	{
+		$this->load->view('templates/header');
+		$this->load->view('panelControl/tipoUsuarios');
+		$this->load->view('templates/footer');
+    }
     
 
     //METODO QUE LLAMA LOS DATOS DE TIPO_USUARIO DE LA BASE DE DATOS Y REDICCIONA

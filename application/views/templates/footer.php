@@ -13,9 +13,12 @@
     <!-- All Jquery -->
     <!-- ============================================================== -->
   
-    <script src="<?= base_url('assets/jquery/jquery-3.2.1.min.js')?>"></script>
-    <script src="<?= base_url('assets/popper/popper.min.js')?>"></script>
-    <script src="<?= base_url('assets/css/bootstrap/assets/js/bootstrap.min.js')?>"></script>
+    <script src="<?= base_url('assets/jquery/jquery-3.4.1.min.js')?>"></script>
+	<script src="<?= base_url('assets/popper/popper.min.js')?>"></script>
+
+
+
+    <script src="<?= base_url('assets/css/bootstrap/dist/js/bootstrap.min.js')?>"></script>
     
     
     <!-- slimscrollbar scrollbar JavaScript -->
@@ -28,7 +31,13 @@
     <script src="<?= base_url('assets/js/custom.min.js')?>"></script>
     <!-- ============================================================== -->
     <!-- This page plugins -->
-    <!-- ============================================================== -->
+	<!-- ============================================================== -->
+	
+
+	 <!-- JAVASCRIPTS PROPIOS-->
+	<!-- ============================================================== -->
+	<script src="<?= base_url('assets/js/main.js')?>"></script>
+
     
     <!-- Chart JS -->
     <script src="<?= base_url('assets/js/dashboard1.js')?>"></script>
