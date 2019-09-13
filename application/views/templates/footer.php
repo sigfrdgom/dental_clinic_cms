@@ -36,7 +36,7 @@
 
 	 <!-- JAVASCRIPTS PROPIOS-->
 	<!-- ============================================================== -->
-	<script src="<?= base_url('assets/js/main.js')?>"></script>
+	<script src="<?= base_url('assets/js/usuario.js')?>"></script>
 
     
     <!-- Chart JS -->

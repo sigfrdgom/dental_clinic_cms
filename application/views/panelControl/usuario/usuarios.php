@@ -74,7 +74,8 @@
                         </th>
                     </tr>
                     </thead>
-                    <tbody id="#tbody-table">
+                    <tbody id="bodyUsuario">
+					
                    
                    
                     </tbody>
@@ -97,16 +98,17 @@
         
         <!-- Modal body -->
         <div class="modal-body">
-                    <form  id="formUsuario" method="POST" data-parsley-validate novalidate >
+                    <!-- <form  id="formUsuario" method="POST" data-parsley-validate novalidate > -->
 
-                        <input type="hidden" name="did" id="did">
+						<form id="formUsuario"  data-parsley-validate novalidate>
+                        <input type="hidden" name="id" id="id">
 
                         <label for="dnombres" class="mrg-spr-ex mt-2">Nombres de la persona: </label>
-                        <input type="text" name="dnombres" id="dnombres" placeholder="Escribe los nombres de la persona" 
+                        <input type="text" name="nombres" id="nombres" placeholder="Escribe los nombres de la persona" 
 						class="form-control " required pattern='[a-zA-zÑñÁÉÍÓÚáéíóúü ]{1,64}'>
 
                         <label for="dapellidos" class="mrg-spr-ex mt-2">Apellidos de la persona:</label>
-                        <input type="text" name="dapellidos" id="dapellidos" placeholder="Escribe los apellidos de la persona" 
+                        <input type="text" name="apellidos" id="apellidos" placeholder="Escribe los apellidos de la persona" 
 						class="form-control " required pattern='[a-zA-zÑnÁÉÍÓÚáéíóúü ]{1,64}'> 
 						
 						<label for="dnombres" class="mrg-spr-ex mt-2">Nombres del usuario: </label>
@@ -119,29 +121,45 @@
                                 data-content="Ingresa un password que sea seguro, que lleve mayusculas y minisculas, algunos caracteres especiales estan permitidos">
                             <i class="fa fa-fw fa-question-circle pop-help"></i>
                             </a>
-                        <input type="password" name="dpass" id="dpass" placeholder="Escribe un password para el usuario" 
+                        <input type="password" name="pass" id="pass" placeholder="Escribe un password para el usuario" 
 						class="form-control pad-extra-input" required pattern='[0-9a-zA-Z]{1,20}'>
 						
 						<label class="mrg-spr-ex mt-2" >Tipo de usuario:</label>
 								<div style="margin-left:2em;">
 										<div class="form-check">
 											<label class="form-check-label">
-													<input class="form-check-input" type="radio" name="dtipo_usuario" id="tipo1" value="ADMINISTRADOR" required>
+													<input class="form-check-input" type="radio" name="tipo_usuario" id="tipo1" value="Administrador" required>
 													Administrador
 												</label>
 										</div>
 										<div class="form-check">
 											<label class="form-check-label">
-												<input class="form-check-input" type="radio" name="dtipo_usuario" id="tipo2" value="DOCENTE" required>
+												<input class="form-check-input" type="radio" name="tipo_usuario" id="tipo2" value="Generador de contenido" required>
 												Generador de contenido
 											</label>
 										</div>
 										<div class="form-check">
 											<label class="form-check-label">
-												<input class="form-check-input" type="radio" name="dtipo_usuario" id="tipo2" value="DOCENTE" required>
+												<input class="form-check-input" type="radio" name="tipo_usuario" id="tipo3" value="Usuario normal" required checked>
 												Usuario normal
 											</label>
 										</div>         
+								</div>
+
+								<label class="mrg-spr-ex mt-2" >Estado:</label>
+								<div style="margin-left:2em;">
+										<div class="form-check">
+											<label class="form-check-label">
+												<input class="form-check-input" type="radio" name="estado" id="estado1" value="1" required checked>
+												Activo
+											</label>
+										</div>
+										<div class="form-check">
+											<label class="form-check-label">
+												<input class="form-check-input" type="radio" name="estado" id="estado2" value="0" required>
+												Desactivado
+											</label>
+										</div>    
 								</div>
 
 
@@ -150,7 +168,7 @@
         
         <!-- Modal footer -->
         <div class="modal-footer">
-                <input type="submit"  class="btn btn-success" value="Guardar cambios" name="guardar_usuario">
+                <input type="submit"  class="btn btn-success" value="Guardar cambios" name="guardarUsuario">
                 <button type="reset" class="btn btn-danger" data-dismiss="modal" id="cancelUsuario">Cancelar</button>
             </form>
             

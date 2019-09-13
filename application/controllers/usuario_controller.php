@@ -20,29 +20,28 @@ class Usuario_controller extends CI_Controller {
 	public function carga()
 	{
 		$this->load->view('templates/header');
-		$this->load->view('panelControl/usuarios');
+		$this->load->view('panelControl/usuario/usuarios');
 		$this->load->view('templates/footer');
-    }
+		
+	}
     
 
     //METODO QUE LLAMA LOS DATOS DE LA BASE DE DATOS Y REDICCIONA Y CARGA TODA LA USUARIOS
     public function cargarDatosUsuario(){ 
-        $usuario = $this->usuario_model->getAll();
-        $data=['usuario' => $usuario];
-        
-        $this->load->view('panelControl/tabla', $data);
+		$usuarios = $this->usuario_model->getAll();
+        $data=['usuarios' => $usuarios];
+        $this->load->view('panelControl/usuario/tablaUsuario', $data);
     }
 
 
     //METODO QUE AGREGA UN REGISTRO USUARIO
-    public function agregarUsuario(){
-        //deberia ir el espacion en blanco?
-        $data=["", $_POST['nombres'], $_POST['apellidos'], $_POST['nombre_usuario'], $_POST['contrasenia'], $_POST['tipo_usuario'], $_POST['estado']];
-    
-        $this->usuario_model->agregarUsuario($data);
-        $this->load->view('panelControl/index', $data);
-    }
+    public function agregarUsuario(){		
+        $data=["id_usuario" => null, "nombres" => $_POST['nombres'], "apellidos" => $_POST['apellidos'],  "nombre_usuario" => $_POST['usuario'], "contrasenia" => $_POST['pass'], "tipo_usuario" => $_POST['tipo_usuario'], "estado" => $_POST['estado']];
 
+		// echo '<script type="text/javascript">console.log('.var_dump($data).'); </script>';
+		// $this->load->view('panelControl/index');
+		 $this->usuario_model->agregarUsuario($data);
+    }
 
       
     //METODO QUE ELIMINA UN REGISTRO DE USUARIO
