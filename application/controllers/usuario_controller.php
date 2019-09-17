@@ -36,10 +36,13 @@ class Usuario_controller extends CI_Controller {
 
     //METODO QUE AGREGA UN REGISTRO USUARIO
     public function agregarUsuario(){		
-        $data=["id_usuario" => null, "nombres" => $_POST['nombres'], "apellidos" => $_POST['apellidos'],  "nombre_usuario" => $_POST['usuario'], "contrasenia" => $_POST['pass'], "tipo_usuario" => $_POST['tipo_usuario'], "estado" => $_POST['estado']];
+		
+		echo $_POST["nombres"];
 
-		// echo '<script type="text/javascript">console.log('.var_dump($data).'); </script>';
-		// $this->load->view('panelControl/index');
+		$data=["id_usuario" => null, "nombres" => $_POST['nombres'], "apellidos" => $_POST['apellidos'],  "nombre_usuario" => $_POST['usuario'], "contrasenia" => $_POST['pass'], "tipo_usuario" => $_POST['tipo_usuario'], "estado" => 1];
+
+		// // echo '<script type="text/javascript">console.log('.var_dump($data).'); </script>';
+		// // $this->load->view('panelControl/index');
 		 $this->usuario_model->agregarUsuario($data);
     }
 
@@ -53,17 +56,18 @@ class Usuario_controller extends CI_Controller {
 
     //METODO CON EL QUE OBTENDRIA EL REGISTRO USUARIO
     public function obtenerRegistro($id){
-        $dato=['usuario'=> $this->usuario_model->obtenerRegistro($id)];
-        $this->load->view('controlPanel/form', $dato);
+        // $dato=['usuario'=> $this->usuario_model->obtenerRegistro($id)];
+		echo json_encode($this->usuario_model->obtenerRegistro($id));
+		// $this->load->view('controlPanel/form', $dato);
     }
 
 
     //METODO QUE SE ENCARGA DE ACTUALIZAR UN REGISTRO DE USUARIO
     public function actualizarUsuario(){
-        $data=[$_POST['id_usuario'], $_POST['nombres'], $_POST['apellidos'], $_POST['nombre_usuario'], $_POST['contrasenia'], $_POST['id_tipo_usuario']];
-    
+        $data=["id_usuario" => $_POST['id_usuario'], "nombres" => $_POST['nombres'], "apellidos" => $_POST['apellidos'],  "nombre_usuario" => $_POST['usuario'], "contrasenia" => $_POST['pass'], "tipo_usuario" => $_POST['tipo_usuario'], "estado" => $_POST['estado']];
+
         $this->usuario_model-> actualizarUsuario($data);
-        $this->load->view('panelControl/index', $data);
+        // $this->load->view('panelControl/index', $data);
     }
 
 

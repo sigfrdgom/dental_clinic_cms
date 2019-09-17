@@ -32,7 +32,7 @@ class Usuario_model extends CI_Model{
     //CONSULTA PARA OBTENER UN REGISTRO DE USUARIO
     public function obtenerRegistro($id = ""){
          try {
-            $this->db->select('id_usuario nombres, apellidos, nombre_usuario, contrasenia, tipo_usuario, estado');
+            $this->db->select('id_usuario, nombres, apellidos, nombre_usuario, contrasenia, tipo_usuario, estado');
             $this->db->from('usuario');
             $this->db->where('id_usuario', $id);
             $consulta = $this->db->get();

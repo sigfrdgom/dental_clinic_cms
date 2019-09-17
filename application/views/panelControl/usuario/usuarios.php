@@ -85,12 +85,14 @@
 	</div>
 	
 
+	
+
 	<div class="modal fade" id="agregarUsuario">
     <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered">
       <div class="modal-content">
       
         <!-- Modal Header -->
-        <div class="modal-header">
+        <div class="modal-header" id="formUs">
           <h4 class="modal-title" style="margin: 0% auto;" id="aggdct">Agregar un nuevo usuario</h4>
           <h4 class="modal-title" style="margin: 0% auto; display:none;" id="mdfdct">Modificar un usuario</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -101,7 +103,7 @@
                     <!-- <form  id="formUsuario" method="POST" data-parsley-validate novalidate > -->
 
 						<form id="formUsuario"  data-parsley-validate novalidate>
-                        <input type="hidden" name="id" id="id">
+                        <input type="hidden" name="id" id="id_usuario">
 
                         <label for="dnombres" class="mrg-spr-ex mt-2">Nombres de la persona: </label>
                         <input type="text" name="nombres" id="nombres" placeholder="Escribe los nombres de la persona" 
@@ -145,9 +147,8 @@
 											</label>
 										</div>         
 								</div>
-
+								<div style="margin-left:2em;" id="oculto"hidden="true">
 								<label class="mrg-spr-ex mt-2" >Estado:</label>
-								<div style="margin-left:2em;">
 										<div class="form-check">
 											<label class="form-check-label">
 												<input class="form-check-input" type="radio" name="estado" id="estado1" value="1" required checked>
@@ -167,9 +168,9 @@
         </div>
         
         <!-- Modal footer -->
-        <div class="modal-footer">
-                <input type="submit"  class="btn btn-success" value="Guardar cambios" name="guardarUsuario">
-                <button type="reset" class="btn btn-danger" data-dismiss="modal" id="cancelUsuario">Cancelar</button>
+        <div class="modal-footer" id="formUs2">
+                <input type="submit"  class="btn btn-success" value="Guardar" id="guardarUsuario">
+                <button type="reset" class="btn btn-danger" data-dismiss="modal" id="btnReset">Cancelar</button>
             </form>
             
         </div>

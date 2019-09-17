@@ -3,11 +3,9 @@ var formulario=document.getElementById("formUsuario");
 var respuesta=document.getElementById("bodyUsuario");
 
 
-/////////////////////------------------------------GET-------------------------------------//////////////////
-
-
+/////////////////////-----------------------------------------GET----------------------------------------//////////////////
 function recargar(){
-    var peticion=new XMLHttpRequest();
+    let peticion=new XMLHttpRequest();
     peticion.onreadystatechange=function(){
         
 
@@ -20,34 +18,37 @@ function recargar(){
 }
 
 
-function asignarEventos(){
-    
-    // document.getElementById('btn').addEventListener('click', accion);
-    var btnEditar=document.getElementsByClassName('btnEditar');
-    var btnEliminar=document.getElementsByClassName('btnEliminar');
+/////////////////////----------------------------------------POST y PUT------------------------------------------//////////////////
+document.getElementById('guardarUsuario').addEventListener('click', function(e){
+	e.preventDefault();
+    var nombres=document.getElementById('nombres').value
+   	var apellidos=document.getElementById('apellidos').value
+	var nombre_usuario=document.getElementById('usuario').value
+	var pass=document.getElementById('pass').value
+	var tipo_usuario=document.querySelector('input[name="tipo_usuario"]:checked')
 
-    for (var index = 0; index <btnEditar.length; index++) {
-        //PARA EMPEZAR A CARGAR
-        btnEditar[index].addEventListener('click', actualizar);
-        btnEliminar[index].addEventListener('click', eliminar);
-        
+	var datas= new FormData();
+	datas.append("nombres", nombres)
+	datas.append("apellidos", apellidos)
+	datas.append("usuario", nombre_usuario)
+	datas.append("pass", pass)
+	datas.append("tipo_usuario", tipo_usuario.value)
+
+
+	var metodo="agregarUsuario";
+    if (this.value=="Modificar") {
+		metodo="actualizarUsuario";
+		let estado=document.querySelector('input[name="estado"]:checked')
+		var id_usuario=document.getElementById('id_usuario').value
+		datas.append("id_usuario", id_usuario)
+		datas.append("estado", estado.value)
     }
-}
 
 
-/////////////////////---------------------POST-------------------------------------//////////////////
-
-
-formulario.addEventListener('submit', function(e){
-    e.preventDefault();
-    console.log("me diste un click");
-    var datos= new FormData(formulario);
 	
-//  http://localhost/dental_clinic_cms/usuario_controller/agregarUsuario
-
-    fetch('agregarUsuario', {
+	fetch(metodo, {
         method: 'POST',
-        body: datos
+        body: datas
     }).then(res => res)
       .then(data =>{
         //   console.log(data);
@@ -56,52 +57,13 @@ formulario.addEventListener('submit', function(e){
           `ERROR`;
           }else{
 			recargar();
-          }
-          
-      })//.catch(e => {respuesta.innerHTML= `algun error`; return "No esta funcionando"  })
+			limpiar();	
+          }})
 
-})
-
+});
 
 
-
-
-//   var contenido = document.querySelector("#bodyUsuario")
-		
-//   			function recargar() {
-          
-//             fetch('cargarDatosUsuario')
-//             .then(res => res)
-//             .then(datos => {
-//         	 console.log(datos);
-//             tabla(datos);
-//             })
-//         }
-    
-//         function tabla(datos){
-//                 // console.log(datos);
-//                 //estos remplaza al html que tiene contenido la etiquea
-//                 contenido.innerHTML='';
-
-//                 for (let valor of datos) {
-//                     // console.log(valor.nombre);
-//                     contenido.innerHTML+=`
-                    
-//                     <tr>
-// 						<td>${valor.get('nombres')}</td>
-// 						<td>${valor.get('apellidos')}</td>
-// 						<td>${valor.get('usuario')}</td>
-// 						<td>${valor.get('tipo_usuario')}</td>
-// 						<td>${valor.get('estado')}</td>
-// 					</tr>
-//                     `; 
-//                 }
-                
-			// }
-			
-
-
-/////////////////////---------------------------------ElIMINAR-------------------------------------//////////////////	
+/////////////////////------------------------------------------------DELETE---------------------------------------------------//////////////////	
 
 
 	function eliminar() {
@@ -110,73 +72,87 @@ formulario.addEventListener('submit', function(e){
        if(this.readyState==4){
             recargar();
         }};
-
     peticion.open('GET', 'eliminarUsuario/'+this.value);
     peticion.send()
 }
 
-/////////////////////---------------------------------Actualizar-------------------------------------//////////////////
+/////////////////////----------------------------------------PREPARACION DE EVENTOS--------------------------------------//////////////////
 
 function asignarEventos(){
-    
-    // document.getElementById('btn').addEventListener('click', accion);
     var btnEditar=document.getElementsByClassName('btnEditar');
-    var btnEliminar=document.getElementsByClassName('btnEliminar');
-
-    for (var index = 0; index <btnEditar.length; index++) {
-        //PARA EMPEZAR A CARGAR
-        btnEditar[index].addEventListener('click', actualizar);
+	var btnEliminar=document.getElementsByClassName('btnEliminar');
+	
+	for (var index = 0; index <btnEditar.length; index++) {
+	
+		//PARA EMPEZAR A CARGAR
+        btnEditar[index].addEventListener('click', accion);
         btnEliminar[index].addEventListener('click', eliminar);
         
     }
 }
 
 
-//EMPEZANDOS -:V
-function actualizar() {
-	console.log(respuesta.childNodes)
-    // document.getElementById('nombre').innerHTML=formulario.children;
-  
-        
-    
+/////////////////////----------------------------------------PREPARACION DE DATOS EN FORMULARIO------------------------------------//////////////////
+function accion() {
+    var datos = new Array();
+    document.getElementById("oculto").removeAttribute("hidden")
+	
+	let peticion=new XMLHttpRequest();
+    peticion.onreadystatechange=function(){
+        if(this.readyState==4){
+			datos=JSON.parse(this.responseText);
+			document.getElementById("id_usuario").value=datos["id_usuario"];
+    		document.getElementById('nombres').value=datos["nombres"];
+   			document.getElementById('apellidos').value=datos["apellidos"];
+			document.getElementById('usuario').value=datos["nombre_usuario"];
+			document.getElementById('pass').value=datos["contrasenia"]; 
 
+			switch (datos["tipo_usuario"]) {
+				case "Administrador":
+					document.getElementById("tipo1").checked = true;	
+				break;
+				case "Generador de contenido":
+					document.getElementById("tipo2").checked = true;	
+				break;
+				case "Usuario normal":
+				document.getElementById("tipo3").checked = true;
+				break;
+			}
+	
+    
+			if (datos["estado"]==1) {
+				document.getElementById("estado1").checked = true;
+			}else{
+				document.getElementById("estado2").checked = true;
+			}
+            
+            
+        }};
+    peticion.open('GET', 'obtenerRegistro/'+this.value);
+	peticion.send();
+	btn= document.getElementById('guardarUsuario')
+    btn.removeAttribute("value")
+	btn.setAttribute("value", "Modificar")
+    
 }
 
+document.getElementById("btnReset").addEventListener("click", limpiar)
+function limpiar(){
+    document.getElementById("oculto").setAttribute("hidden", "true")
+    document.getElementById('nombres').value="";
+    document.getElementById('apellidos').value="";
+    document.getElementById('usuario').value=""; 
+    
+    radio1= document.getElementById("estado1");
+    radio2= document.getElementById("estado2");
+    radio2.removeAttribute("checked")
+	radio1.setAttribute("checked", "");
+	var btn=document.getElementById('guardarUsuario')
+    btn.removeAttribute("value")
+	btn.setAttribute("value", "Guardar");
 
-
-
-
-
-
-
-
-
-  // var descripcion=document.getElementById('descripcion').value;
-    // var autor=document.getElementById('autor').value;
-
-
-    // estado="DISPONIBLES"
-
-        
-    // var peticion=new XMLHttpRequest();
-    // peticion.open('POST', 'Libro/'+this.value);
-    // peticion.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-    // peticion.send(datos);
-    // peticion.onreadystatechange=function(){
-        
-    //     if(this.readyState==4){
-    //         document.getElementById('cuerpo').innerHTML=this.responseText;
-           
-    //         recargar();
-    //     // limpiar();
-
-    //         document.getElementById('btn').value="agregar";
-    //         document.getElementById('btn').innerHTML="AGREGAR";
-    //     }};
-
-    //      var datos='titulo='+titulo+"&descripcion="+descripcion+"&autor="+autor+"&estado="+estado;
-    //     // if (this.value=="update") {
-    //     //     datos +='&id_libro='+id_libro;
-    //     // }
-
-    //     // alert(datos);
+	// document.getElementById('agregarUsuario').style.display="none";
+	$('#agregarUsuario').modal('hide');
+	
+    
+}
