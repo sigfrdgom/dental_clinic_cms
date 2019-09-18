@@ -5,19 +5,36 @@ var respuesta=document.getElementById("bodyUsuario");
 
 /////////////////////-----------------------------------------GET----------------------------------------//////////////////
 function recargar(){
-    let peticion=new XMLHttpRequest();
-    peticion.onreadystatechange=function(){
-        
+    fetch('cargarDatosUsuario')
+            .then(res => res.json())
+            .then(datos => {
+				var texto="";
+				datos.forEach(element => {
+					if (element.estado==1) {
+						estado="Activo";
+					}else{
+						estado="Desactivo";
+					}
+				 texto+=`
+				<tr id="tr${element.id_usuario}">
+    				<td>${element.nombres}</td>
+    				<td>${element.apellidos}</td>
+    				<td>${element.nombre_usuario}</td>
+					<td>${element.tipo_usuario}</td>
+					<td>${estado}</td>
+            		<td>
+                	<button class="btnEditar text-center btn btn-info" value="${element.id_usuario}" data-toggle="modal" data-target="#agregarUsuario">EDITAR</button>
+                	<button class="btnEliminar text-center btn btn-danger"  value="${element.id_usuario}">ELIMINAR</button>
+            		</td>
+    			</tr>`
+				});
+					respuesta.innerHTML=texto;
+					asignarEventos();
+				})
+					
+			
 
-        if(this.readyState==4){
-            document.getElementById('bodyUsuario').innerHTML=this.responseText;
-            asignarEventos();
-        }};
-    peticion.open('GET', 'cargarDatosUsuario');
-    peticion.send();
 }
-
-
 /////////////////////----------------------------------------POST y PUT------------------------------------------//////////////////
 document.getElementById('guardarUsuario').addEventListener('click', function(e){
 	e.preventDefault();
@@ -35,19 +52,26 @@ document.getElementById('guardarUsuario').addEventListener('click', function(e){
 	datas.append("tipo_usuario", tipo_usuario.value)
 
 
-	var metodo="agregarUsuario";
+	var controlador="agregarUsuario";
+	var metodo="POST"
     if (this.value=="Modificar") {
-		metodo="actualizarUsuario";
+		controlador="actualizarUsuario";
+		// metodo="PUT"
 		let estado=document.querySelector('input[name="estado"]:checked')
 		var id_usuario=document.getElementById('id_usuario').value
 		datas.append("id_usuario", id_usuario)
-		datas.append("estado", estado.value)
+		datas.append("estado", estado.value)	
     }
 
+	// var dataJson = {};
+	// 	for (const [key, value]  of datas.entries()) {
+	// 		dataJson[key] = value;
+	// 	}
 
+		
 	
-	fetch(metodo, {
-        method: 'POST',
+	fetch(controlador, {
+        method: metodo,
         body: datas
     }).then(res => res)
       .then(data =>{
@@ -64,16 +88,28 @@ document.getElementById('guardarUsuario').addEventListener('click', function(e){
 
 
 /////////////////////------------------------------------------------DELETE---------------------------------------------------//////////////////	
-
-
 	function eliminar() {
-    var peticion=new XMLHttpRequest();
-    peticion.onreadystatechange=function(){
-       if(this.readyState==4){
-            recargar();
-        }};
-    peticion.open('GET', 'eliminarUsuario/'+this.value);
-    peticion.send()
+    // var peticion=new XMLHttpRequest();
+    // peticion.onreadystatechange=function(){
+    //    if(this.readyState==4){
+    //         recargar();
+    //     }};
+    // peticion.open('GET', 'eliminarUsuario/'+this.value);
+	// peticion.send()
+	
+
+	// fetch('eliminarUsuario/'+this.value)
+    //         .then(res => {
+	// 			recargar()
+	// 			})
+
+
+	fetch('eliminarUsuario/'+this.value, {
+        method: 'DELETE'
+    }).then(res =>{
+        	recargar();
+				
+          })
 }
 
 /////////////////////----------------------------------------PREPARACION DE EVENTOS--------------------------------------//////////////////
@@ -137,6 +173,7 @@ function accion() {
 }
 
 document.getElementById("btnReset").addEventListener("click", limpiar)
+document.getElementById("idModal").addEventListener("click", limpiar)
 function limpiar(){
     document.getElementById("oculto").setAttribute("hidden", "true")
     document.getElementById('nombres').value="";
