@@ -100,8 +100,8 @@
 			<form id="formCategoria"  data-parsley-validate novalidate>
 					<input type="hidden" name="id" id="id_categoria">
 
-					<label for="nombre_categoria" class="mrg-spr-ex mt-2">Nombres de la categoria: </label>	
-					<input type="text" name="nombre_categoria" id="nombre_categoria" placeholder="Escribe el nombre de la categoria"
+					<label for="nombre" class="mrg-spr-ex mt-2">Nombres de la categoria: </label>	
+					<input type="text" name="nombre" id="nombre" placeholder="Escribe el nombre de la categoria"
 					class="form-control " required pattern='[a-zA-zÑñÁÉÍÓÚáéíóúü ]{1,64}'>
 
 					<label for="descripcion" class="mrg-spr-ex mt-2">Descripcion de la categoria:</label>

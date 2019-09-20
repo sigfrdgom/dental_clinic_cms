@@ -17,7 +17,7 @@ function recargar(){
 					}
 				 texto+=`
 				<tr id="tr${element.id_categoria}">
-    				<td>${element.nombre_categoria}</td>
+    				<td>${element.nombre}</td>
 					<td>${element.descripcion}</td>
             		<td>
 					<button class="btnEditar text-center btn btn-info" value="${element.id_categoria}" data-toggle="modal" data-target="#agregarCategoria">EDITAR</button>
@@ -35,11 +35,11 @@ function recargar(){
 /////////////////////----------------------------------------POST y PUT------------------------------------------//////////////////
 document.getElementById('guardarCategoria').addEventListener('click', function(e){
 	e.preventDefault();
-    var nombre_categoria=document.getElementById('nombre_categoria').value
+    var nombre=document.getElementById('nombre').value
 	var descripcion=document.getElementById('descripcion').value
 
 	var datas= new FormData();
-	datas.append("nombre_categoria", nombre_categoria)
+	datas.append("nombre", nombre)
 	datas.append("descripcion", descripcion)
 
 	var controlador="agregarCategoria";
@@ -102,7 +102,7 @@ function accion() {
         if(this.readyState==4){
 			datos=JSON.parse(this.responseText);
 			document.getElementById("id_categoria").value=datos["id_categoria"];
-			document.getElementById('nombre_categoria').value=datos["nombre_categoria"];
+			document.getElementById('nombre').value=datos["nombre"];
 			document.getElementById('descripcion').value=datos["descripcion"];
 	   
         }};
@@ -117,7 +117,7 @@ function accion() {
 document.getElementById("btnReset").addEventListener("click", limpiar)
 document.getElementById("idModal").addEventListener("click", limpiar)
 function limpiar(){
-	document.getElementById('nombre_categoria').value="";
+	document.getElementById('nombre').value="";
 	document.getElementById('descripcion').value="";
     
    
