@@ -41,7 +41,6 @@ document.getElementById('guardarTipo').addEventListener('click', function(e){
 	datas.append("nombre", nombreTipo)
 	var controlador="agregarTipo";
 	var metodo="POST"
-	
     if (this.value=="Modificar") {
 		controlador="actualizarTipo";
 		// metodo="PUT"
@@ -55,8 +54,7 @@ document.getElementById('guardarTipo').addEventListener('click', function(e){
 	fetch(controlador, {
         method: metodo,
         body: datas
-    }).then(res => res)
-      .then(data =>{
+    }).then(data =>{
         //   console.log(data);
           if(data=="error"){
             respuesta.innerHTML=
@@ -73,7 +71,7 @@ document.getElementById('guardarTipo').addEventListener('click', function(e){
 	function eliminar() {
 	fetch('eliminarTipo/'+this.value, {
         method: 'DELETE'
-    }).then(res =>{
+    }).then(() =>{
         	recargar();		
           })
 }

@@ -36,8 +36,7 @@ class Tipo_controller extends CI_Controller {
     public function agregarTipo(){
         //deberia ir el espacion en blanco?
         $data=["id_tipo" => null, "nombre" => $_POST['nombre'], "estado" => 1];
-     echo  $_POST['nombre'];
-        // $this->tipo_model->agregarTipo($data);
+        $this->tipo_model->agregarTipo($data);
     }
 
 

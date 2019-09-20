@@ -56,8 +56,7 @@ document.getElementById('guardarCategoria').addEventListener('click', function(e
 	fetch(controlador, {
         method: metodo,
         body: datas
-    }).then(res => res)
-      .then(data =>{
+    }).then(data =>{
         //   console.log(data);
           if(data=="error"){
             respuesta.innerHTML=
@@ -74,7 +73,7 @@ document.getElementById('guardarCategoria').addEventListener('click', function(e
 	function eliminar() {
 	fetch('eliminarCategoria/'+this.value, {
         method: 'DELETE'
-    }).then(res =>{
+    }).then(() =>{
         	recargar();		
           })
 }

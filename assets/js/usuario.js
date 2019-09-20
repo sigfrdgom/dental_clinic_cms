@@ -13,7 +13,7 @@ function recargar(){
 					if (element.estado==1) {
 						estado="Activo";
 					}else{
-						estado="Desactivo";
+						estado="Desactivado";
 					}
 				 texto+=`
 				<tr id="tr${element.id_usuario}">
@@ -73,8 +73,7 @@ document.getElementById('guardarUsuario').addEventListener('click', function(e){
 	fetch(controlador, {
         method: metodo,
         body: datas
-    }).then(res => res)
-      .then(data =>{
+    }) .then(data =>{
         //   console.log(data);
           if(data=="error"){
             respuesta.innerHTML=
@@ -91,7 +90,7 @@ document.getElementById('guardarUsuario').addEventListener('click', function(e){
 	function eliminar() {
 	fetch('eliminarUsuario/'+this.value, {
         method: 'DELETE'
-    }).then(res =>{
+    }).then(() =>{
         	recargar();		
           })
 }
