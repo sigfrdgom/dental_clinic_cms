@@ -89,26 +89,10 @@ document.getElementById('guardarUsuario').addEventListener('click', function(e){
 
 /////////////////////------------------------------------------------DELETE---------------------------------------------------//////////////////	
 	function eliminar() {
-    // var peticion=new XMLHttpRequest();
-    // peticion.onreadystatechange=function(){
-    //    if(this.readyState==4){
-    //         recargar();
-    //     }};
-    // peticion.open('GET', 'eliminarUsuario/'+this.value);
-	// peticion.send()
-	
-
-	// fetch('eliminarUsuario/'+this.value)
-    //         .then(res => {
-	// 			recargar()
-	// 			})
-
-
 	fetch('eliminarUsuario/'+this.value, {
         method: 'DELETE'
     }).then(res =>{
-        	recargar();
-				
+        	recargar();		
           })
 }
 
@@ -187,9 +171,5 @@ function limpiar(){
 	var btn=document.getElementById('guardarUsuario')
     btn.removeAttribute("value")
 	btn.setAttribute("value", "Guardar");
-
-	// document.getElementById('agregarUsuario').style.display="none";
 	$('#agregarUsuario').modal('hide');
-	
-    
 }
