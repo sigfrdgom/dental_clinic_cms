@@ -8,47 +8,56 @@ class Publicacion_model extends CI_Model{
     }
 
     //CONSULTA PARA AGREGAR UN REGISTRO A LA TABLA PUBLICACION
-    public function agregarPublicacion($data){     
+    public function create($data){     
         try {
-            $this->db->insert('publicacion', $data);
-            return 1;
+            if($this->db->insert('publicacion', $data)){
+                return true;
+            }else{
+                return false;
+            }
         } catch (mysqli_sql_exception $e) {
-            return 0;
+            return false;
+            // echo $e;
         }
     }
 
 
     //CONSULTA PARA ELIMINAR UN REGISTRO A LA TABLA PUBLICACION
-    public function eliminarPublicacion($id = ""){
+    public function delete($id = ""){
         try {
             $this->db->where('id_publicacion', $id);
-            $this->db->delete('publicacion');
-            return 1;
+            if($this->db->delete('publicacion')){
+                return true;
+            }else{
+                return false;
+            }
         } catch (mysqli_sql_exception $e) {
-            return 0;
+            return false;
+            // echo $e;
         }  
     }
 
     //CONSULTA PARA OBTENER UN REGISTRO DE PUBLICACION
-    public function obtenerRegistro($id = ""){
+    public function findById($id = ""){
          try {
-            $this->db->select('id_publicacion, id_usuario, id_categoria, id_tipo, titulo, texto_introduccion, contenido, estado, recurso_av_1, recurso_av_2, recurso_av_3, recurso_av_4, fecha_Ingreso');
-            $this->db->from('publicacion');
             $this->db->where('id_publicacion', $id);
-            $consulta = $this->db->get();
-            $resultado = $consulta->row();
-            return $resultado;
+            return $this->db->get('publicacion')->result();
         } catch (mysqli_sql_exception $e) {
-            return 0;
+            return false;
         }  
     }
 
     //CONSULTA PARA ACTUALIZAR UN REGISTRO UN REGISTRO DE PUBLICACION
-    public function actualizarPublicacion($data){
+    public function update($data){
         try {
-            $this->db->replace('publicacion', $data);
+            $this->db->where('id_publicacion', $data['id_publicacion']);
+            if($this->db->update('publicacion', $data)){
+                return true;
+            }else{
+                return false;
+            }
         } catch (mysqli_sql_exception $e) {
-            return 0;
+            return false;
         }
        }
     }

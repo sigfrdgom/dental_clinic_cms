@@ -1,19 +1,19 @@
-CREATE SCHEMA IF NOT EXISTS `clinica_db`;
+CREATE DATABASE IF NOT EXISTS `clinica_db` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE clinica_db;
 
 
 CREATE TABLE IF NOT EXISTS `categoria`(
   `id_categoria` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre_categoria` VARCHAR(100) NOT NULL,
+  `nombre` VARCHAR(100) NOT NULL,
   `descripcion` VARCHAR(200) NOT NULL,
-  PRIMARY KEY (`id_categoria`));
+  PRIMARY KEY (`id_categoria`)) ENGINE=InnoDB DEFAULT CHARSET=utf8;
   
   
 CREATE TABLE IF NOT EXISTS `tipo` (
   `id_tipo` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(45) NOT NULL,
-  `estado` tinyint(4) NOT NULL,
-  PRIMARY KEY (`id_tipo`));
+  `estado` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id_tipo`)) ENGINE=InnoDB DEFAULT CHARSET=utf8;
   
  
 CREATE TABLE IF NOT EXISTS `usuario`(
@@ -23,8 +23,8 @@ CREATE TABLE IF NOT EXISTS `usuario`(
   `nombre_usuario` VARCHAR(32) NOT NULL,
   `contrasenia` VARCHAR(256) NOT NULL,
   `tipo_usuario` VARCHAR(32) NOT NULL,
-  `estado` TINYINT(2) NOT NULL,
-  PRIMARY KEY (`id_usuario`));
+  `estado` TINYINT(1) NOT NULL,
+  PRIMARY KEY (`id_usuario`)) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS `publicacion`(
   `id_publicacion` INT(11) NOT NULL AUTO_INCREMENT,
@@ -48,15 +48,15 @@ CREATE TABLE IF NOT EXISTS `publicacion`(
     REFERENCES `usuario` (`id_usuario`),
   CONSTRAINT `fk_tipo_post`
     FOREIGN KEY (`id_tipo`)
-    REFERENCES `tipo` (`id_tipo`));
+    REFERENCES `tipo` (`id_tipo`)) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 CREATE TABLE IF NOT EXISTS `contacto`(
   `id_contacto` INT(11) NOT NULL AUTO_INCREMENT,
   `telefono` VARCHAR(16) NOT NULL,
   `email` VARCHAR(50) NOT NULL,
-  `comentario` VARCHAR(512) NOT NULL,
-  PRIMARY KEY (`id_contacto`));
+  `comentario` TEXT,
+  PRIMARY KEY (`id_contacto`)) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 CREATE TABLE IF NOT EXISTS `cita`(
@@ -67,7 +67,7 @@ CREATE TABLE IF NOT EXISTS `cita`(
   `procedimiento` VARCHAR(50) NOT NULL,
   `fecha` DATE NOT NULL,
   `hora` TIME NOT NULL,
-  `comentario` VARCHAR(512) NOT NULL,
-  PRIMARY KEY (`id_cita`));
+  `comentario` TEXT,
+  PRIMARY KEY (`id_cita`)) ENGINE=InnoDB DEFAULT CHARSET=utf8;
   
 
