@@ -3,7 +3,7 @@
 class Publicacion_model extends CI_Model{
 
     //CONSULTA PARA CARGAR LO DATOS DE LA TABLA PUBLICACION
-    public function getAll(){  
+    public function findAll(){  
         return $this->db->get('publicacion')->result();
     }
 
