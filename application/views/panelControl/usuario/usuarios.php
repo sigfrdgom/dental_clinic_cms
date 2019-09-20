@@ -37,7 +37,7 @@
         <div class="card card-body">
             <!-- Para busqueda -->
             <div class="mb-2">
-                <?php //if (!empty($datos['docente'])) { ?>
+                
                     <div class="col-xl-12">
                                 
                         <div class="input-group mb-1 float-right col-sm-3">
@@ -50,7 +50,7 @@
                                     aria-describedby="basic-addon1">
                         </div>
                     </div>
-                <?php //} ?>
+               
             </div>
 
             <div class="table-responsive">
@@ -179,6 +179,4 @@
     </div>
 </div>
 	
-
-<!-- <script src="<?php //echo RUTA_URL ?>/js/views/docentes.js"></script> -->
-
+<script src="<?= base_url('assets/js/usuario.js')?>"></script>

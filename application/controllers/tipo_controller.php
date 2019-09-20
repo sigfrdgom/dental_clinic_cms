@@ -16,29 +16,28 @@ class Tipo_controller extends CI_Controller {
     }
 
     
-    //METODO INDEX PARA VER LA PÁGINA PRINCIPAL
-	// public function index()
-	// {
-	// 	$this->load->view('libro/index');
-    // }
+    public function index()
+	{
+		$this->load->view('templates/header');
+		$this->load->view('panelControl/usuario/tipo');
+		$this->load->view('templates/footer');
+		
+	}
     
 
     //METODO QUE LLAMA LOS DATOS DE LA BASE DE DATOS Y REDICCIONA
     public function cargarDatosTipo(){ 
-        $tipo = $this->tipo_model->getAll();
-        $data=['tipo' => $tipo];
+        echo json_encode($this->tipo_model->getAll());
         
-        $this->load->view('panelControl/tabla', $data);
     }
 
 
     //METODO QUE AGREGA DATOS A LA BASE DE DATOS
     public function agregarTipo(){
         //deberia ir el espacion en blanco?
-        $data=["", $_POST['nombre'], $_POST['estado']];
-    
-        $this->tipo_model->agregarTipo($data);
-        $this->load->view('panelControl/index', $data);
+        $data=["id_tipo" => null, "nombre" => $_POST['nombre'], "estado" => 1];
+     echo  $_POST['nombre'];
+        // $this->tipo_model->agregarTipo($data);
     }
 
 
@@ -52,8 +51,8 @@ class Tipo_controller extends CI_Controller {
 
     //METODO CON EL QUE OBTENDRIA EL REGISTRO TIPO
     public function obtenerRegistro($id){
-        $dato=['tipo'=>$this->tipo_model->obtenerRegistro($id)];
-        $this->load->view('controlPanel/form', $dato);
+         echo json_encode($this->tipo_model->obtenerRegistro($id));
+        
     }
 
 
@@ -61,10 +60,9 @@ class Tipo_controller extends CI_Controller {
     //METODO CON EL QUE SE ACTUALIZA UN REGISTRO DE TIPO
     public function actualizarTipo(){
         
-        $data=[$_POST['id_tipo'], $_POST['nombre'], $_POST['estado']];
-    
-        $this->tipo_model->actualizarTipo($data);
-        $this->load->view('panelControl/index', $data);
+        $data=["id_tipo" => $_POST['id_tipo'], "nombre" => $_POST['nombre'], "estado" => $_POST['estado']];
+    	$this->tipo_model->actualizarTipo($data);
+        
     }
 
 
