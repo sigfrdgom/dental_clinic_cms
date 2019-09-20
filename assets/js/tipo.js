@@ -1,11 +1,11 @@
 window.addEventListener('load', recargar);
-var formulario=document.getElementById("formUsuario");
-var respuesta=document.getElementById("bodyUsuario");
+var formulario=document.getElementById("formTipo");
+var respuesta=document.getElementById("bodyTipo");
 
 
 /////////////////////-----------------------------------------GET----------------------------------------//////////////////
 function recargar(){
-    fetch('cargarDatosUsuario')
+    fetch('cargarDatosTipo')
             .then(res => res.json())
             .then(datos => {
 				var texto="";
@@ -16,15 +16,12 @@ function recargar(){
 						estado="Desactivado";
 					}
 				 texto+=`
-				<tr id="tr${element.id_usuario}">
-    				<td>${element.nombres}</td>
-    				<td>${element.apellidos}</td>
-    				<td>${element.nombre_usuario}</td>
-					<td>${element.tipo_usuario}</td>
+				<tr id="tr${element.id_tipo}">
+    				<td>${element.nombre}</td>
 					<td>${estado}</td>
             		<td>
-                	<button class="btnEditar text-center btn btn-info" value="${element.id_usuario}" data-toggle="modal" data-target="#agregarUsuario">EDITAR</button>
-                	<button class="btnEliminar text-center btn btn-danger"  value="${element.id_usuario}">ELIMINAR</button>
+                	<button class="btnEditar text-center btn btn-info" value="${element.id_tipo}" data-toggle="modal" data-target="#agregarTipo">EDITAR</button>
+                	<button class="btnEliminar text-center btn btn-danger"  value="${element.id_tipo}">ELIMINAR</button>
             		</td>
     			</tr>`
 				});
@@ -36,44 +33,28 @@ function recargar(){
 
 }
 /////////////////////----------------------------------------POST y PUT------------------------------------------//////////////////
-document.getElementById('guardarUsuario').addEventListener('click', function(e){
+document.getElementById('guardarTipo').addEventListener('click', function(e){
 	e.preventDefault();
-    var nombres=document.getElementById('nombres').value
-   	var apellidos=document.getElementById('apellidos').value
-	var nombre_usuario=document.getElementById('usuario').value
-	var pass=document.getElementById('pass').value
-	var tipo_usuario=document.querySelector('input[name="tipo_usuario"]:checked')
-
+    var nombreTipo=document.getElementById('nombre').value
+	
 	var datas= new FormData();
-	datas.append("nombres", nombres)
-	datas.append("apellidos", apellidos)
-	datas.append("usuario", nombre_usuario)
-	datas.append("pass", pass)
-	datas.append("tipo_usuario", tipo_usuario.value)
-
-
-	var controlador="agregarUsuario";
+	datas.append("nombre", nombreTipo)
+	var controlador="agregarTipo";
 	var metodo="POST"
     if (this.value=="Modificar") {
-		controlador="actualizarUsuario";
+		controlador="actualizarTipo";
 		// metodo="PUT"
 		let estado=document.querySelector('input[name="estado"]:checked')
-		var id_usuario=document.getElementById('id_usuario').value
-		datas.append("id_usuario", id_usuario)
+		var id_tipo=document.getElementById('id_tipo').value
+		datas.append("id_tipo", id_tipo)
 		datas.append("estado", estado.value)	
-    }
-
-	// var dataJson = {};
-	// 	for (const [key, value]  of datas.entries()) {
-	// 		dataJson[key] = value;
-	// 	}
-
-		
+	}
 	
+
 	fetch(controlador, {
         method: metodo,
         body: datas
-    }) .then(data =>{
+    }).then(data =>{
         //   console.log(data);
           if(data=="error"){
             respuesta.innerHTML=
@@ -88,7 +69,7 @@ document.getElementById('guardarUsuario').addEventListener('click', function(e){
 
 /////////////////////------------------------------------------------DELETE---------------------------------------------------//////////////////	
 	function eliminar() {
-	fetch('eliminarUsuario/'+this.value, {
+	fetch('eliminarTipo/'+this.value, {
         method: 'DELETE'
     }).then(() =>{
         	recargar();		
@@ -120,23 +101,8 @@ function accion() {
     peticion.onreadystatechange=function(){
         if(this.readyState==4){
 			datos=JSON.parse(this.responseText);
-			document.getElementById("id_usuario").value=datos["id_usuario"];
-    		document.getElementById('nombres').value=datos["nombres"];
-   			document.getElementById('apellidos').value=datos["apellidos"];
-			document.getElementById('usuario').value=datos["nombre_usuario"];
-			document.getElementById('pass').value=datos["contrasenia"]; 
-
-			switch (datos["tipo_usuario"]) {
-				case "Administrador":
-					document.getElementById("tipo1").checked = true;	
-				break;
-				case "Generador de contenido":
-					document.getElementById("tipo2").checked = true;	
-				break;
-				case "Usuario normal":
-				document.getElementById("tipo3").checked = true;
-				break;
-			}
+			document.getElementById("id_tipo").value=datos["id_tipo"];
+			document.getElementById('nombre').value=datos["nombre"];
 	
     
 			if (datos["estado"]==1) {
@@ -149,7 +115,7 @@ function accion() {
         }};
     peticion.open('GET', 'obtenerRegistro/'+this.value);
 	peticion.send();
-	btn= document.getElementById('guardarUsuario')
+	btn= document.getElementById('guardarTipo')
     btn.removeAttribute("value")
 	btn.setAttribute("value", "Modificar")
     
@@ -159,16 +125,14 @@ document.getElementById("btnReset").addEventListener("click", limpiar)
 document.getElementById("idModal").addEventListener("click", limpiar)
 function limpiar(){
     document.getElementById("oculto").setAttribute("hidden", "true")
-    document.getElementById('nombres').value="";
-    document.getElementById('apellidos').value="";
-    document.getElementById('usuario').value=""; 
+    document.getElementById('nombre').value="";
     
     radio1= document.getElementById("estado1");
     radio2= document.getElementById("estado2");
     radio2.removeAttribute("checked")
 	radio1.setAttribute("checked", "");
-	var btn=document.getElementById('guardarUsuario')
+	var btn=document.getElementById('guardarTipo')
     btn.removeAttribute("value")
 	btn.setAttribute("value", "Guardar");
-	$('#agregarUsuario').modal('hide');
+	$('#agregarTipo').modal('hide');
 }

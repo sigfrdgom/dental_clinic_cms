@@ -16,35 +16,34 @@ class Categoria_controller extends CI_Controller {
     }
 
     
-    //METODO INDEX PARA VER LA PÁGINA PRINCIPAL
-	// public function index()
-	// {
-	// 	$this->load->view('libro/index');
-    // }
+    public function index()
+	{
+		$this->load->view('templates/header');
+		$this->load->view('panelControl/usuario/categoria');
+		$this->load->view('templates/footer');
+		
+	}
     
 
     //METODO QUE LLAMA LOS DATOS DE LA BASE DE DATOS Y REDICCIONA
     public function cargarDatosCategoria(){ 
-        $categoria = $this->categoria_model->getAll();
-        $data=['categoria' => $categoria];
+        echo json_encode($this->categoria_model->getAll());
         
-        $this->load->view('panelControl/tabla', $data);
     }
 
 
     //METODO QUE AGREGA DATOS CATEGORIA
     public function agregarCategoria(){
         //deberia ir el espacion en blanco?
-        $data=["", $_POST['nombre'], $_POST['descripcion']];
+        $data=["id_categoria" => null, "nombre_categoria" => $_POST['nombre_categoria'], "descripcion" => $_POST['descripcion']];
     
         $this->categoria_model->agregarCategoria($data);
-        $this->load->view('panelControl/index', $data);
     }
 
 
       
     //METODO QUE ELIMINA UN REGISTRO CATEGORIA
-    public function eliminarCategorias($id){
+    public function eliminarCategoria($id){
         $this->categoria_model->eliminarCategoria($id);
     }
 
@@ -52,8 +51,8 @@ class Categoria_controller extends CI_Controller {
 
     //METODO CON EL QUE OBTENDRIA EL REGISTRO CATEGORIA
     public function obtenerRegistro($id){
-        $dato=['categoria'=>$this->categoria_model->obtenerRegistro($id)];
-        $this->load->view('controlPanel/form', $dato);
+        echo json_encode($this->categoria_model->obtenerRegistro($id));
+		
     }
 
 
@@ -61,10 +60,8 @@ class Categoria_controller extends CI_Controller {
     //METODO QUE ACTUALIZA UN REGISTRO CATEGORIA
     public function actualizarCategoria(){
         
-        $data=[$_POST['id_categoria'], $_POST['nombre_categoria'], $_POST['descripcion']];
-    
+      $data=["id_categoria" => $_POST['id_categoria'], "nombre_categoria" => $_POST['nombre_categoria'], "descripcion" => $_POST['descripcion']];
         $this->categoria_model->actualizarCategoria($data);
-        $this->load->view('panelControl/index', $data);
     }
 
 

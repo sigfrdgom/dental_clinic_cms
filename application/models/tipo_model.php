@@ -32,7 +32,7 @@ class Tipo_model extends CI_Model{
     //CONSULTA PARA OBTENER UN REGISTRO DE TIPO
     public function obtenerRegistro($id = ""){
          try {
-            $this->db->select('id_tipo nombre, estado');
+            $this->db->select('id_tipo, nombre, estado');
             $this->db->from('tipo');
             $this->db->where('id_tipo', $id);
             $consulta = $this->db->get();
