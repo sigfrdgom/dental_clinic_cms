@@ -32,7 +32,7 @@ class Contacto_model extends CI_Model{
     //CONSULTA PARA OBTENER UN REGISTRO DE CONTACTO
     public function obtenerRegistro($id = ""){
          try {
-            $this->db->select('id_contacto telefono, email, comentario');
+            $this->db->select('id_contacto, nombre, apellido, telefono, email, comentario');
             $this->db->from('contacto');
             $this->db->where('id_contacto', $id);
             $consulta = $this->db->get();

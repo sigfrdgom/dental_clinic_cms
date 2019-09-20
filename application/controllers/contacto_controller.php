@@ -16,29 +16,27 @@ class Contacto_controller extends CI_Controller {
     }
 
     
-    //METODO INDEX PARA VER LA PÁGINA PRINCIPAL
-	// public function index()
-	// {
-	// 	$this->load->view('libro/index');
-    // }
-    
+    public function index()
+	{
+		$this->load->view('templates/header');
+		$this->load->view('panelControl/usuario/contacto');
+		$this->load->view('templates/footer');
+		
+	}
 
     //METODO QUE LLAMA LOS DATOS DE LA BASE DE DATOS Y REDICCIONA Y CARGA TODA LA CONTACTO
     public function cargarDatosContacto(){ 
-        $contacto = $this->contacto_model->getAll();
-        $data=['contacto' => $contacto];
-        
-        $this->load->view('panelControl/tabla', $data);
+        echo json_encode($this->contacto_model->getAll());
     }
 
 
     //METODO QUE AGREGA UN REGISTRO CONTACTO
     public function agregarContacto(){
         //deberia ir el espacion en blanco?
-        $data=["", $_POST['telefono'], $_POST['email'], $_POST['comentario']];
+        $data=["id_contacto" => null, "nombre" =>$_POST['nombre'], "apellido" =>$_POST['apellido'], "celular" =>$_POST['telefono'], "email"=> $_POST['email'], "comentario" => $_POST['comentario']];
     
         $this->contacto_model->agregarContacto($data);
-        $this->load->view('panelControl/index', $data);
+        
     }
 
 
@@ -52,17 +50,17 @@ class Contacto_controller extends CI_Controller {
 
     //METODO CON EL QUE OBTENDRIA EL REGISTRO CONTACTO
     public function obtenerRegistro($id){
-        $dato=['contacto'=> $this->contacto_model->obtenerRegistro($id)];
-        $this->load->view('controlPanel/form', $dato);
+        echo json_encode($this->contacto_model->obtenerRegistro($id));
+       
     }
 
 
     //METODO QUE SE ENCARGA DE ACTUALIZAR UN REGISTRO DE CONTACTO
     public function actualizarContacto(){
-        $data=[$_POST['id_contacto'], $_POST['telefono'], $_POST['email'], $_POST['comentario']];
+       $data=["id_contacto" => $_POST['id_contacto'], "nombre" =>$_POST['nombre'], "apellido" =>$_POST['apellido'], "celular" =>$_POST['telefono'], "email"=> $_POST['email'], "comentario" => $_POST['comentario']];
     
         $this->contacto_model-> actualizarContacto($data);
-        $this->load->view('panelControl/index', $data);
+        
     }
 
 

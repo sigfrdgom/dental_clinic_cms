@@ -35,7 +35,7 @@ class Categoria_controller extends CI_Controller {
     //METODO QUE AGREGA DATOS CATEGORIA
     public function agregarCategoria(){
         //deberia ir el espacion en blanco?
-        $data=["id_categoria" => null, "nombre_categoria" => $_POST['nombre_categoria'], "descripcion" => $_POST['descripcion']];
+        $data=["id_categoria" => null, "nombre" => $_POST['nombre'], "descripcion" => $_POST['descripcion']];
     
         $this->categoria_model->agregarCategoria($data);
     }
@@ -60,7 +60,7 @@ class Categoria_controller extends CI_Controller {
     //METODO QUE ACTUALIZA UN REGISTRO CATEGORIA
     public function actualizarCategoria(){
         
-      $data=["id_categoria" => $_POST['id_categoria'], "nombre_categoria" => $_POST['nombre_categoria'], "descripcion" => $_POST['descripcion']];
+      $data=["id_categoria" => $_POST['id_categoria'], "nombre" => $_POST['nombre'], "descripcion" => $_POST['descripcion']];
         $this->categoria_model->actualizarCategoria($data);
     }
 
