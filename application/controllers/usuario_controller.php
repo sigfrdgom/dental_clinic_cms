@@ -30,7 +30,8 @@ class Usuario_controller extends CI_Controller {
     public function cargarDatosUsuario(){ 
 		// $usuarios = $this->usuario_model->getAll();
         // $data=['usuarios' => $usuarios];
-		// $this->load->view('panelControl/usuario/tablaUsuario', $data);
+        // $this->load->view('panelControl/usuario/tablaUsuario', $data);
+        // $this->db->select('',FALSE);
 		echo json_encode($this->usuario_model->getAll());
     }
 

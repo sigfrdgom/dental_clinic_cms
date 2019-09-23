@@ -1,22 +1,16 @@
+    <!-- End of page container -->
+    </div>
 
-    <footer class="footer">
+    <!-- Start of minimalist footer -->
+    <footer class="footer text-center">
         © CLIDESA CMS
     </footer>
-        <!-- ============================================================== -->
-        <!-- End footer -->
-        <!-- ============================================================== -->
-    </div>
-    <!-- ============================================================== -->
-    <!-- End Wrapper -->
-    <!-- ============================================================== -->
-    <!-- ============================================================== -->
-    <!-- All Jquery -->
-    <!-- ============================================================== -->
-  
+    <!-- End of minimalist footer -->
+
+    
+    <!-- JS import's -->
     <script src="<?= base_url('assets/jquery/jquery-3.4.1.min.js')?>"></script>
 	<script src="<?= base_url('assets/popper/popper.min.js')?>"></script>
-
-
 
     <script src="<?= base_url('assets/css/bootstrap/dist/js/bootstrap.min.js')?>"></script>
     
@@ -29,19 +23,12 @@
     <script src="<?= base_url('assets/js/sidebarmenu.js')?>"></script>
     <!--Custom JavaScript -->
     <script src="<?= base_url('assets/js/custom.min.js')?>"></script>
-    <!-- ============================================================== -->
-    <!-- This page plugins -->
-	<!-- ============================================================== -->
-	
-
-	 <!-- JAVASCRIPTS PROPIOS-->
-	<!-- ============================================================== -->
-	
-	
-
-    
     <!-- Chart JS -->
     <script src="<?= base_url('assets/js/dashboard1.js')?>"></script>
+    
+    <!-- Own JS files -->
+	
+
 </body>
 
 </html>
