@@ -23,8 +23,8 @@ function recargar(){
 					<td>${element.tipo_usuario}</td>
 					<td>${estado}</td>
             		<td class="px-0 py-2">
-						<button class="btnEditar text-center btn btn-warning" style="width:49%; margin:0px;" value="${element.id_usuario}" data-toggle="modal" data-target="#agregarUsuario">EDITAR</button>
-						<button class="btnEliminar text-center btn btn-danger" style="width:49%; margin:0px;"  value="${element.id_usuario}">ELIMINAR</button>
+						<button class="btnEditar text-center btn btn-warning btn-rounded"  value="${element.id_usuario}" data-toggle="modal" data-target="#agregarUsuario">EDITAR</button>
+						<button class="btnEliminar text-center btn btn-danger btn-rounded"  value="${element.id_usuario}">ELIMINAR</button>
             		</td>
     			</tr>`
 				});
@@ -88,11 +88,30 @@ document.getElementById('guardarUsuario').addEventListener('click', function(e){
 
 /////////////////////------------------------------------------------DELETE---------------------------------------------------//////////////////	
 	function eliminar() {
-	fetch('eliminarUsuario/'+this.value, {
-        method: 'DELETE'
-    }).then(() =>{
-        	recargar();		
-          })
+		Swal.fire({
+			title: '¿Esta seguro de eliminar el usuario?',
+			text: "Esta accion no es reversible",
+			type: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#3085d6',
+			cancelButtonColor: '#d33',
+			confirmButtonText: 'Si, estoy seguro!',
+			cancelButtonText: 'Cancelar',
+		  }).then((result) => {
+			if (result.value) {
+				fetch('eliminarUsuario/'+this.value, {
+					method: 'DELETE'
+					})
+					.then(() =>{
+						Swal.fire(
+							'Eliminado!',
+							'El usuario ha sido eliminado',
+							'success'
+						  )
+						recargar();		
+					})
+			}
+		  })
 }
 
 /////////////////////----------------------------------------PREPARACION DE EVENTOS--------------------------------------//////////////////

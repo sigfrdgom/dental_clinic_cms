@@ -28,7 +28,6 @@
     
     <!-- Own JS files -->
 	
-
 </body>
 
 </html>

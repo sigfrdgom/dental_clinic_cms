@@ -5,7 +5,7 @@
         <div class="col-md-5 align-self-center">
             <h4 class="text-themecolor text-dark float-left mt-2">USUARIOS &nbsp; &nbsp;</h4> 
 
-            <button type="button" class="btn btn-outline-success mb-2" data-toggle="modal" data-target="#agregarUsuario" id="idModal">
+            <button type="button" class="btn btn-outline-success mb-2 btn-rounded"  data-toggle="modal" data-target="#agregarUsuario" id="idModal">
                 <span class='fa fa-plus-square-o bigfonts'></span> Nuevo usuario
             </button>
 
