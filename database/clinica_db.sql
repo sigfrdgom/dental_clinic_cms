@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS `usuario`(
   `apellidos` VARCHAR(64) NOT NULL,
   `nombre_usuario` VARCHAR(32) NOT NULL,
   `contrasenia` VARCHAR(256) NOT NULL,
-  `tipo_usuario` VARCHAR(32) NOT NULL,
+  `tipo_usuario` SET('ADMIN','GENERATOR','SIMPLE') NOT NULL,
   `estado` TINYINT(1) NOT NULL,
   PRIMARY KEY (`id_usuario`)) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -64,7 +64,7 @@ CREATE TABLE IF NOT EXISTS `contacto`(
 CREATE TABLE IF NOT EXISTS `cita`(
   `id_cita` INT(11) NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(64) NOT NULL,
-  `apellido` VARCHAR(64) NOT NULL,clinica_db
+  `apellido` VARCHAR(64) NOT NULL,
   `celular` VARCHAR(16) NOT NULL,
   `email` VARCHAR(50) NOT NULL,
   `padecimientos` VARCHAR(50) NOT NULL,

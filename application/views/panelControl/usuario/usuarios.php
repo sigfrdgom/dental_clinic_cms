@@ -127,19 +127,19 @@
                     <div style="margin-left:2em;">
                         <div class="form-check">
                             <label class="form-check-label">
-                            <input class="form-check-input" type="radio" name="tipo_usuario" id="tipo1" value="Administrador" required>
+                            <input class="form-check-input" type="radio" name="tipo_usuario" id="tipo1" value="ADMIN" required>
                             Administrador
                             </label>
                         </div>
                         <div class="form-check">
                             <label class="form-check-label">
-                            <input class="form-check-input" type="radio" name="tipo_usuario" id="tipo2" value="Generador de contenido" required>
+                            <input class="form-check-input" type="radio" name="tipo_usuario" id="tipo2" value="GENERATOR" required>
                             Generador de contenido
                             </label>
                         </div>
                         <div class="form-check">
                             <label class="form-check-label">
-                            <input class="form-check-input" type="radio" name="tipo_usuario" id="tipo3" value="Usuario normal" required checked>
+                            <input class="form-check-input" type="radio" name="tipo_usuario" id="tipo3" value="SIMPLE" required checked>
                             Usuario normal
                             </label>
                         </div>         

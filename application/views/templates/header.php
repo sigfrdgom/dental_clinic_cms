@@ -46,6 +46,7 @@
         <link rel="icon" type="image/png" href="<?= base_url('assets/images/favicon.png')?>">
         <link href="<?= base_url('assets/css/style.css')?>" rel="stylesheet">
         <link href="<?= base_url('assets/css/pages/dashboard1.css')?>" rel="stylesheet">
+        <link href="<?= base_url('assets/css/clidesa.css')?>" rel="stylesheet">
         <!-- End of CSS styleshets -->
 
         <!-- Extra BAD CSS -->
