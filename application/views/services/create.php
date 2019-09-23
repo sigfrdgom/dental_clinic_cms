@@ -13,20 +13,26 @@
     </form>
     </div>
     <div class="col-6">
-    <form action="" method="post" enctype="multipart/form-data" class="p-3" style="background: #dfdfdf">
+    <form action="guardarDatos" method="post" enctype="multipart/form-data" class="p-3" style="background: #dfdfdf">
 
         <div class="form-group">
           <label for="titulo">titulo</label>
-          <input type="text" class="form-control" name="titulo" id="" aria-describedby="helpId" placeholder="">
+          <input type="text" class="form-control" name="titulo" id="" aria-describedby="helpId" placeholder="" required>
         </div>
         <div class="form-group">
           <label for="introduccion">Introduccion</label>
-          <textarea class="form-control" name="introduccion" id="" rows="3"></textarea>
+          <textarea class="form-control" name="texto_introduccion" id="" rows="3" required></textarea>
         </div>
         <div class="form-group">
-          <label for="contendio">contendio</label>
-          <textarea class="form-control" name="contendio" id="" rows="6"></textarea>
+          <label for="contenido">contenido</label>
+          <textarea class="form-control" name="contenido" id="" rows="6" required></textarea>
         </div>
+        <div class="form-group">
+          <label for="upload"></label>
+          <input type="file" class="form-control" name="upload" id="" aria-describedby="helpId" placeholder="">
+        </div>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </form>
     </form>
     </div>
     </div>

@@ -1,33 +1,3 @@
-<!DOCTYPE html>
-
-    <!-- IMPLEMENTACION DE SESIONES AUN INCOMPLETA -->
-    <?php
-    // if ((session_status() == 2)&&(isset($_SESSION['id_sesion']))) {   
-    //     // echo "<script> alert('HAY SESSION EN HEADER ".session_status()."');</script>";
-
-    // }else{
-        
-    //     // echo "<script> alert(' NO HAY SESISION EN HEADER ".session_status()."');</script>";
-        
-    //     if (session_status() != 2) {
-    //         session_start();
-    //     } 
-        
-    //     if (isset($_SESSION['id_sesion'])) 
-    //     {
-    //         // echo "<script> alert('SI HAY SESIONES EN HEADER PERO NO HAY ID  ".session_status()."');</script>";
-    //     }else
-    //     {
-    //         echo "<script> alert('NO ESTA AUTORIZADO');
-    //         window.location='".RUTA_URL."';
-    //         </script>";
-    //         exit;
-    //     }
-        
-    // }    
-    ?>
-
-
 <html lang="es-SV">
 
     <head>
@@ -140,7 +110,7 @@
                             <li> <a class="waves-effect waves-dark" href="<?= base_url('contacto_controller/index')?>" aria-expanded="false"><i class="fa fa-envelope text-white" style="font-size: 2em;  "></i><span class="hide-menu"></span>Contacto</a></li>
                             <li> <a class="waves-effect waves-dark" href="<?= base_url('cita_controller/index')?>" aria-expanded="false"><i class="fa fa-envelope text-white" style="font-size: 2em;  "></i><span class="hide-menu"></span>Cita</a></li>
 
-
+                            <li> <a class="waves-effect waves-dark" href="<?= base_url('services')?>" aria-expanded="false"><i class="fa fa-envelope text-white" style="font-size: 2em;  "></i><span class="hide-menu"></span>Servicios</a></li>
                             <li> <a class="waves-effect waves-dark" href="<?= base_url('application/views/panelControl/icon-fontawesome.html')?>" aria-expanded="false"><i class="fa fa-pencil text-white" style="font-size: 2em;  "></i><span class="hide-menu"></span>Blog</a></li>
                             <li> <a class="waves-effect waves-dark" href="<?= base_url('application/views/panelControl/pages-blank.html')?>" aria-expanded="false"><i class="fa fa-envelope text-white" style="font-size: 2em;  "></i><span class="hide-menu"></span>Mensajes</a></li>
                             <li> <a class="waves-effect waves-dark" href="<?= base_url('application/views/panelControl/pages-error-404.html')?>" aria-expanded="false"><i class="fa fa-info text-white" style="font-size: 2em;  "></i><span class="hide-menu"></span>Acerca de</a></li>
@@ -171,4 +141,6 @@
 
     <!-- Start of page container -->
     <div class="page-wrapper">
+
+
 
