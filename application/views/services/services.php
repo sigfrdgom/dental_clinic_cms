@@ -6,6 +6,7 @@
             <div class="col-xl-12">
                 <div class="breadcrumb-holder">
                     <h1 class="main-title float-left">Servicios&nbsp;</h1>
+                    <a href="<?= base_url('services/create')?>" class="btn btn-outline-success">Agregar servicios</a>
                     <ol class="breadcrumb float-right">
                         <li class="breadcrumb-item">Inicio</li>
                         <li class="breadcrumb-item active">Tipos de usuarios</li>
@@ -18,7 +19,13 @@
 
 
         <div class="row" >
-            <div class="card card-body">
+            <?php  if (isset($upload_data)) {?>
+                <div class="alert alert-primary" role="alert">
+                <strong><?php var_dump($upload_data) ?></strong>
+                </div>
+            <?php } ?> 
+            
+            <div class="card card-body" style="background: #fefefe">
                 <div class="table-responsive">
                     <table class="table table-sm table-bordered ">
                         <thead>
@@ -44,10 +51,10 @@
                                     <td><?= $service->texto_introduccion  ?></td>
                                     <td><?= $service->contenido  ?></td>
                                     <td><?= $service->estado  ?></td>
-                                    <td><img src="<?= $service->recurso_av_1 ?>" alt=""></td>
-                                    <td><img src="<?= $service->recurso_av_2 ?>" alt=""></td>
-                                    <td><img src="<?= $service->recurso_av_3 ?>" alt=""></td>
-                                    <td><img src="<?= $service->recurso_av_4 ?>" alt=""></td>
+                                    <td><img src="uploads/<?= $service->recurso_av_1 ?>" alt="" width="200"></td>
+                                    <td><img src="uploads/<?= $service->recurso_av_2 ?>" alt="" width="200"></td>
+                                    <td><img src="uploads/<?= $service->recurso_av_3 ?>" alt="" width="200"></td>
+                                    <td><img src="uploads/<?= $service->recurso_av_4 ?>" alt="" width="200"></td>
                                     <td><?= $service->fecha_ingreso ?></td>
                                     <td><button type="button" class="btn btn-warning">Editar</button></td>
                                     <td><button type="button" class="btn btn-danger">Eliminar</button></td>
