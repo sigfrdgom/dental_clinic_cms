@@ -17,21 +17,24 @@ class Cita_controller extends CI_Controller {
 
 
     //METODO QUE LLAMA LOS DATOS DE LA BASE DE DATOS Y REDICCIONA Y CARGA TODA LA CITA
-    public function cargarDatosCita(){ 
-        $cita = $this->cita_model->getAll();
-        $data=['cita' => $cita];
-        
-        $this->load->view('panelControl/tabla', $data);
+    public function index(){ 
+        $this->load->view('templates/header');
+		$this->load->view('panelControl/usuario/cita');
+		$this->load->view('templates/footer');
+	}
+	
+
+	public function cargarDatosCita(){ 
+        echo json_encode($this->cita_model->getAll());
     }
 
 
     //METODO QUE AGREGA UN REGISTRO CITA
     public function agregarCita(){
         //deberia ir el espacion en blanco?
-        $data=["", $_POST['celular'], $_POST['email'], $_POST['padecimiento'], $_POST['procedimiento'], $_POST['fecha'], $_POST['hora'], $_POST['comentario']];
+        $data=["id_cita" => null, "nombre" => $_POST['nombre'], "apellido" => $_POST['apellido'], "celular" => $_POST['telefono'], "email" => $_POST['email'], "padecimientos" => $_POST['padecimientos'], "procedimiento" => $_POST['procedimiento'], "fecha" => $_POST['fecha'], "hora" => $_POST['hora'], "comentario" => $_POST['comentario']];
 
         $this->cita_model->agregarCita($data);
-        $this->load->view('panelControl/index', $data);
     }
 
 
@@ -45,17 +48,16 @@ class Cita_controller extends CI_Controller {
 
     //METODO CON EL QUE OBTENDRIA EL REGISTRO CITA
     public function obtenerRegistro($id){
-        $dato=['cita'=> $this->cita_model->obtenerRegistro($id)];
-        $this->load->view('controlPanel/form', $dato);
+        echo json_encode($this->cita_model->obtenerRegistro($id));
+    
     }
 
 
     //METODO QUE SE ENCARGA DE ACTUALIZAR UN REGISTRO DE CITA
     public function actualizarCita(){
-        $data=[$_POST['id_cita'], $_POST['celular'], $_POST['email'], $_POST['padecimiento'], $_POST['procedimiento'], $_POST['fecha'], $_POST['hora'], $_POST['comentario']];
+        $data=["id_cita" => $_POST['id_cita'], "nombre" => $_POST['nombre'], "apellido" => $_POST['apellido'], "celular" => $_POST['telefono'], "email" => $_POST['email'], "padecimientos" => $_POST['padecimientos'], "procedimiento" => $_POST['procedimiento'], "fecha" => $_POST['fecha'], "hora" => $_POST['hora'], "comentario" => $_POST['comentario']];
     
         $this->cita_model-> actualizarCita($data);
-        $this->load->view('panelControl/index', $data);
     }
 
 

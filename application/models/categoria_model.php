@@ -32,7 +32,7 @@ class Categoria_model extends CI_Model{
     //CONSULTA PARA OBTENER UN REGISTRO DE CATEGORIA
     public function obtenerRegistro($id = ""){
          try {
-            $this->db->select('id_categoria, nombre_categoria, descripcion');
+            $this->db->select('id_categoria, nombre, descripcion');
             $this->db->from('categoria');
             $this->db->where('id_categoria', $id);
             $consulta = $this->db->get();
