@@ -31,6 +31,14 @@
 
 
         
+        
+        <!-- Sweet alert 2 -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+    <head>
+
+    <!-- Start of body -->
+    <body class="skin-default-dark fixed-layout bg-dark">
+    
         <!-- Start of preloader -->
         <div class="preloader">
             <div class="loader">
@@ -41,21 +49,17 @@
             </div>
         </div>
         <!-- End of preloader -->
-    <head>
 
-    <!-- Start of body -->
-    <body class="skin-default-dark fixed-layout bg-dark">
-    
         <div id="main-wrapper bg-dark">
     
             <!-- Start of header of page -->
             <header class="topbar" >
                 <nav class="navbar top-navbar navbar-expand-md navbar-dark" >
                     <!-- Start Top side logo -->
-                    <div class="navbar-header ">
-                        <a class="navbar-brand" href="index.php" >
+                    <div class="navbar-header py-2 px-4">
+                        <a class="navbar-brand" href="<?= base_url('/')?>" >
                             <b>
-                                <img src="<?= base_url('assets/images/logo-icon.png')?>" alt="homepage" class="dark-logo" />
+                                <img src="<?= base_url('assets/images/logo-icon.png')?>"  alt="homepage" class="dark-logo" />
                                 <img src="<?= base_url('assets/images/logo-light-icon.png')?>" alt="homepage" class="light-logo" />
                             </b>
                         </a>
@@ -78,9 +82,10 @@
                             </li>
                         </ul>
                         <!-- User profile item -->
-                        <ul class="navbar-nav my-lg-0 bg-dark" >
+                        <ul class="navbar-nav my-lg-0 bg-info m-0" >
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="<?= base_url('assets/images/users/1.jpg')?>" alt="user" class="img-circle" width="30"></a>
+                                <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img src="<?= base_url('assets/images/users/1.jpg')?>" alt="user" class="img-circle" width="50"></a>
                             </li>
                         </ul>
                         <!-- Start Navbar items -->
@@ -103,16 +108,23 @@
                     <!-- Sidebar navigation-->
                     <nav class="sidebar-nav">
                         <ul id="sidebarnav">
-                            <li> <a class="waves-effect waves-dark" href="<?= base_url('')?>" aria-expanded="false"><i class="fa fa-home text-white" style="font-size: 2em; "></i><span class="hide-menu">HOME</span></a></li>
-                            <li> <a class="waves-effect waves-dark" href="<?= base_url('usuario_controller/carga')?>" aria-expanded="false"><i class="fa fa-user-circle-o text-white" style="font-size: 2em;  "></i><span class="hide-menu">Usuarios</span></a></li>
-                            <li> <a class="waves-effect waves-dark" href="<?= base_url('categoria_controller/index')?>" aria-expanded="false"><i class="fa fa-users text-white" style="font-size: 2em; "></i><span class="hide-menu"></span>Categorias</a></li>
-                            <li> <a class="waves-effect waves-dark" href="<?= base_url('tipo_controller/index')?>" aria-expanded="false"><i class="fa fa-gear text-white" style="font-size: 2em;; "></i><span class="hide-menu"></span>Tipo</a></li>
-                            <li> <a class="waves-effect waves-dark" href="<?= base_url('contacto_controller/index')?>" aria-expanded="false"><i class="fa fa-envelope text-white" style="font-size: 2em;  "></i><span class="hide-menu"></span>Contacto</a></li>
-                            <li> <a class="waves-effect waves-dark" href="<?= base_url('cita_controller/index')?>" aria-expanded="false"><i class="fa fa-envelope text-white" style="font-size: 2em;  "></i><span class="hide-menu"></span>Cita</a></li>
+                            <li> <a class="waves-effect waves-dark" href="<?= base_url('/')?>" aria-expanded="false"><i class="fa fa-home text-white" style="font-size: 2em; "></i><span class="hide-menu">Dashboard</span></a></li>
 
-                            <li> <a class="waves-effect waves-dark" href="<?= base_url('services')?>" aria-expanded="false"><i class="fa fa-envelope text-white" style="font-size: 2em;  "></i><span class="hide-menu"></span>Servicios</a></li>
+
+                            <li> <a class="waves-effect waves-dark" href="<?= base_url('contacto_controller/index')?>" aria-expanded="false"><i class="fa fa-envelope text-white" style="font-size: 2em;  "></i><span class="hide-menu"></span>Mensajes</a></li>
+                            <li> <a class="waves-effect waves-dark" href="<?= base_url('cita_controller/index')?>" aria-expanded="false"><i class="fa fa-medkit text-white" style="font-size: 2em;  "></i><span class="hide-menu"></span>Citas</a></li>
+
+
+                            <li> <a class="waves-effect waves-dark" href="<?= base_url('services')?>" aria-expanded="false"><i class="	fa fa-briefcase text-white" style="font-size: 2em;  "></i><span class="hide-menu"></span>Servicios</a></li>
                             <li> <a class="waves-effect waves-dark" href="<?= base_url('application/views/panelControl/icon-fontawesome.html')?>" aria-expanded="false"><i class="fa fa-pencil text-white" style="font-size: 2em;  "></i><span class="hide-menu"></span>Blog</a></li>
-                            <li> <a class="waves-effect waves-dark" href="<?= base_url('application/views/panelControl/pages-blank.html')?>" aria-expanded="false"><i class="fa fa-envelope text-white" style="font-size: 2em;  "></i><span class="hide-menu"></span>Mensajes</a></li>
+
+
+                            <li> <a class="waves-effect waves-dark" href="<?= base_url('usuario_controller/carga')?>" aria-expanded="false"><i class="fa fa-user-circle-o text-white" style="font-size: 2em;  "></i><span class="hide-menu">Usuarios</span></a></li>
+                            <li> <a class="waves-effect waves-dark" href="<?= base_url('categoria_controller/index')?>" aria-expanded="false"><i class="fa fa-list-ol text-white" style="font-size: 2em; "></i><span class="hide-menu"></span>Categorias</a></li>
+                            <li> <a class="waves-effect waves-dark" href="<?= base_url('tipo_controller/index')?>" aria-expanded="false"><i class="fa fa-gear text-white" style="font-size: 2em;; "></i><span class="hide-menu"></span>Tipo</a></li>
+                            
+
+                            <!-- <li> <a class="waves-effect waves-dark" href="<?= base_url('application/views/panelControl/pages-blank.html')?>" aria-expanded="false"><i class="fa fa-envelope text-white" style="font-size: 2em;  "></i><span class="hide-menu"></span>Mensajes</a></li> -->
                             <li> <a class="waves-effect waves-dark" href="<?= base_url('application/views/panelControl/pages-error-404.html')?>" aria-expanded="false"><i class="fa fa-info text-white" style="font-size: 2em;  "></i><span class="hide-menu"></span>Acerca de</a></li>
                         </ul>
                     </nav>

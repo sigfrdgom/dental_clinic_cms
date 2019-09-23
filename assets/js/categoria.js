@@ -20,8 +20,8 @@ function recargar(){
     				<td>${element.nombre}</td>
 					<td>${element.descripcion}</td>
             		<td class="px-0 py-2">
-						<button class="btnEditar text-center btn btn-warning" style="width:49%; margin:0px;" value="${element.id_categoria}" data-toggle="modal" data-target="#agregarCategoria">EDITAR</button>
-						<button class="btnEliminar text-center btn btn-danger" style="width:49%; margin:0px;"  value="${element.id_categoria}">ELIMINAR</button>
+						<button class="btnEditar text-center btn btn-warning btn-rounded" style="width:49%; margin:0px;" value="${element.id_categoria}" data-toggle="modal" data-target="#agregarCategoria">EDITAR</button>
+						<button class="btnEliminar text-center btn btn-danger btn-rounded" style="width:49%; margin:0px;"  value="${element.id_categoria}">ELIMINAR</button>
 					</td>
     			</tr>`
 				});

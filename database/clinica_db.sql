@@ -58,6 +58,8 @@ CREATE TABLE IF NOT EXISTS `contacto`(
   `telefono` VARCHAR(16) NOT NULL,
   `email` VARCHAR(50) NOT NULL,
   `comentario` TEXT,
+  `fecha` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  `estado` TINYINT(1) NOT NULL,
   PRIMARY KEY (`id_contacto`)) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
@@ -72,6 +74,8 @@ CREATE TABLE IF NOT EXISTS `cita`(
   `fecha` DATE NOT NULL,
   `hora` TIME NOT NULL,
   `comentario` TEXT,
+  `fecha_solicitud` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  `estado` TINYINT(1) NOT NULL,
   PRIMARY KEY (`id_cita`)) ENGINE=InnoDB DEFAULT CHARSET=utf8;
   
 
