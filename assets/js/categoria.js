@@ -16,12 +16,12 @@ function recargar(){
 						estado="Desactivado";
 					}
 				 texto+=`
-				<tr id="tr${element.id_categoria}">
+				<tr class="p-0" id="tr${element.id_categoria}">
     				<td>${element.nombre}</td>
 					<td>${element.descripcion}</td>
-            		<td>
-					<button class="btnEditar text-center btn btn-info" value="${element.id_categoria}" data-toggle="modal" data-target="#agregarCategoria">EDITAR</button>
-                	<button class="btnEliminar text-center btn btn-danger"  value="${element.id_categoria}">ELIMINAR</button>
+            		<td class="px-0 py-2">
+						<button class="btnEditar text-center btn btn-warning" style="width:49%; margin:0px;" value="${element.id_categoria}" data-toggle="modal" data-target="#agregarCategoria">EDITAR</button>
+						<button class="btnEliminar text-center btn btn-danger" style="width:49%; margin:0px;"  value="${element.id_categoria}">ELIMINAR</button>
 					</td>
     			</tr>`
 				});

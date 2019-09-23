@@ -11,25 +11,26 @@ function recargar(){
 				var texto="";
 				datos.forEach(element => {
 				 texto+=`
-				<tr id="tr${element.id_cita}">
+				<tr class="p-0" id="tr${element.id_cita}">
 					<td>${element.nombre+" "+element.apellido}</td>
-					<td>${element.celular}</td>
-					<td>${element.email}</td>
+					
 					<td>${element.padecimientos}</td>
 					<td>${element.procedimiento}</td>
 					<td>${element.fecha}</td>
 					<td>${element.hora}</td>
-					<td>${element.comentario}</td>
-            		<td>
-					<button class="btnEditar text-center btn btn-info" value="${element.id_cita}" data-toggle="modal" data-target="#agregarCita">EDITAR</button>
-                	<button class="btnEliminar text-center btn btn-danger"  value="${element.id_cita}">ELIMINAR</button>
+            		<td class="px-0 py-2">
+						<button class="btnEditar text-center btn btn-warning" style="width:49%; margin:0px;" value="${element.id_cita}" data-toggle="modal" data-target="#agregarCita">EDITAR</button>
+						<button class="btnEliminar text-center btn btn-danger" style="width:49%; margin:0px;" value="${element.id_cita}">ELIMINAR</button>
 					</td>
     			</tr>`
 				});
 					respuesta.innerHTML=texto;
 					asignarEventos();
 				})
-					
+				// <td>${element.celular}</td>
+				// <td>${element.email}</td>
+				// <td>${element.comentario}</td>
+
 			
 
 }

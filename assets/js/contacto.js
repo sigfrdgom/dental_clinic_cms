@@ -11,14 +11,14 @@ function recargar(){
 				var texto="";
 				datos.forEach(element => {
 				 texto+=`
-				<tr id="tr${element.id_contacto}">
+				<tr class="p-0" id="tr${element.id_contacto}">
 					<td>${element.nombre+" "+element.apellido}</td>
 					<td>${element.telefono}</td>
 					<td>${element.email}</td>
 					<td>${element.comentario}</td>
-            		<td>
-					<button class="btnEditar text-center btn btn-info" value="${element.id_contacto}" data-toggle="modal" data-target="#agregarContacto">EDITAR</button>
-                	<button class="btnEliminar text-center btn btn-danger"  value="${element.id_contacto}">ELIMINAR</button>
+            		<td class="px-0 py-2">
+						<button class="btnEditar text-center btn btn-warning" style="width:49%; margin:0px;" value="${element.id_contacto}" data-toggle="modal" data-target="#agregarContacto">EDITAR</button>
+						<button class="btnEliminar text-center btn btn-danger" style="width:49%; margin:0px;" value="${element.id_contacto}">ELIMINAR</button>
 					</td>
     			</tr>`
 				});

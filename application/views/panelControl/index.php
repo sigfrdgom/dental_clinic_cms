@@ -11,10 +11,10 @@
                     </div>
                     <div class="col-md-7 align-self-center text-right text-dark">
                         <div class="d-flex justify-content-end align-items-center">
-                            <ol class="breadcrumb tex-dark">
-                                <li class="breadcrumb-item text-dark"><a href="javascript:void(0)">Home</a></li>
+                            <ol class="breadcrumb text-dark">
+                                <li class="breadcrumb-item">INICIO</li>
                                 <li class="breadcrumb-item">></li>
-                                <li class="breadcrumb-item">Dashboard</li>
+                                <li class="breadcrumb-item active">DASHBOARD</li>
                             </ol>
                         </div>
                     </div>
