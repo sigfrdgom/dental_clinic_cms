@@ -1,170 +1,128 @@
-<!DOCTYPE html>
+<html lang="es-SV">
 
-<!-- IMPLEMENTACION DE SESIONES AUN INCOMPLETA -->
-<?php
-// if ((session_status() == 2)&&(isset($_SESSION['id_sesion']))) {   
-//     // echo "<script> alert('HAY SESSION EN HEADER ".session_status()."');</script>";
-
-// }else{
-    
-//     // echo "<script> alert(' NO HAY SESISION EN HEADER ".session_status()."');</script>";
-    
-//     if (session_status() != 2) {
-//         session_start();
-//     } 
-    
-//     if (isset($_SESSION['id_sesion'])) 
-//     {
-//         // echo "<script> alert('SI HAY SESIONES EN HEADER PERO NO HAY ID  ".session_status()."');</script>";
-//     }else
-//     {
-//         echo "<script> alert('NO ESTA AUTORIZADO');
-//         window.location='".RUTA_URL."';
-//         </script>";
-//         exit;
-//     }
-    
-// }    
-?>
-
-
-<html lang="en">
     <head>
-        
+        <!-- Meta INFO -->
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <!-- Tell the browser to be responsive to screen width -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="description" content="">
-		
-		 <!-- Bootstrap CSS -->
-    	<link href="<?php echo base_url('assets/css/bootstrap/dist/css/bootstrap.min.css');?> rel="stylesheet" />
-
         <meta name="author" content="">
-        <!-- Favicon icon -->
-        <link rel="icon" type="image/png" href="<?= base_url('assets/images/favicon.png')?>">
         <title>CLIDESA CMS</title>
-        <!-- This page CSS -->
-        <!-- Custom CSS -->
-        <link href="<?= base_url('assets/css/style.css')?>" rel="stylesheet">
-        <!-- <link href="" rel="stylesheet"> -->
-        <!-- Dashboard 1 Page CSS -->
-        <link href="<?= base_url('assets/css/pages/dashboard1.css')?>" rel="stylesheet">
-        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
-        
+        <!-- End of Meta INFO -->
 
-    <!-- ============================================================== -->
-    <!-- Preloader - style you can find in spinners.css -->
-    <!-- ============================================================== -->
+		
+		<!-- Start of CSS styleshets -->
+    	<link href="<?php echo base_url('assets/css/bootstrap/dist/css/bootstrap.min.css');?>" rel="stylesheet" />
+        <link rel="icon" type="image/png" href="<?= base_url('assets/images/favicon.png')?>">
+        <link href="<?= base_url('assets/css/style.css')?>" rel="stylesheet">
+        <link href="<?= base_url('assets/css/pages/dashboard1.css')?>" rel="stylesheet">
+        <link href="<?= base_url('assets/css/clidesa.css')?>" rel="stylesheet">
+        <!-- End of CSS styleshets -->
+
+        <!-- Extra BAD CSS -->
+        <style>
+            @media (max-width: 400px) { 
+                .quit{
+                    margin-top: -10px;
+                }
+            }
+        </style>
+        <!-- Extra BAD CSS -->
+
+
+        
+        <!-- Start of preloader -->
         <div class="preloader">
             <div class="loader">
                 <div class="loader__figure" style="font-size: 10em;">
                 </div>
                <p class="loader__label" ><img src="<?= base_url('assets/images/loader.png')?>"  style="color: blue; margin-top: -50%;">  </p>
                <p class="loader__label"style="color: blue;" > CLIDESA CMS </p>
-               
-                
-                
             </div>
         </div>
-    <!-- ============================================================== -->
-    <!-- Main wrapper - style you can find in pages.scss -->
-    <!-- ============================================================== -->
-    
-    <div id="main-wrapper bg-dark">
-    
-        <!-- ============================================================== -->
-        <!-- Topbar header - style you can find in pages.scss -->
-        <!-- ============================================================== -->
-        <header class="topbar" >
-            <nav class="navbar top-navbar navbar-expand-md navbar-dark" >
-            <!-- ============================================================== -->
-                <!-- Logo -->
-                <!-- ============================================================== -->
-                <div class="navbar-header ">
-                    <a class="navbar-brand" href="index.php" >
-                        <!-- Logo icon --><b>
-                            <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
-                            <!-- Dark Logo icon -->
-                            <img src="<?= base_url('assets/images/logo-icon.png')?>" alt="homepage" class="dark-logo" />
-                            <!-- Light Logo icon -->
-                            <img src="<?= base_url('assets/images/logo-light-icon.png')?>" alt="homepage" class="light-logo" />
-                        </b>
-                        <!--End Logo icon -->
-                        </a>
-                </div>
-                <!-- ============================================================== -->
-                <!-- End Logo -->
-                <!-- ============================================================== -->
-                <div class="navbar-collapse">
-                    <!-- ============================================================== -->
-                    <!-- toggle and nav items -->
-                    <!-- ============================================================== -->
-                    <ul class="navbar-nav mr-auto">
-                        <!-- This is  -->
-                        <li class="nav-item hidden-sm-up"> <a class="nav-link nav-toggler waves-effect waves-light" href="javascript:void(0)"><i class="ti-menu"></i></a></li>
-                        <!-- ============================================================== -->
-                        <!-- Search -->
-                        <!-- ============================================================== -->
-                        <li class="nav-item search-box"> <a class="nav-link waves-effect waves-dark" href="javascript:void(0)"><i class="fa fa-search"></i></a>
-                            <form class="app-search">
-                                <input type="text" class="form-control" placeholder="Search &amp; enter"> <a class="srh-btn"><i class="fa fa-times"></i></a>
-                            </form>
-                        </li>
-                    </ul>
-                    <ul class="navbar-nav my-lg-0 bg-dark" >
-                        <!-- ============================================================== -->
-                        <!-- User profile and search -->
-                        <!-- ============================================================== -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="<?= base_url('assets/images/users/1.jpg')?>" alt="user" class="img-circle" width="30"></a>
-                        </li>
-                        <!-- ============================================================== -->
-                        <!-- User profile and search -->
-                        <!-- ============================================================== -->
-                    </ul>
-                </div>
-            </nav>
-        </header>
-        <!-- ============================================================== -->
-        <!-- End Topbar header -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Left Sidebar - style you can find in sidebar.scss  -->
-        <!-- ============================================================== -->
-        <aside class="left-sidebar" style="background: #42baff91">
-            <div class="d-flex no-block nav-text-box align-items-center bg-white">
-                <span></span><img src="<?= base_url('assets/images/logo-icon.png')?>" alt="elegant admin template" width="40px" style="margin: 0% auto;"></span>
-                <a class="waves-effect waves-dark ml-auto hidden-sm-down" href="javascript:void(0)"><i class="ti-menu"></i></a>
-                <a class="nav-toggler waves-effect waves-dark ml-auto hidden-sm-up" href="javascript:void(0)'"><i class="ti-menu ti-close"></i></a>
-            </div>
-            <!-- Sidebar scroll-->
-            <div class="scroll-sidebar bg-dark">
-                <!-- Sidebar navigation-->
-                <nav class="sidebar-nav">
-                    <ul id="sidebarnav">
-                        <li> <a class="waves-effect waves-dark" href="<?= base_url('')?>" aria-expanded="false"><i class="fa fa-home text-white" style="font-size: 2em; "></i><span class="hide-menu">HOME</span></a></li>
-                        <li> <a class="waves-effect waves-dark" href="<?= base_url('usuario_controller/carga')?>" aria-expanded="false"><i class="fa fa-user-circle-o text-white" style="font-size: 2em;  "></i><span class="hide-menu">Usuarios</span></a></li>
-						<li> <a class="waves-effect waves-dark" href="<?= base_url('categoria_controller/index')?>" aria-expanded="false"><i class="fa fa-users text-white" style="font-size: 2em; "></i><span class="hide-menu"></span>Categorias</a></li>
-						<li> <a class="waves-effect waves-dark" href="<?= base_url('tipo_controller/index')?>" aria-expanded="false"><i class="fa fa-gear text-white" style="font-size: 2em;; "></i><span class="hide-menu"></span>Tipo</a></li>
-						<li> <a class="waves-effect waves-dark" href="<?= base_url('contacto_controller/index')?>" aria-expanded="false"><i class="fa fa-envelope text-white" style="font-size: 2em;  "></i><span class="hide-menu"></span>Contacto</a></li>
-						<li> <a class="waves-effect waves-dark" href="<?= base_url('cita_controller/index')?>" aria-expanded="false"><i class="fa fa-envelope text-white" style="font-size: 2em;  "></i><span class="hide-menu"></span>Cita</a></li>
+        <!-- End of preloader -->
+    <head>
 
-                        <li> <a class="waves-effect waves-dark" href="<?= base_url('services')?>" aria-expanded="false"><i class="fa fa-envelope text-white" style="font-size: 2em;  "></i><span class="hide-menu"></span>Servicios</a></li>
-                        <li> <a class="waves-effect waves-dark" href="<?= base_url('application/views/panelControl/icon-fontawesome.html')?>" aria-expanded="false"><i class="fa fa-pencil text-white" style="font-size: 2em;  "></i><span class="hide-menu"></span>Blog</a></li>
-                        <li> <a class="waves-effect waves-dark" href="<?= base_url('application/views/panelControl/pages-blank.html')?>" aria-expanded="false"><i class="fa fa-envelope text-white" style="font-size: 2em;  "></i><span class="hide-menu"></span>Mensajes</a></li>
-                        <li> <a class="waves-effect waves-dark" href="<?= base_url('application/views/panelControl/pages-error-404.html')?>" aria-expanded="false"><i class="fa fa-info text-white" style="font-size: 2em;  "></i><span class="hide-menu"></span>Acerca de</a></li>
-                    </ul>
+    <!-- Start of body -->
+    <body class="skin-default-dark fixed-layout bg-dark">
+    
+        <div id="main-wrapper bg-dark">
+    
+            <!-- Start of header of page -->
+            <header class="topbar" >
+                <nav class="navbar top-navbar navbar-expand-md navbar-dark" >
+                    <!-- Start Top side logo -->
+                    <div class="navbar-header ">
+                        <a class="navbar-brand" href="index.php" >
+                            <b>
+                                <img src="<?= base_url('assets/images/logo-icon.png')?>" alt="homepage" class="dark-logo" />
+                                <img src="<?= base_url('assets/images/logo-light-icon.png')?>" alt="homepage" class="light-logo" />
+                            </b>
+                        </a>
+                    </div>
+                    <!-- END Top side logo -->
+
+                    <!-- Start of top second side navbar -->
+                    <div class="navbar-collapse">
+                        <!-- Start Navbar items -->
+                        <ul class="navbar-nav mr-auto">
+                            <!-- Search item -->
+                            <li class="nav-item hidden-sm-up">
+                                <a class="nav-link nav-toggler waves-effect waves-light" href="javascript:void(0)"><i class="ti-menu"></i></a>
+                            </li>
+                            <li class="nav-item search-box">
+                                <a class="nav-link waves-effect waves-dark" href="javascript:void(0)"><i class="fa fa-search"></i></a>
+                                <form class="app-search">
+                                    <input type="text" class="form-control" placeholder="Search &amp; enter"> <a class="srh-btn"><i class="fa fa-times"></i></a>
+                                </form>
+                            </li>
+                        </ul>
+                        <!-- User profile item -->
+                        <ul class="navbar-nav my-lg-0 bg-dark" >
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="<?= base_url('assets/images/users/1.jpg')?>" alt="user" class="img-circle" width="30"></a>
+                            </li>
+                        </ul>
+                        <!-- Start Navbar items -->
+                    </div>
+                    <!-- End of second top side navbar -->
+
                 </nav>
-                <!-- End Sidebar navigation -->
-            </div>
-            <!-- End Sidebar scroll-->
-        </aside>
+            </header>
+            <!-- End of header of page -->
+
+            <!-- Start of Side bar -->
+            <aside class="left-sidebar" style="background: #42baff91">
+                <div class="d-flex no-block nav-text-box align-items-center bg-white">
+                    <span></span><img src="<?= base_url('assets/images/logo-icon.png')?>" alt="elegant admin template" width="40px" style="margin: 0% auto;"></span>
+                    <a class="waves-effect waves-dark ml-auto hidden-sm-down" href="javascript:void(0)"><i class="ti-menu"></i></a>
+                    <a class="nav-toggler waves-effect waves-dark ml-auto hidden-sm-up" href="javascript:void(0)'"><i class="ti-menu ti-close"></i></a>
+                </div>
+                <!-- Sidebar scroll-->
+                <div class="scroll-sidebar bg-dark">
+                    <!-- Sidebar navigation-->
+                    <nav class="sidebar-nav">
+                        <ul id="sidebarnav">
+                            <li> <a class="waves-effect waves-dark" href="<?= base_url('')?>" aria-expanded="false"><i class="fa fa-home text-white" style="font-size: 2em; "></i><span class="hide-menu">HOME</span></a></li>
+                            <li> <a class="waves-effect waves-dark" href="<?= base_url('usuario_controller/carga')?>" aria-expanded="false"><i class="fa fa-user-circle-o text-white" style="font-size: 2em;  "></i><span class="hide-menu">Usuarios</span></a></li>
+                            <li> <a class="waves-effect waves-dark" href="<?= base_url('categoria_controller/index')?>" aria-expanded="false"><i class="fa fa-users text-white" style="font-size: 2em; "></i><span class="hide-menu"></span>Categorias</a></li>
+                            <li> <a class="waves-effect waves-dark" href="<?= base_url('tipo_controller/index')?>" aria-expanded="false"><i class="fa fa-gear text-white" style="font-size: 2em;; "></i><span class="hide-menu"></span>Tipo</a></li>
+                            <li> <a class="waves-effect waves-dark" href="<?= base_url('contacto_controller/index')?>" aria-expanded="false"><i class="fa fa-envelope text-white" style="font-size: 2em;  "></i><span class="hide-menu"></span>Contacto</a></li>
+                            <li> <a class="waves-effect waves-dark" href="<?= base_url('cita_controller/index')?>" aria-expanded="false"><i class="fa fa-envelope text-white" style="font-size: 2em;  "></i><span class="hide-menu"></span>Cita</a></li>
+
+                            <li> <a class="waves-effect waves-dark" href="<?= base_url('services')?>" aria-expanded="false"><i class="fa fa-envelope text-white" style="font-size: 2em;  "></i><span class="hide-menu"></span>Servicios</a></li>
+                            <li> <a class="waves-effect waves-dark" href="<?= base_url('application/views/panelControl/icon-fontawesome.html')?>" aria-expanded="false"><i class="fa fa-pencil text-white" style="font-size: 2em;  "></i><span class="hide-menu"></span>Blog</a></li>
+                            <li> <a class="waves-effect waves-dark" href="<?= base_url('application/views/panelControl/pages-blank.html')?>" aria-expanded="false"><i class="fa fa-envelope text-white" style="font-size: 2em;  "></i><span class="hide-menu"></span>Mensajes</a></li>
+                            <li> <a class="waves-effect waves-dark" href="<?= base_url('application/views/panelControl/pages-error-404.html')?>" aria-expanded="false"><i class="fa fa-info text-white" style="font-size: 2em;  "></i><span class="hide-menu"></span>Acerca de</a></li>
+                        </ul>
+                    </nav>
+                    <!-- End Sidebar navigation -->
+                </div>
+                <!-- End Sidebar scroll-->
+            </aside>
+            <!-- END of Side bar -->
+        </div>
+            
         <!-- ============================================================== -->
         <!-- End Left Sidebar - style you can find in sidebar.scss  
         <div class="cerrar_session">
@@ -181,19 +139,8 @@
                         -->
         <!-- ============================================================== -->
 
-
-    <style>
-        @media (max-width: 400px) { 
-            .quit{
-                margin-top: -10px;
-            }
-        }
-    </style>
-    </head>
+    <!-- Start of page container -->
+    <div class="page-wrapper">
 
 
-    <!-- START THE BODY -->
-    <body class="skin-default-dark fixed-layout bg-dark">
-    
-        <div class="page-wrapper">
 
