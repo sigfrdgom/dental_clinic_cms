@@ -16,13 +16,13 @@ function recargar(){
 						estado="Desactivado";
 					}
 				 texto+=`
-				<tr class="p-0" id="tr${element.id_usuario}">
+				<tr class="p-0 border-bottom border-info" id="tr${element.id_usuario}">
     				<td>${element.nombres}</td>
     				<td>${element.apellidos}</td>
     				<td>${element.nombre_usuario}</td>
 					<td>${element.tipo_usuario}</td>
 					<td>${estado}</td>
-            		<td class="px-0 py-2">
+            		<td class="py-2">
 						<button class="btnEditar text-center btn btn-warning btn-rounded"  value="${element.id_usuario}" data-toggle="modal" data-target="#agregarUsuario">EDITAR</button>
 						<button class="btnEliminar text-center btn btn-danger btn-rounded"  value="${element.id_usuario}">ELIMINAR</button>
             		</td>

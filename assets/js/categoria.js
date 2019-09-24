@@ -16,7 +16,7 @@ function recargar(){
 						estado="Desactivado";
 					}
 				 texto+=`
-				<tr class="p-0" id="tr${element.id_categoria}">
+				<tr class="p-0 border-bottom border-info" id="tr${element.id_categoria}">
     				<td>${element.nombre}</td>
 					<td>${element.descripcion}</td>
             		<td class="px-0 py-2">

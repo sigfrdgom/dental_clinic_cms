@@ -16,7 +16,7 @@ function recargar(){
 						estado="Desactivado";
 					}
 				 texto+=`
-				<tr class="p-0" id="tr${element.id_tipo}">
+				<tr class="p-0 border-bottom border-info" id="tr${element.id_tipo}">
     				<td>${element.nombre}</td>
 					<td>${estado}</td>
             		<td class="px-0 py-2">
@@ -68,12 +68,32 @@ document.getElementById('guardarTipo').addEventListener('click', function(e){
 
 
 /////////////////////------------------------------------------------DELETE---------------------------------------------------//////////////////	
-	function eliminar() {
-	fetch('eliminarTipo/'+this.value, {
-        method: 'DELETE'
-    }).then(() =>{
-        	recargar();		
-          })
+function eliminar() {
+	Swal.fire({
+		title: '¿Esta seguro de eliminar el tipo?',
+		text: "¡Esta accion no es reversible y puede ser fatal!",
+		type: 'warning',
+		showCancelButton: true,
+		confirmButtonColor: '#36bea6',
+		cancelButtonColor: '#d33',
+		confirmButtonText: 'Si, estoy seguro!',
+		cancelButtonText: 'Cancelar',
+	}).then((result) => {
+		if (result.value) {
+			fetch('eliminarTipo/'+this.value, {
+				method: 'DELETE'
+				})
+				.then(() =>{
+					Swal.fire(
+						'Eliminado',
+						'!El Tipo de contenido ha sido eliminado',
+						'success'
+						)
+					recargar();		
+				})
+		}
+	})
+
 }
 
 /////////////////////----------------------------------------PREPARACION DE EVENTOS--------------------------------------//////////////////

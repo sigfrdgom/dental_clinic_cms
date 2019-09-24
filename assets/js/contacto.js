@@ -11,7 +11,7 @@ function recargar(){
 				var texto="";
 				datos.forEach(element => {
 				 texto+=`
-				<tr class="p-0" id="tr${element.id_contacto}">
+				<tr class="p-0 border-bottom border-info" id="tr${element.id_contacto}">
 					<td>${element.nombre+" "+element.apellido}</td>
 					<td>${element.telefono}</td>
 					<td>${element.email}</td>
