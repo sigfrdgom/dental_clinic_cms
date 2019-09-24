@@ -48,8 +48,8 @@
 
             <!-- Start of table -->
             <div class="table-responsive">
-                <table class="table table-bordered table-hover display" id="ajaxTabla">
-                    <thead>
+                <table class="table table-borderless table-hover display" id="ajaxTabla">
+                    <thead class="text-white bg-clidesa-celeste" >
                         <tr>
                             <!-- <th class='secret'>ID</th> -->
                             <th>Nombres</th>
@@ -62,7 +62,7 @@
                                 <a href="#" 
                                     title="Acciones de gestion"  data-toggle="popover" data-trigger="focus"
                                     data-content="Sirven para modificar informacion de un usuario del sistema o darlo de baja">
-                                    <i class="fa fa-fw fa-question-circle pop-help"></i>
+                                    <i class="fa fa-fw fa-question-circle pop-help text-white" style="font-size:1.2em;"></i>
                                 </a>
                             </th>
                         </tr>

@@ -16,7 +16,7 @@ function recargar(){
 						estado="Desactivado";
 					}
 				 texto+=`
-				<tr class="p-0" id="tr${element.id_categoria}">
+				<tr class="p-0 border-bottom border-info" id="tr${element.id_categoria}">
     				<td>${element.nombre}</td>
 					<td>${element.descripcion}</td>
             		<td class="px-0 py-2">
@@ -70,12 +70,32 @@ document.getElementById('guardarCategoria').addEventListener('click', function(e
 
 
 /////////////////////------------------------------------------------DELETE---------------------------------------------------//////////////////	
-	function eliminar() {
-	fetch('eliminarCategoria/'+this.value, {
-        method: 'DELETE'
-    }).then(() =>{
-        	recargar();		
-          })
+function eliminar() {
+	Swal.fire({
+		title: '¿Esta seguro de eliminar la categoria?',
+		text: "Esta accion no es reversible",
+		type: 'warning',
+		showCancelButton: true,
+		confirmButtonColor: '#36bea6',
+		cancelButtonColor: '#d33',
+		confirmButtonText: 'Si, estoy seguro!',
+		cancelButtonText: 'Cancelar',
+	}).then((result) => {
+		if (result.value) {
+			fetch('eliminarCategoria/'+this.value, {
+				method: 'DELETE'
+				})
+				.then(() =>{
+					Swal.fire(
+						'Eliminado!',
+						'!La categoria ha sido eliminada!',
+						'success'
+					  )
+					recargar();		
+				})
+		}
+	})
+
 }
 
 /////////////////////----------------------------------------PREPARACION DE EVENTOS--------------------------------------//////////////////

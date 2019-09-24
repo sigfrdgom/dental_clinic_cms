@@ -46,8 +46,8 @@
 
             <!-- Start of table -->
             <div class="table-responsive">
-                <table class="table table-bordered table-hover display" id="ajaxTabla">
-                    <thead>
+                <table class="table table-borderless table-hover display" id="ajaxTabla">
+                    <thead class="text-white bg-clidesa-celeste">
                         <tr>
                             <!-- <th class='secret'>ID</th> -->
                             <th>Nombres Categoria</th>

@@ -3,7 +3,7 @@
 
     <div class="row page-titles pt-2 pb-0" style="background: white" >
         <div class="col-md-5 align-self-center">
-            <h4 class="text-themecolor text-dark float-left mt-2">CITAS &nbsp; &nbsp;</h4> 
+            <h4 class="text-themecolor text-dark float-left mt-2">SOLICITUDES DE CITAS&nbsp; &nbsp;</h4> 
 
             <button type="button" class="btn btn-outline-success mb-2 btn-rounded" data-toggle="modal" data-target="#agregarCita" id="idModal">
                 <span class='fa fa-plus-square-o bigfonts'></span> Nuevo 
@@ -19,7 +19,7 @@
             <div class="d-flex justify-content-end align-items-center">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item">INICIO</li>
-                    <li class="breadcrumb-item active">CITAS</li>
+                    <li class="breadcrumb-item active">SOLICITUDES DE CITAS</li>
                 </ol>
             </div>
         </div>
@@ -42,8 +42,8 @@
             </div>
 
             <div class="table-responsive">
-                <table class="table table-bordered table-hover display" id="ajaxTabla">
-                    <thead>
+                <table class="table table-borderless table-hover display" id="ajaxTabla">
+                    <thead class="text-white bg-clidesa-celeste">
                         <tr>
                             <!-- <th class='secret'>ID</th> -->
                             <th>Nombre Completo</th>
