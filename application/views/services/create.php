@@ -28,8 +28,20 @@
           <textarea class="form-control" name="contenido" id="" rows="6" required></textarea>
         </div>
         <div class="form-group">
-          <label for="upload"></label>
-          <input type="file" class="form-control" name="upload" id="" aria-describedby="helpId" placeholder="">
+          <label for="recurso1"></label>
+          <input type="file" class="form-control" name="recurso1" id="" aria-describedby="helpId" placeholder="">
+        </div>
+        <div class="form-group">
+          <label for="recurso2"></label>
+          <input type="file" class="form-control" name="recurso2" id="" aria-describedby="helpId" placeholder="">
+        </div>
+        <div class="form-group">
+          <label for="recurso3"></label>
+          <input type="file" class="form-control" name="recurso3" id="" aria-describedby="helpId" placeholder="">
+        </div>
+        <div class="form-group">
+          <label for="recurso4"></label>
+          <input type="file" class="form-control" name="recurso4" id="" aria-describedby="helpId" placeholder="">
         </div>
         <button type="submit" class="btn btn-primary">Guardar</button>
     </form>
