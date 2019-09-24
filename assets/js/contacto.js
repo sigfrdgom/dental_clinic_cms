@@ -73,12 +73,31 @@ document.getElementById('guardarContacto').addEventListener('click', function(e)
 
 
 /////////////////////------------------------------------------------DELETE---------------------------------------------------//////////////////	
-	function eliminar() {
-	fetch('eliminarContacto/'+this.value, {
-        method: 'DELETE'
-    }).then(() =>{
-        	recargar();		
-          })
+function eliminar() {
+	Swal.fire({
+		title: '¿Esta seguro de eliminar el mensaje?',
+		text: "Esta accion no es reversible",
+		type: 'warning',
+		showCancelButton: true,
+		confirmButtonColor: '#36bea6',
+		cancelButtonColor: '#d33',
+		confirmButtonText: 'Si, estoy seguro!',
+		cancelButtonText: 'Cancelar',
+	}).then((result) => {
+		if (result.value) {
+			fetch('eliminarContacto/'+this.value, {
+				method: 'DELETE'
+				})
+				.then(() =>{
+					Swal.fire(
+						'Eliminado',
+						'!El mensaje ha sido eliminado',
+						'success'
+						)
+					recargar();		
+				})
+		}
+	})
 }
 
 /////////////////////----------------------------------------PREPARACION DE EVENTOS--------------------------------------//////////////////
