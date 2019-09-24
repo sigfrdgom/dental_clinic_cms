@@ -18,64 +18,45 @@
               
     <div class="row">
         
-        <!-- ============================================================== -->
-        <!-- Appointment request -->
-        <!-- ============================================================== -->
+        <!-- Messages received from web page -->
         <div class="col-lg-6">
             <div class="card" style="background: #42baff62">
                 <div class="card-body">
-                    <h5 class="card-title text-dark">Solicitudes de citas</h5>
+                    <h5 class="card-title text-dark">Mensajes</h5>
     
                     <div class="steamline m-t-40">
 
+                        <!-- Message item -->
                         <div class="sl-item bg-white">
-                            <div class="sl-left bg-success"> <i class="fa fa-user"></i></div>
+                            <div class="sl-left bg-info">
+                                <i class="fa fa-user mt-1" style="font-size:2em;"></i>
+                            </div>
                             <div class="sl-right">
-                                <div class="font-medium pt-3">Action <span class="sl-date">5 minutes ago</span></div>
-                                <div class="desc">Lorem Ipsum is simply
-                                    <br><btn class="btn m-t-10 m-r-5 btn-rounded btn-success">Aceptar</btn> <btn class="btn m-t-10 btn-rounded btn-danger">Rechazar</btn> </div>
+                                <div class="font-medium pt-3">
+                                    Name person
+                                    <br>
+                                    <span class="sl-date">Date</span>
+                                </div>
+                                <div class="desc">
+                                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Autem quisquam mollitia perferendis voluptas 
+                                    doloremque aliquam expedita nostrum dignissimos incidunt, iusto tempora accusamus dolorem at placeat 
+                                    officia ex pariatur illo deleniti?
+                                    <br>
+                                    <button class="btn m-t-10 m-r-5 btn-rounded btn-success">Responder</button>
+                                    <button class="btn m-t-10 btn-rounded btn-danger">Rechazar</button>
+                                </div>
                             </div>
                         </div>
+                        <!-- Message item -->
 
-                        <div class="sl-item bg-white">
-                            <div class="sl-left bg-info"><i class="fa fa-image"></i></div>
-                            <div class="sl-right">
-                                <div class="font-medium pt-3">Action <span class="sl-date">15 minutes ago</span></div>
-                                <div class="desc">Lorem Ipsum is simply
-                                    <br><btn class="btn m-t-10 m-r-5 btn-rounded btn-success">Aceptar</btn> <btn class="btn m-t-10 btn-rounded btn-danger">Rechazar</btn> </div>
-                            </div>
-                        </div>
 
-                        <div class="sl-item bg-white">
-                            <div class="sl-left"> <img class="img-circle" alt="user" src="<?= base_url('assets/images/users/1.jpg')?>"> </div>
-                            <div class="sl-right">
-                                <div class="font-medium pt-3">Action <span class="sl-date">23 minutes ago</span></div>
-                                <div class="desc">Lorem Ipsum is simply
-                                    <br><btn class="btn m-t-10 m-r-5 btn-rounded btn-success">Aceptar</btn> <btn class="btn m-t-10 btn-rounded btn-danger">Rechazar</btn> </div>
-                            </div>
-                        </div>
-
-                        <div class="sl-item bg-white">
-                            <div class="sl-left"> <img class="img-circle" alt="user" src="<?= base_url('assets/images/users/2.jpg')?>"> </div>
-                            <div class="sl-right">
-                                <div class="font-medium pt-3">Action <span class="sl-date">1 hour ago</span></div>
-                                <div class="desc">Lorem Ipsum is simply
-                                    <br><btn class="btn m-t-10 m-r-5 btn-rounded btn-success">Aceptar</btn> <btn class="btn m-t-10 btn-rounded btn-danger">Rechazar</btn> </div>
-                            </div>
-                        </div>
-
-                        <div class="sl-item bg-white">
-                            <div class="sl-left"> <img class="img-circle" alt="user" src="<?= base_url('assets/images/users/3.jpg')?>"> </div>
-                            <div class="sl-right">
-                                <div class="font-medium pt-3">Action <span class="sl-date">1 hour, 5 minutes ago</span></div>
-                                <div class="desc">Lorem Ipsum is simply
-                                    <br><btn class="btn m-t-10 m-r-5 btn-rounded btn-success">Aceptar</btn> <btn class="btn m-t-10 btn-rounded btn-danger">Rechazar</btn> </div>
-                            </div>
-                        </div>
                     </div>
+
                 </div>
             </div>
         </div>
+        <!-- Messages received from web page -->
+
 
         <!-- ============================================================== -->
         <!-- Received messages -->
@@ -83,62 +64,29 @@
         <div class="col-lg-6">
             <div class="card" style="background: #42baff56">
                 <div class="card-body">
-                    <h5 class="card-title text-dark">Mensajes</h5>
+                    <h5 class="card-title text-dark">Solicitudes de cita</h5>
                     <div class="message-box">
-                        <div class="message-widget message-scroll">
-                            <!-- Message -->
+                        <div class="message-widget message-scroll mt-5">
+                            
+                            <!-- request for appointment -->
                             <div class="bg-white p-4 my-2" style="border-radius: 10px;">
                                 <!-- <div class="user-img"> <img src="assets/images/users/1.jpg" alt="user" class="img-circle"> <span class="profile-status online pull-right"></span> </div> -->
                                 <div class="mail-contnet">
-                                    <h5 class="text-dark">John Doe</h5> <span class="mail-desc text-dark">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam rem deleniti iure quaerat culpa et ea dolore nulla nisi? </span> <br> <span class="time">9:30 AM</span> 
-                                    <br><btn class="btn m-t-10 m-r-5 btn-rounded btn-success">Aceptar</btn> <btn href="../../../javascript:void(0)" class="btn m-t-10 btn-rounded btn-danger">Rechazar</btn> 
+                                    <h5 class="text-dark">John Doe</h5>
+                                    <span class="mail-desc text-dark">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam rem deleniti iure quaerat culpa et ea dolore nulla nisi? </span>
+                                    <br>
+                                    <div class="mt-2 mb-1">
+                                        <span class="font-medium">Fecha Solicitada</span>
+                                        <span class="time">12-11-2019</span> 
+                                        <br>
+                                        <span class="font-medium">Hora Solicitada</span>
+                                        <span class="time">9:00 AM</span>
+                                    </div> 
+                                        <button class="btn m-t-10 m-r-5 btn-rounded btn-success">Responder solicitud</button>
+                                        <button class="btn m-t-10 btn-rounded btn-danger">Rechazar Solicitud</button> 
                                 </div>
                             </div>
-
-                            <!-- Message -->
-                            <div class="bg-white p-4 my-2" style="border-radius: 10px;">
-                                <!-- <div class="user-img"> <img src="assets/images/users/1.jpg" alt="user" class="img-circle"> <span class="profile-status online pull-right"></span> </div> -->
-                                <div class="mail-contnet">
-                                    <h5 class="text-dark">Clark Kent</h5> <span class="mail-desc text-dark">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam rem deleniti iure quaerat culpa et ea dolore nulla nisi? </span> <span class="time">9:30 AM</span> 
-                                    <br><btn class="btn m-t-10 m-r-5 btn-rounded btn-success">Aceptar</btn> <btn href="../../../javascript:void(0)" class="btn m-t-10 btn-rounded btn-danger">Rechazar</btn> 
-                                </div>
-                            </div>
-
-                            <!-- Message -->
-                            <div class="bg-white p-4 my-2" style="border-radius: 10px;">
-                                <!-- <div class="user-img"> <img src="assets/images/users/1.jpg" alt="user" class="img-circle"> <span class="profile-status online pull-right"></span> </div> -->
-                                <div class="mail-contnet">
-                                    <h5 class="text-dark">Maria Keys</h5> <span class="mail-desc text-dark">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam rem deleniti iure quaerat culpa et ea dolore nulla nisi? </span> <span class="time">9:30 AM</span> 
-                                    <br><btn class="btn m-t-10 m-r-5 btn-rounded btn-success">Aceptar</btn> <btn href="../../../javascript:void(0)" class="btn m-t-10 btn-rounded btn-danger">Rechazar</btn> 
-                                </div>
-                            </div>
-
-                            <!-- Message -->
-                            <div class="bg-white p-4 my-2" style="border-radius: 10px;">
-                                <!-- <div class="user-img"> <img src="assets/images/users/1.jpg" alt="user" class="img-circle"> <span class="profile-status online pull-right"></span> </div> -->
-                                <div class="mail-contnet">
-                                    <h5 class="text-dark">Damariz Reynolds</h5> <span class="mail-desc text-dark">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam rem deleniti iure quaerat culpa et ea dolore nulla nisi? </span> <span class="time">9:30 AM</span> 
-                                    <br><btn class="btn m-t-10 m-r-5 btn-rounded btn-success">Aceptar</btn> <btn href="../../../javascript:void(0)" class="btn m-t-10 btn-rounded btn-danger">Rechazar</btn> 
-                                </div>
-                            </div>
-
-                            <!-- Message -->
-                            <div class="bg-white p-4 my-2" style="border-radius: 10px;">
-                                <!-- <div class="user-img"> <img src="assets/images/users/1.jpg" alt="user" class="img-circle"> <span class="profile-status online pull-right"></span> </div> -->
-                                <div class="mail-contnet">
-                                    <h5 class="text-dark">Ronald Tejada</h5> <span class="mail-desc text-dark">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam rem deleniti iure quaerat culpa et ea dolore nulla nisi? </span> <span class="time">9:30 AM</span> 
-                                    <br><btn class="btn m-t-10 m-r-5 btn-rounded btn-success">Aceptar</btn> <btn href="../../../javascript:void(0)" class="btn m-t-10 btn-rounded btn-danger">Rechazar</btn> 
-                                </div>
-                            </div>
-
-                            <!-- Message -->
-                            <div class="bg-white p-4 my-2" style="border-radius: 10px;">
-                                <!-- <div class="user-img"> <img src="assets/images/users/1.jpg" alt="user" class="img-circle"> <span class="profile-status online pull-right"></span> </div> -->
-                                <div class="mail-contnet">
-                                    <h5 class="text-dark">Esperanza Rios</h5> <span class="mail-desc text-dark">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam rem deleniti iure quaerat culpa et ea dolore nulla nisi? </span> <span class="time">9:30 AM</span> 
-                                    <br><btn class="btn m-t-10 m-r-5 btn-rounded btn-success">Aceptar</btn> <btn href="../../../javascript:void(0)" class="btn m-t-10 btn-rounded btn-danger">Rechazar</btn> 
-                                </div>
-                            </div>
+                            <!-- request for appointment -->
 
                         </div>
                     </div>

@@ -17,7 +17,7 @@ function recargar(){
 					<td>${element.email}</td>
 					<td>${element.comentario}</td>
             		<td class="px-0 py-2">
-						<button class="btnEditar text-center btn btn-warning btn-rounded" style="width:49%; margin:0px;" value="${element.id_contacto}" data-toggle="modal" data-target="#agregarContacto">EDITAR</button>
+						<button class="btnEditar text-center btn btn-success btn-rounded" style="width:49%; margin:0px;" value="${element.id_contacto}" data-toggle="modal" data-target="#agregarContacto">EDITAR</button>
 						<button class="btnEliminar text-center btn btn-danger btn-rounded" style="width:49%; margin:0px;" value="${element.id_contacto}">ELIMINAR</button>
 					</td>
     			</tr>`
