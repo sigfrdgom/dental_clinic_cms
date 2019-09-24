@@ -57,23 +57,62 @@ class Services extends CI_Controller
   public function guardarDatos(){
 
     $data_files = array();
-    if (($_FILES['recurso1']['size']) > 0) {
-      $recurso1 = 'recurso1';
-      // array_push($data_files, array('file1' => $this->savePictures($recurso1) ));
+    for ($i=0; $i < sizeof($_FILES) ; $i++) { 
+      if (isset($_FILES['recurso'.$i]['name'])) {
+        if ($_FILES['recurso'.$i]['size'] > 0) {
+          echo "<h1>".$i."</h1>";
+          array_push($data_files, array('file'.$i => $this->savePictures('recurso'.$i)));
+        }
+      }
     }
-    if (($_FILES['recurso2']['size']) > 0) {
-      $recurso2 = 'recurso2';
-      array_push($data_files, array('file2' => $this->savePictures($recurso2) ));
-      var_dump( $_FILES['recurso2']);
-    }
-    if (($_FILES['recurso3']['size']) > 0) {
-      $recurso3 = 'recurso3';
-      array_push($data_files, array('file3' => $this->savePictures($recurso3) ));
-    }
-    if (($_FILES['recurso4']['size'])> 0) {
-      $recurso4 = 'recurso4';
-      array_push($data_files, array('file4' => $this->savePictures($recurso4) ));
-    }
+    // var_dump($data_files);
+
+    $fecha = new DateTime();
+    $datos = [
+          'id_publicacion' => null,
+          'id_usuario' => 1,
+          'id_categoria' => 1,
+          'id_tipo' => 1,
+          'titulo' => $_POST['titulo'],
+          'texto_introduccion' => $_POST['texto_introduccion'],
+          'contenido' => $_POST['contenido'],
+          'estado' => true,
+          'recurso_av_1' => isset($data_files[0]['file1'])?  $data_files[0]['file1']["upload_data"]['file_name']: '',
+          'recurso_av_2' => isset($data_files[0]['file2'])?  $data_files[0]['file2']["upload_data"]['file_name']: '',
+          'recurso_av_3' => isset($data_files[0]['file3'])?  $data_files[0]['file3']["upload_data"]['file_name']: '',
+          'recurso_av_4' => isset($data_files[0]['file4'])?  $data_files[0]['file4']["upload_data"]['file_name']: '',
+          'fecha_ingreso' => $fecha->format('Y-m-d')
+        ];
+        //Crear el registro en la base de datos
+        // $this->publicacion_model->create($datos);
+        var_dump($data_files[0]['file1']["upload_data"]['file_name']);
+        echo "<br/><br/>";
+        var_dump($datos);
+        // Redireccionar a la vista de servicios
+        // redirect('services', $upload_data);
+
+
+    // foreach($_FILES as $file){
+    //   echo $file['name'];
+    //   echo "\n";
+    // }
+    // if (($_FILES['recurso1']['size']) > 0) {
+    //   $recurso1 = 'recurso1';
+    //   // array_push($data_files, array('file1' => $this->savePictures($recurso1) ));
+    // }
+    // if (($_FILES['recurso2']['size']) > 0) {
+    //   $recurso2 = 'recurso2';
+    //   array_push($data_files, array('file2' => $this->savePictures($recurso2) ));
+    //   var_dump( $_FILES['recurso2']);
+    // }
+    // if (($_FILES['recurso3']['size']) > 0) {
+    //   $recurso3 = 'recurso3';
+    //   array_push($data_files, array('file3' => $this->savePictures($recurso3) ));
+    // }
+    // if (($_FILES['recurso4']['size'])> 0) {
+    //   $recurso4 = 'recurso4';
+    //   array_push($data_files, array('file4' => $this->savePictures($recurso4) ));
+    // }
     // $recurso1 = $_FILES['recurso1']['name'];
     // $recurso2 = 'recurso2';
     // $recurso3 = 'recurso3';
