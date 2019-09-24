@@ -11,7 +11,7 @@ function recargar(){
 				var texto="";
 				datos.forEach(element => {
 				 texto+=`
-				<tr class="p-0" id="tr${element.id_cita}">
+				<tr class="p-0 border-bottom border-info" id="tr${element.id_cita}">
 					<td>${element.nombre+" "+element.apellido}</td>
 					
 					<td>${element.padecimientos}</td>
@@ -86,12 +86,32 @@ document.getElementById('guardarCita').addEventListener('click', function(e){
 
 
 /////////////////////------------------------------------------------DELETE---------------------------------------------------//////////////////	
-	function eliminar() {
-	fetch('eliminarCita/'+this.value, {
-        method: 'DELETE'
-    }).then(() =>{
-        	recargar();		
-          })
+function eliminar() {
+	Swal.fire({
+		title: '¿Esta seguro de desechar esta solicitud?',
+		text: "Esta accion no es reversible",
+		type: 'warning',
+		showCancelButton: true,
+		confirmButtonColor: '#36bea6',
+		cancelButtonColor: '#d33',
+		confirmButtonText: 'Si, estoy seguro!',
+		cancelButtonText: 'Cancelar',
+	}).then((result) => {
+		if (result.value) {
+			fetch('eliminarCita/'+this.value, {
+				method: 'DELETE'
+				})
+				.then(() =>{
+					Swal.fire(
+						'Eliminado!',
+						'!La solicitud ha sido eliminada!',
+						'success'
+					  )
+					recargar();		
+				})
+		}
+	})
+
 }
 
 /////////////////////----------------------------------------PREPARACION DE EVENTOS--------------------------------------//////////////////

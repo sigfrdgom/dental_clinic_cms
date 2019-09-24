@@ -16,13 +16,13 @@ function recargar(){
 						estado="Desactivado";
 					}
 				 texto+=`
-				<tr class="p-0" id="tr${element.id_usuario}">
+				<tr class="p-0 border-bottom border-info" id="tr${element.id_usuario}">
     				<td>${element.nombres}</td>
     				<td>${element.apellidos}</td>
     				<td>${element.nombre_usuario}</td>
 					<td>${element.tipo_usuario}</td>
 					<td>${estado}</td>
-            		<td class="px-0 py-2">
+            		<td class="py-2">
 						<button class="btnEditar text-center btn btn-warning btn-rounded"  value="${element.id_usuario}" data-toggle="modal" data-target="#agregarUsuario">EDITAR</button>
 						<button class="btnEliminar text-center btn btn-danger btn-rounded"  value="${element.id_usuario}">ELIMINAR</button>
             		</td>
@@ -87,31 +87,31 @@ document.getElementById('guardarUsuario').addEventListener('click', function(e){
 
 
 /////////////////////------------------------------------------------DELETE---------------------------------------------------//////////////////	
-	function eliminar() {
-		Swal.fire({
-			title: '¿Esta seguro de eliminar el usuario?',
-			text: "Esta accion no es reversible",
-			type: 'warning',
-			showCancelButton: true,
-			confirmButtonColor: '#3085d6',
-			cancelButtonColor: '#d33',
-			confirmButtonText: 'Si, estoy seguro!',
-			cancelButtonText: 'Cancelar',
-		  }).then((result) => {
-			if (result.value) {
-				fetch('eliminarUsuario/'+this.value, {
-					method: 'DELETE'
-					})
-					.then(() =>{
-						Swal.fire(
-							'Eliminado!',
-							'El usuario ha sido eliminado',
-							'success'
-						  )
-						recargar();		
-					})
-			}
-		  })
+function eliminar() {
+	Swal.fire({
+		title: '¿Esta seguro de eliminar el usuario?',
+		text: "Esta accion no es reversible",
+		type: 'warning',
+		showCancelButton: true,
+		confirmButtonColor: '#36bea6',
+		cancelButtonColor: '#d33',
+		confirmButtonText: 'Si, estoy seguro!',
+		cancelButtonText: 'Cancelar',
+	}).then((result) => {
+		if (result.value) {
+			fetch('eliminarUsuario/'+this.value, {
+				method: 'DELETE'
+				})
+				.then(() =>{
+					Swal.fire(
+						'Eliminado',
+						'!El usuario ha sido eliminado',
+						'success'
+						)
+					recargar();		
+				})
+		}
+	})
 }
 
 /////////////////////----------------------------------------PREPARACION DE EVENTOS--------------------------------------//////////////////
@@ -176,6 +176,7 @@ function accion() {
 
 document.getElementById("btnReset").addEventListener("click", limpiar)
 document.getElementById("idModal").addEventListener("click", limpiar)
+
 function limpiar(){
     document.getElementById("oculto").setAttribute("hidden", "true")
     document.getElementById('nombres').value="";

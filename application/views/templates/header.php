@@ -34,6 +34,7 @@
         
         <!-- Sweet alert 2 -->
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+        <script src="https://kit.fontawesome.com/3b0ecff6a4.js"></script>
     <head>
 
     <!-- Start of body -->
@@ -125,7 +126,7 @@
                             
 
                             <!-- <li> <a class="waves-effect waves-dark" href="<?= base_url('application/views/panelControl/pages-blank.html')?>" aria-expanded="false"><i class="fa fa-envelope text-white" style="font-size: 2em;  "></i><span class="hide-menu"></span>Mensajes</a></li> -->
-                            <li> <a class="waves-effect waves-dark" href="<?= base_url('application/views/panelControl/pages-error-404.html')?>" aria-expanded="false"><i class="fa fa-info text-white" style="font-size: 2em;  "></i><span class="hide-menu"></span>Acerca de</a></li>
+                            <li> <a class="waves-effect waves-dark" href="<?= base_url('general_controller/acercade')?>" aria-expanded="false"><i class="fa fa-info text-white" style="font-size: 2em;  "></i><span class="hide-menu"></span>Acerca de</a></li>
                         </ul>
                     </nav>
                     <!-- End Sidebar navigation -->
