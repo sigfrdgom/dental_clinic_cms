@@ -45,7 +45,7 @@
             <div class="loader">
                 <div class="loader__figure" style="font-size: 10em;">
                 </div>
-               <p class="loader__label" ><img src="<?= base_url('assets/images/loader.png')?>"  style="color: blue; margin-top: -50%;">  </p>
+               <p class="loader__label"><img src="<?= base_url('assets/images/loader.png')?>"  style="color: blue; margin-top: -50%;"></p>
                <p class="loader__label"style="color: blue;" > CLIDESA CMS </p>
             </div>
         </div>
