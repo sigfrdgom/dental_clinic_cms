@@ -30,7 +30,7 @@
         <?php } ?> 
         
         <div class="card card-body" style="background: #fefefe">
-            <table class="table table-sm table-borderless table-hover display" id="ajaxTabla">
+            <table class="table table-sm table-bordered table-borderless table-hover display" id="ajaxTabla">
                     <thead class="text-white bg-clidesa-celeste text-center">
                         <tr>
                             <th>Titulo</th>
@@ -53,11 +53,11 @@
                                 <td class="align-middle"><?= $service->titulo  ?></td>
                                 <td class="align-middle"><?= $service->texto_introduccion  ?></td>
                                 <td class="align-middle"><?= $service->contenido  ?></td>
-                                <td class="align-middle"><?= $service->estado  ?></td>
-                                <td class="align-middle"><img src="<?= $service->recurso_av_1 ? "uploads/".$service->recurso_av_1 : './assets/images/default/no-image-visible.png' ?>" alt="" width="200"></td>
-                                <td class="align-middle"><img src="<?= $service->recurso_av_2 ? "uploads/".$service->recurso_av_2 : './assets/images/default/no-image-visible.png' ?>" alt="" width="200"></td>
-                                <td class="align-middle"><img src="<?= $service->recurso_av_3 ? "uploads/".$service->recurso_av_3 : './assets/images/default/no-image-visible.png' ?>" alt="" width="200"></td>
-                                <td class="align-middle"><img src="<?= $service->recurso_av_4 ? "uploads/".$service->recurso_av_4 : './assets/images/default/no-image-visible.png' ?>" alt="" width="200"></td>
+                                <td class="align-middle"><?= $service->estado ? 'ACTIVO' : 'INACTIVO' ?></td>
+                                <td class="align-middle"><img src="<?= $service->recurso_av_1 ? "uploads/".$service->recurso_av_1 : './assets/images/default/no-image-visible.png' ?>" alt="" width="130"></td>
+                                <td class="align-middle"><img src="<?= $service->recurso_av_2 ? "uploads/".$service->recurso_av_2 : './assets/images/default/no-image-visible.png' ?>" alt="" width="130"></td>
+                                <td class="align-middle"><img src="<?= $service->recurso_av_3 ? "uploads/".$service->recurso_av_3 : './assets/images/default/no-image-visible.png' ?>" alt="" width="130"></td>
+                                <td class="align-middle"><img src="<?= $service->recurso_av_4 ? "uploads/".$service->recurso_av_4 : './assets/images/default/no-image-visible.png' ?>" alt="" width="130"></td>
                                 <td class="align-middle"><?= $service->fecha_ingreso ?></td>
                                 <td class="align-middle"><button type="button" class="btn btn-warning">Editar</button></td>
                                 <td class="align-middle"><button type="button" class="btn btn-danger">Eliminar</button></td>
