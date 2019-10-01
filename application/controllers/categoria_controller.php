@@ -62,6 +62,15 @@ class Categoria_controller extends CI_Controller {
         
       $data=["id_categoria" => $_POST['id_categoria'], "nombre" => $_POST['nombre'], "descripcion" => $_POST['descripcion']];
         $this->categoria_model->actualizarCategoria($data);
+	}
+	
+	public function findByCriteria(){ 
+		if($_POST["busqueda"] == null || $_POST["busqueda"]== ""){
+			echo json_encode($this->categoria_model->getAll());
+        }else{
+            echo json_encode($this->categoria_model->findByCriteria($_POST["busqueda"]));
+        }
+		
     }
 
 

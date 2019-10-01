@@ -38,7 +38,7 @@
                             <span class="input-group-text" id="basic-addon1"><i class="fa fa-search"></i></span>
                         </div>
                         
-                        <input type="text" class="form-control float-right " placeholder="Busqueda" id="busqueda" data-id-curso="<?php // echo $datos['id_docente'] ?>"
+                        <input type="text" class="form-control float-right " placeholder="Busqueda" id="busqueda"
                             aria-label="Busqueda" aria-describedby="basic-addon1">
 
                     </div>

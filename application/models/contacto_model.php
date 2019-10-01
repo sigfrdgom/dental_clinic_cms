@@ -53,18 +53,26 @@ class Contacto_model extends CI_Model{
         } catch (mysqli_sql_exception $e) {
             return 0;
         }
-    }
+	}
+	
+	
 
-    //CONSULTA PARA ACTUALIZAR EL ESTADO DE UN REGISTRO UN REGISTRO DE CONTACTO
-    public function actualizarContactoEstado($id){
+
+	public function findByCriteria($datos){
         try {
-            $this->db->set('estado',0,FALSE);
-            $this->db->where('id_contacto',$id);
-            $this->db->update('contacto', $data);
+        	$this->db->select('id_contacto, nombre, apellido, telefono, email, comentario');
+			$this->db->like('nombre', $datos);
+			// $this->db->or_like('apellido', $datos);
+			$this->db->or_like('telefono', $datos);
+			$this->db->or_like('email', $datos);
+			return $this->db->get('contacto')->result();
+						
         } catch (mysqli_sql_exception $e) {
             return 0;
         }
     }
+
+
 
     }
 

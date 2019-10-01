@@ -62,6 +62,15 @@ class Tipo_controller extends CI_Controller {
         $data=["id_tipo" => $_POST['id_tipo'], "nombre" => $_POST['nombre'], "estado" => $_POST['estado']];
     	$this->tipo_model->actualizarTipo($data);
         
+	}
+	
+	public function findByCriteria(){ 
+		if($_POST["busqueda"] == null || $_POST["busqueda"]== ""){
+			echo json_encode($this->tipo_model->getAll());
+        }else{
+            echo json_encode($this->tipo_model->findByCriteria($_POST["busqueda"]));
+        }
+		
     }
 
 

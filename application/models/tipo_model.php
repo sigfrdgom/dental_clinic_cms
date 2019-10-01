@@ -50,7 +50,22 @@ class Tipo_model extends CI_Model{
         } catch (mysqli_sql_exception $e) {
             return 0;
         }
-       }
+	}
+	
+
+
+	public function findByCriteria($datos){
+        try {
+        	$this->db->select('id_tipo, nombre, estado');
+			$this->db->like('nombre', $datos);
+			return $this->db->get('tipo')->result();
+						
+        } catch (mysqli_sql_exception $e) {
+            return 0;
+        }
+    }
+
+
     }
 
 ?>
