@@ -9,6 +9,7 @@ function recargar(){
             .then(res => res.json())
             .then(datos => {
 				var texto="";
+				// console.log(datos)
 				datos.forEach(element => {
 					if (element.estado==1) {
 						estado="Activo";
@@ -28,7 +29,10 @@ function recargar(){
             		</td>
     			</tr>`
 				});
+
+						
 					respuesta.innerHTML=texto;
+					// respuesta.innerHTML="hola";
 					asignarEventos();
 				})
 					
@@ -192,3 +196,60 @@ function limpiar(){
 	btn.setAttribute("value", "Guardar");
 	$('#agregarUsuario').modal('hide');
 }
+
+
+
+
+
+document.getElementById("busqueda").addEventListener("keyup", function(){
+	
+	
+	
+	var busqueda=document.getElementById("busqueda").value;
+	if (busqueda!==""&&busqueda!==" ") {
+		var datas= new FormData();
+		datas.append("busqueda", busqueda)
+		fetch('findByCriteria', {
+        method: "POST",
+        body: datas
+    }).then(res => res.json()).then(datos => {
+				// console.log(datos)
+				var texto="";
+				datos.forEach(element => {
+					
+					if (element.estado==1) {
+						estado="Activo";
+					}else{
+						estado="Desactivado";
+					}
+				 texto+=`
+				<tr class="p-0 border-bottom border-info" id="tr${element.id_usuario}">
+    				<td>${element.nombres}</td>
+    				<td>${element.apellidos}</td>
+    				<td>${element.nombre_usuario}</td>
+					<td>${element.tipo_usuario}</td>
+					<td>${estado}</td>
+            		<td class="py-2">
+						<button class="btnEditar text-center btn btn-warning btn-rounded"  value="${element.id_usuario}" data-toggle="modal" data-target="#agregarUsuario">EDITAR</button>
+						<button class="btnEliminar text-center btn btn-danger btn-rounded"  value="${element.id_usuario}">ELIMINAR</button>
+            		</td>
+    			</tr>`
+				});
+					if (datos.length>0) {
+						respuesta.innerHTML=texto;
+						asignarEventos();	
+					}else{
+						respuesta.innerHTML="NO HAY REGISTRO COINCIDENTES";
+					}
+					
+			})
+		
+
+
+
+	}else{
+		document.getElementById("busqueda").value="";
+		recargar();
+	}
+	
+});

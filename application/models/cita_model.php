@@ -50,7 +50,27 @@ class Cita_model extends CI_Model{
         } catch (mysqli_sql_exception $e) {
             return 0;
         }
-       }
+	   }
+	   
+
+
+	   public function findByCriteria($datos){
+        try {
+        	$this->db->select('id_cita, nombre, apellido, celular, email, padecimientos, procedimiento, fecha, hora, comentario');
+			$this->db->like('nombre', $datos);
+			$this->db->or_like('apellido', $datos);
+			$this->db->or_like('celular', $datos);
+			$this->db->or_like('email', $datos);
+			$this->db->or_like('fecha', $datos);
+			$this->db->or_like('hora', $datos);
+			return $this->db->get('cita')->result();
+						
+        } catch (mysqli_sql_exception $e) {
+            return 0;
+        }
+    }
+
+
     }
 
 ?>

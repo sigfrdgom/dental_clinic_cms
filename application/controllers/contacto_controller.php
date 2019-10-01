@@ -61,6 +61,15 @@ class Contacto_controller extends CI_Controller {
     
         $this->contacto_model-> actualizarContacto($data);
         
+	}
+	
+	public function findByCriteria(){ 
+		if($_POST["busqueda"] == null || $_POST["busqueda"]== ""){
+			echo json_encode($this->contacto_model->getAll());
+        }else{
+            echo json_encode($this->contacto_model->findByCriteria($_POST["busqueda"]));
+        }
+		
     }
 
 

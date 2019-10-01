@@ -50,7 +50,27 @@ class Contacto_model extends CI_Model{
         } catch (mysqli_sql_exception $e) {
             return 0;
         }
-       }
+	}
+	
+	
+
+
+	public function findByCriteria($datos){
+        try {
+        	$this->db->select('id_contacto, nombre, apellido, telefono, email, comentario');
+			$this->db->like('nombre', $datos);
+			// $this->db->or_like('apellido', $datos);
+			$this->db->or_like('telefono', $datos);
+			$this->db->or_like('email', $datos);
+			return $this->db->get('contacto')->result();
+						
+        } catch (mysqli_sql_exception $e) {
+            return 0;
+        }
+    }
+
+
+
     }
 
 ?>

@@ -39,8 +39,20 @@ class Usuario_controller extends CI_Controller {
     //METODO QUE AGREGA UN REGISTRO USUARIO
     public function agregarUsuario(){		
 
-		$data=["id_usuario" => null, "nombres" => $_POST['nombres'], "apellidos" => $_POST['apellidos'],  "nombre_usuario" => $_POST['usuario'], "contrasenia" => $_POST['pass'], "tipo_usuario" => $_POST['tipo_usuario'], "estado" => 1];
-		 $this->usuario_model->agregarUsuario($data);
+
+		$data=["id_usuario" => null, "nombres" => $_POST['nombres'], "apellidos" => $_POST['apellidos'],  "nombre_usuario" => $_POST['usuario'], "contrasenia" => self::hash($_POST['pass']), "tipo_usuario" => $_POST['tipo_usuario'], "estado" => 1];
+		
+
+		echo $_POST['pass'];
+		if(self::verify($_POST['pass'], self::hash($_POST['pass']))){
+			echo "contraseña carlos21";
+		}else{
+			echo "la cagaste bro no es esa";
+		}
+
+
+
+		$this->usuario_model->agregarUsuario($data);
     }
 
       
@@ -79,11 +91,51 @@ class Usuario_controller extends CI_Controller {
 	// 	// echo "holaaaaaaaaaaaa";
 	// 	// echo $data[0]."hla<br>";
 	// 	// var_dump($data);
-		$data=["id_usuario" => $_POST['id_usuario'], "nombres" => $_POST['nombres'], "apellidos" => $_POST['apellidos'],  "nombre_usuario" => $_POST['usuario'], "contrasenia" => $_POST['pass'], "tipo_usuario" => $_POST['tipo_usuario'], "estado" => $_POST['estado']];
-        $this->usuario_model-> actualizarUsuario($data);
-        // $this->load->view('panelControl/index', $data);
-    }
+		$hash=self::hash($_POST['pass']);
+		$data=["id_usuario" => $_POST['id_usuario'], "nombres" => $_POST['nombres'], "apellidos" => $_POST['apellidos'],  "nombre_usuario" => $_POST['usuario'], "contrasenia" => $hash, "tipo_usuario" => $_POST['tipo_usuario'], "estado" => $_POST['estado']];
+		 
+		echo $_POST['pass'];
+		if(self::verify($_POST['pass'], $hash)){
+			echo "contraseña carlos21";
+		}else{
+			echo "la cagaste bro no es esa";
+		}
 
+
+		
+		$this->usuario_model-> actualizarUsuario($data);
+        // $this->load->view('panelControl/index', $data);
+	}
+	
+
+
+
+	public function findByCriteria(){ 
+		if($_POST["busqueda"] == null || $_POST["busqueda"]== ""){
+			echo json_encode($this->usuario_model->getAll());
+        }else{
+            echo json_encode($this->usuario_model->findByCriteria($_POST["busqueda"]));
+        }
+		
+	}
+
+	private static function hash($password) {
+        return password_hash($password, PASSWORD_DEFAULT, ['cost' => 13]);
+	}
+	
+
+    public static function verify($password, $hash) {
+        return password_verify($password, $hash);
+	}
 
 
 }
+
+	
+
+
+
+
+
+
+

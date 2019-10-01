@@ -58,6 +58,16 @@ class Cita_controller extends CI_Controller {
         $data=["id_cita" => $_POST['id_cita'], "nombre" => $_POST['nombre'], "apellido" => $_POST['apellido'], "celular" => $_POST['telefono'], "email" => $_POST['email'], "padecimientos" => $_POST['padecimientos'], "procedimiento" => $_POST['procedimiento'], "fecha" => $_POST['fecha'], "hora" => $_POST['hora'], "comentario" => $_POST['comentario']];
     
         $this->cita_model-> actualizarCita($data);
+	}
+	
+
+	public function findByCriteria(){ 
+		if($_POST["busqueda"] == null || $_POST["busqueda"]== ""){
+			echo json_encode($this->cita_model->getAll());
+        }else{
+            echo json_encode($this->cita_model->findByCriteria($_POST["busqueda"]));
+        }
+		
     }
 
 

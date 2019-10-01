@@ -154,3 +154,52 @@ function limpiar(){
 	btn.setAttribute("value", "Guardar");
 	$('#agregarContacto').modal('hide');
 }
+
+
+
+
+
+
+document.getElementById("busqueda").addEventListener("keyup", function(){
+	
+	var busqueda=document.getElementById("busqueda").value;
+	if (busqueda!==""&&busqueda!==" ") {
+		var datas= new FormData();
+		datas.append("busqueda", busqueda)
+		fetch('findByCriteria', {
+        method: "POST",
+        body: datas
+    }).then(res => res.json()).then(datos => {
+				// console.log(datos)
+				var texto="";
+				datos.forEach(element => {
+				texto+=`
+				<tr class="p-0 border-bottom border-info" id="tr${element.id_contacto}">
+					<td>${element.nombre+" "+element.apellido}</td>
+					<td>${element.telefono}</td>
+					<td>${element.email}</td>
+					<td>${element.comentario}</td>
+            		<td class="px-0 py-2">
+						<button class="btnEditar text-center btn btn-success btn-rounded"  value="${element.id_contacto}" data-toggle="modal" data-target="#agregarContacto">Aceptar mensaje</button>
+						<button class="btnEliminar text-center btn btn-danger btn-rounded"  value="${element.id_contacto}">Rechazar mensaje</button>
+					</td>
+    			</tr>`
+				});
+					if (datos.length>0) {
+						respuesta.innerHTML=texto;
+						asignarEventos();	
+					}else{
+						respuesta.innerHTML="NO HAY REGISTRO COINCIDENTES";
+					}
+					
+			})
+		
+
+
+
+	}else{
+		document.getElementById("busqueda").value="";
+		recargar();
+	}
+	
+});

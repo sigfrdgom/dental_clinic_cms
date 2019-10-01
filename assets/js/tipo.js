@@ -156,3 +156,47 @@ function limpiar(){
 	btn.setAttribute("value", "Guardar");
 	$('#agregarTipo').modal('hide');
 }
+
+
+
+document.getElementById("busqueda").addEventListener("keyup", function(){
+	
+	var busqueda=document.getElementById("busqueda").value;
+	if (busqueda!==""&&busqueda!==" ") {
+		var datas= new FormData();
+		datas.append("busqueda", busqueda)
+		fetch('findByCriteria', {
+        method: "POST",
+        body: datas
+    }).then(res => res.json()).then(datos => {
+				var texto="";
+				datos.forEach(element => {
+					if (element.estado==1) {
+						estado="Activo";
+					}else{
+						estado="Desactivado";
+					}
+				 texto+=`
+				<tr class="p-0 border-bottom border-info" id="tr${element.id_tipo}">
+    				<td>${element.nombre}</td>
+					<td>${estado}</td>
+            		<td class="px-0 py-2">
+						<button class="btnEditar text-center btn btn-warning btn-rounded"  value="${element.id_tipo}" data-toggle="modal" data-target="#agregarTipo">EDITAR</button>
+						<button class="btnEliminar text-center btn btn-danger btn-rounded" value="${element.id_tipo}">ELIMINAR</button>
+            		</td>
+    			</tr>`
+				});
+					if (datos.length>0) {
+						respuesta.innerHTML=texto;
+						asignarEventos();	
+					}else{
+						respuesta.innerHTML="NO HAY REGISTRO COINCIDENTES";
+					}
+					
+			})
+	}else{
+		document.getElementById("busqueda").value="";
+		recargar();
+	}
+	
+});

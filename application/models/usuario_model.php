@@ -50,7 +50,26 @@ class Usuario_model extends CI_Model{
         } catch (mysqli_sql_exception $e) {
             return 0;
         }
+	}
+	
+
+
+	public function findByCriteria($datos){
+        try {
+        	$this->db->select('id_usuario, nombres, apellidos, nombre_usuario, contrasenia, tipo_usuario, estado');
+			$this->db->like('nombres', $datos);
+			$this->db->or_like('apellidos', $datos);
+			$this->db->or_like('nombre_usuario', $datos);
+			$this->db->or_like('tipo_usuario', $datos);
+			
+			return $this->db->get('usuario')->result();
+						
+        } catch (mysqli_sql_exception $e) {
+            return 0;
+        }
     }
+
+
 
 
 }
