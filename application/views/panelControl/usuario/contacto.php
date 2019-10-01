@@ -5,14 +5,15 @@
         <div class="col-md-5 align-self-center">
             <h4 class="text-themecolor text-dark float-left mt-2">MENSAJES&nbsp; &nbsp;</h4> 
 
-            <button type="button" class="btn btn-outline-success mb-2 btn-rounded" data-toggle="modal" data-target="#agregarContacto" id="idModal">
+            <!-- <button type="button" class="btn btn-outline-success mb-2 btn-rounded" data-toggle="modal" data-target="#agregarContacto" id="idModal">
                 <span class='fa fa-plus-square-o bigfonts'></span> Nuevo 
-            </button>
+            </button> -->
 
             <a href="#" title="Agregar Contacto"  data-toggle="popover" data-trigger="focus"
                 data-content="Este apartado tiene como función gestionar los mensajes recibidos a través del sitio web, y brinda una 
-                respuesta personalizada al cliente.">
-                <i class="fa fa-fw fa-question-circle pop-help" style="font-size:1.2em;"></i>
+                respuesta personalizada al cliente.
+                El color rojo significa mensaje no leido, mientras que, el color verde significa mensaje leido">
+                <i class="fa fa-fw fa-question-circle pop-help" style="font-size:1.3em;"></i>
             </a>
 
         </div>
@@ -56,7 +57,7 @@
                             
                             <th colspan="2">Acciones
                                 <a href="#" title="Acciones de gestion"  data-toggle="popover" data-trigger="focus"
-                                    data-content="Sirven para modificar informacion de una contacto del sistema o darlo de baja">
+                                    data-content="Sirven para gestionar la informacion de un mensaje, aceptarlo o desecharlo, asi como comunicarse de una manera mas comoda con el cliente o prospecto de cliente">
                                     <i class="fa fa-fw fa-question-circle pop-help text-white" style="font-size:1.2em;"></i>
                                 </a>
                             </th>
@@ -204,7 +205,7 @@
             <!-- Modal footer -->
             <div class="modal-footer" id="formUs2">
                     <!-- <input type="submit"  class="btn btn-success" value="Guardar" id="guardarContacto"> -->
-                    <button type="reset" class="btn btn-danger" data-dismiss="modal" id="btnReset">Cancelar</button>
+                    <button type="reset" class="btn btn-danger" data-dismiss="modal" id="btnReset">Salir</button>
                 </form>
             </div>
             <!-- Modal footer -->

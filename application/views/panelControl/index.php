@@ -24,10 +24,10 @@
                 <div class="card-body">
                     <h5 class="card-title text-dark">Mensajes</h5>
     
-                    <div class="steamline m-t-40">
+                    <div class="steamline m-t-40" id="msg_inbox">
 
                         <!-- Message item -->
-                        <div class="sl-item bg-white">
+                        <!-- <div class="sl-item bg-white">
                             <div class="sl-left bg-info">
                                 <i class="fa fa-user mt-1" style="font-size:2em;"></i>
                             </div>
@@ -46,7 +46,7 @@
                                     <button class="btn m-t-10 btn-rounded btn-danger">Rechazar</button>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <!-- Message item -->
 
 
@@ -66,12 +66,12 @@
                 <div class="card-body">
                     <h5 class="card-title text-dark">Solicitudes de cita</h5>
                     <div class="message-box">
-                        <div class="message-widget message-scroll mt-5">
+                        <div class="message-widget message-scroll mt-5" id="cita_inbox">
                             
                             <!-- request for appointment -->
-                            <div class="bg-white p-4 my-2" style="border-radius: 10px;">
+                            <!-- <div class="bg-white p-4 my-2" style="border-radius: 10px;"> -->
                                 <!-- <div class="user-img"> <img src="assets/images/users/1.jpg" alt="user" class="img-circle"> <span class="profile-status online pull-right"></span> </div> -->
-                                <div class="mail-contnet">
+                                <!-- <div class="mail-contnet">
                                     <h5 class="text-dark">John Doe</h5>
                                     <span class="mail-desc text-dark">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam rem deleniti iure quaerat culpa et ea dolore nulla nisi? </span>
                                     <br>
@@ -85,7 +85,7 @@
                                         <button class="btn m-t-10 m-r-5 btn-rounded btn-success">Responder solicitud</button>
                                         <button class="btn m-t-10 btn-rounded btn-danger">Rechazar Solicitud</button> 
                                 </div>
-                            </div>
+                            </div> -->
                             <!-- request for appointment -->
 
                         </div>
@@ -97,3 +97,5 @@
     </div>
 
 </div>
+
+<script src="<?= base_url('assets/js/dash.js')?>"></script>

@@ -11,22 +11,22 @@ function recargar(){
 				var texto="";
 				datos.forEach(element => {
 				 texto+=`
-				<tr class="p-0 border-bottom border-info" id="tr${element.id_cita}">
-					<td>${element.nombre+" "+element.apellido}</td>
-					
-					<td>${element.padecimientos}</td>
+				<tr class="p-0 border-bottom border-info ${(element.estado==1)?'mensaje-no-leido':'mensaje-leido'}"" id="tr${element.id_cita}">
+					<td>${element.nombre}</td>
 					<td>${element.procedimiento}</td>
 					<td>${element.fecha}</td>
 					<td>${element.hora}</td>
             		<td class="px-0 py-2">
-						<button class="btnEditar text-center btn btn-success btn-rounded"  value="${element.id_cita}" data-toggle="modal" data-target="#agregarCita">Aceptar solicitud</button>
-						<button class="btnEliminar text-center btn btn-danger btn-rounded"  value="${element.id_cita}">Rechazar solicitud</button>
+						<button class="btnEditar text-center btn ${(element.estado==1)?'btn-success':'btn-info'} btn-rounded"  value="${element.id_cita}" data-toggle="modal" data-target="#contactarCita">${(element.estado==1)?'Aceptar solicitud':'Comunicarse'}</button>
+						<button class="btnEliminar text-center btn btn-danger btn-rounded"  value="${element.id_cita}">${(element.estado==1)?'Rechazar solicitud':'Eliminar solicitud'}</button>
 					</td>
     			</tr>`
 				});
 					respuesta.innerHTML=texto;
 					asignarEventos();
 				})
+
+				// <td>${element.padecimientos}</td>
 				// <td>${element.celular}</td>
 				// <td>${element.email}</td>
 				// <td>${element.comentario}</td>
@@ -38,7 +38,7 @@ function recargar(){
 document.getElementById('guardarCita').addEventListener('click', function(e){
 	e.preventDefault();
 	var nombre=document.getElementById('nombre').value
-	var apellido=document.getElementById('apellido').value
+	// var apellido=document.getElementById('apellido').value
 	var telefono=document.getElementById('telefono').value
 	var email=document.getElementById('email').value
 	var padecimientos=document.getElementById('padecimientos').value
@@ -49,7 +49,7 @@ document.getElementById('guardarCita').addEventListener('click', function(e){
 
 	var datas= new FormData();
 	datas.append("nombre", nombre)
-	datas.append("apellido", apellido)
+	// datas.append("apellido", apellido)
 	datas.append("telefono", telefono)
 	datas.append("email", email)
 	datas.append("padecimientos", padecimientos)
@@ -137,17 +137,38 @@ function accion() {
     peticion.onreadystatechange=function(){
         if(this.readyState==4){
 			datos=JSON.parse(this.responseText);
-			document.getElementById("id_cita").value=datos["id_cita"];
-			document.getElementById('nombre').value=datos["nombre"];
-			document.getElementById('apellido').value=datos["apellido"];
-			document.getElementById('telefono').value=datos["celular"];
-			document.getElementById('email').value=datos["email"];
-			document.getElementById('padecimientos').value=datos["padecimientos"];
-			document.getElementById('procedimiento').value=datos["procedimiento"];
-			document.getElementById('fecha').value=datos["fecha"];
-			document.getElementById('hora').value=datos["hora"];
-			document.getElementById('comentario').value=datos["comentario"];
+			document.getElementById("id_cita_cct").value=datos["id_cita"];
+			document.getElementById('nombre_cct').innerHTML=datos["nombre"];
+			// document.getElementById('apellido').value=datos["apellido"];
+			document.getElementById('telefono_cct').innerHTML=datos["celular"];
+			document.getElementById('email_cct').innerHTML=datos["email"];
+			document.getElementById('padecimientos_cct').innerHTML=datos["padecimientos"];
+			document.getElementById('procedimiento_cct').innerHTML=datos["procedimiento"];
+			document.getElementById('fecha_cct').value=datos["fecha"];
+			document.getElementById('hora_cct').value=datos["hora"];
+			document.getElementById('comentario_cct').innerHTML=datos["comentario"];
+			document.getElementById('fecha_solicitud_cct').innerHTML=datos["fecha_solicitud"];
+			document.getElementById('estado_cct').innerHTML=(datos["estado"]==1)?'No leido':'Leido';
+
+			document.getElementById('sendmail_cita').href="mailto:"+datos["email"]+"?subject=Contacto desde pagina WEB"
+			document.getElementById('sendwhats_cita').href="http://wa.me/"+datos["celular"]
+			document.getElementById('sendcall_cita').href="tel:"+datos["celular"]
 	   
+			var datas= new FormData();
+			datas.append("id_cita", datos["id_cita"])
+			fetch('actualizarCitaEstado/', {
+				method: 'POST',
+				body: datas
+			}).then(data =>{
+				//   console.log(data);
+				  if(data=="error"){
+					respuesta.innerHTML=
+				  `ERROR`;
+				  }else{
+					recargar()
+				  }
+				})
+
         }};
     peticion.open('GET', 'obtenerRegistro/'+this.value);
 	peticion.send();
@@ -158,10 +179,11 @@ function accion() {
 }
 
 document.getElementById("btnReset").addEventListener("click", limpiar)
-document.getElementById("idModal").addEventListener("click", limpiar)
+// document.getElementById("idModal").addEventListener("click", limpiar)
+
 function limpiar(){
 	document.getElementById('nombre').value="";
-	document.getElementById('apellido').value="";
+	// document.getElementById('apellido').value="";
 	document.getElementById('telefono').value="";
 	document.getElementById('email').value="";
 	document.getElementById('padecimientos').value="";

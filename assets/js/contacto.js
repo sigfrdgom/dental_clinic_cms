@@ -79,7 +79,7 @@ document.getElementById('guardarContacto').addEventListener('click', function(e)
 /////////////////////------------------------------------------------DELETE---------------------------------------------------//////////////////	
 function eliminar() {
 	Swal.fire({
-		title: '¿Esta seguro de eliminar el mensaje?',
+		title: '¿Esta acción eliminara el mensaje, esta seguro de realizarla?',
 		text: "Esta accion no es reversible",
 		type: 'warning',
 		showCancelButton: true,
@@ -104,32 +104,6 @@ function eliminar() {
 	})
 }
 
-function rechazar() {
-	Swal.fire({
-		title: '¿Esta seguro de rechazar el mensaje?',
-		text: "Esta accion no es reversible",
-		type: 'warning',
-		showCancelButton: true,
-		confirmButtonColor: '#36bea6',
-		cancelButtonColor: '#d33',
-		confirmButtonText: 'Si, estoy seguro!',
-		cancelButtonText: 'Cancelar',
-	}).then((result) => {
-		if (result.value) {
-			fetch('eliminarContacto/'+this.value, {
-				method: 'DELETE'
-				})
-				.then(() =>{
-					Swal.fire(
-						'Eliminado',
-						'!El mensaje ha sido eliminado',
-						'success'
-						)
-					recargar();		
-				})
-		}
-	})
-}
 /////////////////////----------------------------------------PREPARACION DE EVENTOS--------------------------------------//////////////////
 
 function asignarEventos(){
@@ -141,8 +115,8 @@ function asignarEventos(){
 	
 		//PARA EMPEZAR A CARGAR
 		btnEditar[index].addEventListener('click', accion);
+		btnEliminar[index].addEventListener('click', eliminar);
 		// btnRechazar[index].addEventListener('click', rechazar);
-        btnEliminar[index].addEventListener('click', eliminar);
         
     }
 }
@@ -163,9 +137,9 @@ function accion() {
 			document.getElementById('fecha_contacto').innerHTML=datos["fecha"];
 			document.getElementById('estado_contacto').innerHTML=(datos["estado"]==1)?'No leido':'Leido';
 			
-			document.getElementById('sendmail_contacto').href="mailto:"+datos["email"]+"?subject=Contacto desde pagina WEB"
-			document.getElementById('sendwhats_contacto').href="http://wa.me/"+datos["telefono"]
-			document.getElementById('sendcall_contacto').href="tel:"+datos["telefono"]
+			document.getElementById('sendmail_cita').href="mailto:"+datos["email"]+"?subject=Contacto desde pagina WEB"
+			document.getElementById('sendwhats_cita').href="http://wa.me/"+datos["telefono"]
+			document.getElementById('sendcall_cita').href="tel:"+datos["telefono"]
 			
 			var datas= new FormData();
 			datas.append("id_contacto", datos["id_contacto"])
@@ -178,9 +152,7 @@ function accion() {
 					respuesta.innerHTML=
 				  `ERROR`;
 				  }else{
-					  console.log(data)
 					recargar()
-					console.log("esta llegando")
 				  }
 				})
 
@@ -196,7 +168,8 @@ function accion() {
 }
 
 document.getElementById("btnReset").addEventListener("click", limpiar)
-document.getElementById("idModal").addEventListener("click", limpiar)
+// document.getElementById("idModal").addEventListener("click", limpiar)
+
 function limpiar(){
 	document.getElementById('nombre').value="";
 	// document.getElementById('apellido').value="";
