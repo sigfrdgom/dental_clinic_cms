@@ -57,15 +57,13 @@ class Services extends CI_Controller
   public function guardarDatos(){
 
     $data_files = array();
-    for ($i=0; $i < sizeof($_FILES) ; $i++) { 
+    for ($i=1; $i <= sizeof($_FILES) ; $i++) { 
       if (isset($_FILES['recurso'.$i]['name'])) {
         if ($_FILES['recurso'.$i]['size'] > 0) {
-          echo "<h1>".$i."</h1>";
-          array_push($data_files, array('file'.$i => $this->savePictures('recurso'.$i)));
+          $data_files = array_merge($data_files, array('file'.$i => $this->savePictures('recurso'.$i)));
         }
       }
     }
-    // var_dump($data_files);
 
     $fecha = new DateTime();
     $datos = [
@@ -77,83 +75,26 @@ class Services extends CI_Controller
           'texto_introduccion' => $_POST['texto_introduccion'],
           'contenido' => $_POST['contenido'],
           'estado' => true,
-          'recurso_av_1' => isset($data_files[0]['file1'])?  $data_files[0]['file1']["upload_data"]['file_name']: '',
-          'recurso_av_2' => isset($data_files[0]['file2'])?  $data_files[0]['file2']["upload_data"]['file_name']: '',
-          'recurso_av_3' => isset($data_files[0]['file3'])?  $data_files[0]['file3']["upload_data"]['file_name']: '',
-          'recurso_av_4' => isset($data_files[0]['file4'])?  $data_files[0]['file4']["upload_data"]['file_name']: '',
+          'recurso_av_1' => isset($data_files['file1'])?  $data_files['file1']["upload_data"]['file_name']: '',
+          'recurso_av_2' => isset($data_files['file2'])?  $data_files['file2']["upload_data"]['file_name']: '',
+          'recurso_av_3' => isset($data_files['file3'])?  $data_files['file3']["upload_data"]['file_name']: '',
+          'recurso_av_4' => isset($data_files['file4'])?  $data_files['file4']["upload_data"]['file_name']: '',
           'fecha_ingreso' => $fecha->format('Y-m-d')
         ];
-        //Crear el registro en la base de datos
-        // $this->publicacion_model->create($datos);
-        var_dump($data_files[0]['file1']["upload_data"]['file_name']);
-        echo "<br/><br/>";
-        var_dump($datos);
-        // Redireccionar a la vista de servicios
-        // redirect('services', $upload_data);
 
+        try {
+          $this->publicacion_model->create($datos);
+          $message = array('message' => 'Registro Agregado con éxito');
+          // $this->session->set_flashdata($message);
+          redirect('services');
+        } catch (Exception $e) {
 
-    // foreach($_FILES as $file){
-    //   echo $file['name'];
-    //   echo "\n";
-    // }
-    // if (($_FILES['recurso1']['size']) > 0) {
-    //   $recurso1 = 'recurso1';
-    //   // array_push($data_files, array('file1' => $this->savePictures($recurso1) ));
-    // }
-    // if (($_FILES['recurso2']['size']) > 0) {
-    //   $recurso2 = 'recurso2';
-    //   array_push($data_files, array('file2' => $this->savePictures($recurso2) ));
-    //   var_dump( $_FILES['recurso2']);
-    // }
-    // if (($_FILES['recurso3']['size']) > 0) {
-    //   $recurso3 = 'recurso3';
-    //   array_push($data_files, array('file3' => $this->savePictures($recurso3) ));
-    // }
-    // if (($_FILES['recurso4']['size'])> 0) {
-    //   $recurso4 = 'recurso4';
-    //   array_push($data_files, array('file4' => $this->savePictures($recurso4) ));
-    // }
-    // $recurso1 = $_FILES['recurso1']['name'];
-    // $recurso2 = 'recurso2';
-    // $recurso3 = 'recurso3';
-    // $recurso4 = 'recurso4';
-    
-    // var_dump($data_files[0]);
-
-    // $mi_archivo = 'upload';
-    // $config = $this->configLibraryImg();
-    
-    // $this->load->library('upload', $config);
-    // if (!$this->upload->do_upload($mi_archivo)) {
-    //   //*** ocurrio un error
-    //   $error = array('error' => $this->upload->display_errors());
-    //   //Redireccionar al mismo formulario
-    //   redirect('services/create', $error);
-    // } else {
-    //   //*** Datos de la imagen */
-    //   $upload_data =  $this->upload->data();
-    //   $fecha = new DateTime();
-      
-    //   $datos = [
-    //     'id_publicacion' => null,
-    //     'id_usuario' => 1,
-    //     'id_categoria' => 1,
-    //     'id_tipo' => 1,
-    //     'titulo' => $_POST['titulo'],
-    //     'texto_introduccion' => $_POST['texto_introduccion'],
-    //     'contenido' => $_POST['contenido'],
-    //     'estado' => true,
-    //     'recurso_av_1' => $upload_data['file_name'],
-    //     'recurso_av_2' => null,
-    //     'recurso_av_3' => null,
-    //     'recurso_av_4' => null,
-    //     'fecha_ingreso' => $fecha->format('Y-m-d')
-    //   ];
-    //   //Crear el registro en la base de datos
-    //   $this->publicacion_model->create($datos);
-    //   // Redireccionar a la vista de servicios
-    //   redirect('services', $upload_data);
-    // }
+          $this->publicacion_model->create($datos);
+          $message = array('error' => 'Error no se puedo agregar el registro ');
+          // $this->session->set_flashdata($message);
+          redirect('services');
+        }
+        
   }
 
 
