@@ -33,7 +33,8 @@ class Contacto_controller extends CI_Controller {
     //METODO QUE AGREGA UN REGISTRO CONTACTO
     public function agregarContacto(){
         //deberia ir el espacion en blanco?
-        $data=["id_contacto" => null, "nombre" =>$_POST['nombre'], "apellido" =>$_POST['apellido'], "celular" =>$_POST['telefono'], "email"=> $_POST['email'], "comentario" => $_POST['comentario']];
+        // $data=["id_contacto" => null, "nombre" =>$_POST['nombre'], "apellido" =>$_POST['apellido'], "celular" =>$_POST['telefono'], "email"=> $_POST['email'], "comentario" => $_POST['comentario']];
+        $data=["id_contacto" => null, "nombre" =>$_POST['nombre'], "telefono" =>$_POST['telefono'], "email"=> $_POST['email'], "comentario" => $_POST['comentario']];
     
         $this->contacto_model->agregarContacto($data);
         

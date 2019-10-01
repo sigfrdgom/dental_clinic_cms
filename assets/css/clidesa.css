@@ -2,3 +2,21 @@
     background-color: #00aeef;
     background: #00aeef;
 }
+
+.vinput:invalid {
+    border: 1px solid #f62d528c;
+    box-shadow: 0 0 5px #f62d528c;
+}
+
+.vinput:valid {
+    border: 1px solid #36bea6;
+    box-shadow: 0 0 5px #36bea6 ;
+}
+
+.mensaje-leido{
+    background: #00ff4036;
+}
+
+.mensaje-no-leido{
+    background: #ff000d1c;
+}

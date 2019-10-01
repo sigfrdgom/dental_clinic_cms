@@ -26,6 +26,8 @@
                     margin-top: -10px;
                 }
             }
+
+            
         </style>
         <!-- Extra BAD CSS -->
 
@@ -34,7 +36,7 @@
         
         <!-- Sweet alert 2 -->
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
-        <script src="https://kit.fontawesome.com/3b0ecff6a4.js"></script>
+        <script src="https://kit.fontawesome.com/3b0ecff6a4.js" crossorigin="anonymous"></script>
     <head>
 
     <!-- Start of body -->

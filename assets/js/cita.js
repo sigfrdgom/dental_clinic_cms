@@ -19,7 +19,7 @@ function recargar(){
 					<td>${element.fecha}</td>
 					<td>${element.hora}</td>
             		<td class="px-0 py-2">
-						<button class="btnEditar text-center btn btn-warning btn-rounded"  value="${element.id_cita}" data-toggle="modal" data-target="#agregarCita">Aceptar solicitud</button>
+						<button class="btnEditar text-center btn btn-success btn-rounded"  value="${element.id_cita}" data-toggle="modal" data-target="#agregarCita">Aceptar solicitud</button>
 						<button class="btnEliminar text-center btn btn-danger btn-rounded"  value="${element.id_cita}">Rechazar solicitud</button>
 					</td>
     			</tr>`
