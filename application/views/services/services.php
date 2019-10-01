@@ -60,7 +60,7 @@
                                 <td class="align-middle"><img src="<?= $service->recurso_av_4 ? "uploads/".$service->recurso_av_4 : './assets/images/default/no-image-visible.png' ?>" alt="" width="130"></td>
                                 <td class="align-middle"><?= $service->fecha_ingreso ?></td>
                                 <td class="align-middle"><button type="button" class="btn btn-warning">Editar</button></td>
-                                <td class="align-middle"><button type="button" class="btn btn-danger">Eliminar</button></td>
+                                <td class="align-middle"><button type="button" class="btn btn-danger" onclick="deleteService()">Eliminar</button></td>
                             </tr>
                         <?php
                         }
@@ -72,7 +72,5 @@
     
 </div>
 
-
-
- 
-    
+<!-- Import services javascript    -->
+<script src="<?= base_url('assets/js/services.js')?>"></script>

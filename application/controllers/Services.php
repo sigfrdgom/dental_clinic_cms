@@ -97,6 +97,11 @@ class Services extends CI_Controller
         
   }
 
+  // Delete services 
+  public function deleteService($id){
+    $this->publicacion_model->delete($id);
+  }
+
 
 
 
