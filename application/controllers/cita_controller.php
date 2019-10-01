@@ -32,7 +32,7 @@ class Cita_controller extends CI_Controller {
     //METODO QUE AGREGA UN REGISTRO CITA
     public function agregarCita(){
         //deberia ir el espacion en blanco?
-        $data=["id_cita" => null, "nombre" => $_POST['nombre'], "apellido" => $_POST['apellido'], "celular" => $_POST['telefono'], "email" => $_POST['email'], "padecimientos" => $_POST['padecimientos'], "procedimiento" => $_POST['procedimiento'], "fecha" => $_POST['fecha'], "hora" => $_POST['hora'], "comentario" => $_POST['comentario']];
+        $data=["id_cita" => null, "nombre" => $_POST['nombre'], "celular" => $_POST['telefono'], "email" => $_POST['email'], "padecimientos" => $_POST['padecimientos'], "procedimiento" => $_POST['procedimiento'], "fecha" => $_POST['fecha'], "hora" => $_POST['hora'], "comentario" => $_POST['comentario']];
 
         $this->cita_model->agregarCita($data);
     }
@@ -55,7 +55,7 @@ class Cita_controller extends CI_Controller {
 
     //METODO QUE SE ENCARGA DE ACTUALIZAR UN REGISTRO DE CITA
     public function actualizarCita(){
-        $data=["id_cita" => $_POST['id_cita'], "nombre" => $_POST['nombre'], "apellido" => $_POST['apellido'], "celular" => $_POST['telefono'], "email" => $_POST['email'], "padecimientos" => $_POST['padecimientos'], "procedimiento" => $_POST['procedimiento'], "fecha" => $_POST['fecha'], "hora" => $_POST['hora'], "comentario" => $_POST['comentario']];
+        $data=["id_cita" => $_POST['id_cita'], "nombre" => $_POST['nombre'], "celular" => $_POST['telefono'], "email" => $_POST['email'], "padecimientos" => $_POST['padecimientos'], "procedimiento" => $_POST['procedimiento'], "fecha" => $_POST['fecha'], "hora" => $_POST['hora'], "comentario" => $_POST['comentario']];
     
         $this->cita_model-> actualizarCita($data);
 	}
@@ -70,6 +70,10 @@ class Cita_controller extends CI_Controller {
 		
     }
 
+    //METODO QUE SE ENCARGA DE ACTUALIZAR EL ESTADO DE UN REGISTRO DE CITA
+    public function actualizarCitaEstado(){
+        $this->cita_model->actualizarCitaEstado($_POST['id_cita']);
+    }
 
 
 } ?>

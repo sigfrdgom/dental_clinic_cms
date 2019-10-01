@@ -32,7 +32,7 @@ class Cita_model extends CI_Model{
     //CONSULTA PARA OBTENER UN REGISTRO DE CITA
     public function obtenerRegistro($id = ""){
          try {
-            $this->db->select('id_cita, nombre, apellido, celular, email, padecimientos, procedimiento, fecha, hora, comentario');
+            $this->db->select('id_cita, nombre, celular, email, padecimientos, procedimiento, fecha, hora, comentario, fecha_solicitud, estado');
             $this->db->from('cita');
             $this->db->where('id_cita', $id);
             $consulta = $this->db->get();
@@ -69,7 +69,6 @@ class Cita_model extends CI_Model{
             return 0;
         }
     }
-
 
     }
 
