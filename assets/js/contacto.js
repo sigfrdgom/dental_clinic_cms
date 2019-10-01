@@ -167,6 +167,23 @@ function accion() {
 			document.getElementById('sendwhats_contacto').href="http://wa.me/"+datos["telefono"]
 			document.getElementById('sendcall_contacto').href="tel:"+datos["telefono"]
 			
+			var datas= new FormData();
+			datas.append("id_contacto", datos["id_contacto"])
+			fetch('actualizarContactoEstado/', {
+				method: 'POST',
+				body: datas
+			}).then(data =>{
+				//   console.log(data);
+				  if(data=="error"){
+					respuesta.innerHTML=
+				  `ERROR`;
+				  }else{
+					  console.log(data)
+					recargar()
+					console.log("esta llegando")
+				  }
+				})
+
 			
 		}};
 		

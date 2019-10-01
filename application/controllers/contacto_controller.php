@@ -58,12 +58,15 @@ class Contacto_controller extends CI_Controller {
 
     //METODO QUE SE ENCARGA DE ACTUALIZAR UN REGISTRO DE CONTACTO
     public function actualizarContacto(){
-       $data=["id_contacto" => $_POST['id_contacto'], "nombre" =>$_POST['nombre'], "apellido" =>$_POST['apellido'], "celular" =>$_POST['telefono'], "email"=> $_POST['email'], "comentario" => $_POST['comentario']];
+       $data=["id_contacto" => $_POST['id_contacto'], "nombre" =>$_POST['nombre'], "celular" =>$_POST['telefono'], "email"=> $_POST['email'], "comentario" => $_POST['comentario']];
     
         $this->contacto_model-> actualizarContacto($data);
         
     }
 
-
+    //METODO QUE SE ENCARGA DE ACTUALIZAR EL ESTADO DE UN REGISTRO DE CONTACTO
+    public function actualizarContactoEstado(){
+        $this->contacto_model->actualizarContactoEstado($_POST['id_contacto']);
+    }
 
 } ?>
