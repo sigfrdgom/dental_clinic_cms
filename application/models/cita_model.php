@@ -32,7 +32,7 @@ class Cita_model extends CI_Model{
     //CONSULTA PARA OBTENER UN REGISTRO DE CITA
     public function obtenerRegistro($id = ""){
          try {
-            $this->db->select('id_cita, nombre, apellido, celular, email, padecimientos, procedimiento, fecha, hora, comentario');
+            $this->db->select('id_cita, nombre, celular, email, padecimientos, procedimiento, fecha, hora, comentario, fecha_solicitud, estado');
             $this->db->from('cita');
             $this->db->where('id_cita', $id);
             $consulta = $this->db->get();
@@ -51,6 +51,19 @@ class Cita_model extends CI_Model{
             return 0;
         }
        }
+
+    //CONSULTA PARA ACTUALIZAR EL ESTADO DE UN REGISTRO UN REGISTRO DE CITA
+    public function actualizarCitaEstado($id){
+        try {
+            $this->db->set('estado',0,FALSE);
+            $this->db->where('id_cita',$id);
+            $this->db->update('cita', $data);
+        } catch (mysqli_sql_exception $e) {
+            return 0;
+        }
+    }
+  
+
     }
 
 ?>

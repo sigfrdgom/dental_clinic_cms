@@ -11,39 +11,43 @@ function recargar(){
 				var texto="";
 				datos.forEach(element => {
 				 texto+=`
-				<tr class="p-0 border-bottom border-info" id="tr${element.id_contacto}">
-					<td>${element.nombre+" "+element.apellido}</td>
-					<td>${element.telefono}</td>
-					<td>${element.email}</td>
+				<tr class="p-0 border-bottom border-info ${(element.estado==1)?'mensaje-no-leido':'mensaje-leido'}" id="tr${element.id_contacto}" >
+					<td>${element.nombre}</td>
 					<td>${element.comentario}</td>
+					<td>${element.fecha}</td>
             		<td class="px-0 py-2">
-						<button class="btnEditar text-center btn btn-success btn-rounded"  value="${element.id_contacto}" data-toggle="modal" data-target="#agregarContacto">Aceptar mensaje</button>
-						<button class="btnEliminar text-center btn btn-danger btn-rounded"  value="${element.id_contacto}">Rechazar mensaje</button>
+						<button class="btnEditar text-center btn ${(element.estado==1)?'btn-success':'btn-info'} btn-rounded"  value="${element.id_contacto}" data-toggle="modal" data-target="#contactarContacto">${(element.estado==1)?'Aceptar mensaje':'Comunicarse'}</button>
+						
+						<button value="${element.id_contacto}" class="text-center btn btn-danger btn-rounded btnEliminar">${(element.estado==1)?'Rechazar mensaje':'Eliminar mensaje'}</button>
 					</td>
     			</tr>`
 				});
 					respuesta.innerHTML=texto;
 					asignarEventos();
 				})
-					
-			
+				
+				// <td>${(element.estado==1)?'No visto':'Visto'}</td>	
+				// <td>${element.telefono}</td>
+				// <td>${element.email}</td>
 
 }
 /////////////////////----------------------------------------POST y PUT------------------------------------------//////////////////
 document.getElementById('guardarContacto').addEventListener('click', function(e){
 	e.preventDefault();
 	var nombre=document.getElementById('nombre').value
-	var apellido=document.getElementById('apellido').value
+	// var apellido=document.getElementById('apellido').value
 	var telefono=document.getElementById('telefono').value
 	var email=document.getElementById('email').value
 	var comentario=document.getElementById('comentario').value
 
 	var datas= new FormData();
 	datas.append("nombre", nombre)
-	datas.append("apellido", apellido)
+	// datas.append("apellido", apellido)
 	datas.append("telefono", telefono)
 	datas.append("email", email)
 	datas.append("comentario", comentario)
+	datas.append("estado", 1)
+	// datas.append("")
 
 	var controlador="agregarContacto";
 	var metodo="POST"
@@ -75,7 +79,7 @@ document.getElementById('guardarContacto').addEventListener('click', function(e)
 /////////////////////------------------------------------------------DELETE---------------------------------------------------//////////////////	
 function eliminar() {
 	Swal.fire({
-		title: '¿Esta seguro de eliminar el mensaje?',
+		title: '¿Esta acción eliminara el mensaje, esta seguro de realizarla?',
 		text: "Esta accion no es reversible",
 		type: 'warning',
 		showCancelButton: true,
@@ -91,7 +95,7 @@ function eliminar() {
 				.then(() =>{
 					Swal.fire(
 						'Eliminado',
-						'!El mensaje ha sido eliminado',
+						'!El mensaje ha sido rechazado',
 						'success'
 						)
 					recargar();		
@@ -105,12 +109,14 @@ function eliminar() {
 function asignarEventos(){
     var btnEditar=document.getElementsByClassName('btnEditar');
 	var btnEliminar=document.getElementsByClassName('btnEliminar');
+	// var btnRechazar=document.getElementsByClassName('btnRechazar');
 	
 	for (var index = 0; index <btnEditar.length; index++) {
 	
 		//PARA EMPEZAR A CARGAR
-        btnEditar[index].addEventListener('click', accion);
-        btnEliminar[index].addEventListener('click', eliminar);
+		btnEditar[index].addEventListener('click', accion);
+		btnEliminar[index].addEventListener('click', eliminar);
+		// btnRechazar[index].addEventListener('click', rechazar);
         
     }
 }
@@ -123,14 +129,36 @@ function accion() {
     peticion.onreadystatechange=function(){
         if(this.readyState==4){
 			datos=JSON.parse(this.responseText);
-			document.getElementById("id_contacto").value=datos["id_contacto"];
-			document.getElementById('nombre').value=datos["nombre"];
-			document.getElementById('apellido').value=datos["apellido"];
-			document.getElementById('telefono').value=datos["telefono"];
-			document.getElementById('email').value=datos["email"];
-			document.getElementById('comentario').value=datos["comentario"];
-	   
-        }};
+			document.getElementById("id_contacto_contacto").value=datos["id_contacto"];
+			document.getElementById('nombre_contacto').innerHTML=datos["nombre"];
+			document.getElementById('comentario_contacto').innerHTML=datos["comentario"];
+			document.getElementById('telefono_contacto').innerHTML=datos["telefono"];
+			document.getElementById('email_contacto').innerHTML=datos["email"];
+			document.getElementById('fecha_contacto').innerHTML=datos["fecha"];
+			document.getElementById('estado_contacto').innerHTML=(datos["estado"]==1)?'No leido':'Leido';
+			
+			document.getElementById('sendmail_cita').href="mailto:"+datos["email"]+"?subject=Contacto desde pagina WEB"
+			document.getElementById('sendwhats_cita').href="http://wa.me/"+datos["telefono"]
+			document.getElementById('sendcall_cita').href="tel:"+datos["telefono"]
+			
+			var datas= new FormData();
+			datas.append("id_contacto", datos["id_contacto"])
+			fetch('actualizarContactoEstado/', {
+				method: 'POST',
+				body: datas
+			}).then(data =>{
+				//   console.log(data);
+				  if(data=="error"){
+					respuesta.innerHTML=
+				  `ERROR`;
+				  }else{
+					recargar()
+				  }
+				})
+
+			
+		}};
+		
     peticion.open('GET', 'obtenerRegistro/'+this.value);
 	peticion.send();
 	btn= document.getElementById('guardarContacto')
@@ -140,10 +168,11 @@ function accion() {
 }
 
 document.getElementById("btnReset").addEventListener("click", limpiar)
-document.getElementById("idModal").addEventListener("click", limpiar)
+// document.getElementById("idModal").addEventListener("click", limpiar)
+
 function limpiar(){
 	document.getElementById('nombre').value="";
-	document.getElementById('apellido').value="";
+	// document.getElementById('apellido').value="";
 	document.getElementById('telefono').value="";
 	document.getElementById('email').value="";
 	document.getElementById('comentario').value="";
