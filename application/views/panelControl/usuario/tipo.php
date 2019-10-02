@@ -3,15 +3,15 @@
 
     <div class="row page-titles pt-2 pb-0" style="background: white" >
         <div class="col-md-5 align-self-center">
-            <h4 class="text-themecolor text-dark float-left mt-2">TIPO CONTENIDO&nbsp; &nbsp; &nbsp; &nbsp;</h4> 
+            <h4 class="text-themecolor text-dark float-left mt-2">TIPO CONTENIDO&nbsp; &nbsp; &nbsp;</h4> 
 
             <button type="button" class="btn btn-outline-success mb-2 btn-rounded" data-toggle="modal" data-target="#agregarTipo" id="idModal">
-                <span class='fa fa-plus-square-o bigfonts'></span> Nuevo tipo
+                <span class='fa fa-plus-square-o bigfonts' ></span> Nuevo tipo
             </button>
 
-            <a href="#" title="Agregar Tipos"  data-toggle="popover" data-trigger="focus"
-                    data-content="Sirve para agregar un nuevo tipo al sistema.">
-                <i class="fa fa-fw fa-question-circle pop-help"></i>
+            <a href="#" title="Agregar Tipo de contenido"  data-toggle="popover" data-trigger="focus"
+                    data-content="Sirve para agregar un nuevo tipo de contenido al sistema.">
+                <i class="fa fa-fw fa-question-circle pop-help" style="font-size:1.3em;"></i>
             </a>
 
         </div>
@@ -50,8 +50,8 @@
                         <th colspan="2">Acciones
                             <a href="#" 
                                 title="Acciones de gestion"  data-toggle="popover" data-trigger="focus"
-                                data-content="Sirven para modificar informacion de un tipo del sistema o darlo de baja">
-                                <i class="fa fa-fw fa-question-circle pop-help"></i>
+                                data-content="Sirven para modificar informacion de un tipo de contenido manejado por el sistema o darlo de baja">
+                                <i class="fa fa-fw fa-question-circle pop-help text-white"></i>
                             </a>
                         </th>
                     </tr>

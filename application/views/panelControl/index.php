@@ -22,73 +22,26 @@
         <div class="col-lg-6">
             <div class="card" style="background: #42baff62">
                 <div class="card-body">
-                    <h5 class="card-title text-dark">Mensajes</h5>
-    
+                    <h5 class="card-title text-dark">Mensajes recibidos.</h5>
+                    <!-- Div container for messages -->
                     <div class="steamline m-t-40" id="msg_inbox">
-
-                        <!-- Message item -->
-                        <!-- <div class="sl-item bg-white">
-                            <div class="sl-left bg-info">
-                                <i class="fa fa-user mt-1" style="font-size:2em;"></i>
-                            </div>
-                            <div class="sl-right">
-                                <div class="font-medium pt-3">
-                                    Name person
-                                    <br>
-                                    <span class="sl-date">Date</span>
-                                </div>
-                                <div class="desc">
-                                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Autem quisquam mollitia perferendis voluptas 
-                                    doloremque aliquam expedita nostrum dignissimos incidunt, iusto tempora accusamus dolorem at placeat 
-                                    officia ex pariatur illo deleniti?
-                                    <br>
-                                    <button class="btn m-t-10 m-r-5 btn-rounded btn-success">Responder</button>
-                                    <button class="btn m-t-10 btn-rounded btn-danger">Rechazar</button>
-                                </div>
-                            </div>
-                        </div> -->
-                        <!-- Message item -->
-
-
                     </div>
-
+                    <!-- Div container for messages -->
                 </div>
             </div>
         </div>
         <!-- Messages received from web page -->
 
-
-        <!-- ============================================================== -->
-        <!-- Received messages -->
-        <!-- ============================================================== -->
+        <!-- Appointment request from webpage -->
         <div class="col-lg-6">
             <div class="card" style="background: #42baff56">
                 <div class="card-body">
-                    <h5 class="card-title text-dark">Solicitudes de cita</h5>
+                    <h5 class="card-title text-dark">Solicitudes de cita no procesadas.</h5>
                     <div class="message-box">
-                        <div class="message-widget message-scroll mt-5" id="cita_inbox">
-                            
-                            <!-- request for appointment -->
-                            <!-- <div class="bg-white p-4 my-2" style="border-radius: 10px;"> -->
-                                <!-- <div class="user-img"> <img src="assets/images/users/1.jpg" alt="user" class="img-circle"> <span class="profile-status online pull-right"></span> </div> -->
-                                <!-- <div class="mail-contnet">
-                                    <h5 class="text-dark">John Doe</h5>
-                                    <span class="mail-desc text-dark">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam rem deleniti iure quaerat culpa et ea dolore nulla nisi? </span>
-                                    <br>
-                                    <div class="mt-2 mb-1">
-                                        <span class="font-medium">Fecha Solicitada</span>
-                                        <span class="time">12-11-2019</span> 
-                                        <br>
-                                        <span class="font-medium">Hora Solicitada</span>
-                                        <span class="time">9:00 AM</span>
-                                    </div> 
-                                        <button class="btn m-t-10 m-r-5 btn-rounded btn-success">Responder solicitud</button>
-                                        <button class="btn m-t-10 btn-rounded btn-danger">Rechazar Solicitud</button> 
-                                </div>
-                            </div> -->
-                            <!-- request for appointment -->
-
+                        <!-- Div container for appointment request -->
+                        <div class="message-widget message-scroll mt-5" id="cita_inbox">       
                         </div>
+                        <!-- Div container for appointment request -->
                     </div>
                 </div>
             </div>
@@ -98,4 +51,192 @@
 
 </div>
 
-<script src="<?= base_url('assets/js/dash.js')?>"></script>
+<!-- Start of modal for contact clients -->
+<div class="modal fade" id="contactarMsg">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered">
+        <div class="modal-content">
+        
+            <!-- Modal Header -->
+            <div class="modal-header" id="formUs">
+                <h4 class="modal-title" style="margin: 0% auto;" id="aggdct">Contactar al cliente</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <!-- Modal Header -->
+            
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form id="formContacto" data-parsley-validate novalidate>
+                    <input type="hidden" name="id" id="id_contacto_contacto">
+
+                    <div class="row">
+                        <div class="col-12">
+                            <span class="mt-3 font-weight-bold">Nombre del remitente:</span><br>
+                            <span class="mt-3" id="nombre_contacto"></span>
+                        </div>
+                        <div class="col-12 mt-3">
+                            <span class="mt-3 font-weight-bold">Comentario o duda:</span>
+                        </div>
+                        <div class="col-12">
+                            <p class="mt-2" id="comentario_contacto"></p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="mt-3 col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                            <span class="font-weight-bold">Telefono:</span><br>
+                            <span id="telefono_contacto"></span>
+                        </div>
+                        <div class="mt-3 col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                            <span class="font-weight-bold">Email:</span><br>
+                            <span id="email_contacto"></span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="mt-3 col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                            <span class=" font-weight-bold">Recibido:</span><br>
+                            <span class="" id="fecha_contacto"></span>
+                        </div>
+                        <div class="mt-3 col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                            <span class=" font-weight-bold">Estado:</span><br>
+                            <span  id="estado_contacto"></span>
+                        </div>
+                    </div>
+                    <div class="row mt-5 text-center">
+                        <div class="col-4">
+                            <a href="" target="_blank" id="sendmail_contacto"><i class="fa fa-reply" style="font-size:3em;"></i></a>
+                            <br>Enviar E-Mail
+                        </div>
+                        <div class="col-4">
+                            <a href="" target="_blank" id="sendwhats_contacto"><i class="fab fa-whatsapp" style="font-size:3em;"></i></a>
+                            <br>Enviar Mensaje
+                        </div>
+                        <div class="col-4">
+                            <a href="" target="_blank" id="sendcall_contacto"><i class="fa fa-phone" style="font-size:3em;"></i></a>
+                            <br>Llamar a cliente
+                        </div>
+                    </div>
+                    
+                        
+            </div>
+            <!-- Modal body -->
+                                            
+            <!-- Modal footer -->
+            <div class="modal-footer" id="formUs2">
+                    <!-- <input type="submit"  class="btn btn-success" value="Guardar" id="guardarContacto"> -->
+                    <button type="reset" class="btn btn-danger" data-dismiss="modal" id="btnReset">Salir</button>
+                </form>
+            </div>
+            <!-- Modal footer -->
+            
+        </div>
+    </div>
+</div>
+<!-- Start of modal for contact clients -->
+
+
+<!-- Start of modal for cita contact -->
+<div class="modal fade" id="contactarCita">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header" id="formUs">
+                <h4 class="modal-title" style="margin: 0% auto;" id="aggdct">Contactar al solicitante de cita</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <!-- Modal Header -->
+            
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form id="formCita"  data-parsley-validate novalidate>
+                    <input type="hidden" name="id" id="id_cita_cct">
+
+                    <div class="row">
+                        <div class="col-12">
+                            <span class="mt-3 font-weight-bold">Nombre del remitente:</span><br>
+                            <span class="mt-3" id="nombre_cct"></span>
+                        </div>
+                        <div class="col-12 mt-3">
+                            <span class="mt-3 font-weight-bold">Comentario de cita:</span>
+                        </div>
+                        <div class="col-12">
+                            <p class="mt-2" id="comentario_cct"></p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="mt-3 col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                            <span class="font-weight-bold">Padecimientos:</span><br>
+                            <span id="padecimientos_cct"></span>
+                        </div>
+                        <div class="mt-3 col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                            <span class="font-weight-bold">Procedimiento:</span><br>
+                            <span id="procedimiento_cct"></span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="mt-3 col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                            <span class="font-weight-bold">Fecha solicitada:</span><br>
+                            <input type="date" name="fecha" id="fecha_cct" placeholder="Fecha de la cita:DD/MM/AAAA" class="form-control" readonly required>
+                        </div>
+                        <div class="mt-3 col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                            <span class="font-weight-bold">Hora Solicitada:</span><br>
+                            <input type="time" name="hora" id="hora_cct" placeholder="Ingrese la hora de la cita" class="form-control" readonly required>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="mt-3 col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                            <span class="font-weight-bold">Telefono:</span><br>
+                            <span id="telefono_cct"></span>
+                        </div>
+                        <div class="mt-3 col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                            <span class="font-weight-bold">Email:</span><br>
+                            <span id="email_cct"></span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="mt-3 col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                            <span class=" font-weight-bold">Recibido:</span><br>
+                            <span class="" id="fecha_solicitud_cct"></span>
+                        </div>
+                        <div class="mt-3 col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                            <span class=" font-weight-bold">Estado:</span><br>
+                            <span  id="estado_cct"></span>
+                        </div>
+                    </div>
+
+                    <div class="row mt-5 text-center">
+                        <div class="col-4">
+                            <a href="" target="_blank" id="sendmail_cita"><i class="fa fa-reply" style="font-size:3em;"></i></a>
+                            <br>Enviar E-Mail
+                        </div>
+                        <div class="col-4">
+                            <a href="" target="_blank" id="sendwhats_cita"><i class="fab fa-whatsapp" style="font-size:3em;"></i></a>
+                            <br>Enviar Mensaje
+                        </div>
+                        <div class="col-4">
+                            <a href="" target="_blank" id="sendcall_cita"><i class="fa fa-phone" style="font-size:3em;"></i></a>
+                            <br>Llamar a cliente
+                        </div>
+                    </div>                   
+            </div>
+            <!-- Modal body -->
+
+                                            
+            <!-- Modal footer -->
+            <div class="modal-footer" id="formUs2">
+                    <button type="reset" class="btn btn-danger" data-dismiss="modal" id="btnReset">Cancelar</button>
+                </form>
+            </div>
+            <!-- Modal footer -->
+        
+        </div>
+    </div>
+</div>
+<!-- End of modal for cita contact -->
+
+<script src="<?= base_url('assets/js/dash.js')?>"></script>    

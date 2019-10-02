@@ -11,8 +11,8 @@
 
             <a href="#" 
                     title="Agregar Usuario"  data-toggle="popover" data-trigger="focus"
-                    data-content="Sirve para agregar un nuevo usuario al sistema.">
-                <i class="fa fa-fw fa-question-circle pop-help"></i>
+                    data-content="Este control sirve para agregar un nuevo usuario al sistema, agregar su información y las credenciales de como este ingresara al sistema.">
+                <i class="fa fa-fw fa-question-circle pop-help" style="font-size:1.3em;"></i>
             </a>
 
         </div>
@@ -61,7 +61,7 @@
                             <th colspan="2">Acciones
                                 <a href="#" 
                                     title="Acciones de gestion"  data-toggle="popover" data-trigger="focus"
-                                    data-content="Sirven para modificar informacion de un usuario del sistema o darlo de baja">
+                                    data-content="Sirven para modificar información y credenciales de un usuario del sistema o darlo de baja">
                                     <i class="fa fa-fw fa-question-circle pop-help text-white" style="font-size:1.2em;"></i>
                                 </a>
                             </th>

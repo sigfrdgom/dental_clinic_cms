@@ -24,8 +24,8 @@ function recargar(){
 					<td>${element.tipo_usuario}</td>
 					<td>${estado}</td>
             		<td class="py-2">
-						<button class="btnEditar text-center btn btn-warning btn-rounded"  value="${element.id_usuario}" data-toggle="modal" data-target="#agregarUsuario">EDITAR</button>
-						<button class="btnEliminar text-center btn btn-danger btn-rounded"  value="${element.id_usuario}">ELIMINAR</button>
+						<button class="btnEditar text-center btn btn-warning btn-rounded"  value="${element.id_usuario}" data-toggle="modal" data-target="#agregarUsuario">GESTIONAR</button>
+						<button class="btnEliminar text-center btn btn-danger btn-rounded"  value="${element.id_usuario}">BLOQUEAR</button>
             		</td>
     			</tr>`
 				});
