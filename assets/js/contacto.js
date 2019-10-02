@@ -1,5 +1,5 @@
 window.addEventListener('load', recargar);
-var formulario=document.getElementById("formContacto");
+// var formulario=document.getElementById("formContacto");
 var respuesta=document.getElementById("bodyContacto");
 
 
@@ -32,48 +32,43 @@ function recargar(){
 
 }
 /////////////////////----------------------------------------POST y PUT------------------------------------------//////////////////
-document.getElementById('guardarContacto').addEventListener('click', function(e){
-	e.preventDefault();
-	var nombre=document.getElementById('nombre').value
-	// var apellido=document.getElementById('apellido').value
-	var telefono=document.getElementById('telefono').value
-	var email=document.getElementById('email').value
-	var comentario=document.getElementById('comentario').value
+// document.getElementById('guardarContacto').addEventListener('click', function(e){
+// 	e.preventDefault();
+// 	var nombre=document.getElementById('nombre').value
+// 	var telefono=document.getElementById('telefono').value
+// 	var email=document.getElementById('email').value
+// 	var comentario=document.getElementById('comentario').value
 
-	var datas= new FormData();
-	datas.append("nombre", nombre)
-	// datas.append("apellido", apellido)
-	datas.append("telefono", telefono)
-	datas.append("email", email)
-	datas.append("comentario", comentario)
-	datas.append("estado", 1)
-	// datas.append("")
+// 	var datas= new FormData();
+// 	datas.append("nombre", nombre)
+// 	datas.append("telefono", telefono)
+// 	datas.append("email", email)
+// 	datas.append("comentario", comentario)
+// 	datas.append("estado", 1)
 
-	var controlador="agregarContacto";
-	var metodo="POST"
-    if (this.value=="Modificar") {
-		controlador="actualizarContacto";
-		// metodo="PUT"
-		var id_contacto=document.getElementById('id_contacto').value
-		datas.append("id_contacto", id_contacto)
+// 	var controlador="agregarContacto";
+// 	var metodo="POST"
+//     if (this.value=="Modificar") {
+// 		controlador="actualizarContacto";
+// 		var id_contacto=document.getElementById('id_contacto').value
+// 		datas.append("id_contacto", id_contacto)
 			
-	}
+// 	}
 	
 
-	fetch(controlador, {
-        method: metodo,
-        body: datas
-    }).then(data =>{
-        //   console.log(data);
-          if(data=="error"){
-            respuesta.innerHTML=
-          `ERROR`;
-          }else{
-			recargar();
-			limpiar();	
-          }})
+// 	fetch(controlador, {
+//         method: metodo,
+//         body: datas
+//     }).then(data =>{
+//           if(data=="error"){
+//             respuesta.innerHTML=
+//           `ERROR`;
+//           }else{
+// 			recargar();
+// 			limpiar();	
+//           }})
 
-});
+// });
 
 
 /////////////////////------------------------------------------------DELETE---------------------------------------------------//////////////////	
@@ -172,7 +167,6 @@ document.getElementById("btnReset").addEventListener("click", limpiar)
 
 function limpiar(){
 	document.getElementById('nombre').value="";
-	// document.getElementById('apellido').value="";
 	document.getElementById('telefono').value="";
 	document.getElementById('email').value="";
 	document.getElementById('comentario').value="";
@@ -204,7 +198,7 @@ document.getElementById("busqueda").addEventListener("keyup", function(){
 				datos.forEach(element => {
 				texto+=`
 				<tr class="p-0 border-bottom border-info" id="tr${element.id_contacto}">
-					<td>${element.nombre+" "+element.apellido}</td>
+					<td>${element.nombre}</td>
 					<td>${element.telefono}</td>
 					<td>${element.email}</td>
 					<td>${element.comentario}</td>

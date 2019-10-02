@@ -78,31 +78,31 @@
 
 
 <!-- Start of modal for contacto management -->
-<div class="modal fade" id="agregarContacto">
+<!-- <div class="modal fade" id="agregarContacto">
     <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered">
-        <div class="modal-content">
+        <div class="modal-content"> -->
         
             <!-- Modal Header -->
-            <div class="modal-header" id="formUs">
+            <!-- <div class="modal-header" id="formUs">
                 <h4 class="modal-title" style="margin: 0% auto;" id="aggdct">Agregar un nuevo contacto</h4>
                 <h4 class="modal-title" style="margin: 0% auto; display:none;" id="mdfdct">Modificar un contacto</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
+            </div> -->
             <!-- Modal Header -->
             
             <!-- Modal body -->
-            <div class="modal-body">
+            <!-- <div class="modal-body">
                 <form id="formContacto" data-parsley-validate novalidate>
                     <input type="hidden" name="id" id="id_contacto">
 
                     <label for="nombre" class="mrg-spr-ex mt-3 font-weight-bold">Nombre del contacto: </label>	
                     <input type="text" name="nombre" id="nombre" placeholder="Escribe el nombre de la contacto"
-                    class="form-control vinput" required pattern='[a-zA-zÑñÁÉÍÓÚáéíóúü ]{1,64}'>
+                    class="form-control vinput" required pattern='[a-zA-zÑñÁÉÍÓÚáéíóúü ]{1,64}'> -->
 
                     <!-- <label for="apellido" class="mrg-spr-ex mt-3 font-weight-bold">Apellido del contacto: </label>	
                     <input type="text" name="apellido" id="apellido" placeholder="Escribe el apellido de la contacto"
                     class="form-control vinput" required pattern='[a-zA-zÑñÁÉÍÓÚáéíóúü ]{1,64}'> -->
-                    
+<!--                     
                     <label for="telefono" class="mrg-spr-ex mt-3 font-weight-bold">Telefono: </label>	
                     <input type="text" name="telefono" id="telefono" placeholder="Escribe el telefono para contacto"
                     class="form-control vinput" required pattern='[0-9()+-]{7,16}'>
@@ -115,20 +115,20 @@
                     <input type="text" name="comentario" id="comentario" class="form-control vinput" rows="3"
                     placeholder="Escribe un comentario para el contacto" required pattern='[a-zA-zÑñÁÉÍÓÚáéíóúü#0-9 ]{1,1024}'>
                         
-            </div>
+            </div> -->
             <!-- Modal body -->
                                             
             <!-- Modal footer -->
-            <div class="modal-footer" id="formUs2">
+            <!-- <div class="modal-footer" id="formUs2">
                     <input type="submit"  class="btn btn-success" value="Guardar" id="guardarContacto">
                     <button type="reset" class="btn btn-danger" data-dismiss="modal" id="btnReset">Cancelar</button>
                 </form>
-            </div>
+            </div> -->
             <!-- Modal footer -->
             
-        </div>
+        <!-- </div>
     </div>
-</div>
+</div> -->
 <!-- Start of modal for contacto management -->
 
 <!-- Start of modal for contact clients -->
