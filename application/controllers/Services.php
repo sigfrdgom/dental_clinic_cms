@@ -7,7 +7,7 @@ class Services extends CI_Controller
   public function __construct()
   {
     parent::__construct();
-    $this->load->model(array('publicacion_model'));
+    $this->load->model(array('publicacion_model', 'categoria_model'));
   }
 
   public function mostrarDatos()
@@ -23,14 +23,16 @@ class Services extends CI_Controller
 
   public function create()
   {
+    $datos = ['categories' => $this->categoria_model->getAll()];
     $this->load->view('templates/header');
-    $this->load->view('services/create');
+    $this->load->view('services/create', $datos);
     $this->load->view('templates/footer');
   }
 
-  private function savePictures($mi_archivo){
+  private function savePictures($mi_archivo)
+  {
     $config['upload_path'] = "uploads/";
-    $config['file_name'] = "recurso_".time();
+    $config['file_name'] = "recurso_" . time();
     $config['allowed_types'] = 'gif|jpg|png';
     $config['max_size'] = "5000";
     $config['max_width'] = "2000";
@@ -47,69 +49,100 @@ class Services extends CI_Controller
     } else {
       //*** Datos de la imagen */
       $data = array(
-      'upload_data' =>  $this->upload->data(),
-      'state' => true
+        'upload_data' =>  $this->upload->data(),
+        'state' => true
       );
       return $data;
     }
   }
 
-  public function guardarDatos(){
+  public function guardarDatos()
+  {
 
     $data_files = array();
-    for ($i=1; $i <= sizeof($_FILES) ; $i++) { 
-      if (isset($_FILES['recurso'.$i]['name'])) {
-        if ($_FILES['recurso'.$i]['size'] > 0) {
-          $data_files = array_merge($data_files, array('file'.$i => $this->savePictures('recurso'.$i)));
+    for ($i = 1; $i <= sizeof($_FILES); $i++) {
+      if (isset($_FILES['recurso' . $i]['name'])) {
+        if ($_FILES['recurso' . $i]['size'] > 0) {
+          $data_files = array_merge($data_files, array('file' . $i => $this->savePictures('recurso' . $i)));
         }
       }
     }
 
     $fecha = new DateTime();
     $datos = [
-          'id_publicacion' => null,
-          'id_usuario' => 1,
-          'id_categoria' => 1,
-          'id_tipo' => 1,
-          'titulo' => $_POST['titulo'],
-          'texto_introduccion' => $_POST['texto_introduccion'],
-          'contenido' => $_POST['contenido'],
-          'estado' => true,
-          'recurso_av_1' => isset($data_files['file1'])?  $data_files['file1']["upload_data"]['file_name']: '',
-          'recurso_av_2' => isset($data_files['file2'])?  $data_files['file2']["upload_data"]['file_name']: '',
-          'recurso_av_3' => isset($data_files['file3'])?  $data_files['file3']["upload_data"]['file_name']: '',
-          'recurso_av_4' => isset($data_files['file4'])?  $data_files['file4']["upload_data"]['file_name']: '',
-          'fecha_ingreso' => $fecha->format('Y-m-d')
-        ];
+      'id_publicacion' => null,
+      'id_usuario' => 1,
+      'id_categoria' => $_POST['categoria'],
+      'id_tipo' => 1,
+      'titulo' => $_POST['titulo'],
+      'texto_introduccion' => $_POST['texto_introduccion'],
+      'contenido' => $_POST['contenido'],
+      'estado' => true,
+      'recurso_av_1' => isset($data_files['file1']) ?  $data_files['file1']["upload_data"]['file_name'] : '',
+      'recurso_av_2' => isset($data_files['file2']) ?  $data_files['file2']["upload_data"]['file_name'] : '',
+      'recurso_av_3' => isset($data_files['file3']) ?  $data_files['file3']["upload_data"]['file_name'] : '',
+      'recurso_av_4' => isset($data_files['file4']) ?  $data_files['file4']["upload_data"]['file_name'] : '',
+      'fecha_ingreso' => $fecha->format('Y-m-d')
+    ];
 
-        try {
-          $this->publicacion_model->create($datos);
-          $message = array('message' => 'Registro Agregado con éxito');
-          // $this->session->set_flashdata($message);
-          redirect('services');
-        } catch (Exception $e) {
+    try {
+      $this->publicacion_model->create($datos);
+      $message = array('message' => 'Registro Agregado con éxito');
+      // $this->session->set_flashdata($message);
+      redirect('services');
+    } catch (Exception $e) {
 
-          $this->publicacion_model->create($datos);
-          $message = array('error' => 'Error no se puedo agregar el registro ');
-          // $this->session->set_flashdata($message);
-          redirect('services');
-        }
-        
+      $this->publicacion_model->create($datos);
+      $message = array('error' => 'Error no se puedo agregar el registro ');
+      // $this->session->set_flashdata($message);
+      redirect('services');
+    }
   }
-  
-  public function edit($id){
-    $datos = ['services' => $this->publicacion_model->findById($id)];
+
+  public function edit($id)
+  {
+    $datos = [
+      'services' => $this->publicacion_model->findById($id),
+      'categories' => $this->categoria_model->getAll()
+    ];
     $this->load->view('templates/header');
     $this->load->view('services/edit', $datos);
     $this->load->view('templates/footer');
   }
 
-  // Delete services 
-  public function deleteService($id){
-    $this->publicacion_model->delete($id);
+  private function deleteImage($id){
+    // Covert stdclass to array
+    $data = json_decode(json_encode($this->publicacion_model->findById($id)), true);
+    // get the last 3 register of the array
+    $data = array_splice($data, -5, 4, true);
+    // delete the keys of the array
+    $message = array();
+    $data = array_values($data);
+    for ($i = 0; $i < sizeof($data); $i++) {
+      if (isset($data[$i])) {
+        $path = "./uploads/" . $data[$i];
+        try {
+          if (file_exists($path) == true) {
+            if (!is_dir($path)) {
+              if (unlink($path)) {
+                $message= array('message' => 'deleted successfully');
+              }
+            }
+          }
+        } catch (Exception $e) {
+          $message= array('error' => 'deleted successfully'); 
+         }
+      }
+    }
+    return $message;
   }
 
-
-
-
+  // Delete services 
+  public function deleteService($id)
+  {
+    $message = $this->deleteImage($id);
+    // Delete the data from the database
+    $this->publicacion_model->delete($id);
+    // redirect('services');
+  }
 }
