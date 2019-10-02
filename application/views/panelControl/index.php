@@ -40,7 +40,6 @@
                     <div class="message-box">
                         <!-- Div container for appointment request -->
                         <div class="message-widget message-scroll mt-5" id="cita_inbox">       
-                        +
                         </div>
                         <!-- Div container for appointment request -->
                     </div>
