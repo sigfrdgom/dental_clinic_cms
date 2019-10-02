@@ -18,14 +18,14 @@ class Cita_model extends CI_Model{
 
 
     //CONSULTA PARA AGREGAR UN REGISTRO A LA TABLA CITA
-    public function agregarCita($data){     
-        try {
-            $this->db->insert('cita', $data);
-            return 1;
-        } catch (mysqli_sql_exception $e) {
-            return 0;
-        }
-    }
+    // public function agregarCita($data){     
+    //     try {
+    //         $this->db->insert('cita', $data);
+    //         return 1;
+    //     } catch (mysqli_sql_exception $e) {
+    //         return 0;
+    //     }
+    // }
 
 
     //CONSULTA PARA ELIMINAR UN REGISTRO A LA TABLA CITA
@@ -66,9 +66,8 @@ class Cita_model extends CI_Model{
 
 	   public function findByCriteria($datos){
         try {
-        	$this->db->select('id_cita, nombre, apellido, celular, email, padecimientos, procedimiento, fecha, hora, comentario');
+        	$this->db->select('id_cita, nombre, celular, email, padecimientos, procedimiento, fecha, hora, comentario');
 			$this->db->like('nombre', $datos);
-			$this->db->or_like('apellido', $datos);
 			$this->db->or_like('celular', $datos);
 			$this->db->or_like('email', $datos);
 			$this->db->or_like('fecha', $datos);

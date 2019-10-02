@@ -44,7 +44,7 @@ class Contacto_model extends CI_Model{
     //CONSULTA PARA OBTENER UN REGISTRO DE CONTACTO
     public function obtenerRegistro($id = ""){
          try {
-            $this->db->select('id_contacto, nombre, telefono, email, comentario,fecha,estado');
+            $this->db->select('id_contacto, nombre, telefono, email, comentario, fecha, estado');
             $this->db->from('contacto');
             $this->db->where('id_contacto', $id);
             $consulta = $this->db->get();
@@ -69,9 +69,8 @@ class Contacto_model extends CI_Model{
 
 	public function findByCriteria($datos){
         try {
-        	$this->db->select('id_contacto, nombre, apellido, telefono, email, comentario');
+        	$this->db->select('id_contacto, nombre, telefono, email, comentario');
 			$this->db->like('nombre', $datos);
-			// $this->db->or_like('apellido', $datos);
 			$this->db->or_like('telefono', $datos);
 			$this->db->or_like('email', $datos);
 			return $this->db->get('contacto')->result();

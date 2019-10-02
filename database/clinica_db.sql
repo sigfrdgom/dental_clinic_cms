@@ -54,7 +54,6 @@ CREATE TABLE IF NOT EXISTS `publicacion`(
 CREATE TABLE IF NOT EXISTS `contacto`(
   `id_contacto` INT(11) NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(64) NOT NULL,
-  `apellido` VARCHAR(64) NOT NULL,
   `telefono` VARCHAR(16) NOT NULL,
   `email` VARCHAR(50) NOT NULL,
   `comentario` TEXT,
@@ -66,7 +65,6 @@ CREATE TABLE IF NOT EXISTS `contacto`(
 CREATE TABLE IF NOT EXISTS `cita`(
   `id_cita` INT(11) NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(64) NOT NULL,
-  `apellido` VARCHAR(64) NOT NULL,
   `celular` VARCHAR(16) NOT NULL,
   `email` VARCHAR(50) NOT NULL,
   `padecimientos` VARCHAR(50) NOT NULL,
