@@ -7,6 +7,16 @@ class Cita_model extends CI_Model{
         return $this->db->get('cita')->result();
     }
 
+    //CONSULTA PARA CARGAR LO DATOS DE LA TABLA CITA CON ESTADO ACTIVO
+    public function getActive(){ 
+        $this->db->from('cita');
+        $this->db->where('estado', 1);
+        $this->db->order_by('fecha_solicitud','DESC');
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+
     //CONSULTA PARA AGREGAR UN REGISTRO A LA TABLA CITA
     public function agregarCita($data){     
         try {

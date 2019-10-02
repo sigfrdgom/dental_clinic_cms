@@ -29,6 +29,10 @@ class Contacto_controller extends CI_Controller {
         echo json_encode($this->contacto_model->getAll());
     }
 
+    //METODO QUE LLAMA LOS DATOS DE LA BASE DE DATOS QUE SU ESTADO SEA ACTIVO
+    public function cargarDatosActivos(){ 
+        echo json_encode($this->contacto_model->getActive());
+    }
 
     //METODO QUE AGREGA UN REGISTRO CONTACTO
     public function agregarContacto(){
