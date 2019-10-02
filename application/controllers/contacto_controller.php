@@ -64,7 +64,7 @@ class Contacto_controller extends CI_Controller {
     public function actualizarContacto(){
        $data=["id_contacto" => $_POST['id_contacto'], "nombre" =>$_POST['nombre'], "celular" =>$_POST['telefono'], "email"=> $_POST['email'], "comentario" => $_POST['comentario']];
     
-        $this->contacto_model-> actualizarContacto($data);
+        $this->contacto_model->actualizarContacto($data);
         
 	}
 	
