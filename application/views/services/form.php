@@ -4,6 +4,18 @@
         <label for="titulo">Titulo del servicio</label>
         <input type="text" class="form-control" value="<?= isset($services->titulo) ? $services->titulo : '' ?>" name="titulo" id="" aria-describedby="helpId" placeholder="" required>
     </div>
+    <div class="form-group mt-2">
+        <label for="categoria">Categoria</label>
+        <select name="categoria" id="" class="form-control" required>
+            <?php foreach($categories as $category){ 
+                if(isset($services->id_categoria)){ ?>
+                    <option value="<?= $category->id_categoria ?>"  <?= ($category->id_categoria == $services->id_categoria)  ? 'selected' : '' ?>  ><?= $category->nombre ?></option>
+                <?php } else{ ?>
+                    <option value="<?= $category->id_categoria ?>" ><?= $category->nombre ?></option>
+                    <?php }?>
+            <?php } ?>
+        </select>
+    </div>
     <div class="form-group">
         <label for="introduccion">Introduccion de presentación</label>
         <textarea class="form-control" name="texto_introduccion" id="" rows="3" required><?= isset($services->texto_introduccion) ? $services->texto_introduccion : '' ?></textarea>

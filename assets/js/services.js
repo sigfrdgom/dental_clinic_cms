@@ -1,3 +1,9 @@
+window.addEventListener('load', listener);
+
+function listener() {
+	document.getElementById('btn-delete').addEventListener('click', deleteService)
+}
+
 function deleteService() {
 	Swal.fire({
 		title: '¿Esta seguro de eliminar el servicio?',
@@ -10,7 +16,7 @@ function deleteService() {
 		cancelButtonText: 'Cancelar',
 	}).then((result) => {
 		if (result.value) {
-			fetch('deleteServices/'+this.value, {
+			fetch('services/deleteService/'+this.value, {
 				method: 'DELETE'
 				})
 				.then(() =>{
@@ -19,7 +25,9 @@ function deleteService() {
 						'!La servicio ha sido eliminada!',
 						'success'
 					  )
-					recargar();		
+					// recargar();
+					// is short time then i will change
+					// window.location.reload();
 				})
 		}
 	})
