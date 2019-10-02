@@ -42,11 +42,20 @@ function recargar(){
 /////////////////////----------------------------------------POST y PUT------------------------------------------//////////////////
 document.getElementById('guardarUsuario').addEventListener('click', function(e){
 	e.preventDefault();
-    var nombres=document.getElementById('nombres').value
-   	var apellidos=document.getElementById('apellidos').value
-	var nombre_usuario=document.getElementById('usuario').value
-	var pass=document.getElementById('pass').value
+    var nombres=document.getElementById('nombres')
+   	var apellidos=document.getElementById('apellidos')
+	var nombre_usuario=document.getElementById('usuario')
+	var pass=document.getElementById('pass')
 	var tipo_usuario=document.querySelector('input[name="tipo_usuario"]:checked')
+
+	var bandera=valUsuario()
+	if (nombres.checkValidity() && apellidos.checkValidity() && nombre_usuario.checkValidity() && pass.checkValidity() && bandera) {
+		document.getElementById('mensaje').innerHTML=""
+	} else {
+		document.getElementById('mensaje').innerHTML="Valiste por que tienes valores invalidos"
+	}
+	console.log(nombres.value)
+
 
 	var datas= new FormData();
 	datas.append("nombres", nombres)
@@ -72,20 +81,21 @@ document.getElementById('guardarUsuario').addEventListener('click', function(e){
 	// 		dataJson[key] = value;
 	// 	}
 
+	
 		
 	
-	fetch(controlador, {
-        method: metodo,
-        body: datas
-    }) .then(data =>{
-        //   console.log(data);
-          if(data=="error"){
-            respuesta.innerHTML=
-          `ERROR`;
-          }else{
-			recargar();
-			limpiar();	
-          }})
+	// fetch(controlador, {
+    //     method: metodo,
+    //     body: datas
+    // }) .then(data =>{
+    //     //   console.log(data);
+    //       if(data=="error"){
+    //         respuesta.innerHTML=
+    //       `ERROR`;
+    //       }else{
+	// 		recargar();
+	// 		limpiar();	
+    //       }})
 
 });
 
@@ -253,3 +263,43 @@ document.getElementById("busqueda").addEventListener("keyup", function(){
 	}
 	
 });
+
+
+
+
+document.getElementById('nombres').addEventListener('input', genUsuario)
+document.getElementById('apellidos').addEventListener('input', genUsuario)
+
+function genUsuario() {
+	var n= document.getElementById('nombres').value.split(" ")
+	var a= document.getElementById('apellidos').value.split(" ")
+	
+	usuario=n[0].toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,"")+"."+a[0].toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,"")
+	document.getElementById('usuario').value= usuario
+}
+
+function valUsuario() {
+	var n= document.getElementById('nombres').value.split(" ")
+	var a= document.getElementById('apellidos').value.split(" ")
+	
+	usuario=n[0].toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,"")+"."+a[0].toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,"")
+	document.getElementById('usuario').value= usuario
+	fetch('validarUsuario/'+usuario)
+		.then(res => res.json())
+		.then(datos => {
+			if (datos == null) {
+				if (document.getElementById('nombres').value === "" && document.getElementById('apellidos').value === "") {
+					document.getElementById('usuario').value = ""
+				} else {
+					document.getElementById('usuario').value = usuario
+				}
+				console.log("valido")
+				console.log(datos)
+				return true;
+			}else{
+				console.log("invalido")
+				console.log(datos)
+				return false;
+			}
+		})
+}
