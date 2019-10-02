@@ -1,3 +1,8 @@
+
+var path = window.location.pathname.split( '/' );
+var base_url = window.location.origin;
+base_url = base_url+"/"+path[1]+"/";
+
 window.addEventListener('load', listener);
 
 function listener() {
@@ -25,7 +30,7 @@ function showImages(e) {
         }
         // show image as preloader in the view
         reader.onprogress= function(e){
-            document.querySelectorAll('.img-upload')[imgNumber - 1].setAttribute("src", "./../assets/images/default/preloader.gif");
+            document.querySelectorAll('.img-upload')[imgNumber - 1].setAttribute("src", base_url+"assets/images/default/preloader.gif");
         }
         // important this instruction must be at the end because must be the methods first
 		reader.readAsDataURL(archivo);

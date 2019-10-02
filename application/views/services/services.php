@@ -59,8 +59,8 @@
                                 <td class="align-middle"><img src="<?= $service->recurso_av_3 ? "uploads/".$service->recurso_av_3 : './assets/images/default/no-image-visible.png' ?>" alt="" width="130"></td>
                                 <td class="align-middle"><img src="<?= $service->recurso_av_4 ? "uploads/".$service->recurso_av_4 : './assets/images/default/no-image-visible.png' ?>" alt="" width="130"></td>
                                 <td class="align-middle"><?= $service->fecha_ingreso ?></td>
-                                <td class="align-middle"><button type="button" class="btn btn-warning">Editar</button></td>
-                                <td class="align-middle"><button type="button" class="btn btn-danger" onclick="deleteService()">Eliminar</button></td>
+                                <td class="align-middle"><a href="<?= base_url()."services/edit/".$service->id_publicacion ?>" class="btn btn-warning" >Editar</a></td>
+                                <td class="align-middle"><button class="btn btn-danger" onclick="deleteService()">Eliminar</button></td>
                             </tr>
                         <?php
                         }

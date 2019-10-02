@@ -96,6 +96,13 @@ class Services extends CI_Controller
         }
         
   }
+  
+  public function edit($id){
+    $datos = ['services' => $this->publicacion_model->findById($id)];
+    $this->load->view('templates/header');
+    $this->load->view('services/edit', $datos);
+    $this->load->view('templates/footer');
+  }
 
   // Delete services 
   public function deleteService($id){

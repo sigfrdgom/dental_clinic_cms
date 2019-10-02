@@ -4,6 +4,13 @@ class Publicacion_model extends CI_Model{
     public function findAll(){  
         return $this->db->get('publicacion')->result();
     }
+
+    //CONSULTA PARA OBTENER UN REGISTRO DE PUBLICACION
+    public function findById($id = ""){
+        $this->db->where('id_publicacion', $id);
+        return $this->db->get('publicacion')->row();
+    }
+
     //CONSULTA PARA AGREGAR UN REGISTRO A LA TABLA PUBLICACION
     public function create($data){     
         try {
@@ -31,15 +38,7 @@ class Publicacion_model extends CI_Model{
             // echo $e;
         }  
     }
-    //CONSULTA PARA OBTENER UN REGISTRO DE PUBLICACION
-    public function findById($id = ""){
-         try {
-            $this->db->where('id_publicacion', $id);
-            return $this->db->get('publicacion')->result();
-        } catch (mysqli_sql_exception $e) {
-            return false;
-        }  
-    }
+    
     //CONSULTA PARA ACTUALIZAR UN REGISTRO UN REGISTRO DE PUBLICACION
     public function update($data){
         try {
