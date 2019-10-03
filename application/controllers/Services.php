@@ -39,6 +39,7 @@ class Services extends CI_Controller
   {
     $config['upload_path'] = "uploads/";
     $config['file_name'] = "recurso_" . time();
+
     $config['allowed_types'] = 'gif|jpg|png';
     $config['max_size'] = "5000";
     $config['max_width'] = "2000";
@@ -62,8 +63,18 @@ class Services extends CI_Controller
     }
   }
 
-  public function guardarDatos()
+  public function guardarDatos($id = "")
   {
+    $old_services = array();
+    if(!empty($id)){
+      $old_services = (array)$this->publicacion_model->findById($id);
+    }else{
+      $old_services = array(
+        'recurso_av_1' => "",
+        'recurso_av_2' => "",
+        'recurso_av_3' => "",
+        'recurso_av_4' => "");
+    }
 
     $data_files = array();
     for ($i = 1; $i <= sizeof($_FILES); $i++) {
@@ -76,7 +87,7 @@ class Services extends CI_Controller
 
     $fecha = new DateTime();
     $datos = [
-      'id_publicacion' => null,
+      'id_publicacion' => trim($id) ? trim($id) : '',
       'id_usuario' => 1,
       'id_categoria' => $_POST['categoria'],
       'id_tipo' => 1,
@@ -84,21 +95,38 @@ class Services extends CI_Controller
       'texto_introduccion' => $_POST['texto_introduccion'],
       'contenido' => $_POST['contenido'],
       'estado' => true,
-      'recurso_av_1' => isset($data_files['file1']) ?  $data_files['file1']["upload_data"]['file_name'] : '',
-      'recurso_av_2' => isset($data_files['file2']) ?  $data_files['file2']["upload_data"]['file_name'] : '',
-      'recurso_av_3' => isset($data_files['file3']) ?  $data_files['file3']["upload_data"]['file_name'] : '',
-      'recurso_av_4' => isset($data_files['file4']) ?  $data_files['file4']["upload_data"]['file_name'] : '',
+      'recurso_av_1' => isset($data_files['file1']) ?  $data_files['file1']["upload_data"]['file_name'] : $old_services['recurso_av_1'],
+      'recurso_av_2' => isset($data_files['file2']) ?  $data_files['file2']["upload_data"]['file_name'] : $old_services['recurso_av_2'],
+      'recurso_av_3' => isset($data_files['file3']) ?  $data_files['file3']["upload_data"]['file_name'] : $old_services['recurso_av_3'],
+      'recurso_av_4' => isset($data_files['file4']) ?  $data_files['file4']["upload_data"]['file_name'] : $old_services['recurso_av_4'],
       'fecha_ingreso' => $fecha->format('Y-m-d')
     ];
 
     try {
-      $this->publicacion_model->create($datos);
+      if(!empty($id)){
+        $data_img = $datos;
+        $data_img = array_splice($data_img, -5, 4, true);
+        $rutas = array();
+        $found_img = false;
+        for ($i=1; $i <=sizeof($data_img) ; $i++) { 
+          if($data_img['recurso_av_'.$i] != $old_services['recurso_av_'.$i]){
+            $rutas = array_merge($rutas, (array)$old_services['recurso_av_'.$i]);
+            $found_img = true;
+          }
+        }
+        if($found_img == true){
+          $rutas = array_values($rutas);
+          $this->deleteImage($rutas);
+        }
+        $this->publicacion_model->update($datos);
+      }else{
+        $this->publicacion_model->create($datos);
+      }
       $message = array('message' => 'Registro Agregado con éxito');
       // $this->session->set_flashdata($message);
       redirect('services');
     } catch (Exception $e) {
 
-      $this->publicacion_model->create($datos);
       $message = array('error' => 'Error no se puedo agregar el registro ');
       // $this->session->set_flashdata($message);
       redirect('services');
@@ -116,14 +144,8 @@ class Services extends CI_Controller
     $this->load->view('templates/footer');
   }
 
-  private function deleteImage($id){
-    // Covert stdclass to array
-    $data = json_decode(json_encode($this->publicacion_model->findById($id)), true);
-    // get the last 3 register of the array
-    $data = array_splice($data, -5, 4, true);
-    // delete the keys of the array
+  private function deleteImage($data){
     $message = array();
-    $data = array_values($data);
     for ($i = 0; $i < sizeof($data); $i++) {
       if (isset($data[$i])) {
         $path = "./uploads/" . $data[$i];
@@ -146,9 +168,18 @@ class Services extends CI_Controller
   // Delete services 
   public function deleteService($id)
   {
-    $message = $this->deleteImage($id);
+    // Covert stdclass to array
+    $data = json_decode(json_encode($this->publicacion_model->findById($id)), true);
+    // get the last 3 register of the array
+    $data = array_splice($data, -5, 4, true);
+    // delete the keys of the array
+    $data = array_values($data);
+    $message = $this->deleteImage($data);
     // Delete the data from the database
     $this->publicacion_model->delete($id);
-    // redirect('services');
+  }
+
+  public function updateService($id){
+    $this->guardarDatos($id);
   }
 }
