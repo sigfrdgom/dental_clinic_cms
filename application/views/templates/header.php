@@ -60,7 +60,7 @@
                 <nav class="navbar top-navbar navbar-expand-md navbar-dark" >
                     <!-- Start Top side logo -->
                     <div class="navbar-header py-2 px-4">
-                        <a class="navbar-brand" href="<?= base_url('/')?>" >
+                        <a class="navbar-brand" href="<?= base_url('/inicioControl/index2')?>" >
                             <b>
                                 <img src="<?= base_url('assets/images/logo-icon.png')?>"  alt="homepage" class="dark-logo" />
                                 <img src="<?= base_url('assets/images/logo-light-icon.png')?>" alt="homepage" class="light-logo" />
@@ -84,13 +84,55 @@
                                 </form>
                             </li>
                         </ul>
-                        <!-- User profile item -->
-                        <ul class="navbar-nav my-lg-0 bg-info m-0" >
+						<!-- User profile item -->
+						
+
+                        <!-- <ul class="navbar-nav my-lg-0 bg-info m-0" >
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <img src="<?= base_url('assets/images/users/1.jpg')?>" alt="user" class="img-circle" width="50"></a>
+                                    <img src="<?= //base_url('assets/images/users/1.jpg')?>" alt="user" class="img-circle" width="50"></a>
                             </li>
-                        </ul>
+						</ul>
+
+						
+						<ul class="list-inline float-right mb-0">
+							<li class="list-inline-item dropdown notif">
+								<div class="row">
+									<a class="nav-link dropdown-toggle nav-user"  href="<?=// base_url('/inicioControl/index2')?>" role="button" aria-haspopup="true" aria-expanded="true">
+										<img alt="Logo" class="img-logo" style="border-radius: 3px; width: 100px;" src="<?= //base_url('assets/images/users/1.jpg')?>" />
+									</a>
+										
+									<div class="dropdown-menu dropdown-menu-right profile-dropdown" style="background: #c4cfdd; width: 300px;">
+											<div class="dropdown-item perfil_item ">
+												<small class="text-overflow"><i class="fas fa-shield-alt"></i><?php //echo $data[0]?></small>
+											</div>
+											
+
+											<div class="dropdown-item perfil_item text-justify">
+												<small class="text-overflow"><i class="fas fa-user"></i><?php //echo $data[0]?></small>
+											</div>
+											<div class="cerrar_session">
+												<a href="<?php //base_url('/inicioControl/finalizarSesion')?>" class="dropdown-item notify-item cerrar_session">
+													<i class="fa fa-power-off"></i> <span>Cerrar Sesión</span>
+												</a>
+											</div>
+									</div>
+								</div>
+							</li>
+								
+						</ul> -->
+
+						
+
+
+
+
+
+
+
+
+
+					
                         <!-- Start Navbar items -->
                     </div>
                     <!-- End of second top side navbar -->
@@ -111,7 +153,7 @@
                     <!-- Sidebar navigation-->
                     <nav class="sidebar-nav">
                         <ul id="sidebarnav">
-                            <li> <a class="waves-effect waves-dark" href="<?= base_url('/')?>" aria-expanded="false"><i class="fa fa-home text-white" style="font-size: 2em; "></i><span class="hide-menu">Dashboard</span></a></li>
+                            <li> <a class="waves-effect waves-dark" href="<?= base_url('/inicioControl/index2')?>" aria-expanded="false"><i class="fa fa-home text-white" style="font-size: 2em; "></i><span class="hide-menu">Dashboard</span></a></li>
 
 
                             <li> <a class="waves-effect waves-dark" href="<?= base_url('contacto_controller/index')?>" aria-expanded="false"><i class="fa fa-envelope text-white" style="font-size: 2em;  "></i><span class="hide-menu"></span>Mensajes</a></li>

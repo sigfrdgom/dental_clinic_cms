@@ -5,7 +5,7 @@ var cita=document.getElementById("cita_inbox");
 
 /////////////////////-----------------------------------------GET----------------------------------------//////////////////
 function recargar(){
-    fetch('contacto_controller/cargarDatosContacto/')
+    fetch('http://localhost/dental_clinic_cms/contacto_controller/cargarDatosContacto/')
             .then(res => res.json())
 
             .then(datos => {
@@ -35,7 +35,7 @@ function recargar(){
 					respuesta.innerHTML=texto;
 				})
             
-    fetch('cita_controller/cargarDatosCita/')
+    fetch('http://localhost/dental_clinic_cms/cita_controller/cargarDatosCita')
         .then(res => res.json())
 
         .then(datos => {

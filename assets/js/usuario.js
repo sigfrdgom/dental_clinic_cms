@@ -5,7 +5,7 @@ var respuesta=document.getElementById("bodyUsuario");
 
 /////////////////////-----------------------------------------GET----------------------------------------//////////////////
 function recargar(){
-    fetch('cargarDatosUsuario')
+    fetch('http://localhost/dental_clinic_cms/usuario_controller/cargarDatosUsuario')
             .then(res => res.json())
             .then(datos => {
 				var texto="";
