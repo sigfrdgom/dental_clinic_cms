@@ -1,7 +1,24 @@
 window.addEventListener('load', listener);
+var url_base = window.location.href;
 
 function listener() {
-	document.getElementById('btn-delete').addEventListener('click', deleteService)
+	// document.getElementById('btn-delete').addEventListener('click', deleteService);
+	recargar_tbody();
+}
+
+function recargar_tbody(){
+	console.log(url_base+'/tbody');
+	fetch(url_base+'/tbody')
+    .then(res => {return res.text()})
+    .then(response => {
+        document.getElementById('tbody-content').innerHTML = response;
+        let btnDelete = document.getElementsByClassName('btn-delete');
+        // let btnMostrar = document.getElementsByClassName('btn-mostrar');
+        for(i=0; i<btnDelete.length; i++){
+            btnDelete[i].addEventListener('click', deleteService);
+            // btnMostrar[i].addEventListener('click', mostrar)
+        }
+    });
 }
 
 function deleteService() {
@@ -24,10 +41,8 @@ function deleteService() {
 						'Eliminado!',
 						'!La servicio ha sido eliminada!',
 						'success'
-					  )
-					// recargar();
-					// is short time then i will change
-					// window.location.reload();
+					  );
+					  recargar_tbody();
 				})
 		}
 	})

@@ -21,6 +21,12 @@ class Services extends CI_Controller
     $this->load->view('templates/footer');
   }
 
+  public function tbody()
+  {
+    $datos = ['services' => $this->publicacion_model->findAll()];
+    $this->load->view('services/tbody', $datos);
+  }
+
   public function create()
   {
     $datos = ['categories' => $this->categoria_model->getAll()];
