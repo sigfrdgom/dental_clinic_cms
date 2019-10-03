@@ -11,7 +11,7 @@ setInterval(() => {
 
 /////////////////////-----------------------------------------GET----------------------------------------//////////////////
 function recargarMsg(){
-    fetch('contacto_controller/cargarDatosActivos/')
+    fetch('http://localhost/dental_clinic_cms/contacto_controller/cargarDatosActivos/')
         .then(res => res.json())
 
         .then(datos => {
@@ -56,7 +56,7 @@ function recargarMsg(){
 
 
 function recargarCita(){            
-    fetch('cita_controller/cargarDatosActivos/')
+    fetch('http://localhost/dental_clinic_cms/cita_controller/cargarDatosActivos/')
         .then(res => res.json())
 
         .then(datos => {
@@ -113,7 +113,7 @@ function rechazarMsg() {
 		cancelButtonText: 'Cancelar',
 	}).then((result) => {
 		if (result.value) {
-			fetch('contacto_controller/eliminarContacto/'+this.value, {
+			fetch('http://localhost/dental_clinic_cms/contacto_controller/eliminarContacto/'+this.value, {
 				method: 'DELETE'
 				})
 				.then(() =>{
@@ -193,7 +193,7 @@ function mostrarMsg() {
 			
 		}};
 		
-    peticion.open('GET', 'contacto_controller/obtenerRegistro/'+this.value);
+    peticion.open('GET', 'http://localhost/dental_clinic_cms/contacto_controller/obtenerRegistro/'+this.value);
 	peticion.send();
 	// btn= document.getElementById('guardarContacto')
     // btn.removeAttribute("value")
@@ -241,7 +241,7 @@ function mostrarCita() {
 			// 	})
 
         }};
-    peticion.open('GET', 'cita_controller/obtenerRegistro/'+this.value);
+    peticion.open('GET', 'http://localhost/dental_clinic_cms/cita_controller/obtenerRegistro/'+this.value);
 	peticion.send();
 	// btn= document.getElementById('guardarCita')
     // btn.removeAttribute("value")

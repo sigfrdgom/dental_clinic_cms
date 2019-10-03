@@ -10,8 +10,8 @@ class Categoria_controller extends CI_Controller {
         //HACER USO DE LO METODO CONSTRUCTORE DEL PADRE 
         parent::__construct();
         //METODO CARGADO EN EL MODELO
-        $this->load->model('categoria_model');
-
+		$this->load->model('categoria_model');
+		parent::logueado();
         
     }
 

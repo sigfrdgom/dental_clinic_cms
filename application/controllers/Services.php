@@ -7,7 +7,9 @@ class Services extends CI_Controller
   public function __construct()
   {
     parent::__construct();
-    $this->load->model(array('publicacion_model', 'categoria_model'));
+		$this->load->model(array('publicacion_model', 'categoria_model'));
+		parent::logueado();
+
   }
 
   public function mostrarDatos()
