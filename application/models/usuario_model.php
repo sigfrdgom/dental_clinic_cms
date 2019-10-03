@@ -81,7 +81,7 @@ class Usuario_model extends CI_Model{
        } catch (mysqli_sql_exception $e) {
            return 0;
        }  
-   }
+    }
 
 
 }
