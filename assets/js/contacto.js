@@ -197,14 +197,14 @@ document.getElementById("busqueda").addEventListener("keyup", function(){
 				var texto="";
 				datos.forEach(element => {
 				texto+=`
-				<tr class="p-0 border-bottom border-info" id="tr${element.id_contacto}">
+				<tr class="p-0 border-bottom border-info ${(element.estado==1)?'mensaje-no-leido':'mensaje-leido'}" id="tr${element.id_contacto}" >
 					<td>${element.nombre}</td>
-					<td>${element.telefono}</td>
-					<td>${element.email}</td>
 					<td>${element.comentario}</td>
+					<td>${element.fecha}</td>
             		<td class="px-0 py-2">
-						<button class="btnEditar text-center btn btn-success btn-rounded"  value="${element.id_contacto}" data-toggle="modal" data-target="#agregarContacto">Aceptar mensaje</button>
-						<button class="btnEliminar text-center btn btn-danger btn-rounded"  value="${element.id_contacto}">Rechazar mensaje</button>
+						<button class="btnEditar text-center btn ${(element.estado==1)?'btn-success':'btn-info'} btn-rounded"  value="${element.id_contacto}" data-toggle="modal" data-target="#contactarContacto">${(element.estado==1)?'Aceptar mensaje':'Comunicarse'}</button>
+						
+						<button value="${element.id_contacto}" class="text-center btn btn-danger btn-rounded btnEliminar">${(element.estado==1)?'Rechazar mensaje':'Eliminar mensaje'}</button>
 					</td>
     			</tr>`
 				});
@@ -212,7 +212,7 @@ document.getElementById("busqueda").addEventListener("keyup", function(){
 						respuesta.innerHTML=texto;
 						asignarEventos();	
 					}else{
-						respuesta.innerHTML="NO HAY REGISTRO COINCIDENTES";
+						respuesta.innerHTML="NO HAY REGISTRO COINCIDENTES EN MENSAJES";
 					}
 					
 			})

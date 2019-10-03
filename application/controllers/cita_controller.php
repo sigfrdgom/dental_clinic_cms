@@ -10,7 +10,8 @@ class Cita_controller extends CI_Controller {
         //HACER USO DE LO METODO CONSTRUCTORE DEL PADRE 
         parent::__construct();
         //METODO CARGADO EN EL MODELO
-        $this->load->model('cita_model');
+		$this->load->model('cita_model');
+		parent::logueado();
 
         
     }

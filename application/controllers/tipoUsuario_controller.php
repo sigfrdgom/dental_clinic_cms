@@ -10,7 +10,9 @@ class TipoUsuario_controller extends CI_Controller {
         //HACER USO DE LO METODO CONSTRUCTOR DEL PADRE 
         parent::__construct();
         //METODO CARGADO EN EL MODELO
-        $this->load->model('tipoUsuario_model');
+		$this->load->model('tipoUsuario_model');
+		parent::logueado();
+
 
         
     }

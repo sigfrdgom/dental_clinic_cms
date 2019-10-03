@@ -69,10 +69,11 @@ class Contacto_model extends CI_Model{
 
 	public function findByCriteria($datos){
         try {
-        	$this->db->select('id_contacto, nombre, telefono, email, comentario');
+        	$this->db->select('id_contacto, nombre, telefono, email, comentario, fecha, estado');
 			$this->db->like('nombre', $datos);
 			$this->db->or_like('telefono', $datos);
 			$this->db->or_like('email', $datos);
+			$this->db->or_like('fecha', $datos);
 			return $this->db->get('contacto')->result();
 						
         } catch (mysqli_sql_exception $e) {
@@ -81,7 +82,7 @@ class Contacto_model extends CI_Model{
     }
 
     //CONSULTA PARA ACTUALIZAR EL ESTADO DE UN REGISTRO UN REGISTRO DE CITA
-    public function actualizarContactoEstado($id){
+    public function actualizarContactoEstado($id, $data){
         try {
             $this->db->set('estado',0,FALSE);
             $this->db->where('id_contacto',$id);

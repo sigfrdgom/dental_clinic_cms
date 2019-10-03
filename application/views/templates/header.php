@@ -87,40 +87,38 @@
 						<!-- User profile item -->
 						
 
-                        <!-- <ul class="navbar-nav my-lg-0 bg-info m-0" >
+                         <!-- <ul class="navbar-nav my-lg-0 bg-info m-0" >
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <img src="<?= //base_url('assets/images/users/1.jpg')?>" alt="user" class="img-circle" width="50"></a>
+                                    <img src="<= // base_url('assets/images/users/1.jpg')>" alt="user" class="img-circle" width="50"></a>
                             </li>
-						</ul>
+						</ul> -->
 
 						
-						<ul class="list-inline float-right mb-0">
-							<li class="list-inline-item dropdown notif">
-								<div class="row">
-									<a class="nav-link dropdown-toggle nav-user"  href="<?=// base_url('/inicioControl/index2')?>" role="button" aria-haspopup="true" aria-expanded="true">
-										<img alt="Logo" class="img-logo" style="border-radius: 3px; width: 100px;" src="<?= //base_url('assets/images/users/1.jpg')?>" />
-									</a>
-										
-									<div class="dropdown-menu dropdown-menu-right profile-dropdown" style="background: #c4cfdd; width: 300px;">
-											<div class="dropdown-item perfil_item ">
-												<small class="text-overflow"><i class="fas fa-shield-alt"></i><?php //echo $data[0]?></small>
-											</div>
-											
-
-											<div class="dropdown-item perfil_item text-justify">
-												<small class="text-overflow"><i class="fas fa-user"></i><?php //echo $data[0]?></small>
-											</div>
-											<div class="cerrar_session">
-												<a href="<?php //base_url('/inicioControl/finalizarSesion')?>" class="dropdown-item notify-item cerrar_session">
-													<i class="fa fa-power-off"></i> <span>Cerrar Sesión</span>
-												</a>
-											</div>
-									</div>
-								</div>
-							</li>
-								
-						</ul> -->
+				<ul class="list-inline float-right mb-0 ml-5">
+                <li class="list-inline-item dropdown notif ml-5">
+                    
+                    <div class="row ml-5">
+                        
+                        <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="<?= base_url('assets/images/users/1.jpg')?>" alt="user" class="img-circle" width="50"></a>
+                        <!-- El dropdown -->
+                        <div class="dropdown-menu dropdown-menu-left profile-dropdown" style="background: #c4cfdd; width: 300px;">
+                            <div class="dropdown-item perfil_item ">
+                                <small class="text-overflow"><i class="fas fa-shield-alt"></i><?= $this->session->userdata('tipo_usuario')?></small>
+                            </div>
+                            <div class="dropdown-item perfil_item text-justify">
+                                <small class="text-overflow"><i class="fas fa-user"></i><?= $this->session->userdata('nombre')?></small>
+                            </div>
+                            <div class="cerrar_session">
+                                <a href="<?= base_url('inicioControl/finalizarSesion')?>" class="dropdown-item notify-item cerrar_session">
+                                    <i class="fa fa-power-off"></i> <span>Cerrar Sesión</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
 
 						
 

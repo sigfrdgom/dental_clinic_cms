@@ -11,7 +11,7 @@ class Usuario_controller extends CI_Controller {
         parent::__construct();
         //METODO CARGADO EN EL MODELO
         $this->load->model('usuario_model');
-
+	
         
     }
 
@@ -19,6 +19,7 @@ class Usuario_controller extends CI_Controller {
     // METODO INDEX PARA VER LA PÁGINA PRINCIPAL
 	public function carga()
 	{
+		parent::logueado();
 		$this->load->view('templates/header');
 		$this->load->view('panelControl/usuario/usuarios');
 		$this->load->view('templates/footer');
@@ -28,29 +29,22 @@ class Usuario_controller extends CI_Controller {
 
     //METODO QUE LLAMA LOS DATOS DE LA BASE DE DATOS Y REDICCIONA Y CARGA TODA LA USUARIOS
     public function cargarDatosUsuario(){ 
-		// $usuarios = $this->usuario_model->getAll();
-        // $data=['usuarios' => $usuarios];
-        // $this->load->view('panelControl/usuario/tablaUsuario', $data);
-        // $this->db->select('',FALSE);
+		parent::logueado();
 		echo json_encode($this->usuario_model->getAll());
     }
 
 
     //METODO QUE AGREGA UN REGISTRO USUARIO
-    public function agregarUsuario(){		
-
-
+    public function agregarUsuario(){
+		parent::logueado();		
 		$data=["id_usuario" => null, "nombres" => $_POST['nombres'], "apellidos" => $_POST['apellidos'],  "nombre_usuario" => $_POST['usuario'], "contrasenia" => self::hash($_POST['pass']), "tipo_usuario" => $_POST['tipo_usuario'], "estado" => 1];
-	
-
-
-
 		$this->usuario_model->agregarUsuario($data);
     }
 
       
     //METODO QUE ELIMINA UN REGISTRO DE USUARIO
     public function eliminarUsuario($id){
+		parent::logueado();
         $this->usuario_model->eliminarUsuario($id);
     }
 
@@ -58,16 +52,14 @@ class Usuario_controller extends CI_Controller {
 
     //METODO CON EL QUE OBTENDRIA EL REGISTRO USUARIO
     public function obtenerRegistro($id){
-        // $dato=['usuario'=> $this->usuario_model->obtenerRegistro($id)];
+        parent::logueado();
 		echo json_encode($this->usuario_model->obtenerRegistro($id));
-		// $this->load->view('controlPanel/form', $dato);
     }
 
 
     //METODO QUE SE ENCARGA DE ACTUALIZAR UN REGISTRO DE USUARIO
     public function actualizarUsuario(){
-
-
+		parent::logueado();
 		$hash=self::hash($_POST['pass']);
 		$data=["id_usuario" => $_POST['id_usuario'], "nombres" => $_POST['nombres'], "apellidos" => $_POST['apellidos'],  "nombre_usuario" => $_POST['usuario'], "contrasenia" => $hash, "tipo_usuario" => $_POST['tipo_usuario'], "estado" => $_POST['estado']];
 		 		
@@ -78,6 +70,7 @@ class Usuario_controller extends CI_Controller {
 
 
 	public function findByCriteria(){ 
+		parent::logueado();
 		if($_POST["busqueda"] == null || $_POST["busqueda"]== ""){
 			echo json_encode($this->usuario_model->getAll());
         }else{

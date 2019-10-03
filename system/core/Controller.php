@@ -97,6 +97,7 @@ class CI_Controller {
 
 	public function logueado() {
 		if($this->session->userdata("logueado")){
+		
 		}else{
 			redirect("inicioControl/index");
 		}

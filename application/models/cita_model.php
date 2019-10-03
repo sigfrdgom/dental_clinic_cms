@@ -66,7 +66,7 @@ class Cita_model extends CI_Model{
 
 	   public function findByCriteria($datos){
         try {
-        	$this->db->select('id_cita, nombre, celular, email, padecimientos, procedimiento, fecha, hora, comentario');
+        	$this->db->select('id_cita, nombre, celular, email, padecimientos, procedimiento, fecha, hora, comentario, estado');
 			$this->db->like('nombre', $datos);
 			$this->db->or_like('celular', $datos);
 			$this->db->or_like('email', $datos);
