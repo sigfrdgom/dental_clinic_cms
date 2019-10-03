@@ -39,6 +39,7 @@ function recargar(){
 			
 
 }
+
 /////////////////////----------------------------------------POST y PUT------------------------------------------//////////////////
 document.getElementById('guardarUsuario').addEventListener('click', function(e){
 	e.preventDefault();
@@ -48,54 +49,74 @@ document.getElementById('guardarUsuario').addEventListener('click', function(e){
 	var pass=document.getElementById('pass')
 	var tipo_usuario=document.querySelector('input[name="tipo_usuario"]:checked')
 
-	var bandera=valUsuario()
-	if (nombres.checkValidity() && apellidos.checkValidity() && nombre_usuario.checkValidity() && pass.checkValidity() && bandera) {
-		document.getElementById('mensaje').innerHTML=""
-	} else {
-		document.getElementById('mensaje').innerHTML="Valiste por que tienes valores invalidos"
-	}
-	console.log(nombres.value)
 
-
-	var datas= new FormData();
-	datas.append("nombres", nombres)
-	datas.append("apellidos", apellidos)
-	datas.append("usuario", nombre_usuario)
-	datas.append("pass", pass)
-	datas.append("tipo_usuario", tipo_usuario.value)
-
-
-	var controlador="agregarUsuario";
-	var metodo="POST"
-    if (this.value=="Modificar") {
-		controlador="actualizarUsuario";
-		// metodo="PUT"
-		let estado=document.querySelector('input[name="estado"]:checked')
-		var id_usuario=document.getElementById('id_usuario').value
-		datas.append("id_usuario", id_usuario)
-		datas.append("estado", estado.value)	
-    }
-
-	// var dataJson = {};
-	// 	for (const [key, value]  of datas.entries()) {
-	// 		dataJson[key] = value;
-	// 	}
+	usuario = document.getElementById('usuario').value 
+	fetch('validarUsuario/'+usuario)
+		.then(res => res.json())
+		.then(datos => {
+			if (datos == null) {
+				if (document.getElementById('nombres').value === "" && document.getElementById('apellidos').value === "") {
+					document.getElementById('usuario').value = ""
+				} else {
+					document.getElementById('usuario').value = usuario
+				}
+				if (nombres.checkValidity() && apellidos.checkValidity() && nombre_usuario.checkValidity() && pass.checkValidity()) {
+					document.getElementById('mensaje').innerHTML=""
+					var datas= new FormData();
+					datas.append("nombres", nombres.value)
+					datas.append("apellidos", apellidos.value)
+					datas.append("usuario", nombre_usuario.value)
+					datas.append("pass", pass.value)
+					datas.append("tipo_usuario", tipo_usuario.value)
+			
+					console.log('datas')
+					console.log(datas)
+			
+					var controlador="agregarUsuario";
+					var metodo="POST"
+					if (this.value=="Modificar") {
+						controlador="actualizarUsuario";
+						// metodo="PUT"
+						let estado=document.querySelector('input[name="estado"]:checked')
+						var id_usuario=document.getElementById('id_usuario').value
+						datas.append("id_usuario", id_usuario)
+						datas.append("estado", estado.value)	
+					}
+			
+					var dataJson = {};
+						for (const [key, value]  of datas.entries()) {
+							dataJson[key] = value;
+						}
+			
+					fetch(controlador, {
+						method: metodo,
+						body: datas
+					}) .then(data =>{
+						//   console.log(data);
+						if(data=="error"){
+							respuesta.innerHTML=
+						`ERROR`;
+						}else{
+							recargar();
+							limpiar();	
+							console.log("salio aca")
+						}})
+				} else {
+					document.getElementById('mensaje').innerHTML="Valiste por que tienes valores invalidos"
+				}
+			}else{
+				console.log("invalido")
+				document.getElementById('mensaje').innerHTML="Parece que el nombre de usuario ya esta en uso"
+			}
+		})
 
 	
-		
+
 	
-	// fetch(controlador, {
-    //     method: metodo,
-    //     body: datas
-    // }) .then(data =>{
-    //     //   console.log(data);
-    //       if(data=="error"){
-    //         respuesta.innerHTML=
-    //       `ERROR`;
-    //       }else{
-	// 		recargar();
-	// 		limpiar();	
-    //       }})
+	
+
+
+	
 
 });
 
@@ -279,11 +300,7 @@ function genUsuario() {
 }
 
 function valUsuario() {
-	var n= document.getElementById('nombres').value.split(" ")
-	var a= document.getElementById('apellidos').value.split(" ")
-	
-	usuario=n[0].toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,"")+"."+a[0].toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,"")
-	document.getElementById('usuario').value= usuario
+	usuario = document.getElementById('usuario').value 
 	fetch('validarUsuario/'+usuario)
 		.then(res => res.json())
 		.then(datos => {
@@ -293,13 +310,10 @@ function valUsuario() {
 				} else {
 					document.getElementById('usuario').value = usuario
 				}
-				console.log("valido")
-				console.log(datos)
-				return true;
+				console.log("valido") 
 			}else{
 				console.log("invalido")
-				console.log(datos)
-				return false;
+				
 			}
 		})
 }
