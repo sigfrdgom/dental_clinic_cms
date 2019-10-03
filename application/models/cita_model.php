@@ -7,6 +7,16 @@ class Cita_model extends CI_Model{
         return $this->db->get('cita')->result();
     }
 
+    //CONSULTA PARA CARGAR LO DATOS DE LA TABLA CITA CON ESTADO ACTIVO
+    public function getActive(){ 
+        $this->db->from('cita');
+        $this->db->where('estado', 1);
+        $this->db->order_by('fecha_solicitud','DESC');
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+
     //CONSULTA PARA AGREGAR UN REGISTRO A LA TABLA CITA
     // public function agregarCita($data){     
     //     try {
@@ -64,6 +74,17 @@ class Cita_model extends CI_Model{
 			$this->db->or_like('hora', $datos);
 			return $this->db->get('cita')->result();
 						
+        } catch (mysqli_sql_exception $e) {
+            return 0;
+        }
+    }
+
+    //CONSULTA PARA ACTUALIZAR EL ESTADO DE UN REGISTRO UN REGISTRO DE CITA
+    public function actualizarCitaEstado($id, $data){
+        try {
+            $this->db->set('estado',0,FALSE);
+            $this->db->where('id_cita',$id);
+            $this->db->update('cita', $data);
         } catch (mysqli_sql_exception $e) {
             return 0;
         }

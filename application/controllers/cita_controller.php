@@ -28,6 +28,10 @@ class Cita_controller extends CI_Controller {
         echo json_encode($this->cita_model->getAll());
     }
 
+    public function cargarDatosActivos(){ 
+        echo json_encode($this->cita_model->getActive());
+    }
+
 
     //METODO QUE AGREGA UN REGISTRO CITA
     public function agregarCita(){
@@ -50,7 +54,9 @@ class Cita_controller extends CI_Controller {
     public function obtenerRegistro($id){
         echo json_encode($this->cita_model->obtenerRegistro($id));
     
-    }
+	}
+	
+	
 
 
     //METODO QUE SE ENCARGA DE ACTUALIZAR UN REGISTRO DE CITA

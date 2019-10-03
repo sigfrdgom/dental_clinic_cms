@@ -30,6 +30,10 @@ class Contacto_controller extends CI_Controller {
         echo json_encode($this->contacto_model->getAll());
     }
 
+    //METODO QUE LLAMA LOS DATOS DE LA BASE DE DATOS QUE SU ESTADO SEA ACTIVO
+    public function cargarDatosActivos(){ 
+        echo json_encode($this->contacto_model->getActive());
+    }
 
     //METODO QUE AGREGA UN REGISTRO CONTACTO
     // public function agregarContacto(){
@@ -41,6 +45,7 @@ class Contacto_controller extends CI_Controller {
         
     // }
 
+	
 
       
     //METODO QUE ELIMINA UN REGISTRO DE CONTACTO
@@ -61,7 +66,7 @@ class Contacto_controller extends CI_Controller {
     public function actualizarContacto(){
        $data=["id_contacto" => $_POST['id_contacto'], "nombre" =>$_POST['nombre'], "celular" =>$_POST['telefono'], "email"=> $_POST['email'], "comentario" => $_POST['comentario']];
     
-        $this->contacto_model-> actualizarContacto($data);
+        $this->contacto_model->actualizarContacto($data);
         
 	}
 	

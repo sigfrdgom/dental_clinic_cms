@@ -132,9 +132,9 @@ function accion() {
 			document.getElementById('fecha_contacto').innerHTML=datos["fecha"];
 			document.getElementById('estado_contacto').innerHTML=(datos["estado"]==1)?'No leido':'Leido';
 			
-			document.getElementById('sendmail_cita').href="mailto:"+datos["email"]+"?subject=Contacto desde pagina WEB"
-			document.getElementById('sendwhats_cita').href="http://wa.me/"+datos["telefono"]
-			document.getElementById('sendcall_cita').href="tel:"+datos["telefono"]
+			document.getElementById('sendmail_contacto').href="mailto:"+datos["email"]+"?subject=Contacto desde pagina WEB"
+			document.getElementById('sendwhats_contacto').href="http://wa.me/"+datos["telefono"]
+			document.getElementById('sendcall_contacto').href="tel:"+datos["telefono"]
 			
 			var datas= new FormData();
 			datas.append("id_contacto", datos["id_contacto"])
@@ -156,9 +156,9 @@ function accion() {
 		
     peticion.open('GET', 'obtenerRegistro/'+this.value);
 	peticion.send();
-	btn= document.getElementById('guardarContacto')
-    btn.removeAttribute("value")
-	btn.setAttribute("value", "Modificar")
+	// btn= document.getElementById('guardarContacto')
+    // btn.removeAttribute("value")
+	// btn.setAttribute("value", "Modificar")
     
 }
 
@@ -166,15 +166,15 @@ document.getElementById("btnReset").addEventListener("click", limpiar)
 // document.getElementById("idModal").addEventListener("click", limpiar)
 
 function limpiar(){
-	document.getElementById('nombre').value="";
-	document.getElementById('telefono').value="";
-	document.getElementById('email').value="";
-	document.getElementById('comentario').value="";
+	// document.getElementById('nombre').value="";
+	// document.getElementById('telefono').value="";
+	// document.getElementById('email').value="";
+	// document.getElementById('comentario').value="";
     
    
-	var btn=document.getElementById('guardarContacto')
-    btn.removeAttribute("value")
-	btn.setAttribute("value", "Guardar");
+	// var btn=document.getElementById('guardarContacto')
+    // btn.removeAttribute("value")
+	// btn.setAttribute("value", "Guardar");
 	$('#agregarContacto').modal('hide');
 }
 

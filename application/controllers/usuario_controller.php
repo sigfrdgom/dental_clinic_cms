@@ -137,6 +137,12 @@ class Usuario_controller extends CI_Controller {
 	
 
 
+	//METODO CON EL QUE OBTENDRIA EL REGISTRO USUARIO
+    public function validarUsuario($user){
+        // $dato=['usuario'=> $this->usuario_model->obtenerRegistro($id)];
+		echo json_encode($this->usuario_model->getValid($user));
+		// $this->load->view('controlPanel/form', $dato);
+    }
 }
 
 	

@@ -10,6 +10,15 @@ class Contacto_model extends CI_Model{
         return $query->result();
     }
 
+    //CONSULTA PARA CARGAR LO DATOS DE LA TABLA CONTACTO CUANDO SU ESTADO SEA ACTIVO
+    public function getActive(){ 
+        $this->db->from('contacto');
+        $this->db->where('estado', 1);
+        $this->db->order_by('fecha','DESC');
+        $query = $this->db->get();
+        return $query->result();
+    }
+
     //CONSULTA PARA AGREGAR UN REGISTRO A LA TABLA CONTACTO
     public function agregarContacto($data){     
         try {
@@ -71,6 +80,16 @@ class Contacto_model extends CI_Model{
         }
     }
 
+    //CONSULTA PARA ACTUALIZAR EL ESTADO DE UN REGISTRO UN REGISTRO DE CITA
+    public function actualizarContactoEstado($id){
+        try {
+            $this->db->set('estado',0,FALSE);
+            $this->db->where('id_contacto',$id);
+            $this->db->update('contacto', $data);
+        } catch (mysqli_sql_exception $e) {
+            return 0;
+        }
+    }
 
 
     }
