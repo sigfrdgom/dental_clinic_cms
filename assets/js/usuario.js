@@ -216,7 +216,9 @@ function limpiar(){
     document.getElementById("oculto").setAttribute("hidden", "true")
     document.getElementById('nombres').value="";
     document.getElementById('apellidos').value="";
-    document.getElementById('usuario').value=""; 
+	document.getElementById('usuario').value="";
+	document.getElementById('pass').value="";
+	 
     
     radio1= document.getElementById("estado1");
     radio2= document.getElementById("estado2");
