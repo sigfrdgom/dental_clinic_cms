@@ -97,6 +97,7 @@ class Usuario_controller extends CI_Controller {
 
 				if (self::verify($this->input->post('pass'), $usuario->contrasenia)) {	
 					$usuario_data = array(
+					'id_usuario' => $usuario->id_usuario,
                		'nombre_usuario' => $usuario->nombre_usuario,
 			   		'nombre' => $usuario->nombres,
 			   		'apellido' => $usuario->apellidos,

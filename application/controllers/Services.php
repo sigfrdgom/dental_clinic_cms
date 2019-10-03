@@ -90,7 +90,7 @@ class Services extends CI_Controller
     $fecha = new DateTime();
     $datos = [
       'id_publicacion' => trim($id) ? trim($id) : '',
-      'id_usuario' => 1,
+      'id_usuario' => $this->session->userdata('id_usuario'),
       'id_categoria' => $_POST['categoria'],
       'id_tipo' => 1,
       'titulo' => $_POST['titulo'],

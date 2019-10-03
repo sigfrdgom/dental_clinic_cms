@@ -71,7 +71,7 @@ class Usuario_model extends CI_Model{
 	
 
 	 public function loginUp($usuario){
-      $this->db->select('nombre_usuario, nombres, apellidos, tipo_usuario, estado, contrasenia');
+      $this->db->select('id_usuario, nombre_usuario, nombres, apellidos, tipo_usuario, estado, contrasenia');
       $this->db->from('usuario');
       $this->db->where('nombre_usuario', $usuario);
       $consulta = $this->db->get();
