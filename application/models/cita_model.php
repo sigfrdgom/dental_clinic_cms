@@ -17,15 +17,15 @@ class Cita_model extends CI_Model{
     }
 
 
-    //CONSULTA PARA AGREGAR UN REGISTRO A LA TABLA CITA
-    // public function agregarCita($data){     
-    //     try {
-    //         $this->db->insert('cita', $data);
-    //         return 1;
-    //     } catch (mysqli_sql_exception $e) {
-    //         return 0;
-    //     }
-    // }
+    // CONSULTA PARA AGREGAR UN REGISTRO A LA TABLA CITA
+    public function agregarCita($data){     
+        try {
+            $this->db->insert('cita', $data);
+            return 1;
+        } catch (mysqli_sql_exception $e) {
+            return 0;
+        }
+    }
 
 
     //CONSULTA PARA ELIMINAR UN REGISTRO A LA TABLA CITA

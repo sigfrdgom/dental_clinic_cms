@@ -11,7 +11,7 @@ class Cita_controller extends CI_Controller {
         parent::__construct();
         //METODO CARGADO EN EL MODELO
 		$this->load->model('cita_model');
-		parent::logueado();
+		// parent::logueado();
 
         
     }
@@ -36,8 +36,10 @@ class Cita_controller extends CI_Controller {
 
     //METODO QUE AGREGA UN REGISTRO CITA
     public function agregarCita(){
-        //deberia ir el espacion en blanco?
-        $data=["id_cita" => null, "nombre" => $_POST['nombre'], "celular" => $_POST['telefono'], "email" => $_POST['email'], "padecimientos" => $_POST['padecimientos'], "procedimiento" => $_POST['procedimiento'], "fecha" => $_POST['fecha'], "hora" => $_POST['hora'], "comentario" => $_POST['comentario']];
+		// $fecha_solicitud=date("d/m/Y");
+		// $fecha_solicitud = date('m/d/Y g:ia');
+		
+        $data=["id_cita" => null, "nombre" => $_POST['nombre'], "celular" => $_POST['telefono'], "email" => $_POST['email'], "padecimientos" => $_POST['padecimientos'], "procedimiento" => $_POST['procedimiento'], "fecha" => $_POST['fecha'], "hora" => $_POST['hora'], "comentario" => $_POST['comentario'],"estado" =>1];
 
         $this->cita_model->agregarCita($data);
     }
