@@ -6,7 +6,7 @@
 
 <div class="container-fluid h-100">
     <div class="row align-items-center h-100">
-        <div class="col-12 col-sm-10 col-md-10 col-lg-8 col-xl-6 mx-auto ">
+        <div class="col-12 col-sm-10 col-md-10 col-lg-6 col-xl-4 mx-auto ">
             <div class="text-center bg-white border border-primary rounded">
                 
                 <div class="py-5">
@@ -24,7 +24,7 @@
                                 <div class="input-group-prepend">
                                     <div class="input-group-text bg-info"><i class="fa fa-user text-white" style="font-size:1.8em;"></i></div>
                                 </div>
-                                <input type="text" name="usuario" id="usuario" class="form-control vlogin"  pattern='[a-zA-z]{1,14}.[a-zA-Z]{1,14}' placeholder="Usuario" required>
+                                <input type="text" name="usuario" id="usuario" class="form-control vlogin"  pattern='[a-zA-z0-9]{1,14}.[a-zA-Z0-9]{1,14}' placeholder="Usuario" required>
                             </div>
                         </div>
 
