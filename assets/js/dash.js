@@ -1,3 +1,7 @@
+var path = window.location.pathname.split( '/' );
+var base_url = window.location.origin;
+base_url = base_url+"/"+path[1]+"/";
+
 window.addEventListener('load', recargarCita);
 window.addEventListener('load', recargarMsg);
 
@@ -11,7 +15,7 @@ setInterval(() => {
 
 /////////////////////-----------------------------------------GET----------------------------------------//////////////////
 function recargarMsg(){
-    fetch('http://localhost/dental_clinic_cms/contacto_controller/cargarDatosActivos/')
+    fetch(base_url+'contacto_controller/cargarDatosActivos/')
         .then(res => res.json())
 
         .then(datos => {
@@ -56,7 +60,7 @@ function recargarMsg(){
 
 
 function recargarCita(){            
-    fetch('http://localhost/dental_clinic_cms/cita_controller/cargarDatosActivos/')
+    fetch(base_url+'cita_controller/cargarDatosActivos/')
         .then(res => res.json())
 
         .then(datos => {

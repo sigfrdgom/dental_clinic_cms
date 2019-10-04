@@ -82,11 +82,11 @@ class Contacto_model extends CI_Model{
     }
 
     //CONSULTA PARA ACTUALIZAR EL ESTADO DE UN REGISTRO UN REGISTRO DE CITA
-    public function actualizarContactoEstado($id, $data){
+    public function actualizarContactoEstado($id){
         try {
             $this->db->set('estado',0,FALSE);
             $this->db->where('id_contacto',$id);
-            $this->db->update('contacto', $data);
+            $this->db->update('contacto');
         } catch (mysqli_sql_exception $e) {
             return 0;
         }

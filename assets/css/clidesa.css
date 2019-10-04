@@ -28,3 +28,20 @@
 .mensaje-no-leido{
     background: #ff000d1c;
 }
+
+/* For login style */
+
+.bg-login{
+    background: rgb(4,102,236);
+    background: linear-gradient(90deg, rgba(4,102,236,1) 0%, rgba(9,121,99,1) 35%, rgba(0,212,255,1) 100%);
+}
+
+.vlogin:invalid {
+    border: 1px solid #f62d5246;
+    box-shadow: 0 0 5px #f62d5246;
+}
+
+.vlogin:valid {
+    border: 1px solid #36bea593;
+    box-shadow: 0 0 5px #36bea593;
+}

@@ -9,7 +9,7 @@ class InicioControl extends CI_Controller {
 		// $this->load->view('templates/header');
 		// $this->load->view('panelControl/index');
 		$this->load->view('login/login');
-		$this->load->view('templates/footer');
+		// $this->load->view('templates/footer');
 	}
 
 
