@@ -19,6 +19,12 @@ class Blog extends CI_Controller
     $this->load->view('templates/footer');
   }
 
+  public function posts($keyword = "")
+  {
+    $datos = ['posts' => $this->publicacion_model->search_posts($keyword)];
+    $this->load->view('blog/posts', $datos);
+  }
+
   public function create()
   {
     $datos = ['categories' => $this->categoria_model->getAll()];

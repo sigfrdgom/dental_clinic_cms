@@ -37,7 +37,7 @@ function deleteService() {
 				.then(() =>{
 					Swal.fire(
 						'Eliminado!',
-						'!La servicio ha sido eliminada!',
+						'!El servicio ha sido eliminada!',
 						'success'
 					  );
 					  recargar_tbody();
