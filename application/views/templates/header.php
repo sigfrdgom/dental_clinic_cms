@@ -10,6 +10,8 @@
         <title>CLIDESA CMS</title>
         <!-- End of Meta INFO -->
 
+        <!-- CKEditor -->
+        <script src="https://cdn.ckeditor.com/4.13.0/standard-all/ckeditor.js"></script>
 		
 		<!-- Start of CSS styleshets -->
     	<link href="<?php echo base_url('assets/css/bootstrap/dist/css/bootstrap.min.css');?>" rel="stylesheet" />

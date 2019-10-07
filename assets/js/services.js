@@ -2,21 +2,19 @@ window.addEventListener('load', listener);
 var url_base = window.location.href;
 
 function listener() {
-	// document.getElementById('btn-delete').addEventListener('click', deleteService);
+	document.getElementById('busqueda').addEventListener('keyup', recargar_tbody);
 	recargar_tbody();
 }
 
 function recargar_tbody(){
-	console.log(url_base+'/tbody');
-	fetch(url_base+'/tbody')
+	const busqueda = document.getElementById('busqueda').value;
+	fetch(url_base+'/tbody/'+busqueda)
     .then(res => {return res.text()})
     .then(response => {
         document.getElementById('tbody-content').innerHTML = response;
         let btnDelete = document.getElementsByClassName('btn-delete');
-        // let btnMostrar = document.getElementsByClassName('btn-mostrar');
         for(i=0; i<btnDelete.length; i++){
             btnDelete[i].addEventListener('click', deleteService);
-            // btnMostrar[i].addEventListener('click', mostrar)
         }
     });
 }
