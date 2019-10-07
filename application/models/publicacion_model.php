@@ -57,12 +57,28 @@ class Publicacion_model extends CI_Model
         }
     }
 
-    public function search($keyword)
+    public function search_services($keyword)
     {
-        $keyword = trim($keyword);
+        $keyword = trim($keyword = "");
         if (empty($keyword)) {
+            $this->db->where('id_tipo', 1);
             return $this->db->get('publicacion')->result();
         } else {
+            $this->db->where('id_tipo', 1);
+            $this->db->like('titulo', $keyword);
+            $this->db->or_like('texto_introduccion', $keyword);
+            $this->db->or_like('contenido', $keyword);
+            return $this->db->get('publicacion')->result();
+        }
+    }
+
+    public function search_posts($keyword = ""){
+        $keyword = trim($keyword);
+        if (empty($keyword)) {
+            $this->db->where('id_tipo', 2);
+            return $this->db->get('publicacion')->result();
+        } else {
+            $this->db->where('id_tipo', 2);
             $this->db->like('titulo', $keyword);
             $this->db->or_like('texto_introduccion', $keyword);
             $this->db->or_like('contenido', $keyword);

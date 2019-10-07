@@ -11,9 +11,6 @@ class Services extends CI_Controller
 		parent::logueado();
   }
 
-  public function mostrarDatos()
-  { }
-
   public function index()
   {
     $datos = ['services' => $this->publicacion_model->findAll()];
@@ -24,7 +21,7 @@ class Services extends CI_Controller
 
   public function tbody($keyword = "")
   {
-    $datos = ['services' => $this->publicacion_model->search($keyword)];
+    $datos = ['services' => $this->publicacion_model->search_services($keyword)];
     $this->load->view('services/tbody', $datos);
   }
 
