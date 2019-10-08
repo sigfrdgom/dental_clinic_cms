@@ -1,15 +1,15 @@
-<h2 class="text-center"><?= isset($services->titulo) ? 'EDITAR UNA PUBLICACIÓN' : 'AGREGAR UNA PUBLICACIÓN'  ?> </h2>
+<h2 class="text-center"><?= isset($blog->titulo) ? 'EDITAR UNA PUBLICACIÓN' : 'AGREGAR UNA PUBLICACIÓN'  ?> </h2>
 
 <div class="form-group mt-2">
     <label for="titulo">Titulo del servicio</label>
-    <input type="text" class="form-control" value="<?= isset($services->titulo) ? $services->titulo : '' ?>" name="titulo" id="" aria-describedby="helpId" placeholder="" required>
+    <input type="text" class="form-control" value="<?= isset($blog->titulo) ? $blog->titulo : '' ?>" name="titulo" id="" aria-describedby="helpId" placeholder="" required>
 </div>
 <div class="form-group mt-2">
     <label for="categoria">Categoria</label>
     <select name="categoria" id="" class="form-control" required>
         <?php foreach($categories as $category){ 
-            if(isset($services->id_categoria)){ ?>
-                <option value="<?= $category->id_categoria ?>"  <?= ($category->id_categoria == $services->id_categoria)  ? 'selected' : '' ?>  ><?= $category->nombre ?></option>
+            if(isset($blog->id_categoria)){ ?>
+                <option value="<?= $category->id_categoria ?>"  <?= ($category->id_categoria == $blog->id_categoria)  ? 'selected' : '' ?>  ><?= $category->nombre ?></option>
             <?php } else{ ?>
                 <option value="<?= $category->id_categoria ?>" ><?= $category->nombre ?></option>
                 <?php }?>
@@ -18,13 +18,13 @@
 </div>
 <div class="form-group">
     <label for="introduccion">Introduccion de presentación</label>
-    <textarea class="form-control" name="texto_introduccion" id="" rows="3" required><?= isset($services->texto_introduccion) ? $services->texto_introduccion : '' ?></textarea>
+    <textarea class="form-control" name="texto_introduccion" id="" rows="3" required><?= isset($blog->texto_introduccion) ? $blog->texto_introduccion : '' ?></textarea>
 </div>
 <div class="row m-3 mx-auto">
     <div>
-        <img src="<?php if(isset($services->recurso_av_1) ){
-            if(strlen($services->recurso_av_1)>0){
-                echo base_url()."uploads/".$services->recurso_av_1 ;
+        <img src="<?php if(isset($blog->recurso_av_1) ){
+            if(strlen($blog->recurso_av_1)>0){
+                echo base_url()."uploads/".$blog->recurso_av_1 ;
             }else{
                 echo base_url().'assets/images/default/upload-img.png';
             }
@@ -42,7 +42,7 @@
 </div>
 <div class="form-group">
     <label for="contenido">Contenido</label>
-    <textarea name="contenido" id="editor1" required><?= isset($services->contenido) ? $services->contenido : '' ?></textarea>
+    <textarea name="contenido" id="editor1" required><?= isset($blog->contenido) ? $blog->contenido : '' ?></textarea>
     <script>
 CKEDITOR.replace('editor1', {
   extraPlugins: 'embed,autoembed,easyimage,image2',

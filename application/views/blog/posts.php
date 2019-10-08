@@ -14,7 +14,7 @@
                             </div>
                         </div>
                         <div class="text-center" style="vertical-align: middle;">
-                            <a href="<?= base_url() . "blog/edit/"  ?>" class="btn btn-warning  btn-edit mx-auto">Editar</a>
+                            <a href="<?= base_url("blog/edit/".$post->id_publicacion) ?>" class="btn btn-warning  btn-edit mx-auto">Editar</a>
                             <button class="btn btn-danger btn-delete mx-auto" value="<?= $post->id_publicacion ?>">Eliminar</button>
                         </div>
                     </div>

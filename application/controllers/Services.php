@@ -63,8 +63,9 @@ class Services extends CI_Controller
 
   public function guardarDatos($id = "")
   {
+    $id = trim($id);
     $old_services = array();
-    if(!empty($id)){
+    if(!empty($id) && !empty($this->publicacion_model->findById($id))){
       $old_services = (array)$this->publicacion_model->findById($id);
     }else{
       $old_services = array(
@@ -124,11 +125,11 @@ class Services extends CI_Controller
       // $this->session->set_flashdata($message);
       redirect('services');
     } catch (Exception $e) {
-
       $message = array('error' => 'Error no se puedo agregar el registro ');
       // $this->session->set_flashdata($message);
       redirect('services');
     }
+
   }
 
   public function edit($id)

@@ -45,7 +45,7 @@
                     <tr>
                         <th>Titulo</th>
                         <th>Introduccion</th>
-                        <th>Contenido</th>
+                        <!-- <th>Contenido</th> -->
                         <th>Estado</th>
                         <th>Recurso 1</th>
                         <th>Recurso 2</th>
