@@ -121,7 +121,7 @@
                     <i class="fa fa-fw fa-question-circle pop-help"></i>
                     </a>
                     <input type="password" name="pass" id="pass" placeholder="Escribe un password para el usuario" 
-                    class="form-control pad-extra-input vinput" required pattern='[0-9a-zA-Z]{1,20}'>
+                    class="form-control pad-extra-input vinput" required >
 
                     <label class="mrg-spr-ex mt-3 font-weight-bold" >Tipo de usuario:</label>
                     <div style="margin-left:2em;">

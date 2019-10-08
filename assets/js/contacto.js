@@ -16,7 +16,7 @@ function recargar(){
 					<td>${element.comentario}</td>
 					<td>${element.fecha}</td>
             		<td class="px-0 py-2">
-						<button class="btnEditar text-center btn ${(element.estado==1)?'btn-success':'btn-info'} btn-rounded"  value="${element.id_contacto}" data-toggle="modal" data-target="#contactarContacto">${(element.estado==1)?'Aceptar mensaje':'Comunicarse'}</button>
+						<button class="btnEditar text-center btn ${(element.estado==1)?'btn-success':'btn-info'} btn-rounded"  value="${element.id_contacto}" data-toggle="modal" data-target="#contactarContacto">${(element.estado==1)?'&nbsp;Aceptar mensaje&nbsp;':'&nbsp;&nbsp;&nbsp;&nbsp;Comunicarse&nbsp;&nbsp;&nbsp;'}</button>
 						
 						<button value="${element.id_contacto}" class="text-center btn btn-danger btn-rounded btnEliminar">${(element.estado==1)?'Rechazar mensaje':'Eliminar mensaje'}</button>
 					</td>
