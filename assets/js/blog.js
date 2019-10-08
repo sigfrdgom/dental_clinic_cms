@@ -2,16 +2,16 @@ window.addEventListener('load', listener);
 var url_base = window.location.href;
 
 function listener() {
-	document.getElementById('busqueda').addEventListener('keyup', recargar_tbody);
-	recargar_tbody();
+	document.getElementById('busqueda').addEventListener('keyup',refresh_posts);
+	refresh_posts();
 }
 
-function recargar_tbody(){
+function refresh_posts(){
 	const busqueda = document.getElementById('busqueda').value;
-	fetch(url_base+'/tbody/'+busqueda)
+	fetch(url_base+'/posts/'+busqueda)
     .then(res => {return res.text()})
     .then(response => {
-        document.getElementById('tbody-content').innerHTML = response;
+        document.getElementById('cards-content').innerHTML = response;
         let btnDelete = document.getElementsByClassName('btn-delete');
         for(i=0; i<btnDelete.length; i++){
             btnDelete[i].addEventListener('click', deleteService);
@@ -21,7 +21,7 @@ function recargar_tbody(){
 
 function deleteService() {
 	Swal.fire({
-		title: '¿Esta seguro de eliminar el servicio?',
+		title: '¿Esta seguro de eliminar la publicación?',
 		text: "Esta accion no es reversible",
 		type: 'warning',
 		showCancelButton: true,
@@ -31,16 +31,16 @@ function deleteService() {
 		cancelButtonText: 'Cancelar',
 	}).then((result) => {
 		if (result.value) {
-			fetch('services/deleteService/'+this.value, {
+			fetch('blog/deleteService/'+this.value, {
 				method: 'DELETE'
 				})
 				.then(() =>{
 					Swal.fire(
 						'Eliminado!',
-						'!El servicio ha sido eliminada!',
+						'!La publicación ha sido eliminada!',
 						'success'
 					  );
-					  recargar_tbody();
+					  refresh_posts();
 				})
 		}
 	})

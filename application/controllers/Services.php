@@ -9,23 +9,19 @@ class Services extends CI_Controller
     parent::__construct();
 		$this->load->model(array('publicacion_model', 'categoria_model'));
 		parent::logueado();
-
   }
-
-  public function mostrarDatos()
-  { }
 
   public function index()
   {
-    $datos = ['services' => $this->publicacion_model->findAll()];
+    $datos = ['services' => $this->publicacion_model->search_services()];
     $this->load->view('templates/header');
     $this->load->view('services/services', $datos);
     $this->load->view('templates/footer');
   }
 
-  public function tbody()
+  public function tbody($keyword = "")
   {
-    $datos = ['services' => $this->publicacion_model->findAll()];
+    $datos = ['services' => $this->publicacion_model->search_services($keyword)];
     $this->load->view('services/tbody', $datos);
   }
 
@@ -184,4 +180,5 @@ class Services extends CI_Controller
   public function updateService($id){
     $this->guardarDatos($id);
   }
+
 }

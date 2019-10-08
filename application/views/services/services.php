@@ -28,6 +28,20 @@
         <?php } ?>
 
         <div class="card card-body" style="background: #fefefe">
+
+            <!-- Start of search box of table -->
+            <div class="mb-2">
+                <div class="col-xl-12">       
+                    <div class="input-group mb-1 float-right col-sm-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1"><i class="fa fa-search"></i></span>
+                        </div>
+                        <input type="text" class="form-control float-right " placeholder="Busqueda" id="busqueda" aria-label="Busqueda"aria-describedby="basic-addon1">
+                    </div>
+                </div>
+            </div>
+            <!-- End of search box of table -->
+
             <table class="table table-sm table-bordered table-borderless table-hover display" id="ajaxTabla">
                 <thead class="text-white bg-clidesa-celeste text-center">
                     <tr>
