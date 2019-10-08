@@ -98,6 +98,41 @@ class Blog extends CI_Controller
       // $message = array('error' => 'Error no se puedo agregar el registro ');
       // // $this->session->set_flashdata($message);
       // redirect('blog');
-    
   }
+
+  private function deleteImage($data){
+    $message = array();
+    for ($i = 0; $i < sizeof($data); $i++) {
+      if (isset($data[$i])) {
+        $path = "./uploads/" . $data[$i];
+        try {
+          if (file_exists($path) == true) {
+            if (!is_dir($path)) {
+              if (unlink($path)) {
+                $message= array('message' => 'deleted successfully');
+              }
+            }
+          }
+        } catch (Exception $e) {
+          $message= array('error' => 'deleted successfully'); 
+         }
+      }
+    }
+    return $message;
+  }
+
+  public function deletePosts($id)
+  {
+    // Covert stdclass to array
+    $data = json_decode(json_encode($this->publicacion_model->findById($id)), true);
+    // get the last 3 register of the array
+    $data = array_splice($data, -5, 4, true);
+    // delete the keys of the array
+    $data = array_values($data);
+    $message = $this->deleteImage($data);
+    // Delete the data from the database
+    $this->publicacion_model->delete($id);
+  }
+
+
 }

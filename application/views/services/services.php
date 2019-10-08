@@ -2,9 +2,7 @@
     <div class="row page-titles pt-2 pb-0" style="background: white">
         <div class="col-md-5 align-self-center mb-2">
             <h4 class="text-themecolor text-dark float-left mt-2">SERVICIOS &nbsp; &nbsp;</h4>
-
             <a href="<?= base_url('services/create') ?>" class="btn btn-outline-success btn-rounded">Agregar servicios</a>
-
             <a href="#" title="Agregar Servicio" data-toggle="popover" data-trigger="focus" data-content="Sirve para agregar un nuevo servicio y su información">
                 <i class="fa fa-fw fa-question-circle pop-help"></i>
             </a>
