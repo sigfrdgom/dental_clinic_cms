@@ -198,10 +198,12 @@ function accion() {
 // 	$('#agregarCita').modal('hide');
 // }
 
+// document.getElementById("globalBusqueda").addEventListener("keyup", buscarCriterio);
 
-document.getElementById("busqueda").addEventListener("keyup", function(){
-	
-	var busqueda=document.getElementById("busqueda").value;
+document.getElementById("busqueda").addEventListener("keyup", buscarCriterio);
+
+function buscarCriterio(){
+	 var busqueda=document.getElementById("busqueda").value;
 	if (busqueda!==""&&busqueda!==" ") {
 		var datas= new FormData();
 		datas.append("busqueda", busqueda)
@@ -241,4 +243,4 @@ document.getElementById("busqueda").addEventListener("keyup", function(){
 		recargar();
 	}
 	
-});
+ }
