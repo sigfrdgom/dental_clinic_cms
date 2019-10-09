@@ -46,6 +46,6 @@
         </div>
     </div>
 
-    
+</div>  
 <!-- Import services javascript    -->
 <script src="<?= base_url('assets/js/blog.js') ?>"></script>
