@@ -57,20 +57,20 @@ class Publicacion_model extends CI_Model
         }
     }
 
-    public function search_services($keyword = "")
-    {
-        $keyword = trim($keyword);
-        if (empty($keyword)) {
-            $this->db->where('id_tipo', 1);
-            return $this->db->get('publicacion')->result();
-        } else {
-            $this->db->where('id_tipo', 1);
-            $this->db->like('titulo', $keyword);
-            $this->db->or_like('texto_introduccion', $keyword);
-            $this->db->or_like('contenido', $keyword);
-            return $this->db->get('publicacion')->result();
-        }
-    }
+    // public function search_services($keyword = "")
+    // {
+    //     $keyword = trim($keyword);
+    //     if (empty($keyword)) {
+    //         $this->db->where('id_tipo', 1);
+    //         return $this->db->get('publicacion')->result();
+    //     } else {
+    //         $this->db->where('id_tipo', 1);
+    //         $this->db->like('titulo', $keyword);
+    //         $this->db->or_like('texto_introduccion', $keyword);
+    //         $this->db->or_like('contenido', $keyword);
+    //         return $this->db->get('publicacion')->result();
+    //     }
+    // }
 
     public function search_posts($keyword = ""){
         $keyword = trim($keyword);
@@ -91,5 +91,29 @@ class Publicacion_model extends CI_Model
             // $this->db->order_by('fecha_ingreso', 'DESC');
             // return $this->db->get('publicacion')->result();
         }
-    }
+	}
+	
+	public function cargaServices(){
+            $this->db->where('id_tipo', 1);
+            $this->db->order_by('fecha_ingreso', 'DESC');
+            return $this->db->get('publicacion')->result();
+       
+	}
+	
+	public function search_services($keyword = ""){
+        $keyword = trim($keyword);
+        if (empty($keyword)) {
+            $this->db->where('id_tipo', 1);
+            $this->db->order_by('fecha_ingreso', 'DESC');
+            return $this->db->get('publicacion')->result();
+        } else {
+			$escape="'%".$keyword."%' ESCAPE '!'";
+			$query=$this->db->query('SELECT * FROM publicacion WHERE `id_tipo` = 1 AND ( `titulo` LIKE '.$escape.' OR `texto_introduccion` LIKE '.$escape.' OR `contenido` LIKE '.$escape.') ORDER BY `fecha_ingreso` DESC');
+
+			return $query->result();
+
+        }
+	}
+
+
 }
