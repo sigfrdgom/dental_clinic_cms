@@ -94,6 +94,7 @@ class Publicacion_model extends CI_Model
 	}
 	
 	public function cargaServices(){
+
             $this->db->where('id_tipo', 1);
             $this->db->order_by('fecha_ingreso', 'DESC');
             return $this->db->get('publicacion')->result();
@@ -114,6 +115,14 @@ class Publicacion_model extends CI_Model
 
         }
 	}
+
+	// public function cargaServicesRest(){
+		
+    //         $this->db->where('id_tipo', 1);
+    //         $this->db->order_by('fecha_ingreso', 'DESC');
+    //         return $this->db->get('publicacion')->result();
+       
+	// }
 
 
 }
