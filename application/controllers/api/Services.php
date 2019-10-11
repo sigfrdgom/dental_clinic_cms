@@ -29,5 +29,11 @@ class Services extends CI_Controller
             echo json_encode($this->publicacion_model->findByCriteria($_POST["busqueda"]));
         }
 		
+	}
+	
+	
+	public function cargarServicios(){ 
+		echo json_encode($this->publicacion_model->cargaServices());
     }
+
 }
