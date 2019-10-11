@@ -83,12 +83,12 @@
 
         <!-- Modal body -->
         <div class="modal-body">
-            <form id="formTipo"  data-parsley-validate novalidate>
+            <form id="formTipo" >
                 <input type="hidden" name="id" id="id_tipo">
 
                 <label for="nombre" class="mrg-spr-ex mt-2">Nombres del Tipo: </label>
                 <input type="text" name="nombre" id="nombre" placeholder="Escribe el nombre del tipo" 
-                class="form-control " required pattern='[a-zA-zÑñÁÉÍÓÚáéíóúü ]{1,64}'>
+                class="form-control vinput" required pattern='[a-zA-ZÑñÁÉÍÓÚáéíóúü ]{1,64}'>
 
                 <div style="margin-left:2em;" id="oculto"hidden="true">
                     <label class="mrg-spr-ex mt-2" >Estado:</label>
