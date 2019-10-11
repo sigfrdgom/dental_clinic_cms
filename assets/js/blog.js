@@ -31,7 +31,7 @@ function deleteService() {
 		cancelButtonText: 'Cancelar',
 	}).then((result) => {
 		if (result.value) {
-			fetch('blog/deleteService/'+this.value, {
+			fetch('blog/deletePosts/'+this.value, {
 				method: 'DELETE'
 				})
 				.then(() =>{

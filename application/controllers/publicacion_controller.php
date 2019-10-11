@@ -65,7 +65,18 @@ class Publicacion_controller extends CI_Controller {
     
         $this->publicacion_model-> actualizarPublicacion($data);
         $this->load->view('panelControl/index', $data);
+	}
+
+	public function cargarServicios(){ 
+		
+		echo json_encode($this->publicacion_model->cargaServices());
+		
+		//http://localhost/dental_clinic_cms/uploads/
+	// 	$urlBase=base_url("/uploads/");
+	// 	echo $urlBase;
     }
+	
+
 
 
 

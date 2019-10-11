@@ -14,7 +14,7 @@
             <div class="d-flex justify-content-end align-items-center">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item">INICIO</li>
-                    <li class="breadcrumb-item active">publicaciónS</li>
+                    <li class="breadcrumb-item active">Blog</li>
                 </ol>
             </div>
         </div>
