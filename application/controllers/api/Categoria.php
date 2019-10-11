@@ -10,7 +10,6 @@ class Categoria extends CI_Controller
         parent::__construct();
         //METODO CARGADO EN EL MODELO
 		$this->load->model('categoria_model');
-		parent::logueado();
     }
 
     //METODO QUE LLAMA LOS DATOS DE LA BASE DE DATOS Y REDICCIONA
