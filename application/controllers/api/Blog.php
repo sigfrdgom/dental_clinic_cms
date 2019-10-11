@@ -12,8 +12,21 @@ class Blog extends CI_Controller
 		$this->load->model('publicacion_model');
     }
 
-    public function index(){ 
-        echo json_encode($this->publicacion_model->cargaServices());
+    public function index($id = ""){ 
+        if(!empty(trim($id))){
+            echo json_encode($this->publicacion_model->get_posts($id));
+        }else{
+            echo json_encode($this->publicacion_model->get_posts());
+        }
     }
+
+    public function recent_posts(){ 
+        echo json_encode($this->publicacion_model->get_recent_posts());
+    }
+
+    public function search_posts($keyword = ""){ 
+        echo json_encode($this->publicacion_model->search_posts($keyword));
+    }
+
 
 }
