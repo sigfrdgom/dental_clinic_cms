@@ -19,6 +19,20 @@ class Categoria_controller extends CI_Controller {
 		$this->load->view('templates/footer');
 	}
     
+    //METODO QUE OBTIENE
+    public function cargarCategoria(){
+        //deberia ir el espacion en blanco?
+        echo json_encode($this->categoria_model->getAll());
+    }
+
+
+    public function obtenerRegistro($id){
+        //deberia ir el espacion en blanco?
+        echo json_encode($this->categoria_model->obtenerRegistro($id));
+    }
+
+
+
     //METODO QUE AGREGA DATOS CATEGORIA
     public function agregarCategoria(){
         //deberia ir el espacion en blanco?

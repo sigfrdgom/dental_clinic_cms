@@ -12,8 +12,24 @@ class Blog extends CI_Controller
 		$this->load->model('publicacion_model');
     }
 
-    public function index(){ 
-        echo json_encode($this->publicacion_model->cargaServices());
+    // Por si n algun momento cambia el id de la categoria blog
+    public function findAll(){ 
+        echo json_encode($this->publicacion_model->cargaBlog());
     }
 
+    //METODO CON EL QUE OBTENDRIA EL REGISTRO CATEGORIA
+    public function obtenerRegistro($id)
+    {
+        echo json_encode($this->publicacion_model->findById($id));
+    }
+
+    public function findByCriteria(){ 
+		if($_POST["busqueda"] == null || $_POST["busqueda"]== ""){
+			echo json_encode($this->publicacion_model->cargaBlog());
+        }else{
+            echo json_encode($this->publicacion_model->findBlogByCriteria($_POST["busqueda"]));
+        }
+		
+    }
+    
 }

@@ -5,7 +5,7 @@ var respuesta=document.getElementById("bodyCategoria");
 
 /////////////////////-----------------------------------------GET----------------------------------------//////////////////
 function recargar(){
-    fetch('cargarDatosCategoria')
+    fetch('cargarCategoria')
             .then(res => res.json())
             .then(datos => {
 				var texto="";
@@ -49,7 +49,6 @@ document.getElementById('guardarCategoria').addEventListener('click', function(e
 		// metodo="PUT"
 		var id_categoria=document.getElementById('id_categoria').value
 		datas.append("id_categoria", id_categoria)
-			
 	}
 	
 
@@ -60,7 +59,8 @@ document.getElementById('guardarCategoria').addEventListener('click', function(e
         //   console.log(data);
           if(data=="error"){
             respuesta.innerHTML=
-          `ERROR`;
+		  `ERROR`;
+		  
           }else{
 			recargar();
 			limpiar();	

@@ -84,7 +84,7 @@ class Services extends CI_Controller
       }
     }
 
-    $fecha = new DateTime();
+  
     $datos = [
       'id_publicacion' => trim($id) ? trim($id) : '',
       'id_usuario' => $this->session->userdata('id_usuario'),
@@ -97,8 +97,7 @@ class Services extends CI_Controller
       'recurso_av_1' => isset($data_files['file1']) ?  $data_files['file1']["upload_data"]['file_name'] : $old_services['recurso_av_1'],
       'recurso_av_2' => isset($data_files['file2']) ?  $data_files['file2']["upload_data"]['file_name'] : $old_services['recurso_av_2'],
       'recurso_av_3' => isset($data_files['file3']) ?  $data_files['file3']["upload_data"]['file_name'] : $old_services['recurso_av_3'],
-      'recurso_av_4' => isset($data_files['file4']) ?  $data_files['file4']["upload_data"]['file_name'] : $old_services['recurso_av_4'],
-      'fecha_ingreso' => $fecha->format('Y-m-d')
+      'recurso_av_4' => isset($data_files['file4']) ?  $data_files['file4']["upload_data"]['file_name'] : $old_services['recurso_av_4']
     ];
 
     try {
