@@ -11,10 +11,7 @@ class Publicacion_controller extends CI_Controller {
         parent::__construct();
         //METODO CARGADO EN EL MODELO
 		$this->load->model('publicacion_model');
-		parent::logueado();
-
-
-        
+		// parent::logueado();
     }
 
     
