@@ -72,7 +72,7 @@ class Publicacion_model extends CI_Model
 
     public function get_recent_posts()
     {
-        $this->db->select('id_publicacion, titulo, texto_introduccion, recurso_av_1');
+        $this->db->select('id_publicacion, titulo, texto_introduccion, recurso_av_1, fecha_ingreso');
         $this->db->where('id_tipo', 2);
         $this->db->where('estado', '1');
         $this->db->order_by('fecha_ingreso', 'DESC');
@@ -127,7 +127,7 @@ class Publicacion_model extends CI_Model
 
     public function findByCriteria($datos){
         try {
-        	$this->db->select('id_publicacion, titulo, texto_introduccion, recurso_av_1');
+        	$this->db->select('id_publicacion, titulo, texto_introduccion, recurso_av_1, fecha_ingreso');
 			$this->db->like('titulo', $datos);
 			$this->db->or_like('texto_introduccion', $datos);
 			return $this->db->get('publicacion')->result();
