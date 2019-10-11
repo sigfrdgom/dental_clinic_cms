@@ -1,29 +1,23 @@
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
-SET time_zone = "+00:00";
-
--- Creación de la base de datos
 CREATE DATABASE clinica_db;
 
---Uso de la base de datos
 USE clinica_db;
 
 CREATE TABLE `categoria` (
   `id_categoria` int(11) NOT NULL,
   `nombre` varchar(100) NOT NULL,
-  `descripcion` varchar(200) NOT NULL
+  `descripcion` varchar(200) NOT NULL,
+  `estado` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `categoria`
 --
 
-INSERT INTO `categoria` (`id_categoria`, `nombre`, `descripcion`) VALUES
-(1, 'Dentista general', 'La categoria para clasificar contenido acorde a odontologia general.'),
-(2, 'Especialidades Dentales', 'La categoria para clasificar contenido acorde a especialidades dentales.'),
-(3, 'Especialidades Medicas', 'La categoria para clasificar contenido acorde a especialidades medicas.'),
-(4, 'Curiosidades Dentales', 'La categoria para clasificar contenido acorde a tips y curiosidades.');
+INSERT INTO `categoria` (`id_categoria`, `nombre`, `descripcion`,`estado`) VALUES
+(1, 'Dentista general', 'La categoria para clasificar contenido acorde a odontologia general.',1),
+(2, 'Especialidades Dentales', 'La categoria para clasificar contenido acorde a especialidades dentales.',1),
+(3, 'Especialidades Medicas', 'La categoria para clasificar contenido acorde a especialidades medicas.',1),
+(4, 'Curiosidades Dentales', 'La categoria para clasificar contenido acorde a tips y curiosidades.',1);
 
 -- --------------------------------------------------------
 
