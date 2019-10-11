@@ -70,8 +70,8 @@ document.getElementById('guardarTipo').addEventListener('click', function(e){
 /////////////////////------------------------------------------------DELETE---------------------------------------------------//////////////////	
 function eliminar() {
 	Swal.fire({
-		title: '¿Esta seguro de eliminar el tipo?',
-		text: "¡Esta accion no es reversible y puede ser fatal!",
+		title: '¿Esta seguro de dar de baja el tipo?',
+		text: "¡Esta accion puede causar que ciertos contenidos no sean visibles!",
 		type: 'warning',
 		showCancelButton: true,
 		confirmButtonColor: '#36bea6',
@@ -85,8 +85,8 @@ function eliminar() {
 				})
 				.then(() =>{
 					Swal.fire(
-						'Eliminado',
-						'!El Tipo de contenido ha sido eliminado',
+						'Dado de baja',
+						'!El Tipo de contenido ha sido dado de baja',
 						'success'
 						)
 					recargar();		

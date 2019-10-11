@@ -51,6 +51,7 @@
                             <!-- <th class='secret'>ID</th> -->
                             <th>Nombres Categoria</th>
                             <th>Descripcion Categoria</th>
+                            <th>Estado</th>
                             <th colspan="2">Acciones
                                 <a href="#" title="Acciones de gestion"  data-toggle="popover" data-trigger="focus"
                                     data-content="Sirven para modificar informacion de una categoría del blog o darla de baja para que las publicaciones ya no sean publicas.">

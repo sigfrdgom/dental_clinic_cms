@@ -43,7 +43,10 @@ class Categoria_controller extends CI_Controller {
       
     //METODO QUE ELIMINA UN REGISTRO CATEGORIA
     public function eliminarCategoria($id){
-        $this->categoria_model->eliminarCategoria($id);
+        // $this->categoria_model->eliminarCategoria($id);
+        $this->categoria_model->actualizarCategoriaEstado($id);
+
+        
     }
 
     //METODO QUE ACTUALIZA UN REGISTRO CATEGORIA

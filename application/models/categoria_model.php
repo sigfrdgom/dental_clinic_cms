@@ -67,6 +67,15 @@ class Categoria_model extends CI_Model{
     }
 
 
+    public function actualizarCategoriaEstado($id){
+        try {
+            $this->db->set('estado',0,FALSE);
+            $this->db->where('id_categoria',$id);
+            $this->db->update('categoria');
+        } catch (mysqli_sql_exception $e) {
+            return 0;
+        }
+    }
 
     }
 
