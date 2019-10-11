@@ -5,7 +5,7 @@ var respuesta=document.getElementById("bodyCategoria");
 
 /////////////////////-----------------------------------------GET----------------------------------------//////////////////
 function recargar(){
-    fetch('cargarDatosCategoria')
+    fetch('cargarCategoria')
             .then(res => res.json())
             .then(datos => {
 				var texto="";
@@ -19,6 +19,7 @@ function recargar(){
 				<tr class="p-0 border-bottom border-info" id="tr${element.id_categoria}">
     				<td>${element.nombre}</td>
 					<td>${element.descripcion}</td>
+					<td>${(element.estado == 0)?'Inactivo':'Activo'}</td>
             		<td class="px-0 py-2">
 						<button class="btnEditar text-center btn btn-warning btn-rounded"  value="${element.id_categoria}" data-toggle="modal" data-target="#agregarCategoria">GESTIONAR</button>
 						<button class="btnEliminar text-center btn btn-danger btn-rounded"  value="${element.id_categoria}">DAR BAJA</button>
@@ -49,7 +50,6 @@ document.getElementById('guardarCategoria').addEventListener('click', function(e
 		// metodo="PUT"
 		var id_categoria=document.getElementById('id_categoria').value
 		datas.append("id_categoria", id_categoria)
-			
 	}
 	
 
@@ -60,7 +60,8 @@ document.getElementById('guardarCategoria').addEventListener('click', function(e
         //   console.log(data);
           if(data=="error"){
             respuesta.innerHTML=
-          `ERROR`;
+		  `ERROR`;
+		  
           }else{
 			recargar();
 			limpiar();	
@@ -72,8 +73,8 @@ document.getElementById('guardarCategoria').addEventListener('click', function(e
 /////////////////////------------------------------------------------DELETE---------------------------------------------------//////////////////	
 function eliminar() {
 	Swal.fire({
-		title: '¿Esta seguro de eliminar la categoria?',
-		text: "Esta accion no es reversible",
+		title: '¿Esta seguro de dar de baja la categoria?',
+		text: "Esta accion puede causar que cierto contenido no sea visible",
 		type: 'warning',
 		showCancelButton: true,
 		confirmButtonColor: '#36bea6',
@@ -82,13 +83,11 @@ function eliminar() {
 		cancelButtonText: 'Cancelar',
 	}).then((result) => {
 		if (result.value) {
-			fetch('eliminarCategoria/'+this.value, {
-				method: 'DELETE'
-				})
+			fetch('eliminarCategoria/'+this.value)
 				.then(() =>{
 					Swal.fire(
-						'Eliminado!',
-						'!La categoria ha sido eliminada!',
+						'Dado de baja!',
+						'!La categoria ha sido dada de baja!',
 						'success'
 					  )
 					recargar();		

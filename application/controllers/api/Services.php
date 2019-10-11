@@ -16,4 +16,18 @@ class Services extends CI_Controller
         echo json_encode($this->publicacion_model->cargaServices());
     }
 
+    //METODO CON EL QUE OBTENDRIA EL REGISTRO CATEGORIA
+    public function obtenerRegistro($id)
+    {
+        echo json_encode($this->publicacion_model->findById($id));
+    }
+
+    public function findByCriteria(){ 
+		if($_POST["busqueda"] == null || $_POST["busqueda"]== ""){
+			echo json_encode($this->publicacion_model->findAll());
+        }else{
+            echo json_encode($this->publicacion_model->findByCriteria($_POST["busqueda"]));
+        }
+		
+    }
 }

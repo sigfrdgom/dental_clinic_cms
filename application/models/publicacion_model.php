@@ -57,21 +57,6 @@ class Publicacion_model extends CI_Model
         }
     }
 
-    // public function search_services($keyword = "")
-    // {
-    //     $keyword = trim($keyword);
-    //     if (empty($keyword)) {
-    //         $this->db->where('id_tipo', 1);
-    //         return $this->db->get('publicacion')->result();
-    //     } else {
-    //         $this->db->where('id_tipo', 1);
-    //         $this->db->like('titulo', $keyword);
-    //         $this->db->or_like('texto_introduccion', $keyword);
-    //         $this->db->or_like('contenido', $keyword);
-    //         return $this->db->get('publicacion')->result();
-    //     }
-    // }
-
     public function get_posts($id = "")
     {
         $this->db->where('id_tipo', 2);
@@ -87,6 +72,7 @@ class Publicacion_model extends CI_Model
 
     public function get_recent_posts()
     {
+        $this->db->select('id_publicacion, titulo, texto_introduccion, recurso_av_1');
         $this->db->where('id_tipo', 2);
         $this->db->where('estado', '1');
         $this->db->order_by('fecha_ingreso', 'DESC');
@@ -105,7 +91,6 @@ class Publicacion_model extends CI_Model
         } else {
             $escape = "'%" . $keyword . "%' ESCAPE '!'";
             $query = $this->db->query('SELECT * FROM publicacion WHERE `id_tipo` = 2 AND ( `titulo` LIKE ' . $escape . ' OR `texto_introduccion` LIKE ' . $escape . ' OR `contenido` LIKE ' . $escape . ') ORDER BY `fecha_ingreso` DESC');
-
             return $query->result();
 
             // $this->db->where('id_tipo', 2);		
@@ -116,8 +101,6 @@ class Publicacion_model extends CI_Model
             // return $this->db->get('publicacion')->result();
         }
     }
-
-
 
     public function cargaServices()
     {
@@ -138,18 +121,42 @@ class Publicacion_model extends CI_Model
         } else {
             $escape = "'%" . $keyword . "%' ESCAPE '!'";
             $query = $this->db->query('SELECT * FROM publicacion WHERE `id_tipo` = 1 AND ( `titulo` LIKE ' . $escape . ' OR `texto_introduccion` LIKE ' . $escape . ' OR `contenido` LIKE ' . $escape . ') ORDER BY `fecha_ingreso` DESC');
-
             return $query->result();
         }
     }
 
-    // public function cargaServicesRest(){
+    public function findByCriteria($datos){
+        try {
+        	$this->db->select('id_publicacion, titulo, texto_introduccion, recurso_av_1');
+			$this->db->like('titulo', $datos);
+			$this->db->or_like('texto_introduccion', $datos);
+			return $this->db->get('publicacion')->result();
+						
+        } catch (mysqli_sql_exception $e) {
+            return 0;
+        }
+    }
 
-    //         $this->db->where('id_tipo', 1);
-    //         $this->db->order_by('fecha_ingreso', 'DESC');
-    //         return $this->db->get('publicacion')->result();
+    // Los metodos para usar en blog
+    public function cargaBlog($tipo = ""){
+        $this->db->select('id_publicacion, titulo, texto_introduccion,recurso_av_1');
+        $this->db->where('id_tipo', 2);
+        $this->db->order_by('fecha_ingreso', 'DESC');
+        $this->db->limit('10');
+        return $this->db->get('publicacion')->result();
+    }
 
-    // }
-
+    public function findBlogByCriteria($datos){
+        try {
+            $this->db->select('id_publicacion, titulo, texto_introduccion');
+            $this->db->where('id_tipo', 2);
+			$this->db->like('titulo', $datos);
+			$this->db->or_like('texto_introduccion', $datos);
+			return $this->db->get('publicacion')->result();
+						
+        } catch (mysqli_sql_exception $e) {
+            return 0;
+        }
+    }
 
 }

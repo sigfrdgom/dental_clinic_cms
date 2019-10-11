@@ -33,7 +33,7 @@
 
 .bg-login{
     background: rgb(4,102,236);
-    background: linear-gradient(90deg, rgba(4,102,236,1) 0%, rgba(9,121,99,1) 35%, rgba(0,212,255,1) 100%);
+    background: linear-gradient(90deg, rgba(4, 101, 236, 1) 0%, rgba(9,121,99,0.9) 35%, rgba(0,212,255,1) 100%);
 }
 
 .vlogin:invalid {
@@ -45,3 +45,30 @@
     border: 1px solid #36bea593;
     box-shadow: 0 0 5px #36bea593;
 }
+
+
+
+  /* On screens that are 992px or less, set the background color to blue */
+  @media screen and (min-width: 600px) and (max-width: 992px) {
+    .login_input{
+        font-size: 2.5em;
+    }
+    
+    .login_icon{
+        font-size: 3em;
+    }
+
+    .login_btn{
+        font-size: 2.5em;
+    }
+    
+    .login_img{
+        font-size: 15em;
+        color: #00aeef;
+    }
+  }
+  
+  .login_img{
+    color: #00aeef;
+    font-size: 15em;
+    }

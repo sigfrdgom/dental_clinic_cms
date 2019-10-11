@@ -113,7 +113,7 @@
 
                     <label for="dnombres" class="mrg-spr-ex mt-3 font-weight-bold">Usuario: </label>
                     <input type="text" name="usuario" id="usuario" placeholder="Escribe el nombre del usuario" 
-                    class="form-control vinput" required pattern='[a-zA-z]{1,14}.[a-zA-Z]{1,14}'>
+                    class="form-control vinput" required pattern='[a-zA-z]{1,14}.[a-zA-Z0-9]{1,14}'>
 
                     <label for="ppass" class="mrg-spr-ex mt-3 font-weight-bold">Ingresa un password para el usuario:</label>
                     <a href="#" title="Sobre password"  data-toggle="popover" data-trigger="focus"
@@ -121,7 +121,7 @@
                     <i class="fa fa-fw fa-question-circle pop-help"></i>
                     </a>
                     <input type="password" name="pass" id="pass" placeholder="Escribe un password para el usuario" 
-                    class="form-control pad-extra-input vinput" required pattern='[0-9a-zA-Z]{1,20}'>
+                    class="form-control pad-extra-input vinput" required >
 
                     <label class="mrg-spr-ex mt-3 font-weight-bold" >Tipo de usuario:</label>
                     <div style="margin-left:2em;">
@@ -184,3 +184,6 @@
 	
 <!-- JS file for this view -->
 <script src="<?= base_url('assets/js/usuario.js')?>"></script>
+
+clidesa.admin
+$2y$13$.zmlCWcyyJOKzTqQTSYwBuf01I7CLEagI6jcjCOfcxgW5NMMvOGwW
