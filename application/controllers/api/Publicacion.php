@@ -11,15 +11,18 @@ class Publicacion extends CI_Controller {
         parent::__construct();
         //METODO CARGADO EN EL MODELO
 		$this->load->model('publicacion_model');
-		parent::logueado();
+		// parent::logueado();
     }
 
 
     public function index(){ 
-        echo json_encode($this->publicacion_model->cargaServices());
-        
+        echo json_encode($this->publicacion_model->cargaServices()); 
     }
 
+
+    public function as(){ 
+        echo json_encode($this->publicacion_model->cargaServices()); 
+    }
     // //METODO QUE LLAMA LOS DATOS DE LA BASE DE DATOS Y REDICCIONA Y CARGA TODA LA PUBLICACIONES
     // public function cargarDatosPublicacion(){ 
     //     $publicacion = $this->publicacion_model->getAll();
