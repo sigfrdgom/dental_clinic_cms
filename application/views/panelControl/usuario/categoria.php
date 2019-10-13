@@ -10,8 +10,8 @@
             </button>
 
             <a href="#" title="Agregar Categoria"  data-toggle="popover" data-trigger="focus"
-                    data-content="Sirve para agregar un nuevo categoria al sistema.">
-                <i class="fa fa-fw fa-question-circle pop-help"></i>
+                    data-content="Sirve para agregar una nueva categoría de publicación de blog al sistema y manejar así las categorías del blog.">
+                <i class="fa fa-fw fa-question-circle pop-help" style="font-size:1.3em;"></i>
             </a>
 
         </div>
@@ -51,10 +51,11 @@
                             <!-- <th class='secret'>ID</th> -->
                             <th>Nombres Categoria</th>
                             <th>Descripcion Categoria</th>
+                            <th>Estado</th>
                             <th colspan="2">Acciones
                                 <a href="#" title="Acciones de gestion"  data-toggle="popover" data-trigger="focus"
-                                    data-content="Sirven para modificar informacion de una categoria del sistema o darlo de baja">
-                                    <i class="fa fa-fw fa-question-circle pop-help"></i>
+                                    data-content="Sirven para modificar informacion de una categoría del blog o darla de baja para que las publicaciones ya no sean publicas.">
+                                    <i class="fa fa-fw fa-question-circle pop-help text-white" style="font-size:1.3em;"></i>
                                 </a>
                             </th>
                         </tr>

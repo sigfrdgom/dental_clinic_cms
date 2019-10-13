@@ -1,5 +1,5 @@
 window.addEventListener('load', recargar);
-var formulario=document.getElementById("formContacto");
+// var formulario=document.getElementById("formContacto");
 var respuesta=document.getElementById("bodyContacto");
 
 
@@ -16,7 +16,7 @@ function recargar(){
 					<td>${element.comentario}</td>
 					<td>${element.fecha}</td>
             		<td class="px-0 py-2">
-						<button class="btnEditar text-center btn ${(element.estado==1)?'btn-success':'btn-info'} btn-rounded"  value="${element.id_contacto}" data-toggle="modal" data-target="#contactarContacto">${(element.estado==1)?'Aceptar mensaje':'Comunicarse'}</button>
+						<button class="btnEditar text-center btn ${(element.estado==1)?'btn-success':'btn-info'} btn-rounded"  value="${element.id_contacto}" data-toggle="modal" data-target="#contactarContacto">${(element.estado==1)?'&nbsp;Aceptar mensaje&nbsp;':'&nbsp;&nbsp;&nbsp;&nbsp;Comunicarse&nbsp;&nbsp;&nbsp;'}</button>
 						
 						<button value="${element.id_contacto}" class="text-center btn btn-danger btn-rounded btnEliminar">${(element.estado==1)?'Rechazar mensaje':'Eliminar mensaje'}</button>
 					</td>
@@ -32,48 +32,43 @@ function recargar(){
 
 }
 /////////////////////----------------------------------------POST y PUT------------------------------------------//////////////////
-document.getElementById('guardarContacto').addEventListener('click', function(e){
-	e.preventDefault();
-	var nombre=document.getElementById('nombre').value
-	// var apellido=document.getElementById('apellido').value
-	var telefono=document.getElementById('telefono').value
-	var email=document.getElementById('email').value
-	var comentario=document.getElementById('comentario').value
+// document.getElementById('guardarContacto').addEventListener('click', function(e){
+// 	e.preventDefault();
+// 	var nombre=document.getElementById('nombre').value
+// 	var telefono=document.getElementById('telefono').value
+// 	var email=document.getElementById('email').value
+// 	var comentario=document.getElementById('comentario').value
 
-	var datas= new FormData();
-	datas.append("nombre", nombre)
-	// datas.append("apellido", apellido)
-	datas.append("telefono", telefono)
-	datas.append("email", email)
-	datas.append("comentario", comentario)
-	datas.append("estado", 1)
-	// datas.append("")
+// 	var datas= new FormData();
+// 	datas.append("nombre", nombre)
+// 	datas.append("telefono", telefono)
+// 	datas.append("email", email)
+// 	datas.append("comentario", comentario)
+// 	datas.append("estado", 1)
 
-	var controlador="agregarContacto";
-	var metodo="POST"
-    if (this.value=="Modificar") {
-		controlador="actualizarContacto";
-		// metodo="PUT"
-		var id_contacto=document.getElementById('id_contacto').value
-		datas.append("id_contacto", id_contacto)
+// 	var controlador="agregarContacto";
+// 	var metodo="POST"
+//     if (this.value=="Modificar") {
+// 		controlador="actualizarContacto";
+// 		var id_contacto=document.getElementById('id_contacto').value
+// 		datas.append("id_contacto", id_contacto)
 			
-	}
+// 	}
 	
 
-	fetch(controlador, {
-        method: metodo,
-        body: datas
-    }).then(data =>{
-        //   console.log(data);
-          if(data=="error"){
-            respuesta.innerHTML=
-          `ERROR`;
-          }else{
-			recargar();
-			limpiar();	
-          }})
+// 	fetch(controlador, {
+//         method: metodo,
+//         body: datas
+//     }).then(data =>{
+//           if(data=="error"){
+//             respuesta.innerHTML=
+//           `ERROR`;
+//           }else{
+// 			recargar();
+// 			limpiar();	
+//           }})
 
-});
+// });
 
 
 /////////////////////------------------------------------------------DELETE---------------------------------------------------//////////////////	
@@ -137,9 +132,9 @@ function accion() {
 			document.getElementById('fecha_contacto').innerHTML=datos["fecha"];
 			document.getElementById('estado_contacto').innerHTML=(datos["estado"]==1)?'No leido':'Leido';
 			
-			document.getElementById('sendmail_cita').href="mailto:"+datos["email"]+"?subject=Contacto desde pagina WEB"
-			document.getElementById('sendwhats_cita').href="http://wa.me/"+datos["telefono"]
-			document.getElementById('sendcall_cita').href="tel:"+datos["telefono"]
+			document.getElementById('sendmail_contacto').href="mailto:"+datos["email"]+"?subject=Contacto desde pagina WEB"
+			document.getElementById('sendwhats_contacto').href="http://wa.me/"+datos["telefono"]
+			document.getElementById('sendcall_contacto').href="tel:"+datos["telefono"]
 			
 			var datas= new FormData();
 			datas.append("id_contacto", datos["id_contacto"])
@@ -161,9 +156,9 @@ function accion() {
 		
     peticion.open('GET', 'obtenerRegistro/'+this.value);
 	peticion.send();
-	btn= document.getElementById('guardarContacto')
-    btn.removeAttribute("value")
-	btn.setAttribute("value", "Modificar")
+	// btn= document.getElementById('guardarContacto')
+    // btn.removeAttribute("value")
+	// btn.setAttribute("value", "Modificar")
     
 }
 
@@ -171,16 +166,15 @@ document.getElementById("btnReset").addEventListener("click", limpiar)
 // document.getElementById("idModal").addEventListener("click", limpiar)
 
 function limpiar(){
-	document.getElementById('nombre').value="";
-	// document.getElementById('apellido').value="";
-	document.getElementById('telefono').value="";
-	document.getElementById('email').value="";
-	document.getElementById('comentario').value="";
+	// document.getElementById('nombre').value="";
+	// document.getElementById('telefono').value="";
+	// document.getElementById('email').value="";
+	// document.getElementById('comentario').value="";
     
    
-	var btn=document.getElementById('guardarContacto')
-    btn.removeAttribute("value")
-	btn.setAttribute("value", "Guardar");
+	// var btn=document.getElementById('guardarContacto')
+    // btn.removeAttribute("value")
+	// btn.setAttribute("value", "Guardar");
 	$('#agregarContacto').modal('hide');
 }
 
@@ -203,14 +197,14 @@ document.getElementById("busqueda").addEventListener("keyup", function(){
 				var texto="";
 				datos.forEach(element => {
 				texto+=`
-				<tr class="p-0 border-bottom border-info" id="tr${element.id_contacto}">
-					<td>${element.nombre+" "+element.apellido}</td>
-					<td>${element.telefono}</td>
-					<td>${element.email}</td>
+				<tr class="p-0 border-bottom border-info ${(element.estado==1)?'mensaje-no-leido':'mensaje-leido'}" id="tr${element.id_contacto}" >
+					<td>${element.nombre}</td>
 					<td>${element.comentario}</td>
+					<td>${element.fecha}</td>
             		<td class="px-0 py-2">
-						<button class="btnEditar text-center btn btn-success btn-rounded"  value="${element.id_contacto}" data-toggle="modal" data-target="#agregarContacto">Aceptar mensaje</button>
-						<button class="btnEliminar text-center btn btn-danger btn-rounded"  value="${element.id_contacto}">Rechazar mensaje</button>
+						<button class="btnEditar text-center btn ${(element.estado==1)?'btn-success':'btn-info'} btn-rounded"  value="${element.id_contacto}" data-toggle="modal" data-target="#contactarContacto">${(element.estado==1)?'Aceptar mensaje':'Comunicarse'}</button>
+						
+						<button value="${element.id_contacto}" class="text-center btn btn-danger btn-rounded btnEliminar">${(element.estado==1)?'Rechazar mensaje':'Eliminar mensaje'}</button>
 					</td>
     			</tr>`
 				});
@@ -218,7 +212,7 @@ document.getElementById("busqueda").addEventListener("keyup", function(){
 						respuesta.innerHTML=texto;
 						asignarEventos();	
 					}else{
-						respuesta.innerHTML="NO HAY REGISTRO COINCIDENTES";
+						respuesta.innerHTML="NO HAY REGISTRO COINCIDENTES EN MENSAJES";
 					}
 					
 			})

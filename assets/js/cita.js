@@ -1,5 +1,5 @@
 window.addEventListener('load', recargar);
-var formulario=document.getElementById("formCita");
+// var formulario=document.getElementById("formCita");
 var respuesta=document.getElementById("bodyCita");
 
 
@@ -35,54 +35,54 @@ function recargar(){
 
 }
 /////////////////////----------------------------------------POST y PUT------------------------------------------//////////////////
-document.getElementById('guardarCita').addEventListener('click', function(e){
-	e.preventDefault();
-	var nombre=document.getElementById('nombre').value
-	// var apellido=document.getElementById('apellido').value
-	var telefono=document.getElementById('telefono').value
-	var email=document.getElementById('email').value
-	var padecimientos=document.getElementById('padecimientos').value
-	var procedimiento=document.getElementById('procedimiento').value
-	var fecha=document.getElementById('fecha').value
-	var hora=document.getElementById('hora').value
-	var comentario=document.getElementById('comentario').value
+// document.getElementById('guardarCita').addEventListener('click', function(e){
+// 	e.preventDefault();
+// 	var nombre=document.getElementById('nombre').value
+// 	// var apellido=document.getElementById('apellido').value
+// 	var telefono=document.getElementById('telefono').value
+// 	var email=document.getElementById('email').value
+// 	var padecimientos=document.getElementById('padecimientos').value
+// 	var procedimiento=document.getElementById('procedimiento').value
+// 	var fecha=document.getElementById('fecha').value
+// 	var hora=document.getElementById('hora').value
+// 	var comentario=document.getElementById('comentario').value
 
-	var datas= new FormData();
-	datas.append("nombre", nombre)
-	// datas.append("apellido", apellido)
-	datas.append("telefono", telefono)
-	datas.append("email", email)
-	datas.append("padecimientos", padecimientos)
-	datas.append("procedimiento", procedimiento)
-	datas.append("fecha", fecha)
-	datas.append("hora", hora)
-	datas.append("comentario", comentario)
+// 	var datas= new FormData();
+// 	datas.append("nombre", nombre)
+// 	// datas.append("apellido", apellido)
+// 	datas.append("telefono", telefono)
+// 	datas.append("email", email)
+// 	datas.append("padecimientos", padecimientos)
+// 	datas.append("procedimiento", procedimiento)
+// 	datas.append("fecha", fecha)
+// 	datas.append("hora", hora)
+// 	datas.append("comentario", comentario)
 
-	var controlador="agregarCita";
-	var metodo="POST"
-    if (this.value=="Modificar") {
-		controlador="actualizarCita";
-		// metodo="PUT"
-		var id_cita=document.getElementById('id_cita').value
-		datas.append("id_cita", id_cita)
+// 	var controlador="agregarCita";
+// 	var metodo="POST"
+//     if (this.value=="Modificar") {
+// 		controlador="actualizarCita";
+// 		// metodo="PUT"
+// 		var id_cita=document.getElementById('id_cita').value
+// 		datas.append("id_cita", id_cita)
 			
-	}
+// 	}
 	
 
-	fetch(controlador, {
-        method: metodo,
-        body: datas
-    }).then(data =>{
-        //   console.log(data);
-          if(data=="error"){
-            respuesta.innerHTML=
-          `ERROR`;
-          }else{
-			recargar();
-			limpiar();	
-          }})
+// 	fetch(controlador, {
+//         method: metodo,
+//         body: datas
+//     }).then(data =>{
+//         //   console.log(data);
+//           if(data=="error"){
+//             respuesta.innerHTML=
+//           `ERROR`;
+//           }else{
+// 			recargar();
+// 			limpiar();	
+//           }})
 
-});
+// });
 
 
 /////////////////////------------------------------------------------DELETE---------------------------------------------------//////////////////	
@@ -111,7 +111,6 @@ function eliminar() {
 				})
 		}
 	})
-
 }
 
 /////////////////////----------------------------------------PREPARACION DE EVENTOS--------------------------------------//////////////////
@@ -178,31 +177,33 @@ function accion() {
     
 }
 
-document.getElementById("btnReset").addEventListener("click", limpiar)
+// document.getElementById("btnReset").addEventListener("click", limpiar)
 // document.getElementById("idModal").addEventListener("click", limpiar)
 
-function limpiar(){
-	document.getElementById('nombre').value="";
-	// document.getElementById('apellido').value="";
-	document.getElementById('telefono').value="";
-	document.getElementById('email').value="";
-	document.getElementById('padecimientos').value="";
-	document.getElementById('procedimiento').value="";
-	document.getElementById('fecha').value="";
-	document.getElementById('hora').value="";
-	document.getElementById('comentario').value="";
+// function limpiar(){
+// 	document.getElementById('nombre').value="";
+// 	// document.getElementById('apellido').value="";
+// 	document.getElementById('telefono').value="";
+// 	document.getElementById('email').value="";
+// 	document.getElementById('padecimientos').value="";
+// 	document.getElementById('procedimiento').value="";
+// 	document.getElementById('fecha').value="";
+// 	document.getElementById('hora').value="";
+// 	document.getElementById('comentario').value="";
     
    
-	var btn=document.getElementById('guardarCita')
-    btn.removeAttribute("value")
-	btn.setAttribute("value", "Guardar");
-	$('#agregarCita').modal('hide');
-}
+// 	var btn=document.getElementById('guardarCita')
+//     btn.removeAttribute("value")
+// 	btn.setAttribute("value", "Guardar");
+// 	$('#agregarCita').modal('hide');
+// }
 
+// document.getElementById("globalBusqueda").addEventListener("keyup", buscarCriterio);
 
-document.getElementById("busqueda").addEventListener("keyup", function(){
-	
-	var busqueda=document.getElementById("busqueda").value;
+document.getElementById("busqueda").addEventListener("keyup", buscarCriterio);
+
+function buscarCriterio(){
+	 var busqueda=document.getElementById("busqueda").value;
 	if (busqueda!==""&&busqueda!==" ") {
 		var datas= new FormData();
 		datas.append("busqueda", busqueda)
@@ -218,15 +219,14 @@ document.getElementById("busqueda").addEventListener("keyup", function(){
 						estado="Desactivado";
 					}
 				 texto+=`
-				<tr class="p-0 border-bottom border-info" id="tr${element.id_cita}">
-					<td>${element.nombre+" "+element.apellido}</td>
-					<td>${element.padecimientos}</td>
+				<tr class="p-0 border-bottom border-info ${(element.estado==1)?'mensaje-no-leido':'mensaje-leido'}"" id="tr${element.id_cita}">
+					<td>${element.nombre}</td>
 					<td>${element.procedimiento}</td>
 					<td>${element.fecha}</td>
 					<td>${element.hora}</td>
             		<td class="px-0 py-2">
-						<button class="btnEditar text-center btn btn-warning btn-rounded"  value="${element.id_cita}" data-toggle="modal" data-target="#agregarCita">Aceptar solicitud</button>
-						<button class="btnEliminar text-center btn btn-danger btn-rounded"  value="${element.id_cita}">Rechazar solicitud</button>
+						<button class="btnEditar text-center btn ${(element.estado==1)?'btn-success':'btn-info'} btn-rounded"  value="${element.id_cita}" data-toggle="modal" data-target="#contactarCita">${(element.estado==1)?'Aceptar solicitud':'Comunicarse'}</button>
+						<button class="btnEliminar text-center btn btn-danger btn-rounded"  value="${element.id_cita}">${(element.estado==1)?'Rechazar solicitud':'Eliminar solicitud'}</button>
 					</td>
     			</tr>`
 				});
@@ -243,4 +243,4 @@ document.getElementById("busqueda").addEventListener("keyup", function(){
 		recargar();
 	}
 	
-});
+ }

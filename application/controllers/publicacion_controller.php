@@ -10,17 +10,10 @@ class Publicacion_controller extends CI_Controller {
         //HACER USO DE LO METODO CONSTRUCTORE DEL PADRE 
         parent::__construct();
         //METODO CARGADO EN EL MODELO
-        $this->load->model('publicacion_model');
-
-        
+		$this->load->model('publicacion_model');
+		// parent::logueado();
     }
 
-    
-    //METODO INDEX PARA VER LA PÁGINA PRINCIPAL
-	// public function index()
-	// {
-	// 	$this->load->view('libro/index');
-    // }
     
 
     //METODO QUE LLAMA LOS DATOS DE LA BASE DE DATOS Y REDICCIONA Y CARGA TODA LA PUBLICACIONES
@@ -63,7 +56,10 @@ class Publicacion_controller extends CI_Controller {
     
         $this->publicacion_model-> actualizarPublicacion($data);
         $this->load->view('panelControl/index', $data);
-    }
+	}
+
+	
+
 
 
 

@@ -93,4 +93,22 @@ class CI_Controller {
 		return self::$instance;
 	}
 
+
+
+	public function logueado() {
+		if($this->session->userdata("logueado")){
+		
+		}else{
+			redirect("inicioControl/index");
+		}
+	}
+
+
+	public function destroy(){
+    // destroy session
+	$this->session->sess_destroy();
+
+	}
+
+
 }

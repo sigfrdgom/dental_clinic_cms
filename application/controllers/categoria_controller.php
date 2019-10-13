@@ -3,33 +3,34 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Categoria_controller extends CI_Controller {
 
-
-
     public function __construct()
     {
         //HACER USO DE LO METODO CONSTRUCTORE DEL PADRE 
         parent::__construct();
         //METODO CARGADO EN EL MODELO
-        $this->load->model('categoria_model');
-
-        
+		$this->load->model('categoria_model');
+		parent::logueado();
     }
 
-    
     public function index()
 	{
 		$this->load->view('templates/header');
 		$this->load->view('panelControl/usuario/categoria');
 		$this->load->view('templates/footer');
-		
 	}
     
-
-    //METODO QUE LLAMA LOS DATOS DE LA BASE DE DATOS Y REDICCIONA
-    public function cargarDatosCategoria(){ 
+    //METODO QUE OBTIENE
+    public function cargarCategoria(){
+        //deberia ir el espacion en blanco?
         echo json_encode($this->categoria_model->getAll());
-        
     }
+
+
+    public function obtenerRegistro($id){
+        //deberia ir el espacion en blanco?
+        echo json_encode($this->categoria_model->obtenerRegistro($id));
+    }
+
 
 
     //METODO QUE AGREGA DATOS CATEGORIA
@@ -39,23 +40,14 @@ class Categoria_controller extends CI_Controller {
     
         $this->categoria_model->agregarCategoria($data);
     }
-
-
       
     //METODO QUE ELIMINA UN REGISTRO CATEGORIA
     public function eliminarCategoria($id){
-        $this->categoria_model->eliminarCategoria($id);
+        // $this->categoria_model->eliminarCategoria($id);
+        $this->categoria_model->actualizarCategoriaEstado($id);
+
+        
     }
-
-
-
-    //METODO CON EL QUE OBTENDRIA EL REGISTRO CATEGORIA
-    public function obtenerRegistro($id){
-        echo json_encode($this->categoria_model->obtenerRegistro($id));
-		
-    }
-
-
 
     //METODO QUE ACTUALIZA UN REGISTRO CATEGORIA
     public function actualizarCategoria(){
@@ -64,15 +56,5 @@ class Categoria_controller extends CI_Controller {
         $this->categoria_model->actualizarCategoria($data);
 	}
 	
-	public function findByCriteria(){ 
-		if($_POST["busqueda"] == null || $_POST["busqueda"]== ""){
-			echo json_encode($this->categoria_model->getAll());
-        }else{
-            echo json_encode($this->categoria_model->findByCriteria($_POST["busqueda"]));
-        }
-		
-    }
-
-
 
 }

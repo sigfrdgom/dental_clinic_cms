@@ -11,7 +11,7 @@ class Usuario_controller extends CI_Controller {
         parent::__construct();
         //METODO CARGADO EN EL MODELO
         $this->load->model('usuario_model');
-
+	
         
     }
 
@@ -19,6 +19,7 @@ class Usuario_controller extends CI_Controller {
     // METODO INDEX PARA VER LA PÁGINA PRINCIPAL
 	public function carga()
 	{
+		parent::logueado();
 		$this->load->view('templates/header');
 		$this->load->view('panelControl/usuario/usuarios');
 		$this->load->view('templates/footer');
@@ -28,36 +29,22 @@ class Usuario_controller extends CI_Controller {
 
     //METODO QUE LLAMA LOS DATOS DE LA BASE DE DATOS Y REDICCIONA Y CARGA TODA LA USUARIOS
     public function cargarDatosUsuario(){ 
-		// $usuarios = $this->usuario_model->getAll();
-        // $data=['usuarios' => $usuarios];
-        // $this->load->view('panelControl/usuario/tablaUsuario', $data);
-        // $this->db->select('',FALSE);
+		parent::logueado();
 		echo json_encode($this->usuario_model->getAll());
     }
 
 
     //METODO QUE AGREGA UN REGISTRO USUARIO
-    public function agregarUsuario(){		
-
-
+    public function agregarUsuario(){
+		parent::logueado();		
 		$data=["id_usuario" => null, "nombres" => $_POST['nombres'], "apellidos" => $_POST['apellidos'],  "nombre_usuario" => $_POST['usuario'], "contrasenia" => self::hash($_POST['pass']), "tipo_usuario" => $_POST['tipo_usuario'], "estado" => 1];
-		
-
-		echo $_POST['pass'];
-		if(self::verify($_POST['pass'], self::hash($_POST['pass']))){
-			echo "contraseña carlos21";
-		}else{
-			echo "la cagaste bro no es esa";
-		}
-
-
-
 		$this->usuario_model->agregarUsuario($data);
     }
 
       
     //METODO QUE ELIMINA UN REGISTRO DE USUARIO
     public function eliminarUsuario($id){
+		parent::logueado();
         $this->usuario_model->eliminarUsuario($id);
     }
 
@@ -65,52 +52,25 @@ class Usuario_controller extends CI_Controller {
 
     //METODO CON EL QUE OBTENDRIA EL REGISTRO USUARIO
     public function obtenerRegistro($id){
-        // $dato=['usuario'=> $this->usuario_model->obtenerRegistro($id)];
+        parent::logueado();
 		echo json_encode($this->usuario_model->obtenerRegistro($id));
-		// $this->load->view('controlPanel/form', $dato);
     }
 
 
     //METODO QUE SE ENCARGA DE ACTUALIZAR UN REGISTRO DE USUARIO
     public function actualizarUsuario(){
-
-	// 	 header('Content-Type: text/html; charset=UTF-8');
-	// 	// header('Content-Type: multipart/form-data;');
-
-		
-    // header('Access-Control-Allow-Methods: PUT');
-    // header('Access-Control-Allow-Headers: Access-Control-Allow-Headers, Content-Type, Access-Control-Allow-Methods, Authorization,X-Requested-With');
-	// 	// parse_str(file_get_contents('php://input', false , null, -1 , $_SERVER['CONTENT_LENGTH'] ), $_PUT); 
-	// 	// $dat=parse_str(file_get_contents('php://input', true);
-	// 	 $dat = file_get_contents("php://input");
-	// 	// // $data = $_FILES;
-	// 	echo $dat["apellidos"]."hola<br>";
-		
-	// 	 var_dump($dat);
-	// 	echo $_POST['apellidos']."BEBE<br>";
-	// 	// echo "holaaaaaaaaaaaa";
-	// 	// echo $data[0]."hla<br>";
-	// 	// var_dump($data);
+		parent::logueado();
 		$hash=self::hash($_POST['pass']);
 		$data=["id_usuario" => $_POST['id_usuario'], "nombres" => $_POST['nombres'], "apellidos" => $_POST['apellidos'],  "nombre_usuario" => $_POST['usuario'], "contrasenia" => $hash, "tipo_usuario" => $_POST['tipo_usuario'], "estado" => $_POST['estado']];
-		 
-		echo $_POST['pass'];
-		if(self::verify($_POST['pass'], $hash)){
-			echo "contraseña carlos21";
-		}else{
-			echo "la cagaste bro no es esa";
-		}
-
-
-		
+		 		
 		$this->usuario_model-> actualizarUsuario($data);
-        // $this->load->view('panelControl/index', $data);
 	}
 	
 
 
 
 	public function findByCriteria(){ 
+		parent::logueado();
 		if($_POST["busqueda"] == null || $_POST["busqueda"]== ""){
 			echo json_encode($this->usuario_model->getAll());
         }else{
@@ -129,6 +89,54 @@ class Usuario_controller extends CI_Controller {
 	}
 
 
+	public function loginUp(){
+
+		if ($this->input->post()) {
+			$usuario =$this->usuario_model->loginUp($this->input->post('usuario'));
+			if ($usuario) {
+
+				if (self::verify($this->input->post('pass'), $usuario->contrasenia)) {	
+					$usuario_data = array(
+					'id_usuario' => $usuario->id_usuario,
+               		'nombre_usuario' => $usuario->nombre_usuario,
+			   		'nombre' => $usuario->nombres,
+			   		'apellido' => $usuario->apellidos,
+			   		'tipo_usuario' => $usuario->tipo_usuario,
+					'logueado' => TRUE);					   
+					$this->session->set_userdata($usuario_data);
+					redirect('inicioControl/index2');
+				}else{
+					redirect('');
+
+				}            
+			} else {
+				//aqui
+				redirect('');
+			}
+		}else {
+			$this->load->view('login/login');
+			// $this->load->view('templates/footer');
+		}
+	}
+
+
+	// public function logueado() {
+	// 	if($this->session->userdata("logueado")){
+	// 	}else{
+	// 		redirect("inicioControl/index");
+	// 	}
+	// }
+			
+			
+	
+
+
+	//METODO CON EL QUE OBTENDRIA EL REGISTRO USUARIO
+    public function validarUsuario($user){
+        // $dato=['usuario'=> $this->usuario_model->obtenerRegistro($id)];
+		echo json_encode($this->usuario_model->getValid($user));
+		// $this->load->view('controlPanel/form', $dato);
+    }
 }
 
 	

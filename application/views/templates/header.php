@@ -10,6 +10,8 @@
         <title>CLIDESA CMS</title>
         <!-- End of Meta INFO -->
 
+        <!-- CKEditor -->
+        <script src="https://cdn.ckeditor.com/4.13.0/standard-all/ckeditor.js"></script>
 		
 		<!-- Start of CSS styleshets -->
     	<link href="<?php echo base_url('assets/css/bootstrap/dist/css/bootstrap.min.css');?>" rel="stylesheet" />
@@ -60,7 +62,7 @@
                 <nav class="navbar top-navbar navbar-expand-md navbar-dark" >
                     <!-- Start Top side logo -->
                     <div class="navbar-header py-2 px-4">
-                        <a class="navbar-brand" href="<?= base_url('/')?>" >
+                        <a class="navbar-brand" href="<?= base_url('/inicioControl/index2')?>" >
                             <b>
                                 <img src="<?= base_url('assets/images/logo-icon.png')?>"  alt="homepage" class="dark-logo" />
                                 <img src="<?= base_url('assets/images/logo-light-icon.png')?>" alt="homepage" class="light-logo" />
@@ -80,17 +82,57 @@
                             <li class="nav-item search-box">
                                 <a class="nav-link waves-effect waves-dark" href="javascript:void(0)"><i class="fa fa-search"></i></a>
                                 <form class="app-search">
-                                    <input type="text" class="form-control" placeholder="Search &amp; enter"> <a class="srh-btn"><i class="fa fa-times"></i></a>
+                                    <input type="text" id="globalBusqueda" class="form-control" placeholder="Search &amp; enter"> <a class="srh-btn"><i class="fa fa-times"></i></a>
                                 </form>
                             </li>
                         </ul>
-                        <!-- User profile item -->
-                        <ul class="navbar-nav my-lg-0 bg-info m-0" >
+						<!-- User profile item -->
+						
+
+                         <!-- <ul class="navbar-nav my-lg-0 bg-info m-0" >
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <img src="<?= base_url('assets/images/users/1.jpg')?>" alt="user" class="img-circle" width="50"></a>
+                                    <img src="<= // base_url('assets/images/users/1.jpg')>" alt="user" class="img-circle" width="50"></a>
                             </li>
-                        </ul>
+						</ul> -->
+
+						
+				<ul class="list-inline float-right mb-0 ml-5">
+                <li class="list-inline-item dropdown notif ml-5">
+                    
+                    <div class="row ml-5">
+                        
+                        <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="<?= base_url('assets/images/users/1.jpg')?>" alt="user" class="img-circle" width="50"></a>
+                        <!-- El dropdown -->
+                        <div class="dropdown-menu dropdown-menu-left profile-dropdown" style="background: #c4cfdd; width: 300px;">
+                            <div class="dropdown-item perfil_item ">
+                                <small class="text-overflow"><i class="fas fa-shield-alt"></i><?= $this->session->userdata('tipo_usuario')?></small>
+                            </div>
+                            <div class="dropdown-item perfil_item text-justify">
+                                <small class="text-overflow"><i class="fas fa-user"></i><?= $this->session->userdata('nombre')?></small>
+                            </div>
+                            <div class="cerrar_session">
+                                <a href="<?= base_url('inicioControl/finalizarSesion')?>" class="dropdown-item notify-item cerrar_session">
+                                    <i class="fa fa-power-off"></i> <span>Cerrar Sesión</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+						
+
+
+
+
+
+
+
+
+
+					
                         <!-- Start Navbar items -->
                     </div>
                     <!-- End of second top side navbar -->
@@ -111,7 +153,7 @@
                     <!-- Sidebar navigation-->
                     <nav class="sidebar-nav">
                         <ul id="sidebarnav">
-                            <li> <a class="waves-effect waves-dark" href="<?= base_url('/')?>" aria-expanded="false"><i class="fa fa-home text-white" style="font-size: 2em; "></i><span class="hide-menu">Dashboard</span></a></li>
+                            <li> <a class="waves-effect waves-dark" href="<?= base_url('/inicioControl/index2')?>" aria-expanded="false"><i class="fa fa-home text-white" style="font-size: 2em; "></i><span class="hide-menu">Dashboard</span></a></li>
 
 
                             <li> <a class="waves-effect waves-dark" href="<?= base_url('contacto_controller/index')?>" aria-expanded="false"><i class="fa fa-envelope text-white" style="font-size: 2em;  "></i><span class="hide-menu"></span>Mensajes</a></li>
@@ -119,7 +161,7 @@
 
 
                             <li> <a class="waves-effect waves-dark" href="<?= base_url('services')?>" aria-expanded="false"><i class="	fa fa-briefcase text-white" style="font-size: 2em;  "></i><span class="hide-menu"></span>Servicios</a></li>
-                            <li> <a class="waves-effect waves-dark" href="<?= base_url('application/views/panelControl/icon-fontawesome.html')?>" aria-expanded="false"><i class="fa fa-pencil text-white" style="font-size: 2em;  "></i><span class="hide-menu"></span>Blog</a></li>
+                            <li> <a class="waves-effect waves-dark" href="<?= base_url('blog')?>" aria-expanded="false"><i class="fa fa-pencil text-white" style="font-size: 2em;  "></i><span class="hide-menu"></span>Blog</a></li>
 
 
                             <li> <a class="waves-effect waves-dark" href="<?= base_url('usuario_controller/carga')?>" aria-expanded="false"><i class="fa fa-user-circle-o text-white" style="font-size: 2em;  "></i><span class="hide-menu">Usuarios</span></a></li>

@@ -1,9 +1,9 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Services extends CI_Controller
+class Blog extends CI_Controller
 {
-
+    
   public function __construct()
   {
     parent::__construct();
@@ -13,23 +13,23 @@ class Services extends CI_Controller
 
   public function index()
   {
-    $datos = ['services' => $this->publicacion_model->search_services()];
+    $datos = ['posts' => $this->publicacion_model->search_posts()];
     $this->load->view('templates/header');
-    $this->load->view('services/services', $datos);
+    $this->load->view('blog/blog', $datos);
     $this->load->view('templates/footer');
   }
 
-  public function tbody($keyword = "")
+  public function posts($keyword = "")
   {
-    $datos = ['services' => $this->publicacion_model->search_services($keyword)];
-    $this->load->view('services/tbody', $datos);
+    $datos = ['posts' => $this->publicacion_model->search_posts($keyword)];
+    $this->load->view('blog/posts', $datos);
   }
 
   public function create()
   {
     $datos = ['categories' => $this->categoria_model->getAll()];
     $this->load->view('templates/header');
-    $this->load->view('services/create', $datos);
+    $this->load->view('blog/create', $datos);
     $this->load->view('templates/footer');
   }
 
@@ -61,7 +61,7 @@ class Services extends CI_Controller
     }
   }
 
-  public function guardarDatos($id = "")
+    public function guardarDatos($id = "")
   {
     $id = trim($id);
     $old_services = array();
@@ -84,12 +84,12 @@ class Services extends CI_Controller
       }
     }
 
-  
+ 
     $datos = [
       'id_publicacion' => trim($id) ? trim($id) : '',
       'id_usuario' => $this->session->userdata('id_usuario'),
       'id_categoria' => $_POST['categoria'],
-      'id_tipo' => 1,
+      'id_tipo' => 2,
       'titulo' => $_POST['titulo'],
       'texto_introduccion' => $_POST['texto_introduccion'],
       'contenido' => $_POST['contenido'],
@@ -122,25 +122,14 @@ class Services extends CI_Controller
       }
       $message = array('message' => 'Registro Agregado con éxito');
       // $this->session->set_flashdata($message);
-      redirect('services');
+      redirect('blog');
     } catch (Exception $e) {
       $message = array('error' => 'Error no se puedo agregar el registro ');
       // $this->session->set_flashdata($message);
-      redirect('services');
+      redirect('blog');
     }
-
   }
 
-  public function edit($id)
-  {
-    $datos = [
-      'services' => $this->publicacion_model->findById($id),
-      'categories' => $this->categoria_model->getAll()
-    ];
-    $this->load->view('templates/header');
-    $this->load->view('services/edit', $datos);
-    $this->load->view('templates/footer');
-  }
 
   private function deleteImage($data){
     $message = array();
@@ -163,10 +152,9 @@ class Services extends CI_Controller
     return $message;
   }
 
-  // Delete services 
-  public function deleteService($id)
+  public function deletePosts($id)
   {
-    // Covert stdclass to array
+    // Convert stdclass to array
     $data = json_decode(json_encode($this->publicacion_model->findById($id)), true);
     // get the last 3 register of the array
     $data = array_splice($data, -5, 4, true);
@@ -177,8 +165,16 @@ class Services extends CI_Controller
     $this->publicacion_model->delete($id);
   }
 
-  public function updateService($id){
-    $this->guardarDatos($id);
+  public function edit($id)
+  {
+    $datos = [
+      'blog' => $this->publicacion_model->findById($id),
+      'categories' => $this->categoria_model->getAll()
+    ];
+    $this->load->view('templates/header');
+    $this->load->view('blog/edit', $datos);
+    $this->load->view('templates/footer');
   }
+
 
 }

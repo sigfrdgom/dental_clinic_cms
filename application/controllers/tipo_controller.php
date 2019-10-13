@@ -10,7 +10,9 @@ class Tipo_controller extends CI_Controller {
         //HACER USO DE LO METODO CONSTRUCTORE DEL PADRE 
         parent::__construct();
         //METODO CARGADO EN EL MODELO
-        $this->load->model('tipo_model');
+		$this->load->model('tipo_model');
+		parent::logueado();
+
 
         
     }
@@ -42,16 +44,18 @@ class Tipo_controller extends CI_Controller {
 
       
     //METODO QUE ELIMINA UN REGISTRO TIPO
+    // public function eliminarTipo($id){
+    //     $this->tipo_model->eliminarTipo($id);
+    // }
+
     public function eliminarTipo($id){
-        $this->tipo_model->eliminarTipo($id);
+        parent::logueado(); 
+        $this->tipo_model->actualizarTipoEstado($id);
     }
-
-
 
     //METODO CON EL QUE OBTENDRIA EL REGISTRO TIPO
     public function obtenerRegistro($id){
          echo json_encode($this->tipo_model->obtenerRegistro($id));
-        
     }
 
 

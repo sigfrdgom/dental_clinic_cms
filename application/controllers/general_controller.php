@@ -10,7 +10,7 @@ class General_controller extends CI_Controller {
         //HACER USO DE LO METODO CONSTRUCTORE DEL PADRE 
         parent::__construct();
         //METODO CARGADO EN EL MODELO
-        // $this->load->model('usuario_model');
+        parent::logueado();
 
         
     }

@@ -145,7 +145,7 @@
 </div>
 <!-- End of modal for cita management -->
 
-<!-- Start of modal for cita management -->
+<!-- Start of modal for cita contact -->
 <div class="modal fade" id="contactarCita">
     <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered">
         <div class="modal-content">
@@ -153,7 +153,6 @@
             <!-- Modal Header -->
             <div class="modal-header" id="formUs">
                 <h4 class="modal-title" style="margin: 0% auto;" id="aggdct">Contactar al solicitante de cita</h4>
-                <h4 class="modal-title" style="margin: 0% auto; display:none;" id="mdfdct">Modificar una cita</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <!-- Modal Header -->
@@ -233,8 +232,7 @@
                             <a href="" target="_blank" id="sendcall_cita"><i class="fa fa-phone" style="font-size:3em;"></i></a>
                             <br>Llamar a cliente
                         </div>
-                    </div>
-                                   
+                    </div>                   
             </div>
             <!-- Modal body -->
 
@@ -249,7 +247,7 @@
         </div>
     </div>
 </div>
-<!-- End of modal for cita management -->
+<!-- End of modal for cita contact -->
 
 
 <script src="<?= base_url('assets/js/cita.js')?>"></script>

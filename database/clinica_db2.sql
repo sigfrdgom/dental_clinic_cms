@@ -1,13 +1,34 @@
+-- phpMyAdmin SQL Dump
+-- version 4.9.0.1
+-- https://www.phpmyadmin.net/
+--
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 04-10-2019 a las 00:48:25
+-- Versión del servidor: 10.4.6-MariaDB
+-- Versión de PHP: 7.3.8
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
--- Creación de la base de datos
-CREATE DATABASE clinica_db;
 
---Uso de la base de datos
-USE clinica_db;
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Base de datos: `clinica_db`
+--
+CREATE DATABASE IF NOT EXISTS `clinica_db` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `clinica_db`;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `categoria`
+--
 
 CREATE TABLE `categoria` (
   `id_categoria` int(11) NOT NULL,
@@ -20,10 +41,9 @@ CREATE TABLE `categoria` (
 --
 
 INSERT INTO `categoria` (`id_categoria`, `nombre`, `descripcion`) VALUES
-(1, 'Dentista general', 'La categoria para clasificar contenido acorde a odontologia general.'),
-(2, 'Especialidades Dentales', 'La categoria para clasificar contenido acorde a especialidades dentales.'),
-(3, 'Especialidades Medicas', 'La categoria para clasificar contenido acorde a especialidades medicas.'),
-(4, 'Curiosidades Dentales', 'La categoria para clasificar contenido acorde a tips y curiosidades.');
+(1, 'Curiosidades Denteales', ''),
+(2, 'Ondodoncia', ''),
+(3, 'Atención General', '');
 
 -- --------------------------------------------------------
 
@@ -40,11 +60,10 @@ CREATE TABLE `cita` (
   `procedimiento` varchar(50) NOT NULL,
   `fecha` date NOT NULL,
   `hora` time NOT NULL,
-  `comentario` text,
-  `fecha_solicitud` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `comentario` text DEFAULT NULL,
+  `fecha_solicitud` timestamp NOT NULL DEFAULT current_timestamp(),
   `estado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
 
 -- --------------------------------------------------------
 
@@ -57,11 +76,10 @@ CREATE TABLE `contacto` (
   `nombre` varchar(64) NOT NULL,
   `telefono` varchar(16) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `comentario` text,
-  `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `comentario` text DEFAULT NULL,
+  `fecha` timestamp NOT NULL DEFAULT current_timestamp(),
   `estado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
 
 -- --------------------------------------------------------
 
@@ -82,12 +100,15 @@ CREATE TABLE `publicacion` (
   `recurso_av_2` varchar(200) DEFAULT NULL,
   `recurso_av_3` varchar(200) DEFAULT NULL,
   `recurso_av_4` varchar(200) DEFAULT NULL,
-  `fecha_ingreso` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `fecha_ingreso` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `publicacion`
 --
+
+INSERT INTO `publicacion` (`id_publicacion`, `id_usuario`, `id_categoria`, `id_tipo`, `titulo`, `texto_introduccion`, `contenido`, `estado`, `recurso_av_1`, `recurso_av_2`, `recurso_av_3`, `recurso_av_4`, `fecha_ingreso`) VALUES
+(1, 1, 1, 1, 'sdsd', 'dss', 'dsdsdsds', 1, 'recurso_1570142751.jpg', 'recurso_1570142700.png', 'recurso_15701427001.jpg', '', '2019-10-04');
 
 -- --------------------------------------------------------
 
@@ -131,7 +152,7 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id_usuario`, `nombres`, `apellidos`, `nombre_usuario`, `contrasenia`, `tipo_usuario`, `estado`) VALUES
-(1, 'Clidesa', 'admin', 'clidesa.admin', '$2y$13$.zmlCWcyyJOKzTqQTSYwBuf01I7CLEagI6jcjCOfcxgW5NMMvOGwW', 'ADMIN', 1);
+(1, 'carlos', 'duty', 'carlos.duty', '$2y$13$EidaJoJPtwRaS5xzUiynO.rruSFTet42.kBHCS97lG6FaBiWKqkEK', 'ADMIN', 1);
 
 --
 -- Índices para tablas volcadas
@@ -184,37 +205,37 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `cita`
 --
 ALTER TABLE `cita`
-  MODIFY `id_cita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id_cita` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `contacto`
 --
 ALTER TABLE `contacto`
-  MODIFY `id_contacto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id_contacto` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `publicacion`
 --
 ALTER TABLE `publicacion`
-  MODIFY `id_publicacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id_publicacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo`
 --
 ALTER TABLE `tipo`
-  MODIFY `id_tipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id_tipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Restricciones para tablas volcadas
