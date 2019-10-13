@@ -20,7 +20,7 @@ function recargar(){
                                 <div class="font-medium pt-3">
                                     ${element.nombre}
                                     <br>
-                                    <span class="sl-date">${element.fecha_solicitud}</span>
+                                    <span class="sl-date"> Recibido ${element.fecha}</span>
                                 </div>
                                 <div class="desc">
                                     ${element.comentario}
@@ -45,6 +45,7 @@ function recargar(){
                 <div class="bg-white p-4 my-2" style="border-radius: 10px;">
                     <div class="mail-contnet">
                         <h5 class="text-dark"> ${element.nombre}</h5>
+                        <span class="sl-date">Recibido ${element.fecha_solicitud}</span><br>
                         <span class="mail-desc text-dark"> ${element.comentario}</span>
                         <br>
                         <div class="mt-2 mb-1">
