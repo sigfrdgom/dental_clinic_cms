@@ -24,19 +24,18 @@ class Blog extends CI_Controller
         echo json_encode($this->publicacion_model->get_recent_posts());
     }
 
-    public function search_posts($keyword = ""){ 
-        echo json_encode($this->publicacion_model->search_posts($keyword));
+    public function search_posts($keyword = "", $pagesize = 2, $offset=0 ){ 
+        echo json_encode($this->publicacion_model->search_posts($keyword, $pagesize, $offset));
     }
-
-    // // Por si n algun momento cambia el id de la categoria blog
-    // public function findAll(){ 
-    //     echo json_encode($this->publicacion_model->cargaBlog());
-    // }
 
     //METODO CON EL QUE OBTENDRIA EL REGISTRO CATEGORIA
     public function find($id = "")
     {
         echo json_encode((array)$this->publicacion_model->findById($id));
+    }
+
+    public function count_posts(){
+        echo json_encode($this->publicacion_model->count_posts());
     }
 
     public function findByCriteria(){ 
