@@ -87,21 +87,44 @@ class Publicacion_model extends CI_Model
         return $this->db->count_all_results('publicacion');       
     }
 
-    public function search_posts($keyword = "", $pagesize, $offset)
+    public function search_posts($keyword = "")
     {
         $keyword = trim($keyword);
         if (empty($keyword)) {
             $this->db->where('id_tipo', 2);
             $this->db->where('estado', '1');
-            $this->db->limit($pagesize, $offset);
             $this->db->order_by('fecha_ingreso', 'DESC');
             return $this->db->get('publicacion')->result();
         } else {
             $escape = "'%" . $keyword . "%' ESCAPE '!'";
-            $this->db->limit($pagesize, $offset);
             $query = $this->db->query('SELECT * FROM publicacion WHERE `id_tipo` = 2 AND ( `titulo` LIKE ' . $escape . ' OR `texto_introduccion` LIKE ' . $escape . ' OR `contenido` LIKE ' . $escape . ') ORDER BY `fecha_ingreso` DESC');
             return $query->result();
         }
+    }
+
+    public function search_pagination_posts($keyword = "", $pagesize , $offset)
+    {
+        $keyword = trim($keyword);
+        if (empty($keyword)) {
+            $this->db->where('id_tipo', 2);
+            $this->db->where('estado', '1');
+            $this->db->limit($pagesize,$offset);
+            $this->db->order_by('fecha_ingreso', 'DESC');
+            return $this->db->get('publicacion')->result();
+        } else {
+            $escape = "'%" . $keyword . "%' ESCAPE '!'";
+            $query = $this->db->query('SELECT * FROM publicacion WHERE `id_tipo` = 2 AND ( `titulo` LIKE ' . $escape . ' OR `texto_introduccion` LIKE ' . $escape . ' OR `contenido` LIKE ' . $escape . ') ORDER BY `fecha_ingreso` DESC LIMIT '.$offset.','.$pagesize.'');
+            return $query->result();
+        }
+    }
+
+    public function pagination_posts($pagesize , $offset)
+    {
+        $this->db->where('id_tipo', 2);
+        $this->db->where('estado', '1');
+        $this->db->limit($pagesize,$offset);
+        $this->db->order_by('fecha_ingreso', 'DESC');
+        return $this->db->get('publicacion')->result();
     }
 
     public function cargaServices()

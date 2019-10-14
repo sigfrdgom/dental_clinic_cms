@@ -32,6 +32,6 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 
 #Images Uploads
 
-# uploads/*.png
-# uploads/*.jpg
-# uploads/*.gif
+uploads/*.png
+uploads/*.jpg
+uploads/*.gif

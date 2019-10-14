@@ -24,8 +24,16 @@ class Blog extends CI_Controller
         echo json_encode($this->publicacion_model->get_recent_posts());
     }
 
-    public function search_posts($keyword = "", $pagesize = 2, $offset=0 ){ 
-        echo json_encode($this->publicacion_model->search_posts($keyword, $pagesize, $offset));
+    public function search_posts($keyword = ""){ 
+        echo json_encode($this->publicacion_model->search_posts($keyword));
+    }
+
+    public function search_pagination_posts($keyword = "", $pagesize = 2 , $offset = 0){ 
+        echo json_encode($this->publicacion_model->search_pagination_posts($keyword, $pagesize , $offset));
+    }
+
+    public function pagination_posts($pagesize = 2 , $offset = 0){ 
+        echo json_encode($this->publicacion_model->pagination_posts($pagesize , $offset));
     }
 
     //METODO CON EL QUE OBTENDRIA EL REGISTRO CATEGORIA
