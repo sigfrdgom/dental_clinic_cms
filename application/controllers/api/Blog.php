@@ -33,11 +33,11 @@ class Blog extends CI_Controller
     //     echo json_encode($this->publicacion_model->cargaBlog());
     // }
 
-    // //METODO CON EL QUE OBTENDRIA EL REGISTRO CATEGORIA
-    // public function obtenerRegistro($id)
-    // {
-    //     echo json_encode($this->publicacion_model->findById($id));
-    // }
+    //METODO CON EL QUE OBTENDRIA EL REGISTRO CATEGORIA
+    public function find($id = "")
+    {
+        echo json_encode((array)$this->publicacion_model->findById($id));
+    }
 
     public function findByCriteria(){ 
 		if($_POST["busqueda"] == null || $_POST["busqueda"]== ""){

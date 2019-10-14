@@ -15,12 +15,6 @@ class Publicacion_controller extends CI_Controller {
     }
 
     
-    //METODO INDEX PARA VER LA PÁGINA PRINCIPAL
-	// public function index()
-	// {
-	// 	$this->load->view('libro/index');
-    // }
-    
 
     //METODO QUE LLAMA LOS DATOS DE LA BASE DE DATOS Y REDICCIONA Y CARGA TODA LA PUBLICACIONES
     public function cargarDatosPublicacion(){ 
@@ -64,14 +58,6 @@ class Publicacion_controller extends CI_Controller {
         $this->load->view('panelControl/index', $data);
 	}
 
-	public function cargarServicios(){ 
-		
-		echo json_encode($this->publicacion_model->cargaServices());
-		
-		//http://localhost/dental_clinic_cms/uploads/
-	// 	$urlBase=base_url("/uploads/");
-	// 	echo $urlBase;
-    }
 	
 
 
