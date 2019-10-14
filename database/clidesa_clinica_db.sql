@@ -19,7 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `clinica_db`
+-- Base de datos: `clidesa_clinica_db`
+--
+-- Uncomment these lines to use database in hosting
+--
+CREATE DATABASE clidesa_clinica_db;
+USE clidesa_clinica_db;
+--
 --
 
 -- --------------------------------------------------------
