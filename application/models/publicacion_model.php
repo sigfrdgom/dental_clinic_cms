@@ -198,4 +198,21 @@ class Publicacion_model extends CI_Model
         }
     }
 
+    
+    /** ---------------- TESTIMONIALS------------------------------- */
+
+    public function get_all_testimonials($keyword = "")
+    {
+        $keyword = trim($keyword);
+        if (empty($keyword)) {
+            $this->db->where('id_tipo', 3);
+            $this->db->order_by('fecha_ingreso', 'DESC');
+            return $this->db->get('publicacion')->result();
+        } else {
+            $escape = "'%" . $keyword . "%' ESCAPE '!'";
+            $query = $this->db->query('SELECT * FROM publicacion WHERE `id_tipo` = 2 AND ( `titulo` LIKE ' . $escape . ' OR `texto_introduccion` LIKE ' . $escape . ' OR `contenido` LIKE ' . $escape . ') ORDER BY `fecha_ingreso` DESC');
+            return $query->result();
+        }
+    }
+
 }
