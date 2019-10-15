@@ -13,7 +13,7 @@ class Blog extends CI_Controller
 
   public function index()
   {
-    $datos = ['posts' => $this->publicacion_model->search_posts()];
+    $datos = ['posts' => $this->publicacion_model->get_all_posts()];
     $this->load->view('templates/header');
     $this->load->view('blog/blog', $datos);
     $this->load->view('templates/footer');
@@ -21,7 +21,7 @@ class Blog extends CI_Controller
 
   public function posts($keyword = "")
   {
-    $datos = ['posts' => $this->publicacion_model->search_posts($keyword)];
+    $datos = ['posts' => $this->publicacion_model->get_all_posts($keyword)];
     $this->load->view('blog/posts', $datos);
   }
 
@@ -83,7 +83,6 @@ class Blog extends CI_Controller
         }
       }
     }
-
  
     $datos = [
       'id_publicacion' => trim($id) ? trim($id) : '',
@@ -93,7 +92,7 @@ class Blog extends CI_Controller
       'titulo' => $_POST['titulo'],
       'texto_introduccion' => $_POST['texto_introduccion'],
       'contenido' => $_POST['contenido'],
-      'estado' => true,
+      'estado' => isset($_POST['estado']) ? $_POST['estado'] : true,
       'recurso_av_1' => isset($data_files['file1']) ?  $data_files['file1']["upload_data"]['file_name'] : $old_services['recurso_av_1'],
       'recurso_av_2' => isset($data_files['file2']) ?  $data_files['file2']["upload_data"]['file_name'] : $old_services['recurso_av_2'],
       'recurso_av_3' => isset($data_files['file3']) ?  $data_files['file3']["upload_data"]['file_name'] : $old_services['recurso_av_3'],

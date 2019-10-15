@@ -4,6 +4,15 @@
         <label for="titulo">Titulo del servicio</label>
         <input type="text" class="form-control" value="<?= isset($services->titulo) ? $services->titulo : '' ?>" name="titulo" id="" aria-describedby="helpId" placeholder="" required>
     </div>
+    <?php if(isset($services->estado)){ ?>
+    <div class="form-group mt-2">
+    <label for="estado">Estado</label>
+    <select name="estado" id="" class="form-control" required>
+        <option value="1" <?= ($services->estado) ? 'selected' : '' ?>>Visible</option>
+        <option value="0" <?= ($services->estado) ? '' : 'selected' ?>>Oculto</option>
+    </select>
+</div>
+    <?php } ?>
     <div class="form-group mt-2">
         <label for="categoria">Categoria</label>
         <select name="categoria" id="" class="form-control" required>

@@ -16,6 +16,15 @@
         <?php } ?>
     </select>
 </div>
+<?php if(isset($blog->estado)){ ?>
+    <div class="form-group mt-2">
+    <label for="estado">Estado</label>
+    <select name="estado" id="" class="form-control" required>
+        <option value="1" <?= ($blog->estado) ? 'selected' : '' ?>>Visible</option>
+        <option value="0" <?= ($blog->estado) ? '' : 'selected' ?>>Oculto</option>
+    </select>
+</div>
+<?php } ?>
 <div class="form-group">
     <label for="introduccion">Introduccion de presentación</label>
     <textarea class="form-control" name="texto_introduccion" id="" rows="3" required><?= isset($blog->texto_introduccion) ? $blog->texto_introduccion : '' ?></textarea>
