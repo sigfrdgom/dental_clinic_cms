@@ -102,7 +102,7 @@ class Publicacion_model extends CI_Model
         }
     }
 
-    public function search_pagination_posts($keyword = "", $pagesize , $offset)
+    public function search_pagination_posts($keyword = "",  $offset, $pagesize)
     {
         $keyword = trim($keyword);
         if (empty($keyword)) {
@@ -118,12 +118,12 @@ class Publicacion_model extends CI_Model
         }
     }
 
-    public function pagination_posts($pagesize , $offset)
+    public function pagination_posts($offset, $pagesize)
     {
         $this->db->where('id_tipo', 2);
         $this->db->where('estado', '1');
-        $this->db->limit($pagesize,$offset);
         $this->db->order_by('fecha_ingreso', 'DESC');
+        $this->db->limit($pagesize,$offset);
         return $this->db->get('publicacion')->result();
     }
 
