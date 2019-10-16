@@ -2,19 +2,7 @@
 
 <div class="form-group mt-2">
     <label for="titulo">Titulo del Testimonio</label>
-    <input type="text" class="form-control" value="<?= isset($testimonial->titulo) ? $testimonial->titulo : '' ?>" name="titulo" id="" aria-describedby="helpId" placeholder="" required>
-</div>
-<div class="form-group mt-2">
-    <label for="categoria">Categoria</label>
-    <select name="categoria" id="" class="form-control" required>
-        <?php foreach($categories as $category){ 
-            if(isset($testimonial->id_categoria)){ ?>
-                <option value="<?= $category->id_categoria ?>"  <?= ($category->id_categoria == $testimonial->id_categoria)  ? 'selected' : '' ?>  ><?= $category->nombre ?></option>
-            <?php } else{ ?>
-                <option value="<?= $category->id_categoria ?>" ><?= $category->nombre ?></option>
-                <?php }?>
-        <?php } ?>
-    </select>
+    <input type="text" class="form-control" value="<?= isset($testimonial->titulo) ? $testimonial->titulo : '' ?>" name="titulo" maxlength="90"aria-describedby="helpId" placeholder="" required>
 </div>
 <?php if(isset($testimonial->estado)){ ?>
     <div class="form-group mt-2">
@@ -27,7 +15,7 @@
 <?php } ?>
 <div class="form-group">
     <label for="introduccion">Historia</label>
-    <textarea class="form-control" name="texto_introduccion" id="" rows="5" required><?= isset($testimonial->texto_introduccion) ? $testimonial->texto_introduccion : '' ?></textarea>
+    <textarea class="form-control" name="texto_introduccion" id="" rows="5" maxlength="256" required><?= isset($testimonial->texto_introduccion) ? $testimonial->texto_introduccion : '' ?></textarea>
 </div>
 <div class="row m-3 mx-auto">
     <div>
