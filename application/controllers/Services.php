@@ -13,9 +13,8 @@ class Services extends CI_Controller
 
   public function index()
   {
-    $datos = ['services' => $this->publicacion_model->search_services()];
     $this->load->view('templates/header');
-    $this->load->view('services/services', $datos);
+    $this->load->view('services/services');
     $this->load->view('templates/footer');
   }
 

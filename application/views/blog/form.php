@@ -1,7 +1,7 @@
 <h2 class="text-center"><?= isset($blog->titulo) ? 'EDITAR UNA PUBLICACIÓN' : 'AGREGAR UNA PUBLICACIÓN'  ?> </h2>
 
 <div class="form-group mt-2">
-    <label for="titulo">Titulo del servicio</label>
+    <label for="titulo">Titulo de la publicación</label>
     <input type="text" class="form-control" value="<?= isset($blog->titulo) ? $blog->titulo : '' ?>" name="titulo" id="" aria-describedby="helpId" placeholder="" required>
 </div>
 <div class="form-group mt-2">

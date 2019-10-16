@@ -13,9 +13,8 @@ class Blog extends CI_Controller
 
   public function index()
   {
-    $datos = ['posts' => $this->publicacion_model->get_all_posts()];
     $this->load->view('templates/header');
-    $this->load->view('blog/blog', $datos);
+    $this->load->view('blog/blog');
     $this->load->view('templates/footer');
   }
 
