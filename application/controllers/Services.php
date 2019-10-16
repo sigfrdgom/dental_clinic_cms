@@ -37,10 +37,10 @@ class Services extends CI_Controller
     $config['upload_path'] = "uploads/";
     $config['file_name'] = "recurso_" . time();
 
-    $config['allowed_types'] = 'gif|jpg|png';
-    $config['max_size'] = "5000";
-    $config['max_width'] = "2000";
-    $config['max_height'] = "2000";
+    $config['allowed_types'] = 'gif|jpg|png|jpeg';
+    $config['max_size'] = "5120";
+    $config['max_width'] = "4096";
+    $config['max_height'] = "4096";
 
     $this->load->library('upload', $config);
     if (!$this->upload->do_upload($mi_archivo)) {
