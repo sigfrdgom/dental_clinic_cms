@@ -57,6 +57,20 @@ class Publicacion_model extends CI_Model
         }
     }
 
+    public function get_all_posts($keyword = "")
+    {
+        $keyword = trim($keyword);
+        if (empty($keyword)) {
+            $this->db->where('id_tipo', 2);
+            $this->db->order_by('fecha_ingreso', 'DESC');
+            return $this->db->get('publicacion')->result();
+        } else {
+            $escape = "'%" . $keyword . "%' ESCAPE '!'";
+            $query = $this->db->query('SELECT * FROM publicacion WHERE `id_tipo` = 2 AND ( `titulo` LIKE ' . $escape . ' OR `texto_introduccion` LIKE ' . $escape . ' OR `contenido` LIKE ' . $escape . ') ORDER BY `fecha_ingreso` DESC');
+            return $query->result();
+        }
+    }
+
     public function get_posts($id = "")
     {
         $this->db->where('id_tipo', 2);
@@ -80,6 +94,13 @@ class Publicacion_model extends CI_Model
         return $this->db->get('publicacion')->result();
     }
 
+    public function count_posts()
+    {
+        $this->db->where('id_tipo', 2);
+        $this->db->where('estado', '1');
+        return $this->db->count_all_results('publicacion');       
+    }
+
     public function search_posts($keyword = "")
     {
         $keyword = trim($keyword);
@@ -90,16 +111,34 @@ class Publicacion_model extends CI_Model
             return $this->db->get('publicacion')->result();
         } else {
             $escape = "'%" . $keyword . "%' ESCAPE '!'";
-            $query = $this->db->query('SELECT * FROM publicacion WHERE `id_tipo` = 2 AND ( `titulo` LIKE ' . $escape . ' OR `texto_introduccion` LIKE ' . $escape . ' OR `contenido` LIKE ' . $escape . ') ORDER BY `fecha_ingreso` DESC');
+            $query = $this->db->query('SELECT * FROM publicacion WHERE `id_tipo` = 2 AND `estado` = 1 AND ( `titulo` LIKE ' . $escape . ' OR `texto_introduccion` LIKE ' . $escape . ' OR `contenido` LIKE ' . $escape . ') ORDER BY `fecha_ingreso` DESC');
             return $query->result();
-
-            // $this->db->where('id_tipo', 2);		
-            // $this->db->like('titulo', $keyword);
-            // $this->db->or_like('texto_introduccion', $keyword);
-            // $this->db->or_like('contenido', $keyword);
-            // $this->db->order_by('fecha_ingreso', 'DESC');
-            // return $this->db->get('publicacion')->result();
         }
+    }
+
+    public function search_pagination_posts($keyword = "",  $offset, $pagesize)
+    {
+        $keyword = trim($keyword);
+        if (empty($keyword)) {
+            $this->db->where('id_tipo', 2);
+            $this->db->where('estado', '1');
+            $this->db->limit($pagesize,$offset);
+            $this->db->order_by('fecha_ingreso', 'DESC');
+            return $this->db->get('publicacion')->result();
+        } else {
+            $escape = "'%" . $keyword . "%' ESCAPE '!'";
+            $query = $this->db->query('SELECT * FROM publicacion WHERE `id_tipo` = 2 AND `estado` = 1 AND ( `titulo` LIKE ' . $escape . ' OR `texto_introduccion` LIKE ' . $escape . ' OR `contenido` LIKE ' . $escape . ') ORDER BY `fecha_ingreso` DESC LIMIT '.$offset.','.$pagesize.'');
+            return $query->result();
+        }
+    }
+
+    public function pagination_posts($offset, $pagesize)
+    {
+        $this->db->where('id_tipo', 2);
+        $this->db->where('estado', '1');
+        $this->db->order_by('fecha_ingreso', 'DESC');
+        $this->db->limit($pagesize,$offset);
+        return $this->db->get('publicacion')->result();
     }
 
     public function cargaServices()
@@ -157,6 +196,63 @@ class Publicacion_model extends CI_Model
         } catch (mysqli_sql_exception $e) {
             return 0;
         }
+    }
+
+    
+    /** ---------------- TESTIMONIALS------------------------------- */
+
+    public function get_all_testimonials($keyword = "")
+    {
+        $keyword = trim($keyword);
+        if (empty($keyword)) {
+            $this->db->where('id_tipo', 3);
+            $this->db->order_by('fecha_ingreso', 'DESC');
+            return $this->db->get('publicacion')->result();
+        } else {
+            $escape = "'%" . $keyword . "%' ESCAPE '!'";
+            $query = $this->db->query('SELECT * FROM publicacion WHERE `id_tipo` = 3 AND ( `titulo` LIKE ' . $escape . ' OR `texto_introduccion` LIKE ' . $escape . ' OR `contenido` LIKE ' . $escape . ') ORDER BY `fecha_ingreso` DESC');
+            return $query->result();
+        }
+    }
+
+    public function get_testimonials($keyword = "")
+    {
+        $keyword = trim($keyword);
+        if (empty($keyword)) {
+            $this->db->where('id_tipo', 3);
+            $this->db->where('estado', '1');
+            $this->db->order_by('fecha_ingreso', 'DESC');
+            return $this->db->get('publicacion')->result();
+        } else {
+            $escape = "'%" . $keyword . "%' ESCAPE '!'";
+            $query = $this->db->query('SELECT * FROM publicacion WHERE `id_tipo` = 3 AND `estado` = 1 AND ( `titulo` LIKE ' . $escape . ' OR `texto_introduccion` LIKE ' . $escape . ' OR `contenido` LIKE ' . $escape . ') ORDER BY `fecha_ingreso` DESC');
+            return $query->result();
+        }
+    }
+
+    public function search_pagination_testimonials($keyword = "",  $offset, $pagesize)
+    {
+        $keyword = trim($keyword);
+        if (empty($keyword)) {
+            $this->db->where('id_tipo', 3);
+            $this->db->where('estado', '1');
+            $this->db->limit($pagesize,$offset);
+            $this->db->order_by('fecha_ingreso', 'DESC');
+            return $this->db->get('publicacion')->result();
+        } else {
+            $escape = "'%" . $keyword . "%' ESCAPE '!'";
+            $query = $this->db->query('SELECT * FROM publicacion WHERE `id_tipo` = 3 AND `estado` = 1 AND ( `titulo` LIKE ' . $escape . ' OR `texto_introduccion` LIKE ' . $escape . ' OR `contenido` LIKE ' . $escape . ') ORDER BY `fecha_ingreso` DESC LIMIT '.$offset.','.$pagesize.'');
+            return $query->result();
+        }
+    }
+
+    public function pagination_testimonials($offset, $pagesize)
+    {
+        $this->db->where('id_tipo', 3);
+        $this->db->where('estado', '1');
+        $this->db->order_by('fecha_ingreso', 'DESC');
+        $this->db->limit($pagesize,$offset);
+        return $this->db->get('publicacion')->result();
     }
 
 }

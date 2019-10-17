@@ -43,14 +43,14 @@
             <table class="table table-sm table-bordered table-borderless table-hover display" id="ajaxTabla">
                 <thead class="text-white bg-clidesa-celeste text-center">
                     <tr>
+                        <th>Imagen</th>
                         <th>Titulo</th>
                         <th>Introduccion</th>
                         <!-- <th>Contenido</th> -->
                         <th>Estado</th>
-                        <th>Recurso 1</th>
-                        <th>Recurso 2</th>
+                        <!-- <th>Recurso 2</th>
                         <th>Recuros 3</th>
-                        <th>Recurso 4</th>
+                        <th>Recurso 4</th> -->
                         <th>Fecha</th>
                         <th colspan="2">Acciones</th>
                     </tr>

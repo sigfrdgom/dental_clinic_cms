@@ -13,9 +13,8 @@ class Services extends CI_Controller
 
   public function index()
   {
-    $datos = ['services' => $this->publicacion_model->search_services()];
     $this->load->view('templates/header');
-    $this->load->view('services/services', $datos);
+    $this->load->view('services/services');
     $this->load->view('templates/footer');
   }
 
@@ -38,10 +37,10 @@ class Services extends CI_Controller
     $config['upload_path'] = "uploads/";
     $config['file_name'] = "recurso_" . time();
 
-    $config['allowed_types'] = 'gif|jpg|png';
-    $config['max_size'] = "5000";
-    $config['max_width'] = "2000";
-    $config['max_height'] = "2000";
+    $config['allowed_types'] = 'gif|jpg|png|jpeg';
+    $config['max_size'] = "5120";
+    $config['max_width'] = "4096";
+    $config['max_height'] = "4096";
 
     $this->load->library('upload', $config);
     if (!$this->upload->do_upload($mi_archivo)) {
@@ -93,7 +92,7 @@ class Services extends CI_Controller
       'titulo' => $_POST['titulo'],
       'texto_introduccion' => $_POST['texto_introduccion'],
       'contenido' => $_POST['contenido'],
-      'estado' => true,
+      'estado' => isset($_POST['estado']) ? $_POST['estado'] : true,
       'recurso_av_1' => isset($data_files['file1']) ?  $data_files['file1']["upload_data"]['file_name'] : $old_services['recurso_av_1'],
       'recurso_av_2' => isset($data_files['file2']) ?  $data_files['file2']["upload_data"]['file_name'] : $old_services['recurso_av_2'],
       'recurso_av_3' => isset($data_files['file3']) ?  $data_files['file3']["upload_data"]['file_name'] : $old_services['recurso_av_3'],

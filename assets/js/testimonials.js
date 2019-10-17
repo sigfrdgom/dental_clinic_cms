@@ -2,24 +2,24 @@ window.addEventListener('load', listener);
 var url_base = window.location.href;
 
 function listener() {
-	document.getElementById('busqueda').addEventListener('keyup',refresh_posts);
-	refresh_posts();
+	document.getElementById('busqueda').addEventListener('keyup',refresh_testimonials);
+	refresh_testimonials();
 }
 
-function refresh_posts(){
+function refresh_testimonials(){
 	const busqueda = document.getElementById('busqueda').value;
-	fetch(url_base+'/posts/'+busqueda)
+	fetch(url_base+'/testimonials/'+busqueda)
     .then(res => {return res.text()})
     .then(response => {
         document.getElementById('cards-content').innerHTML = response;
         let btnDelete = document.getElementsByClassName('btn-delete');
         for(i=0; i<btnDelete.length; i++){
-            btnDelete[i].addEventListener('click', deletePosts);
+            btnDelete[i].addEventListener('click', deleteTestimonials);
         }
     });
 }
 
-function deletePosts() {
+function deleteTestimonials() {
 	Swal.fire({
 		title: '¿Esta seguro de eliminar la publicación?',
 		text: "Esta accion no es reversible",
@@ -31,16 +31,16 @@ function deletePosts() {
 		cancelButtonText: 'Cancelar',
 	}).then((result) => {
 		if (result.value) {
-			fetch('blog/deletePosts/'+this.value, {
+			fetch('testimonials/deleteTestimonials/'+this.value, {
 				method: 'DELETE'
 				})
 				.then(() =>{
 					Swal.fire(
 						'Eliminado!',
-						'!La publicación ha sido eliminada!',
+						'!El Testimnio ha sido eliminada!',
 						'success'
 					  );
-					  refresh_posts();
+					  refresh_testimonials();
 				})
 		}
 	})

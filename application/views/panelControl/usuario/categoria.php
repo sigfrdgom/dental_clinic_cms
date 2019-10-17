@@ -90,16 +90,16 @@
             <!-- Modal body -->
             <div class="modal-body">
 
-                <form id="formCategoria"  data-parsley-validate novalidate>
+                <form id="formCategoria" >
                 <input type="hidden" name="id" id="id_categoria">
 
                 <label for="nombre" class="mrg-spr-ex mt-2">Nombres de la categoria: </label>	
                 <input type="text" name="nombre" id="nombre" placeholder="Escribe el nombre de la categoria"
-                class="form-control " required pattern='[a-zA-zÑñÁÉÍÓÚáéíóúü ]{1,64}'>
+                class="form-control vinput" required pattern='[a-zA-zÑñÁÉÍÓÚáéíóúü ]{1,64}'>
 
                 <label for="descripcion" class="mrg-spr-ex mt-2">Descripcion de la categoria:</label>
                 <input type="text" name="descripcion" id="descripcion" placeholder="Escribe la descripcion del categoria" 
-                class="form-control " required pattern='[a-zA-zÑñÁÉÍÓÚáéíóúü# ]{1,128}'>
+                class="form-control vinput" required pattern='[a-zA-zÑñÁÉÍÓÚáéíóúü# ]{1,128}'>
 
             </div>
             <!-- Modal body -->

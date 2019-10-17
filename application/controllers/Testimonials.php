@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Blog extends CI_Controller
+class Testimonials extends CI_Controller
 {
     
   public function __construct()
@@ -14,21 +14,21 @@ class Blog extends CI_Controller
   public function index()
   {
     $this->load->view('templates/header');
-    $this->load->view('blog/blog');
+    $this->load->view('testimonials/testimonials');
     $this->load->view('templates/footer');
   }
 
-  public function posts($keyword = "")
+  public function testimonials($keyword = "")
   {
-    $datos = ['posts' => $this->publicacion_model->get_all_posts($keyword)];
-    $this->load->view('blog/posts', $datos);
+    $datos = ['testimonials' => $this->publicacion_model->get_all_testimonials($keyword)];
+    $this->load->view('testimonials/histories', $datos);
   }
 
   public function create()
   {
     $datos = ['categories' => $this->categoria_model->getAll()];
     $this->load->view('templates/header');
-    $this->load->view('blog/create', $datos);
+    $this->load->view('testimonials/create', $datos);
     $this->load->view('templates/footer');
   }
 
@@ -86,11 +86,11 @@ class Blog extends CI_Controller
     $datos = [
       'id_publicacion' => trim($id) ? trim($id) : '',
       'id_usuario' => $this->session->userdata('id_usuario'),
-      'id_categoria' => $_POST['categoria'],
-      'id_tipo' => 2,
+      'id_categoria' => 5,
+      'id_tipo' => 3,
       'titulo' => $_POST['titulo'],
       'texto_introduccion' => $_POST['texto_introduccion'],
-      'contenido' => $_POST['contenido'],
+      'contenido' => "Testimonio",
       'estado' => isset($_POST['estado']) ? $_POST['estado'] : true,
       'recurso_av_1' => isset($data_files['file1']) ?  $data_files['file1']["upload_data"]['file_name'] : $old_services['recurso_av_1'],
       'recurso_av_2' => isset($data_files['file2']) ?  $data_files['file2']["upload_data"]['file_name'] : $old_services['recurso_av_2'],
@@ -120,14 +120,13 @@ class Blog extends CI_Controller
       }
       $message = array('message' => 'Registro Agregado con éxito');
       // $this->session->set_flashdata($message);
-      redirect('blog');
+      redirect('testimonials');
     } catch (Exception $e) {
       $message = array('error' => 'Error no se puedo agregar el registro ');
       // $this->session->set_flashdata($message);
-      redirect('blog');
+      redirect('testimonials');
     }
   }
-
 
   private function deleteImage($data){
     $message = array();
@@ -150,7 +149,7 @@ class Blog extends CI_Controller
     return $message;
   }
 
-  public function deletePosts($id)
+  public function deleteTestimonials($id)
   {
     // Convert stdclass to array
     $data = json_decode(json_encode($this->publicacion_model->findById($id)), true);
@@ -166,13 +165,14 @@ class Blog extends CI_Controller
   public function edit($id)
   {
     $datos = [
-      'blog' => $this->publicacion_model->findById($id),
+      'testimonial' => $this->publicacion_model->findById($id),
       'categories' => $this->categoria_model->getAll()
     ];
     $this->load->view('templates/header');
-    $this->load->view('blog/edit', $datos);
+    $this->load->view('testimonials/edit', $datos);
     $this->load->view('templates/footer');
   }
+
 
 
 }

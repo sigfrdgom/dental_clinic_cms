@@ -184,6 +184,3 @@
 	
 <!-- JS file for this view -->
 <script src="<?= base_url('assets/js/usuario.js')?>"></script>
-
-clidesa.admin
-$2y$13$.zmlCWcyyJOKzTqQTSYwBuf01I7CLEagI6jcjCOfcxgW5NMMvOGwW
