@@ -40,6 +40,7 @@
             </div>
             <!-- End of search box of table -->
 
+			<div id="paginador"></div>
             <table class="table table-sm table-bordered table-borderless table-hover display" id="ajaxTabla">
                 <thead class="text-white bg-clidesa-celeste text-center">
                     <tr>
@@ -66,4 +67,6 @@
 </div>
 
 <!-- Import services javascript    -->
+<script src="<?= base_url('assets/js/paginator.js') ?>"></script>
 <script src="<?= base_url('assets/js/services.js') ?>"></script>
+

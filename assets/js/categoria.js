@@ -26,8 +26,13 @@ function recargar(){
 					</td>
     			</tr>`
 				});
+					document.getElementById('oculto').style.display = 'none';
 					respuesta.innerHTML=texto;
 					asignarEventos();
+					var p = new Paginador(
+						document.getElementById('paginador'),
+						document.getElementById('ajaxTabla'),
+						2); p.Mostrar(); 
 				})
 					
 			
@@ -49,7 +54,18 @@ document.getElementById('guardarCategoria').addEventListener('click', function(e
 		controlador="actualizarCategoria";
 		// metodo="PUT"
 		var id_categoria=document.getElementById('id_categoria').value
+
+		if (document.getElementById('estado').checked===true) {
+			datas.append("estado", 1)
+		}else{
+			datas.append("estado", 0)
+			
+		}
+		
+		
 		datas.append("id_categoria", id_categoria)
+
+
 	}
 	
 
@@ -115,7 +131,8 @@ function asignarEventos(){
 
 /////////////////////----------------------------------------PREPARACION DE DATOS EN FORMULARIO------------------------------------//////////////////
 function accion() {
-    var datos = new Array();
+	var datos = new Array();
+	
     let peticion=new XMLHttpRequest();
     peticion.onreadystatechange=function(){
         if(this.readyState==4){
@@ -123,10 +140,16 @@ function accion() {
 			document.getElementById("id_categoria").value=datos["id_categoria"];
 			document.getElementById('nombre').value=datos["nombre"];
 			document.getElementById('descripcion').value=datos["descripcion"];
+			
+			if (datos["estado"]==1) {
+				document.getElementById('estado').checked=true;
+			}
+			
 	   
         }};
     peticion.open('GET', 'obtenerRegistro/'+this.value);
 	peticion.send();
+	document.getElementById('oculto').style.display = 'block';
 	btn= document.getElementById('guardarCategoria')
     btn.removeAttribute("value")
 	btn.setAttribute("value", "Modificar")
@@ -139,7 +162,8 @@ function limpiar(){
 	document.getElementById('nombre').value="";
 	document.getElementById('descripcion').value="";
     
-   
+	document.getElementById('oculto').style.display = 'none';
+	document.getElementById('estado').checked=0; 
 	var btn=document.getElementById('guardarCategoria')
     btn.removeAttribute("value")
 	btn.setAttribute("value", "Guardar");
@@ -179,9 +203,17 @@ document.getElementById("busqueda").addEventListener("keyup", function(){
 				});
 					if (datos.length>0) {
 						respuesta.innerHTML=texto;
-						asignarEventos();	
+						asignarEventos();
+						// var p = new Paginador(
+						// 	document.getElementById('paginador'),
+						// 	document.getElementById('ajaxTabla'),
+						// 	2); p.Mostrar(); 	
 					}else{
 						respuesta.innerHTML="NO HAY REGISTRO COINCIDENTES";
+						// var p = new Paginador(
+						// 	document.getElementById('paginador'),
+						// 	document.getElementById('ajaxTabla'),
+						// 	0); p.Mostrar(); 
 					}
 					
 			})
@@ -195,3 +227,10 @@ document.getElementById("busqueda").addEventListener("keyup", function(){
 	}
 	
 });
+
+
+
+
+
+
+

@@ -45,6 +45,7 @@
 
             <!-- Start of table -->
             <div class="table-responsive">
+			<div id="paginador"></div>
                 <table class="table table-borderless table-hover display" id="ajaxTabla">
                     <thead class="text-white bg-clidesa-celeste">
                         <tr>
@@ -99,7 +100,11 @@
 
                 <label for="descripcion" class="mrg-spr-ex mt-2">Descripcion de la categoria:</label>
                 <input type="text" name="descripcion" id="descripcion" placeholder="Escribe la descripcion del categoria" 
-                class="form-control vinput" required pattern='[a-zA-zÑñÁÉÍÓÚáéíóúü# ]{1,128}'>
+				class="form-control vinput" required pattern='[a-zA-zÑñÁÉÍÓÚáéíóúü# ]{1,128}'>
+				
+				<div id="oculto">
+				<label for="estado" class="mrg-spr-ex mt-3"><input type="checkbox" id="estado" value="1">Activar Estado:</label>
+				</div>
 
             </div>
             <!-- Modal body -->
@@ -117,5 +122,6 @@
 </div>
 <!-- End of modal for categories management -->
 
-
+<script src="<?= base_url('assets/js/paginator.js') ?>"></script>
 <script src="<?= base_url('assets/js/categoria.js')?>"></script>
+
