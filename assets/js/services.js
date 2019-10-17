@@ -15,7 +15,11 @@ function recargar_tbody(){
         let btnDelete = document.getElementsByClassName('btn-delete');
         for(i=0; i<btnDelete.length; i++){
             btnDelete[i].addEventListener('click', deleteService);
-        }
+		}
+		var p = new Paginador(
+			document.getElementById('paginador'),
+			document.getElementById('ajaxTabla'),
+			2); p.Mostrar(); 
     });
 }
 
@@ -41,6 +45,7 @@ function deleteService() {
 						'success'
 					  );
 					  recargar_tbody();
+					  
 				})
 		}
 	})

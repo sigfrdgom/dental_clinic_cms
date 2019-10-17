@@ -4,6 +4,11 @@ var url_base = window.location.href;
 function listener() {
 	document.getElementById('busqueda').addEventListener('keyup',refresh_posts);
 	refresh_posts();
+	var p = new Paginador(
+		document.getElementById('paginador'),
+		document.getElementById('ajaxTabla'),
+		2); p.Mostrar(); 
+
 }
 
 function refresh_posts(){
@@ -15,7 +20,11 @@ function refresh_posts(){
         let btnDelete = document.getElementsByClassName('btn-delete');
         for(i=0; i<btnDelete.length; i++){
             btnDelete[i].addEventListener('click', deletePosts);
-        }
+		}
+		var p = new Paginador(
+			document.getElementById('paginador'),
+			document.getElementById('ajaxTabla'),
+			2); p.Mostrar(); 
     });
 }
 
