@@ -49,11 +49,10 @@
             </div>
             <!-- End of search box of table -->
 
-            <!-- Start of table -->
+			<!-- Start of table -->
+			<div id="paginador"></div>
             <div class="table-responsive">
-			<div id="paginador">
-				
-			</div>
+			
                 <table class="table table-borderless table-hover display" id="ajaxTabla">
                     <thead class="text-white bg-clidesa-celeste">
                         <tr>
@@ -133,6 +132,6 @@
 </div>
 <!-- End of modal for categories management -->
 
-<script src="<?= base_url('assets/js/paginator.js') ?>"></script>
-<script src="<?= base_url('assets/js/categoria.js')?>"></script>
 
+<script src="<?= base_url('assets/js/categoria.js')?>"></script>
+<script src="<?= base_url('assets/js/paginator.js') ?>"></script>

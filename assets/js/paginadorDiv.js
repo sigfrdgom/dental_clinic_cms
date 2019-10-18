@@ -1,18 +1,22 @@
-Paginador = function(divPaginador, tabla, tamPagina)
+Paginador = function(divPaginador, div, tamPagina)
 {
-	if (tabla.rows.length===0) {
+	// var con=1;
+	// for (var index = 1; index <div.length; index++) {
+	// 	//PARA EMPEZAR A CARGAR
+	//    console.log(div[index])
+	// //    btnEditar[index].addEventListener('click', accion);
+	   
+    // }
+
+	if ((div.length)===0) {
 		
 	}else{
 	
 	this.miDiv = divPaginador; //un DIV donde irán controles de paginación
-    this.tabla = tabla;           //la tabla a paginar
-    this.tamPagina = tamPagina; //el tamaño de la página (filas por página)
+	this.tamPagina = tamPagina; //el tamaño de la página (filas por página)
     this.pagActual = 1;         //asumiendo que se parte en página 1
-    this.paginas = Math.floor((this.tabla.rows.length - 1) / this.tamPagina); //¿?
+    this.paginas = Math.floor((div.length - 1) / this.tamPagina); //¿?
  
-	console.log(this.tabla.rows.length)
-
-
     this.SetPagina = function(num)
     {
         if (num < 0 || num > this.paginas)
@@ -22,12 +26,12 @@ Paginador = function(divPaginador, tabla, tamPagina)
         var min = 1 + (this.pagActual - 1) * this.tamPagina;
         var max = min + this.tamPagina - 1;
  
-        for(var i = 1; i < this.tabla.rows.length; i++)
+        for(var i = 1; i < div.length; i++)
         {
             if (i < min || i > max)
-                this.tabla.rows[i].style.display = 'none';
+                div[i].style.display = 'none';
             else
-                this.tabla.rows[i].style.display = '';
+                div[i].style.display = '';
         }
         this.miDiv.firstChild.rows[0].cells[1].innerHTML = this.pagActual;
     }}
@@ -75,7 +79,7 @@ Paginador = function(divPaginador, tabla, tamPagina)
         this.miDiv.appendChild(tblPaginador);
  
         //¿y esto por qué?
-        if (this.tabla.rows.length - 1 > this.paginas * this.tamPagina)
+        if (div.length - 1 > this.paginas * this.tamPagina)
             this.paginas = this.paginas + 1;
  
         this.SetPagina(this.pagActual);

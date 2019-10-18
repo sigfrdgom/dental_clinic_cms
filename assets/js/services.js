@@ -19,10 +19,10 @@ function recargar_tbody(){
 
 		
 
-		// var p = new Paginador(
-		// 	document.getElementById('paginador'),
-		// 	document.getElementById('ajaxTabla'),
-		// 	2); p.Mostrar(); 
+		var p = new Paginador(
+			document.getElementById('paginador'),
+			document.getElementById('ajaxTabla'),
+			5); p.Mostrar(); 
     });
 }
 

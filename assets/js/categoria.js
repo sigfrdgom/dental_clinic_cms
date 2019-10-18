@@ -223,16 +223,13 @@ document.getElementById("busqueda").addEventListener("keyup", function(){
 					if (datos.length>0) {
 						respuesta.innerHTML=texto;
 						asignarEventos();
-						// var p = new Paginador(
-						// 	document.getElementById('paginador'),
-						// 	document.getElementById('ajaxTabla'),
-						// 	2); p.Mostrar(); 	
+						var p = new Paginador(
+							document.getElementById('paginador'),
+							document.getElementById('ajaxTabla'),
+							2); p.Mostrar(); 	
 					}else{
 						respuesta.innerHTML="NO HAY REGISTRO COINCIDENTES";
-						// var p = new Paginador(
-						// 	document.getElementById('paginador'),
-						// 	document.getElementById('ajaxTabla'),
-						// 	0); p.Mostrar(); 
+					 
 					}
 					
 			})

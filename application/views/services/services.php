@@ -67,6 +67,6 @@
 </div>
 
 <!-- Import services javascript    -->
-<script src="<?= base_url('assets/js/paginator.js') ?>"></script>
-<script src="<?= base_url('assets/js/services.js') ?>"></script>
 
+<script src="<?= base_url('assets/js/services.js') ?>"></script>
+<script src="<?= base_url('assets/js/paginator.js') ?>"></script>
