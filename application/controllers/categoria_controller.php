@@ -47,12 +47,17 @@ class Categoria_controller extends CI_Controller {
         $this->categoria_model->actualizarCategoriaEstado($id);
 
         
+	}
+	
+	public function activarCategoria($id){
+        $this->categoria_model->actualizarCategoriaActivo($id);        
     }
+
 
     //METODO QUE ACTUALIZA UN REGISTRO CATEGORIA
     public function actualizarCategoria(){
         
-      $data=["id_categoria" => $_POST['id_categoria'], "nombre" => $_POST['nombre'], "descripcion" => $_POST['descripcion'], "estado"=> $_POST['estado']];
+      $data=["id_categoria" => $_POST['id_categoria'], "nombre" => $_POST['nombre'], "descripcion" => $_POST['descripcion']];
         $this->categoria_model->actualizarCategoria($data);
 	}
 	

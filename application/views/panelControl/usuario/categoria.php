@@ -1,4 +1,10 @@
 <!-- Start content of page categorias-->
+
+	
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<link href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" rel="stylesheet"/>
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script> -->
+
 <div class="container-fluid">
     <div class="row page-titles pt-2 pb-0" style="background: white" >
 
@@ -45,7 +51,9 @@
 
             <!-- Start of table -->
             <div class="table-responsive">
-			<div id="paginador"></div>
+			<div id="paginador">
+				
+			</div>
                 <table class="table table-borderless table-hover display" id="ajaxTabla">
                     <thead class="text-white bg-clidesa-celeste">
                         <tr>
@@ -65,7 +73,10 @@
 					
                    
                     </tbody>
-                </table>
+				</table>
+				
+
+
             </div>
             <!-- End of table -->
 
@@ -102,9 +113,9 @@
                 <input type="text" name="descripcion" id="descripcion" placeholder="Escribe la descripcion del categoria" 
 				class="form-control vinput" required pattern='[a-zA-zÑñÁÉÍÓÚáéíóúü# ]{1,128}'>
 				
-				<div id="oculto">
+				<!-- <div id="oculto">
 				<label for="estado" class="mrg-spr-ex mt-3"><input type="checkbox" id="estado" value="1">Activar Estado:</label>
-				</div>
+				</div> -->
 
             </div>
             <!-- Modal body -->

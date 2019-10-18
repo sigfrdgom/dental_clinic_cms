@@ -21,10 +21,7 @@ function refresh_posts(){
         for(i=0; i<btnDelete.length; i++){
             btnDelete[i].addEventListener('click', deletePosts);
 		}
-		var p = new Paginador(
-			document.getElementById('paginador'),
-			document.getElementById('ajaxTabla'),
-			2); p.Mostrar(); 
+		
     });
 }
 

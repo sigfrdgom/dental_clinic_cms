@@ -76,6 +76,17 @@ class Tipo_model extends CI_Model{
     }
 
 
+	public function actualizarTipoActivar($id){
+        try {
+            $this->db->set('estado',1,FALSE);
+            $this->db->where('id_tipo',$id);
+            $this->db->update('tipo');
+        } catch (mysqli_sql_exception $e) {
+            return 0;
+        }
+    }
+
+
     }
 
 ?>
