@@ -37,7 +37,7 @@ class Testimonials extends CI_Controller
     $config['upload_path'] = "uploads/";
     $config['file_name'] = "recurso_" . time();
 
-    $config['allowed_types'] = 'gif|jpg|png|jpeg';
+    $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp';
     $config['max_size'] = "5120";
     $config['max_width'] = "4096";
     $config['max_height'] = "4096";

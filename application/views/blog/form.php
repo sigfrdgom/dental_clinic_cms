@@ -48,7 +48,7 @@
     <div class="m-3">
         <div class="form-group">
             <label for="recurso1">Imagen de presentación</label>
-            <input type="file" class="form-control file-upload" name="recurso1" id="" aria-describedby="helpId" placeholder="">
+            <input type="file" class="form-control file-upload" name="recurso1" accept=".jpg, .jpeg, .png, .gif, .bmp" aria-describedby="helpId" placeholder="">
         </div>
     </div>
 </div>

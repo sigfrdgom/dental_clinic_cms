@@ -32,7 +32,9 @@
 
         <!-- Sweet alert 2 -->
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
-        <script src="https://kit.fontawesome.com/3b0ecff6a4.js" crossorigin="anonymous"></script>
+        
+        <!-- Import Fontaesome 5 but the time of load is so slow -->
+        <!-- <script src="https://kit.fontawesome.com/3b0ecff6a4.js" crossorigin="anonymous"></script> -->
     <head>
 
     <!-- Start of body -->
