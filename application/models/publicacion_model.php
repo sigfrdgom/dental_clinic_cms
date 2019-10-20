@@ -60,6 +60,9 @@ class Publicacion_model extends CI_Model
     public function get_all_posts($keyword = "")
     {
         $keyword = trim($keyword);
+        if(!empty($keyword)){
+            $keyword=urldecode($keyword);
+        }
         if (empty($keyword)) {
             $this->db->where('id_tipo', 2);
             $this->db->order_by('fecha_ingreso', 'DESC');
@@ -104,6 +107,9 @@ class Publicacion_model extends CI_Model
     public function search_posts($keyword = "")
     {
         $keyword = trim($keyword);
+        if(!empty($keyword)){
+            $keyword=urldecode($keyword);
+        }
         if (empty($keyword)) {
             $this->db->where('id_tipo', 2);
             $this->db->where('estado', '1');
@@ -116,10 +122,17 @@ class Publicacion_model extends CI_Model
         }
     }
 
-    public function search_pagination_posts($keyword = "",  $offset, $pagesize)
+    public function search_pagination_posts($keyword="",  $offset, $pagesize, $category="")
     {
         $keyword = trim($keyword);
+        if(!empty($keyword)){
+            $keyword=urldecode($keyword);
+        }
+        $category = trim($category);
         if (empty($keyword)) {
+            if(!empty($category)){
+                $this->db->where('id_categoria', $category);
+            }
             $this->db->where('id_tipo', 2);
             $this->db->where('estado', '1');
             $this->db->limit($pagesize,$offset);
@@ -127,13 +140,48 @@ class Publicacion_model extends CI_Model
             return $this->db->get('publicacion')->result();
         } else {
             $escape = "'%" . $keyword . "%' ESCAPE '!'";
-            $query = $this->db->query('SELECT * FROM publicacion WHERE `id_tipo` = 2 AND `estado` = 1 AND ( `titulo` LIKE ' . $escape . ' OR `texto_introduccion` LIKE ' . $escape . ' OR `contenido` LIKE ' . $escape . ') ORDER BY `fecha_ingreso` DESC LIMIT '.$offset.','.$pagesize.'');
+            if(!empty($category)){
+                $query = $this->db->query('SELECT * FROM publicacion WHERE `id_tipo` = 2 AND `estado` = 1 AND `id_categoria` = '.$category.' AND ( `titulo` LIKE ' . $escape . ' OR `texto_introduccion` LIKE ' . $escape . ' OR `contenido` LIKE ' . $escape . ') ORDER BY `fecha_ingreso` DESC LIMIT '.$offset.','.$pagesize.'');
+            }else{
+                $query = $this->db->query('SELECT * FROM publicacion WHERE `id_tipo` = 2 AND `estado` = 1 AND ( `titulo` LIKE ' . $escape . ' OR `texto_introduccion` LIKE ' . $escape . ' OR `contenido` LIKE ' . $escape . ') ORDER BY `fecha_ingreso` DESC LIMIT '.$offset.','.$pagesize.'');
+            }
             return $query->result();
         }
     }
 
-    public function pagination_posts($offset, $pagesize)
+    public function count_search_posts($category="", $keyword="")
     {
+        $keyword = trim($keyword);
+        if(!empty($keyword)){
+            $keyword=urldecode($keyword);
+        }
+        $category = trim($category);
+        if (empty($keyword)) {
+            if(!empty($category)){
+                $this->db->where('id_categoria', $category);
+            }
+            $this->db->where('id_tipo', 2);
+            $this->db->where('estado', '1');
+            $this->db->order_by('fecha_ingreso', 'DESC');
+            return $this->db->count_all_results('publicacion');
+        } else {
+            $escape = "'%" . $keyword . "%' ESCAPE '!'";
+            if(!empty($category)){
+                $query = $this->db->query('SELECT COUNT(*) FROM publicacion WHERE `id_tipo` = 2 AND `estado` = 1 AND `id_categoria` = '.$category.' AND ( `titulo` LIKE ' . $escape . ' OR `texto_introduccion` LIKE ' . $escape . ' OR `contenido` LIKE ' . $escape . ') ORDER BY `fecha_ingreso` DESC');
+            }else{
+                $query = $this->db->query('SELECT COUNT(*) FROM publicacion WHERE `id_tipo` = 2 AND `estado` = 1 AND ( `titulo` LIKE ' . $escape . ' OR `texto_introduccion` LIKE ' . $escape . ' OR `contenido` LIKE ' . $escape . ') ORDER BY `fecha_ingreso` DESC' );
+            }
+            $result = $query->row_array();
+            return (int) $result['COUNT(*)'];
+        }
+    }
+
+    public function pagination_posts($offset, $pagesize, $category)
+    {
+        $category = trim($category);
+        if(!empty($category)){
+            $this->db->where('id_categoria', $category);
+        }
         $this->db->where('id_tipo', 2);
         $this->db->where('estado', '1');
         $this->db->order_by('fecha_ingreso', 'DESC');
@@ -152,6 +200,9 @@ class Publicacion_model extends CI_Model
     public function search_services($keyword = "")
     {
         $keyword = trim($keyword);
+        if(!empty($keyword)){
+            $keyword=urldecode($keyword);
+        }
         if (empty($keyword)) {
             $this->db->where('id_tipo', 1);
             $this->db->order_by('estado', '1');
@@ -204,6 +255,9 @@ class Publicacion_model extends CI_Model
     public function get_all_testimonials($keyword = "")
     {
         $keyword = trim($keyword);
+        if(!empty($keyword)){
+            $keyword=urldecode($keyword);
+        }
         if (empty($keyword)) {
             $this->db->where('id_tipo', 3);
             $this->db->order_by('fecha_ingreso', 'DESC');
@@ -218,6 +272,9 @@ class Publicacion_model extends CI_Model
     public function get_testimonials($keyword = "")
     {
         $keyword = trim($keyword);
+        if(!empty($keyword)){
+            $keyword=urldecode($keyword);
+        }
         if (empty($keyword)) {
             $this->db->where('id_tipo', 3);
             $this->db->where('estado', '1');
@@ -233,6 +290,9 @@ class Publicacion_model extends CI_Model
     public function search_pagination_testimonials($keyword = "",  $offset, $pagesize)
     {
         $keyword = trim($keyword);
+        if(!empty($keyword)){
+            $keyword=urldecode($keyword);
+        }
         if (empty($keyword)) {
             $this->db->where('id_tipo', 3);
             $this->db->where('estado', '1');

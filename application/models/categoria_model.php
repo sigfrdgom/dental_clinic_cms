@@ -7,6 +7,11 @@ class Categoria_model extends CI_Model{
         return $this->db->get('categoria')->result();
     }
 
+    public function getAll_not_testimonial(){  
+        $this->db->where('id_categoria !=', 5);
+        return $this->db->get('categoria')->result();
+    }
+
     //CONSULTA PARA AGREGAR UN REGISTRO A LA TABLA CATEGORIA
     public function agregarCategoria($data){     
         try {

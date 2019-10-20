@@ -15,7 +15,7 @@ class Categoria extends CI_Controller
     //METODO QUE LLAMA LOS DATOS DE LA BASE DE DATOS Y REDICCIONA
     public function index()
     {
-        echo json_encode($this->categoria_model->getAll());
+        echo json_encode($this->categoria_model->getAll_not_testimonial());
     }
 
     //METODO CON EL QUE OBTENDRIA EL REGISTRO CATEGORIA

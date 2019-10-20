@@ -39,14 +39,7 @@
 			<div id="paginador"></div>
             <div id="cards-content">
 
-
-
-
-
             </div>
-
-
-
 
         </div>
     </div>

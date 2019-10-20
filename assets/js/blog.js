@@ -23,8 +23,6 @@ function refresh_posts(){
 		document.getElementsByClassName('card'),
 		5); p.Mostrar(); 
 
-
-
 		
     });
 }
