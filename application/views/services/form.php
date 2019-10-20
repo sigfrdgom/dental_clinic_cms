@@ -39,7 +39,7 @@
     CKEDITOR.replace('editor', {
         height: 500,
         language: 'es',
-        filebrowserUploadUrl: 'http://localhost/dental_clinic_cms/upload_image',
+        filebrowserUploadUrl: "<?= base_url('upload_image') ?>",
         filebrowserUploadMethod: 'form'
     });
     // CKEDITOR.replace('editor1', {

@@ -59,7 +59,7 @@
 CKEDITOR.replace('editor', {
         height: 500,
         language: 'es',
-        filebrowserUploadUrl: 'ck_upload.php',
+        filebrowserUploadUrl: "<?= base_url('upload_image') ?>",
         filebrowserUploadMethod: 'form'
     });
 // CKEDITOR.replace('editor1', {
