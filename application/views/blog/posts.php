@@ -20,9 +20,9 @@
                                 <div class="row align-items-center h-100">
                                     <div class="col-12 mx-auto text-center">
                                         <?php if ($post->estado == 1) { ?>
-                                            <i class="fas fa-eye" style="font-size: 4em; color: #00aeef;"></i>
+                                            <i class="fa fa-eye" style="font-size: 4em; color: #00aeef;"></i>
                                         <?php } else { ?>
-                                            <i class="fas fa-eye-slash" style="font-size: 4em; color: gray;"></i>                                            
+                                            <i class="fa fa-eye-slash" style="font-size: 4em; color: gray;"></i>                                            
                                         <?php } ?>
                                     </div>
                                 </div>

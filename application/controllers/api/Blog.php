@@ -25,15 +25,34 @@ class Blog extends CI_Controller
     }
 
     public function search_posts($keyword = ""){ 
+        if(!empty($keyword)){
+            $keyword=urldecode($keyword);
+        }
         echo json_encode($this->publicacion_model->search_posts($keyword));
     }
 
-    public function search_pagination_posts($keyword = "", $pagesize = 2 , $offset = 0){ 
-        echo json_encode($this->publicacion_model->search_pagination_posts($keyword, $pagesize , $offset));
+    public function search_pagination_posts($offset = 0, $pagesize = 5 , $category="", $keyword = "" ){ 
+        if($category == "any"){
+            $category = "";
+        }
+        $category = trim($category);
+        if(!empty($keyword)){
+            $keyword=urldecode($keyword);
+        }
+        echo json_encode($this->publicacion_model->search_pagination_posts($keyword, $offset, $pagesize, $category));
     }
 
-    public function pagination_posts( $offset = 0, $pagesize = 2){ 
-        echo json_encode($this->publicacion_model->pagination_posts($offset,$pagesize));
+    public function count_search_posts($category="", $keyword=""){
+        if($category == "any"){
+            $category = "";
+        }
+        $category = trim($category);
+        $keyword = trim($keyword);
+        echo json_encode($this->publicacion_model->count_search_posts($category, $keyword));
+    }
+
+    public function pagination_posts( $offset = 0, $pagesize = 5, $category=""){ 
+        echo json_encode($this->publicacion_model->pagination_posts($offset,$pagesize, $category));
     }
 
     //METODO CON EL QUE OBTENDRIA EL REGISTRO CATEGORIA

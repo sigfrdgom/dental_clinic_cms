@@ -1,11 +1,13 @@
 window.addEventListener('load', recargar);
 var formulario=document.getElementById("formTipo");
 var respuesta=document.getElementById("bodyTipo");
+// var url_api="http://localhost/dental_clinic_cms/api/tipo/";
+var url_server="http://localhost/dental_clinic_cms/tipo_controller/";
 
 
 /////////////////////-----------------------------------------GET----------------------------------------//////////////////
 function recargar(){
-    fetch('cargarDatosTipo')
+    fetch(url_server+'cargarDatosTipo')
             .then(res => res.json())
             .then(datos => {
 				var texto="";
@@ -21,7 +23,11 @@ function recargar(){
 					<td>${estado}</td>
             		<td class="px-0 py-2">
 						<button class="btnEditar text-center btn btn-warning btn-rounded"  value="${element.id_tipo}" data-toggle="modal" data-target="#agregarTipo">GESTIONAR</button>
-						<button class="btnEliminar text-center btn btn-danger btn-rounded" value="${element.id_tipo}">DAR BAJA</button>
+
+
+						<button class="btnEliminar text-center btn btn-rounded ${(element.estado==0)?'btn-success':'btn-danger'}" id="${element.id_tipo}" value="${element.id_tipo}" >${(element.estado==1)?'DAR BAJA':'ACTIVAR'}</button>					
+					
+						
             		</td>
     			</tr>`
 				});
@@ -44,14 +50,14 @@ document.getElementById('guardarTipo').addEventListener('click', function(e){
     if (this.value=="Modificar") {
 		controlador="actualizarTipo";
 		// metodo="PUT"
-		let estado=document.querySelector('input[name="estado"]:checked')
+		// let estado=document.querySelector('input[name="estado"]:checked')
 		var id_tipo=document.getElementById('id_tipo').value
 		datas.append("id_tipo", id_tipo)
-		datas.append("estado", estado.value)	
+		// datas.append("estado", estado.value)	
 	}
 	
 
-	fetch(controlador, {
+	fetch(url_server+controlador, {
         method: metodo,
         body: datas
     }).then(data =>{
@@ -69,22 +75,31 @@ document.getElementById('guardarTipo').addEventListener('click', function(e){
 
 /////////////////////------------------------------------------------DELETE---------------------------------------------------//////////////////	
 function eliminar() {
-	Swal.fire({
-		title: '¿Esta seguro de dar de baja el tipo?',
-		text: "¡Esta accion puede causar que ciertos contenidos no sean visibles!",
-		type: 'warning',
-		showCancelButton: true,
-		confirmButtonColor: '#36bea6',
-		cancelButtonColor: '#d33',
-		confirmButtonText: 'Si, estoy seguro!',
-		cancelButtonText: 'Cancelar',
-	}).then((result) => {
-		if (result.value) {
-			fetch('eliminarTipo/'+this.value, {
-				method: 'DELETE'
+	
+	if (document.getElementById(this.value).innerText==="ACTIVAR") {
+		fetch(url_server+'activarTipo/'+this.value)
+			.then(() =>{
+				recargar();		
+			})
+			
+
+		}else{
+			Swal.fire({
+				title: '¿Esta seguro de dar de baja el tipo?',
+				text: "¡Esta accion puede causar que ciertos contenidos no sean visibles!",
+				type: 'warning',
+				showCancelButton: true,
+				confirmButtonColor: '#36bea6',
+				cancelButtonColor: '#d33',
+				confirmButtonText: 'Si, estoy seguro!',
+				cancelButtonText: 'Cancelar',
+			}).then((result) => {
+				if (result.value) {
+					fetch(url_server+'eliminarTipo/'+this.value, {
+					method: 'DELETE'
 				})
-				.then(() =>{
-					Swal.fire(
+					.then(() =>{
+						Swal.fire(
 						'Dado de baja',
 						'!El Tipo de contenido ha sido dado de baja',
 						'success'
@@ -92,7 +107,7 @@ function eliminar() {
 					recargar();		
 				})
 		}
-	})
+	})}
 
 }
 
@@ -115,7 +130,7 @@ function asignarEventos(){
 /////////////////////----------------------------------------PREPARACION DE DATOS EN FORMULARIO------------------------------------//////////////////
 function accion() {
     var datos = new Array();
-    document.getElementById("oculto").removeAttribute("hidden")
+    // document.getElementById("oculto").removeAttribute("hidden")
 	
 	let peticion=new XMLHttpRequest();
     peticion.onreadystatechange=function(){
@@ -125,15 +140,15 @@ function accion() {
 			document.getElementById('nombre').value=datos["nombre"];
 	
     
-			if (datos["estado"]==1) {
-				document.getElementById("estado1").checked = true;
-			}else{
-				document.getElementById("estado2").checked = true;
-			}
+			// if (datos["estado"]==1) {
+			// 	document.getElementById("estado1").checked = true;
+			// }else{
+			// 	document.getElementById("estado2").checked = true;
+			// }
             
             
         }};
-    peticion.open('GET', 'obtenerRegistro/'+this.value);
+    peticion.open('GET', url_server+'obtenerRegistro/'+this.value);
 	peticion.send();
 	btn= document.getElementById('guardarTipo')
     btn.removeAttribute("value")
@@ -144,13 +159,13 @@ function accion() {
 document.getElementById("btnReset").addEventListener("click", limpiar)
 document.getElementById("idModal").addEventListener("click", limpiar)
 function limpiar(){
-    document.getElementById("oculto").setAttribute("hidden", "true")
+    // document.getElementById("oculto").setAttribute("hidden", "true")
     document.getElementById('nombre').value="";
     
-    radio1= document.getElementById("estado1");
-    radio2= document.getElementById("estado2");
-    radio2.removeAttribute("checked")
-	radio1.setAttribute("checked", "");
+    // radio1= document.getElementById("estado1");
+    // radio2= document.getElementById("estado2");
+    // radio2.removeAttribute("checked")
+	// radio1.setAttribute("checked", "");
 	var btn=document.getElementById('guardarTipo')
     btn.removeAttribute("value")
 	btn.setAttribute("value", "Guardar");
@@ -165,7 +180,7 @@ document.getElementById("busqueda").addEventListener("keyup", function(){
 	if (busqueda!==""&&busqueda!==" ") {
 		var datas= new FormData();
 		datas.append("busqueda", busqueda)
-		fetch('findByCriteria', {
+		fetch(url_server+'findByCriteria', {
         method: "POST",
         body: datas
     }).then(res => res.json()).then(datos => {
@@ -182,8 +197,8 @@ document.getElementById("busqueda").addEventListener("keyup", function(){
 					<td>${estado}</td>
             		<td class="px-0 py-2">
 						<button class="btnEditar text-center btn btn-warning btn-rounded"  value="${element.id_tipo}" data-toggle="modal" data-target="#agregarTipo">EDITAR</button>
-						<button class="btnEliminar text-center btn btn-danger btn-rounded" value="${element.id_tipo}">ELIMINAR</button>
-            		</td>
+					
+						<button class="btnEliminar text-center btn btn-rounded ${(element.estado==0)?'btn-success':'btn-danger'}" id="${element.id_tipo}" value="${element.id_tipo}" >${(element.estado==1)?'DAR BAJA':'ACTIVAR'}</button>
     			</tr>`
 				});
 					if (datos.length>0) {

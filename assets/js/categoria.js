@@ -1,7 +1,8 @@
 window.addEventListener('load', recargar);
 var formulario=document.getElementById("formCategoria");
 var respuesta=document.getElementById("bodyCategoria");
-
+var url_api="http://localhost/dental_clinic_cms/api/categoria/";
+var url_server="http://localhost/dental_clinic_cms/categoria_controller/";
 
 /////////////////////-----------------------------------------GET----------------------------------------//////////////////
 function recargar(){
@@ -22,12 +23,22 @@ function recargar(){
 					<td>${(element.estado == 0)?'Inactivo':'Activo'}</td>
             		<td class="px-0 py-2">
 						<button class="btnEditar text-center btn btn-warning btn-rounded"  value="${element.id_categoria}" data-toggle="modal" data-target="#agregarCategoria">GESTIONAR</button>
-						<button class="btnEliminar text-center btn btn-danger btn-rounded"  value="${element.id_categoria}">DAR BAJA</button>
-					</td>
+						
+						
+						<button class="btnEliminar text-center btn btn-rounded ${(element.estado==0)?'btn-success':'btn-danger'}" id="${element.id_categoria}" value="${element.id_categoria}" >${(element.estado==1)?'DAR BAJA':'ACTIVAR'}</button>					
+					
+					
+						</td>
     			</tr>`
 				});
+					// document.getElementById('oculto').style.display = 'none';
 					respuesta.innerHTML=texto;
 					asignarEventos();
+
+					var p = new Paginador(
+						document.getElementById('paginador'),
+						document.getElementById('ajaxTabla'),
+						2); p.Mostrar(); 
 				})
 					
 			
@@ -49,11 +60,22 @@ document.getElementById('guardarCategoria').addEventListener('click', function(e
 		controlador="actualizarCategoria";
 		// metodo="PUT"
 		var id_categoria=document.getElementById('id_categoria').value
+
+		// if (document.getElementById('estado').checked===true) {
+		// 	datas.append("estado", 1)
+		// }else{
+		// 	datas.append("estado", 0)
+			
+		// }
+		
+		
 		datas.append("id_categoria", id_categoria)
+
+
 	}
 	
 
-	fetch(controlador, {
+	fetch(url_server+controlador, {
         method: metodo,
         body: datas
     }).then(data =>{
@@ -72,6 +94,14 @@ document.getElementById('guardarCategoria').addEventListener('click', function(e
 
 /////////////////////------------------------------------------------DELETE---------------------------------------------------//////////////////	
 function eliminar() {
+	
+	if (document.getElementById(this.value).innerText==="ACTIVAR") {
+			fetch(url_server+'activarCategoria/'+this.value)
+				.then(() =>{
+					recargar();		
+				})
+				
+	}else{
 	Swal.fire({
 		title: '¿Esta seguro de dar de baja la categoria?',
 		text: "Esta accion puede causar que cierto contenido no sea visible",
@@ -83,7 +113,7 @@ function eliminar() {
 		cancelButtonText: 'Cancelar',
 	}).then((result) => {
 		if (result.value) {
-			fetch('eliminarCategoria/'+this.value)
+			fetch(url_server+'eliminarCategoria/'+this.value)
 				.then(() =>{
 					Swal.fire(
 						'Dado de baja!',
@@ -94,7 +124,7 @@ function eliminar() {
 				})
 		}
 	})
-
+	}
 }
 
 /////////////////////----------------------------------------PREPARACION DE EVENTOS--------------------------------------//////////////////
@@ -115,7 +145,8 @@ function asignarEventos(){
 
 /////////////////////----------------------------------------PREPARACION DE DATOS EN FORMULARIO------------------------------------//////////////////
 function accion() {
-    var datos = new Array();
+	var datos = new Array();
+	
     let peticion=new XMLHttpRequest();
     peticion.onreadystatechange=function(){
         if(this.readyState==4){
@@ -123,10 +154,16 @@ function accion() {
 			document.getElementById("id_categoria").value=datos["id_categoria"];
 			document.getElementById('nombre').value=datos["nombre"];
 			document.getElementById('descripcion').value=datos["descripcion"];
+			
+			// if (datos["estado"]==1) {
+			// 	document.getElementById('estado').checked=true;
+			// }
+			
 	   
         }};
-    peticion.open('GET', 'obtenerRegistro/'+this.value);
+    peticion.open('GET', url_api+'obtenerRegistro/'+this.value);
 	peticion.send();
+	// document.getElementById('oculto').style.display = 'block';
 	btn= document.getElementById('guardarCategoria')
     btn.removeAttribute("value")
 	btn.setAttribute("value", "Modificar")
@@ -139,7 +176,8 @@ function limpiar(){
 	document.getElementById('nombre').value="";
 	document.getElementById('descripcion').value="";
     
-   
+	// document.getElementById('oculto').style.display = 'none';
+	// document.getElementById('estado').checked=0; 
 	var btn=document.getElementById('guardarCategoria')
     btn.removeAttribute("value")
 	btn.setAttribute("value", "Guardar");
@@ -154,7 +192,7 @@ document.getElementById("busqueda").addEventListener("keyup", function(){
 	if (busqueda!==""&&busqueda!==" ") {
 		var datas= new FormData();
 		datas.append("busqueda", busqueda)
-		fetch('findByCriteria', {
+		fetch(url_api+'findByCriteria', {
         method: "POST",
         body: datas
     }).then(res => res.json()).then(datos => {
@@ -171,17 +209,27 @@ document.getElementById("busqueda").addEventListener("keyup", function(){
 				<tr class="p-0 border-bottom border-info" id="tr${element.id_categoria}">
     				<td>${element.nombre}</td>
 					<td>${element.descripcion}</td>
+					<td>${(element.estado == 0)?'Inactivo':'Activo'}</td>
             		<td class="px-0 py-2">
-						<button class="btnEditar text-center btn btn-warning btn-rounded"  value="${element.id_categoria}" data-toggle="modal" data-target="#agregarCategoria">EDITAR</button>
-						<button class="btnEliminar text-center btn btn-danger btn-rounded"  value="${element.id_categoria}">ELIMINAR</button>
-					</td>
+						<button class="btnEditar text-center btn btn-warning btn-rounded"  value="${element.id_categoria}" data-toggle="modal" data-target="#agregarCategoria">GESTIONAR</button>
+						
+						
+						<button class="btnEliminar text-center btn btn-rounded ${(element.estado==0)?'btn-success':'btn-danger'}" id="${element.id_categoria}" value="${element.id_categoria}" >${(element.estado==1)?'DAR BAJA':'ACTIVAR'}</button>					
+					
+					
+						</td>
     			</tr>`
 				});
 					if (datos.length>0) {
 						respuesta.innerHTML=texto;
-						asignarEventos();	
+						asignarEventos();
+						var p = new Paginador(
+							document.getElementById('paginador'),
+							document.getElementById('ajaxTabla'),
+							2); p.Mostrar(); 	
 					}else{
 						respuesta.innerHTML="NO HAY REGISTRO COINCIDENTES";
+					 
 					}
 					
 			})
@@ -195,3 +243,10 @@ document.getElementById("busqueda").addEventListener("keyup", function(){
 	}
 	
 });
+
+
+
+
+
+
+

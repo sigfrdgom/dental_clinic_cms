@@ -10,12 +10,10 @@
         <title>CLIDESA CMS</title>
         <!-- End of Meta INFO -->
 
-        <!-- CKEditor -->
-        <script src="https://cdn.ckeditor.com/4.13.0/standard-all/ckeditor.js"></script>
 		
 		<!-- Start of CSS styleshets -->
     	<link href="<?php echo base_url('assets/css/bootstrap/dist/css/bootstrap.min.css');?>" rel="stylesheet" />
-        <link rel="icon" type="image/png" href="<?= base_url('assets/images/favicon.png')?>">
+        <link rel="icon" type="image/png" href="<?= base_url('assets/images/favicon.ico')?>">
         <link href="<?= base_url('assets/css/style.css')?>" rel="stylesheet">
         <link href="<?= base_url('assets/css/pages/dashboard1.css')?>" rel="stylesheet">
         <link href="<?= base_url('assets/css/clidesa.css')?>" rel="stylesheet">
@@ -29,16 +27,14 @@
                 }
             }
 
-            
         </style>
         <!-- Extra BAD CSS -->
 
-
-        
-        
         <!-- Sweet alert 2 -->
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
-        <script src="https://kit.fontawesome.com/3b0ecff6a4.js" crossorigin="anonymous"></script>
+        
+        <!-- Import Fontaesome 5 but the time of load is so slow -->
+        <!-- <script src="https://kit.fontawesome.com/3b0ecff6a4.js" crossorigin="anonymous"></script> -->
     <head>
 
     <!-- Start of body -->

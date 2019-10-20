@@ -1,3 +1,6 @@
+<!-- CKEditor -->
+<script src="<?= base_url('assets/js/ckeditor/ckeditor.js')?>"></script>
+
 <h2 class="text-center"><?= isset($blog->titulo) ? 'EDITAR UNA PUBLICACIÓN' : 'AGREGAR UNA PUBLICACIÓN'  ?> </h2>
 
 <div class="form-group mt-2">
@@ -45,32 +48,40 @@
     <div class="m-3">
         <div class="form-group">
             <label for="recurso1">Imagen de presentación</label>
-            <input type="file" class="form-control file-upload" name="recurso1" id="" aria-describedby="helpId" placeholder="">
+            <input type="file" class="form-control file-upload" name="recurso1" accept=".jpg, .jpeg, .png, .gif, .bmp" aria-describedby="helpId" placeholder="">
         </div>
     </div>
 </div>
 <div class="form-group">
     <label for="contenido">Contenido</label>
-    <textarea name="contenido" id="editor1" required><?= isset($blog->contenido) ? $blog->contenido : '' ?></textarea>
+    <textarea name="contenido" id="editor" required><?= isset($blog->contenido) ? $blog->contenido : '' ?></textarea>
     <script>
-CKEDITOR.replace('editor1', {
-  extraPlugins: 'embed,autoembed,easyimage,image2',
-  height: 500,
+CKEDITOR.replace('editor', {
+        extraPlugins: 'embed,image2',
 
-  // Load the default contents.css file plus customizations for this sample.
-  contentsCss: [
-    'http://cdn.ckeditor.com/4.13.0/full-all/contents.css',
-    'https://ckeditor.com/docs/vendors/4.13.0/ckeditor/assets/css/widgetstyles.css'
-  ],
-  // Setup content provider. See https://ckeditor.com/docs/ckeditor4/latest/features/media_embed
-  embed_provider: '//ckeditor.iframe.ly/api/oembed?url={url}&callback={callback}',
+        height: 500,
+        language: 'es',
+        filebrowserUploadUrl: "<?= base_url('upload_image') ?>",
+        filebrowserUploadMethod: 'form',
+    });
+// CKEDITOR.replace('editor1', {
+//   extraPlugins: 'embed,autoembed,easyimage,image2',
+//   height: 500,
 
-  // Configure the Enhanced Image plugin to use classes instead of styles and to disable the
-  // resizer (because image size is controlled by widget styles or the image takes maximum
-  // 100% of the editor width).
-  image2_alignClasses: ['image-align-left', 'image-align-center', 'image-align-right'],
-  image2_disableResizer: true
-});
+//   // Load the default contents.css file plus customizations for this sample.
+//   contentsCss: [
+//     'http://cdn.ckeditor.com/4.13.0/full-all/contents.css',
+//     'https://ckeditor.com/docs/vendors/4.13.0/ckeditor/assets/css/widgetstyles.css'
+//   ],
+//   // Setup content provider. See https://ckeditor.com/docs/ckeditor4/latest/features/media_embed
+//   embed_provider: '//ckeditor.iframe.ly/api/oembed?url={url}&callback={callback}',
+
+//   // Configure the Enhanced Image plugin to use classes instead of styles and to disable the
+//   // resizer (because image size is controlled by widget styles or the image takes maximum
+//   // 100% of the editor width).
+//   image2_alignClasses: ['image-align-left', 'image-align-center', 'image-align-right'],
+//   image2_disableResizer: true
+// });
 </script>
 </div>
 

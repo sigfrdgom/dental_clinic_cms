@@ -36,12 +36,10 @@
             </div>
             <!-- End of search box of table -->
 
+			<div id="paginador"></div>
             <div id="cards-content">
 
             </div>
-
-
-
 
         </div>
     </div>
@@ -49,3 +47,4 @@
 </div>  
 <!-- Import services javascript    -->
 <script src="<?= base_url('assets/js/blog.js') ?>"></script>
+<script src="<?= base_url('assets/js/paginadorDiv.js') ?>"></script>

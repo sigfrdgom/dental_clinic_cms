@@ -90,21 +90,7 @@
                 <input type="text" name="nombre" id="nombre" placeholder="Escribe el nombre del tipo" 
                 class="form-control vinput" required pattern='[a-zA-ZÑñÁÉÍÓÚáéíóúü ]{1,64}'>
 
-                <div style="margin-left:2em;" id="oculto"hidden="true">
-                    <label class="mrg-spr-ex mt-2" >Estado:</label>
-                    <div class="form-check">
-                        <label class="form-check-label">
-                        <input class="form-check-input" type="radio" name="estado" id="estado1" value="1" required checked>
-                        Activo
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <label class="form-check-label">
-                        <input class="form-check-input" type="radio" name="estado" id="estado2" value="0" required>
-                        Desactivado
-                        </label>
-                    </div>    
-                </div>
+                
         </div>
         <!-- Modal body -->
 

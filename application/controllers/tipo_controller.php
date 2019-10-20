@@ -51,6 +51,12 @@ class Tipo_controller extends CI_Controller {
     public function eliminarTipo($id){
         parent::logueado(); 
         $this->tipo_model->actualizarTipoEstado($id);
+	}
+	
+
+	public function activarTipo($id){
+        parent::logueado(); 
+        $this->tipo_model->actualizarTipoActivar($id);
     }
 
     //METODO CON EL QUE OBTENDRIA EL REGISTRO TIPO
@@ -63,7 +69,7 @@ class Tipo_controller extends CI_Controller {
     //METODO CON EL QUE SE ACTUALIZA UN REGISTRO DE TIPO
     public function actualizarTipo(){
         
-        $data=["id_tipo" => $_POST['id_tipo'], "nombre" => $_POST['nombre'], "estado" => $_POST['estado']];
+        $data=["id_tipo" => $_POST['id_tipo'], "nombre" => $_POST['nombre']];
     	$this->tipo_model->actualizarTipo($data);
         
 	}

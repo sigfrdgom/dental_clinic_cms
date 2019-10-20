@@ -1,4 +1,10 @@
 <!-- Start content of page categorias-->
+
+	
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<link href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" rel="stylesheet"/>
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script> -->
+
 <div class="container-fluid">
     <div class="row page-titles pt-2 pb-0" style="background: white" >
 
@@ -43,8 +49,10 @@
             </div>
             <!-- End of search box of table -->
 
-            <!-- Start of table -->
+			<!-- Start of table -->
+			<div id="paginador"></div>
             <div class="table-responsive">
+			
                 <table class="table table-borderless table-hover display" id="ajaxTabla">
                     <thead class="text-white bg-clidesa-celeste">
                         <tr>
@@ -64,7 +72,10 @@
 					
                    
                     </tbody>
-                </table>
+				</table>
+				
+
+
             </div>
             <!-- End of table -->
 
@@ -99,7 +110,11 @@
 
                 <label for="descripcion" class="mrg-spr-ex mt-2">Descripcion de la categoria:</label>
                 <input type="text" name="descripcion" id="descripcion" placeholder="Escribe la descripcion del categoria" 
-                class="form-control vinput" required pattern='[a-zA-zÑñÁÉÍÓÚáéíóúü# ]{1,128}'>
+				class="form-control vinput" required pattern='[a-zA-zÑñÁÉÍÓÚáéíóúü# ]{1,128}'>
+				
+				<!-- <div id="oculto">
+				<label for="estado" class="mrg-spr-ex mt-3"><input type="checkbox" id="estado" value="1">Activar Estado:</label>
+				</div> -->
 
             </div>
             <!-- Modal body -->
@@ -119,3 +134,4 @@
 
 
 <script src="<?= base_url('assets/js/categoria.js')?>"></script>
+<script src="<?= base_url('assets/js/paginator.js') ?>"></script>
