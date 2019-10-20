@@ -57,10 +57,12 @@
         <textarea name="contenido" id="editor" required><?= isset($services->contenido) ? $services->contenido : '' ?></textarea>
         <script>
     CKEDITOR.replace('editor', {
+        extraPlugins: 'embed,image2',
+
         height: 500,
         language: 'es',
         filebrowserUploadUrl: "<?= base_url('upload_image') ?>",
-        filebrowserUploadMethod: 'form'
+        filebrowserUploadMethod: 'form',
     });
     // CKEDITOR.replace('editor1', {
     //   extraPlugins: 'embed,autoembed,easyimage,image2',
