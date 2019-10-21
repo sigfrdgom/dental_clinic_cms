@@ -69,6 +69,10 @@ class Contacto_model extends CI_Model{
 
 	public function findByCriteria($datos){
         try {
+            $datos = trim($datos);
+            if(!empty($datos)){
+                $datos = urldecode($datos);
+            }
         	$this->db->select('id_contacto, nombre, telefono, email, comentario, fecha, estado');
 			$this->db->like('nombre', $datos);
 			$this->db->or_like('telefono', $datos);

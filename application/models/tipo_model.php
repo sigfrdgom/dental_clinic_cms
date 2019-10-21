@@ -56,6 +56,10 @@ class Tipo_model extends CI_Model{
 
 	public function findByCriteria($datos){
         try {
+            $datos = trim($datos);
+            if(!empty($datos)){
+                $datos = urldecode($datos);
+            }
         	$this->db->select('id_tipo, nombre, estado');
 			$this->db->like('nombre', $datos);
 			return $this->db->get('tipo')->result();

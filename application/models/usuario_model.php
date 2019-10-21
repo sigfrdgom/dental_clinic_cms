@@ -56,6 +56,10 @@ class Usuario_model extends CI_Model{
 
 	public function findByCriteria($datos){
         try {
+            $datos = trim($datos);
+            if(!empty($datos)){
+                $datos = urldecode($datos);
+            }
         	$this->db->select('id_usuario, nombres, apellidos, nombre_usuario, contrasenia, tipo_usuario, estado');
 			$this->db->like('nombres', $datos);
 			$this->db->or_like('apellidos', $datos);

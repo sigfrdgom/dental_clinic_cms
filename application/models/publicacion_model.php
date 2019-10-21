@@ -217,6 +217,10 @@ class Publicacion_model extends CI_Model
 
     public function findByCriteria($datos){
         try {
+            $datos = trim($datos);
+            if(!empty($datos)){
+                $datos = urldecode($datos);
+            }
         	$this->db->select('id_publicacion, titulo, texto_introduccion, recurso_av_1, fecha_ingreso');
 			$this->db->like('titulo', $datos);
 			$this->db->or_like('texto_introduccion', $datos);
@@ -238,6 +242,10 @@ class Publicacion_model extends CI_Model
 
     public function findBlogByCriteria($datos){
         try {
+            $datos = trim($datos);
+            if(!empty($datos)){
+                $datos = urldecode($datos);
+            }
             $this->db->select('id_publicacion, titulo, texto_introduccion');
             $this->db->where('id_tipo', 2);
 			$this->db->like('titulo', $datos);
