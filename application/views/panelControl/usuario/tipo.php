@@ -75,8 +75,7 @@
 
         <!-- Modal Header -->
         <div class="modal-header" id="formUs">
-            <h4 class="modal-title" style="margin: 0% auto;" id="aggdct">Agregar un nuevo tipo</h4>
-            <h4 class="modal-title" style="margin: 0% auto; display:none;" id="mdfdct">Modificar un tipo</h4>
+            <h4 class="modal-title" style="margin: 0% auto;" id="nuevo">Agregar un nuevo tipo</h4>
             <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         <!-- Modal Header -->
