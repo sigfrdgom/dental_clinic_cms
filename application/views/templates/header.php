@@ -103,10 +103,10 @@
                         <!-- El dropdown -->
                         <div class="dropdown-menu dropdown-menu-left profile-dropdown" style="background: #c4cfdd; width: 300px;">
                             <div class="dropdown-item perfil_item ">
-                                <small class="text-overflow"><i class="fas fa-shield-alt"></i><?= $this->session->userdata('tipo_usuario')?></small>
+                                <small class="text-overflow"><i class="fa fa-address-book"></i> <?= $this->session->userdata('tipo_usuario')?></small>
                             </div>
                             <div class="dropdown-item perfil_item text-justify">
-                                <small class="text-overflow"><i class="fas fa-user"></i><?= $this->session->userdata('nombre')?></small>
+                                <small class="text-overflow"><i class="fa fa-user"></i> <?= $this->session->userdata('nombre')?></small>
                             </div>
                             <div class="cerrar_session">
                                 <a href="<?= base_url('inicioControl/finalizarSesion')?>" class="dropdown-item notify-item cerrar_session">

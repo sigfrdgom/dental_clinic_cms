@@ -66,8 +66,6 @@ class Usuario_controller extends CI_Controller {
 		 		
 		$this->usuario_model-> actualizarUsuario($data);
 	}
-	
-
 
 
 	public function findByCriteria(){ 
