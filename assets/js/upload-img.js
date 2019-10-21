@@ -26,7 +26,7 @@ function showImages(e) {
         }
         // show text message error
         reader.onerror=function(e) {
-            document.querySelectorAll('.img-upload')[imgNumber - 1].innerHTML="Error de lectura";
+            document.querySelectorAll('.img-upload')[imgNumber - 1].setAttribute("src", base_url+"assets/images/default/error1.png");
         }
         // show image as preloader in the view
         reader.onprogress= function(e){
