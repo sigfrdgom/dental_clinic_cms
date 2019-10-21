@@ -9,6 +9,7 @@ class Categoria_model extends CI_Model{
 
     public function getAll_not_testimonial(){  
         $this->db->where('id_categoria !=', 5);
+        $this->db->where('estado', 1);
         return $this->db->get('categoria')->result();
     }
 
