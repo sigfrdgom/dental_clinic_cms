@@ -145,7 +145,7 @@ function rechazar() {
 		cancelButtonText: 'Cancelar',
 	}).then((result) => {
 		if (result.value) {
-			fetch('cita_controller/eliminarCita/'+this.value, {
+			fetch('http://localhost/dental_clinic_cms/cita_controller/eliminarCita/'+this.value, {
 				method: 'DELETE'
 				})
 				.then(() =>{
