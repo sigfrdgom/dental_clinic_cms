@@ -99,7 +99,7 @@
                     <div class="row ml-5">
                         
                         <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img src="<?= base_url('assets/images/users/1.jpg')?>" alt="user" class="img-circle" width="50"></a>
+                        <img src="<?= base_url('assets/images/login/imagenPerfil.png')?>" alt="user" class="img-circle" width="50"></a>
                         <!-- El dropdown -->
                         <div class="dropdown-menu dropdown-menu-left profile-dropdown" style="background: #c4cfdd; width: 300px;">
                             <div class="dropdown-item perfil_item ">
