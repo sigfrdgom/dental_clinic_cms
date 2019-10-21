@@ -56,7 +56,8 @@ class Cita_model extends CI_Model{
     //CONSULTA PARA ACTUALIZAR UN REGISTRO UN REGISTRO DE CITA
     public function actualizarCita($data){
         try {
-            $this->db->replace('cita', $data);
+            $this->db->where('id_cita', $data['id_cita']);
+			$this->db->update('cita', $data);
         } catch (mysqli_sql_exception $e) {
             return 0;
         }

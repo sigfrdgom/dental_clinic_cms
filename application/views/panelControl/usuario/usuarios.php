@@ -90,8 +90,8 @@
 
             <!-- Start Modal Header -->
             <div class="modal-header" id="formUs">
-                <h4 class="modal-title font-weight-bold" style="margin: 0% auto;" id="aggdct">Agregar un nuevo usuario</h4>
-                <h4 class="modal-title font-weight-bold" style="margin: 0% auto; display:none;" id="mdfdct">Modificar un usuario</h4>
+                <h4 class="modal-title font-weight-bold" style="margin: 0% auto;" id="nuevo">Agregar un nuevo usuario</h4>
+                <h4 class="modal-title font-weight-bold" style="margin: 0% auto; display:none;" id="modificar">Modificar un usuario</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <!-- End Modal Header -->

@@ -23,11 +23,13 @@ function recargar(){
     				<td>${element.nombre_usuario}</td>
 					<td>${element.tipo_usuario}</td>
 					<td>${estado}</td>
-            		<td class="py-2">
-						${(element.id_usuario==1)?' ':`<button class="btnEditar text-center btn btn-warning btn-rounded"  value="${element.id_usuario}" data-toggle="modal" data-target="#agregarUsuario">GESTIONAR</button>`}
-						<button class="btnEliminar text-center btn btn-danger btn-rounded"  value="${element.id_usuario}">ELIMINAR</button>
-            		</td>
-    			</tr>`
+					<td class="py-2">`;
+						if (element.id_usuario != 1) {
+						texto+=`<button class="btnEditar text-center btn btn-warning btn-rounded"  value="${element.id_usuario}" data-toggle="modal" data-target="#agregarUsuario">GESTIONAR</button>
+						<button class="btnEliminar text-center btn btn-danger btn-rounded"  value="${element.id_usuario}">BLOQUEAR</button>`;	
+						}
+            		texto += `</td>
+    			</tr>`;
 				});
 
 						
@@ -223,11 +225,6 @@ function accion() {
 	btn= document.getElementById('guardarUsuario')
     btn.removeAttribute("value")
 	btn.setAttribute("value", "Modificar")
-
-	// anuncio1= document.getElementById('nuevo')
-	// anuncio2= document.getElementById('modificar')
-    // anuncio1.setAttribute("style", "margin: 0% auto; display:none;''")
-	// anuncio2.setAttribute("style", "margin: 0% auto;")
     
 }
 
@@ -286,7 +283,7 @@ document.getElementById("busqueda").addEventListener("keyup", function(){
 						<td>${element.tipo_usuario}</td>
 						<td>${estado}</td>
 						<td class="py-2">
-							${(element.id_usuario==1)?' ':`<button class="btnEditar text-center btn btn-warning btn-rounded"  value="${element.id_usuario}" data-toggle="modal" data-target="#agregarUsuario">GESTIONAR</button>`}
+							<button class="btnEditar text-center btn btn-warning btn-rounded"  value="${element.id_usuario}" data-toggle="modal" data-target="#agregarUsuario">EDITAR</button>
 							<button class="btnEliminar text-center btn btn-danger btn-rounded"  value="${element.id_usuario}">ELIMINAR</button>
 						</td>
 					</tr>`

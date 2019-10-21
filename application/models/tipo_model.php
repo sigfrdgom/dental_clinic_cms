@@ -46,7 +46,8 @@ class Tipo_model extends CI_Model{
     //CONSULTA PARA ACTUALIZAR UN REGISTRO UN REGISTRO DE TIPO
     public function actualizarTipo($data){
         try {
-            $this->db->replace('tipo', $data);
+            $this->db->where('id_tipo', $data['id_tipo']);
+			$this->db->update('tipo', $data);
         } catch (mysqli_sql_exception $e) {
             return 0;
         }

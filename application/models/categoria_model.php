@@ -52,7 +52,8 @@ class Categoria_model extends CI_Model{
     //CONSULTA PARA ACTUALIZAR UN REGISTRO UN REGISTRO DE CATEGORIA
     public function actualizarCategoria($data){
         try {
-            $this->db->replace('categoria', $data);
+            $this->db->where('id_categoria', $data['id_categoria']);
+			$this->db->update('categoria', $data);
         } catch (mysqli_sql_exception $e) {
             return 0;
         }
