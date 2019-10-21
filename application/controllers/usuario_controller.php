@@ -45,7 +45,10 @@ class Usuario_controller extends CI_Controller {
     //METODO QUE ELIMINA UN REGISTRO DE USUARIO
     public function eliminarUsuario($id){
 		parent::logueado();
-        $this->usuario_model->eliminarUsuario($id);
+		$this->usuario_model->eliminarUsuario($id);
+		if ($this->session->userdata('id_usuario')==$id || $id !=1) {
+			parent::destroy();
+		}
     }
 
 

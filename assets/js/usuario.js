@@ -24,8 +24,8 @@ function recargar(){
 					<td>${element.tipo_usuario}</td>
 					<td>${estado}</td>
             		<td class="py-2">
-						<button class="btnEditar text-center btn btn-warning btn-rounded"  value="${element.id_usuario}" data-toggle="modal" data-target="#agregarUsuario">GESTIONAR</button>
-						<button class="btnEliminar text-center btn btn-danger btn-rounded"  value="${element.id_usuario}">BLOQUEAR</button>
+						${(element.id_usuario==1)?' ':`<button class="btnEditar text-center btn btn-warning btn-rounded"  value="${element.id_usuario}" data-toggle="modal" data-target="#agregarUsuario">GESTIONAR</button>`}
+						<button class="btnEliminar text-center btn btn-danger btn-rounded"  value="${element.id_usuario}">ELIMINAR</button>
             		</td>
     			</tr>`
 				});
@@ -43,6 +43,8 @@ function recargar(){
 /////////////////////----------------------------------------POST y PUT------------------------------------------//////////////////
 document.getElementById('guardarUsuario').addEventListener('click', function(e){
 	e.preventDefault();
+	
+	var datas= new FormData();
     var nombres=document.getElementById('nombres')
    	var apellidos=document.getElementById('apellidos')
 	var nombre_usuario=document.getElementById('usuario')
@@ -50,11 +52,30 @@ document.getElementById('guardarUsuario').addEventListener('click', function(e){
 	var tipo_usuario=document.querySelector('input[name="tipo_usuario"]:checked')
 
 
-	usuario = document.getElementById('usuario').value 
+	usuario = document.getElementById('usuario').value
+
+	var controlador="agregarUsuario";
+	var metodo="POST"
+	if (this.value=="Modificar") {
+		controlador="actualizarUsuario";
+		// metodo="PUT"
+		var estado=document.querySelector('input[name="estado"]:checked')
+		var id_usuario=document.getElementById('id_usuario').value
+		datas.append("id_usuario", id_usuario)
+		datas.append("estado", estado.value)	
+		}
+
+		datas.append("nombres", nombres.value)
+		datas.append("apellidos", apellidos.value)
+		datas.append("usuario", nombre_usuario.value)
+		datas.append("pass", pass.value)
+		datas.append("tipo_usuario", tipo_usuario.value)
+
+
 	fetch('validarUsuario/'+usuario)
 		.then(res => res.json())
 		.then(datos => {
-			if (datos == null) {
+			if (datos == null ) {
 				if (document.getElementById('nombres').value === "" && document.getElementById('apellidos').value === "") {
 					document.getElementById('usuario').value = ""
 				} else {
@@ -62,60 +83,65 @@ document.getElementById('guardarUsuario').addEventListener('click', function(e){
 				}
 				if (nombres.checkValidity() && apellidos.checkValidity() && nombre_usuario.checkValidity() && pass.checkValidity()) {
 					document.getElementById('mensaje').innerHTML=""
-					var datas= new FormData();
-					datas.append("nombres", nombres.value)
-					datas.append("apellidos", apellidos.value)
-					datas.append("usuario", nombre_usuario.value)
-					datas.append("pass", pass.value)
-					datas.append("tipo_usuario", tipo_usuario.value)
-			
-					console.log('datas')
-					console.log(datas)
-			
-					var controlador="agregarUsuario";
-					var metodo="POST"
-					if (this.value=="Modificar") {
-						controlador="actualizarUsuario";
-						// metodo="PUT"
-						let estado=document.querySelector('input[name="estado"]:checked')
-						var id_usuario=document.getElementById('id_usuario').value
-						datas.append("id_usuario", id_usuario)
-						datas.append("estado", estado.value)	
-					}
-			
-					var dataJson = {};
-						for (const [key, value]  of datas.entries()) {
-							dataJson[key] = value;
-						}
-			
-					fetch(controlador, {
-						method: metodo,
-						body: datas
-					}) 
-					.then(data =>{
-						//   console.log(data);
-						if(data=="error"){
-							respuesta.innerHTML=
-						`ERROR`;
-						}else{
-							recargar();
-							limpiar();	
-							console.log("salio aca")
-						}})
+					metodoIngreso(controlador, metodo, datas)
+					
+					
 				} else {
 					document.getElementById('mensaje').innerHTML="Valiste por que tienes valores invalidos"
 				}
 			}else{
-				console.log("invalido")
-				document.getElementById('mensaje').innerHTML="Parece que el nombre de usuario ya esta en uso"
+
+				if ((datos.id_usuario===document.getElementById('id_usuario').value)&&controlador=="actualizarUsuario") {
+					metodoIngreso(controlador, metodo, datas);
+		
+				}else{
+					document.getElementById('mensaje').innerHTML="Parece que el nombre de usuario ya esta en uso"
+				}
+				
 			}
 		})
 });
 
 
+
+	function metodoIngreso(controlador, metodo, datas){
+		fetch(controlador, {
+			method: metodo,
+			body: datas
+		}) 
+		.then(data =>{
+			if(data=="error"){
+			//   console.log(data);
+			respuesta.innerHTML=
+			`ERROR`;
+		}else{
+			recargar();
+			limpiar();	
+			console.log("salio aca")
+		}})
+			
+		
+	}
+
+
+
+
+
+
+
+
+
+
 /////////////////////------------------------------------------------DELETE---------------------------------------------------//////////////////	
 function eliminar() {
-	Swal.fire({
+	if(this.value == 1){
+		Swal.fire({
+		title: 'Error',
+		text: "No se puede eliminar al usuario Administrador",
+		type: 'warning'
+	});
+	}else{
+		Swal.fire({
 		title: '¿Esta seguro de eliminar el usuario?',
 		text: "Esta accion no es reversible",
 		type: 'warning',
@@ -139,6 +165,7 @@ function eliminar() {
 			})
 		}
 	})
+	}
 }
 
 /////////////////////----------------------------------------PREPARACION DE EVENTOS--------------------------------------//////////////////
@@ -171,13 +198,13 @@ function accion() {
 			document.getElementById('pass').value=datos["contrasenia"]; 
 
 			switch (datos["tipo_usuario"]) {
-				case "Administrador":
+				case "ADMIN":
 					document.getElementById("tipo1").checked = true;	
 				break;
-				case "Generador de contenido":
+				case "GENERATOR":
 					document.getElementById("tipo2").checked = true;	
 				break;
-				case "Usuario normal":
+				case "SIMPLE":
 				document.getElementById("tipo3").checked = true;
 				break;
 			}
@@ -196,6 +223,11 @@ function accion() {
 	btn= document.getElementById('guardarUsuario')
     btn.removeAttribute("value")
 	btn.setAttribute("value", "Modificar")
+
+	// anuncio1= document.getElementById('nuevo')
+	// anuncio2= document.getElementById('modificar')
+    // anuncio1.setAttribute("style", "margin: 0% auto; display:none;''")
+	// anuncio2.setAttribute("style", "margin: 0% auto;")
     
 }
 
@@ -208,6 +240,7 @@ function limpiar(){
     document.getElementById('apellidos').value="";
 	document.getElementById('usuario').value="";
 	document.getElementById('pass').value="";
+	document.getElementById("tipo3").checked = true;
 	 
     
     radio1= document.getElementById("estado1");
@@ -253,7 +286,7 @@ document.getElementById("busqueda").addEventListener("keyup", function(){
 						<td>${element.tipo_usuario}</td>
 						<td>${estado}</td>
 						<td class="py-2">
-							<button class="btnEditar text-center btn btn-warning btn-rounded"  value="${element.id_usuario}" data-toggle="modal" data-target="#agregarUsuario">EDITAR</button>
+							${(element.id_usuario==1)?' ':`<button class="btnEditar text-center btn btn-warning btn-rounded"  value="${element.id_usuario}" data-toggle="modal" data-target="#agregarUsuario">GESTIONAR</button>`}
 							<button class="btnEliminar text-center btn btn-danger btn-rounded"  value="${element.id_usuario}">ELIMINAR</button>
 						</td>
 					</tr>`
