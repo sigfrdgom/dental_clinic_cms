@@ -33,7 +33,7 @@ Paginador = function(divPaginador, div, tamPagina)
             else
                 div[i].style.display = '';
         }
-        this.miDiv.firstChild.rows[0].cells[1].innerHTML = this.pagActual;
+        this.miDiv.firstChild.rows[0].cells[1].innerHTML = `<button type="button" class="btn btn-info" >`+ this.pagActual +`</button>`;
     }}
  
     this.Mostrar = function()
@@ -45,13 +45,14 @@ Paginador = function(divPaginador, div, tamPagina)
 		
 		//Crear la tabla
         var tblPaginador = document.createElement('table');
+        tblPaginador.setAttribute("class", "mx-auto m-3");
 		tblPaginador.id="pag"
         //Agregar una fila a la tabla
         var fil = tblPaginador.insertRow(tblPaginador.rows.length);
  
         //Ahora, agregar las celdas que serán los controles
         var ant = fil.insertCell(fil.cells.length);
-        ant.innerHTML = 'Anterior ';
+        ant.innerHTML = '<button type="button" class="btn btn-outline-info" >Anterior</button>';
         ant.className = 'pag_btn'; //con eso le asigno un estilo
         var self = this;
         ant.onclick = function()
@@ -66,7 +67,7 @@ Paginador = function(divPaginador, div, tamPagina)
         num.className = 'pag_num';
  
         var sig = fil.insertCell(fil.cells.length);
-        sig.innerHTML = ' Siguiente';
+        sig.innerHTML = '<button type="button" class="btn btn-outline-info" >Siguiente</button>';
         sig.className = 'pag_btn';
         sig.onclick = function()
         {

@@ -38,7 +38,7 @@ function recargar(){
 					var p = new Paginador(
 						document.getElementById('paginador'),
 						document.getElementById('ajaxTabla'),
-						2); p.Mostrar(); 
+						5); p.Mostrar(); 
 				})
 					
 			
