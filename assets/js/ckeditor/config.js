@@ -18,4 +18,5 @@ CKEDITOR.editorConfig = function( config ) {
 	];
 
 	config.removeButtons = 'Form,Checkbox,Radio,TextField,Textarea,Select,ImageButton,Button,HiddenField,Flash,About';
+	config.extraPlugins = 'embed,image2,videoembed';
 };
