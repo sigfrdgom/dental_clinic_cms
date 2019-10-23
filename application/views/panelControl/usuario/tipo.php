@@ -87,10 +87,12 @@
 
                 <label for="nombre" class="mrg-spr-ex mt-2">Nombres del Tipo: </label>
                 <input type="text" name="nombre" id="nombre" placeholder="Escribe el nombre del tipo" 
-                class="form-control vinput" required pattern='[a-zA-ZÑñÁÉÍÓÚáéíóúü ]{1,64}'>
+                class="form-control vinput" required pattern='[a-zA-ZÑñÁÉÍÓÚáéíóúü ]{1,44}' minlength="5" maxlength="44">
 
                 
-        </div>
+		</div>
+		
+		<div class="text-danger text-center" id="mensaje"></div>
         <!-- Modal body -->
 
         <!-- Modal footer -->

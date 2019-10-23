@@ -41,6 +41,9 @@ function recargar(){
 /////////////////////----------------------------------------POST y PUT------------------------------------------//////////////////
 document.getElementById('guardarTipo').addEventListener('click', function(e){
 	e.preventDefault();
+
+	if (validarCampo()) {
+	}else{		
 	var nombreTipo=document.getElementById('nombre').value
 	document.getElementById("nuevo").innerText="Agregando un nuevo tipo"
 	
@@ -70,7 +73,7 @@ document.getElementById('guardarTipo').addEventListener('click', function(e){
 			recargar();
 			limpiar();	
           }})
-
+		}
 });
 
 
@@ -156,7 +159,8 @@ document.getElementById("idModal").addEventListener("click", limpiar)
 function limpiar(){
     // document.getElementById("oculto").setAttribute("hidden", "true")
     document.getElementById('nombre').value="";
-    document.getElementById("nuevo").innerText="Agregando un nuevo tipo"
+	document.getElementById("nuevo").innerText="Agregando un nuevo tipo"
+	document.getElementById("mensaje").innerHTML=""
     // radio1= document.getElementById("estado1");
     // radio2= document.getElementById("estado2");
     // radio2.removeAttribute("checked")
@@ -210,3 +214,26 @@ document.getElementById("busqueda").addEventListener("keyup", function(){
 	}
 	
 });
+
+
+function validarCampo(){
+		var comprobador=false;
+
+		var nombreTipo=document.getElementById('nombre')
+		var mensaje=document.getElementById('mensaje')
+
+		if (($.trim(nombreTipo.value)=="")||(!nombreTipo.checkValidity)||($.trim(nombreTipo.value).length<=4)) {
+			comprobador=true;
+			
+			if (nombreTipo.validationMessage=="") {
+				mensaje.innerHTML=`Ingrese datos correctos en nombre por favor`
+			}else{
+				mensaje.innerHTML=`${nombreTipo.validationMessage+" nombre"}`;
+			}
+			nombreTipo.value="";
+			nombreTipo.focus();
+			
+		}
+		return comprobador;
+    	
+	}

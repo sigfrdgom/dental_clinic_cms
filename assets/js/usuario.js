@@ -45,7 +45,12 @@ function recargar(){
 /////////////////////----------------------------------------POST y PUT------------------------------------------//////////////////
 document.getElementById('guardarUsuario').addEventListener('click', function(e){
 	e.preventDefault();
+	console.log("boton")
 	
+	if (validarCampo()) {
+		console.log("entro al if")
+	}else{
+		console.log("entro al elfe")
 	var datas= new FormData();
     var nombres=document.getElementById('nombres')
    	var apellidos=document.getElementById('apellidos')
@@ -90,7 +95,7 @@ document.getElementById('guardarUsuario').addEventListener('click', function(e){
 					
 					
 				} else {
-					document.getElementById('mensaje').innerHTML="Valiste por que tienes valores invalidos"
+					document.getElementById('mensaje').innerHTML="Los datos tienen valores invalidos"
 				}
 			}else{
 
@@ -103,6 +108,8 @@ document.getElementById('guardarUsuario').addEventListener('click', function(e){
 				
 			}
 		})
+		console.log("lo hago")
+	}
 });
 
 
@@ -242,6 +249,7 @@ function limpiar(){
 	document.getElementById('pass').value="";
 	document.getElementById("tipo3").checked = true;
 	document.getElementById("nuevo").innerText="Agregar un usuario nuevo"
+	document.getElementById('mensaje').innerText=``;
 	 
     
     radio1= document.getElementById("estado1");
@@ -321,3 +329,65 @@ function genUsuario() {
 	document.getElementById('usuario').value= usuario
 }
 
+
+	function validarCampo(){
+		var comprobador=false;
+		var nombres=document.getElementById('nombres')
+   		var apellidos=document.getElementById('apellidos')
+		var nombre_usuario=document.getElementById('usuario')
+		var pass=document.getElementById('pass')
+		var mensaje=document.getElementById('mensaje')
+
+		// console.log($.trim(nombres.value).length+"_"+$.trim(nombres.value))
+		if (($.trim(nombres.value)=="")||(!nombres.checkValidity)||($.trim(nombres.value).length<=4)) {
+			comprobador=true;
+			
+			if (nombres.validationMessage=="") {
+				mensaje.innerHTML=`Ingrese datos correctos en nombres por favor`
+			}else{
+				mensaje.innerHTML=`${nombres.validationMessage+" nombres"}`;
+			}
+			nombres.value="";
+			nombres.focus();
+
+			// console.log("nombre "+comprobador+nombres.validationMessage)
+			
+		}else if (($.trim(apellidos.value)=="")||(!apellidos.checkValidity)||($.trim(apellidos.value).length<=4)) {
+			comprobador=true;
+			
+			if (apellidos.validationMessage=="") {
+				mensaje.innerHTML=`Ingrese datos correctos en apellidos por favor`
+			}else{
+				mensaje.innerHTML=`${apellidos.validationMessage+" apellidos"}`;
+			}
+			apellidos.value="";
+			apellidos.focus();
+			
+		} else if (($.trim(nombre_usuario.value)=="")||(!nombre_usuario.checkValidity)||($.trim(nombre_usuario.value).length<=4)) {
+			comprobador=true;
+			
+			if (nombre_usuario.validationMessage=="") {
+				mensaje.innerHTML=`Ingrese datos correctos en usuario por favor`
+			}else{
+				mensaje.innerHTML=`${nombre_usuario.validationMessage+" Usuario"}`;
+			}
+			nombre_usuario.value="";
+			nombre_usuario.focus()
+
+		}
+		else if (($.trim(pass.value)=="")||(!pass.checkValidity)||($.trim(pass.value).length<=5)) {
+			comprobador=true;
+			
+			if (pass.validationMessage=="") {
+				mensaje.innerHTML=`Ingrese datos correctos en password por favor`
+			}else{
+				mensaje.innerHTML=`${pass.validationMessage+" password"}`;
+			}
+			pass.value="";
+			pass.focus();
+		}
+		console.log("holaa")
+
+		return comprobador;
+    	
+	}

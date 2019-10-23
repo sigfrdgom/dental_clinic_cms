@@ -105,17 +105,20 @@
 
                 <label for="nombre" class="mrg-spr-ex mt-2">Nombres de la categoria: </label>	
                 <input type="text" name="nombre" id="nombre" placeholder="Escribe el nombre de la categoria"
-                class="form-control vinput" required pattern='[a-zA-zÑñÁÉÍÓÚáéíóúü ]{1,64}'>
+                class="form-control vinput" required pattern='[a-zA-zÑñÁÉÍÓÚáéíóúü ]{1,99}' maxlength="99" minlength="5" >
 
                 <label for="descripcion" class="mrg-spr-ex mt-2">Descripcion de la categoria:</label>
                 <input type="text" name="descripcion" id="descripcion" placeholder="Escribe la descripcion del categoria" 
-				class="form-control vinput" required pattern='[a-zA-zÑñÁÉÍÓÚáéíóúü# ]{1,128}'>
+				class="form-control vinput" required pattern='[a-zA-zÑñÁÉÍÓÚáéíóúü# ]{1,199}' maxlength="199" minlength="5">
+
+
 				
 				<!-- <div id="oculto">
 				<label for="estado" class="mrg-spr-ex mt-3"><input type="checkbox" id="estado" value="1">Activar Estado:</label>
 				</div> -->
 
-            </div>
+			</div>
+			<div class="text-danger text-center" id="mensaje"></div>
             <!-- Modal body -->
 
             <!-- Modal footer -->

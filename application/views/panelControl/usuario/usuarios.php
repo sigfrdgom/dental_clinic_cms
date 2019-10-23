@@ -104,15 +104,15 @@
 
                     <label for="dnombres" class="mrg-spr-ex mt-3 font-weight-bold">Nombres del usuario: </label>
                     <input type="text" name="nombres" id="nombres" placeholder="Escribe los nombres del usuario" 
-                    class="form-control vinput" required pattern='[a-zA-zÑñÁÉÍÓÚáéíóúü ]{1,64}'>
+                    class="form-control vinput" required pattern='[a-zA-zÑñÁÉÍÓÚáéíóúü ]{5,64}' maxlength="64" minlength="5">
 
                     <label for="dapellidos" class="mrg-spr-ex mt-3 font-weight-bold">Apellidos del usuario:</label>
                     <input type="text" name="apellidos" id="apellidos" placeholder="Escribe los apellidos del usuario" 
-                    class="form-control vinput" required pattern='[a-zA-zÑnÁÉÍÓÚáéíóúü ]{1,64}'> 
+                    class="form-control vinput" required pattern='[a-zA-zÑnÁÉÍÓÚáéíóúü ]{5,64}' maxlength="64" minlength="5"> 
 
                     <label for="dnombres" class="mrg-spr-ex mt-3 font-weight-bold">Usuario: </label>
                     <input type="text" name="usuario" id="usuario" placeholder="Escribe el nombre del usuario" 
-                    class="form-control vinput" required pattern='[a-zA-z]{1,14}.[a-zA-Z0-9]{1,14}'>
+                    class="form-control vinput" required pattern='[a-zA-Z0-9.]{5,32}' maxlength="32" minlength="5">
 
                     <label for="ppass" class="mrg-spr-ex mt-3 font-weight-bold">Ingresa un password para el usuario:</label>
                     <a href="#" title="Sobre password"  data-toggle="popover" data-trigger="focus"
@@ -120,7 +120,7 @@
                     <i class="fa fa-fw fa-question-circle pop-help"></i>
                     </a>
                     <input type="password" name="pass" id="pass" placeholder="Escribe un password para el usuario" 
-                    class="form-control pad-extra-input vinput" required >
+                    class="form-control pad-extra-input vinput" required maxlength="20" minlength="6">
 
                     <label class="mrg-spr-ex mt-3 font-weight-bold" >Tipo de usuario:</label>
                     <div style="margin-left:2em;">

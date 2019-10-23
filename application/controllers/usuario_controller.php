@@ -36,8 +36,13 @@ class Usuario_controller extends CI_Controller {
 
     //METODO QUE AGREGA UN REGISTRO USUARIO
     public function agregarUsuario(){
-		parent::logueado();		
-		$data=["id_usuario" => null, "nombres" => $_POST['nombres'], "apellidos" => $_POST['apellidos'],  "nombre_usuario" => $_POST['usuario'], "contrasenia" => self::hash($_POST['pass']), "tipo_usuario" => $_POST['tipo_usuario'], "estado" => 1];
+		parent::logueado();
+
+		$nombres=$this->input->post("nombres", TRUE);
+		$apellidos=$this->input->post("apellidos", TRUE);
+		$usuario=$this->input->post("usuario", TRUE);
+		$tipo_usuario=$this->input->post("tipo_usuario", TRUE);
+		$data=["id_usuario" => null, "nombres" => $nombres, "apellidos" => $apellidos,  "nombre_usuario" => $usuario, "contrasenia" => self::hash($this->input->post("pass", TRUE)), "tipo_usuario" => $tipo_usuario, "estado" => 1];
 		$this->usuario_model->agregarUsuario($data);
     }
 
@@ -61,8 +66,15 @@ class Usuario_controller extends CI_Controller {
     //METODO QUE SE ENCARGA DE ACTUALIZAR UN REGISTRO DE USUARIO
     public function actualizarUsuario(){
 		parent::logueado();
-		$hash=self::hash($_POST['pass']);
-		$data=["id_usuario" => $_POST['id_usuario'], "nombres" => $_POST['nombres'], "apellidos" => $_POST['apellidos'],  "nombre_usuario" => $_POST['usuario'], "contrasenia" => $hash, "tipo_usuario" => $_POST['tipo_usuario'], "estado" => $_POST['estado']];
+		$hash=self::hash($this->input->post("pass", TRUE));
+		$id_usuario=$this->input->post("id_usuario", TRUE);
+		$nombres=$this->input->post("nombres", TRUE);
+		$apellidos=$this->input->post("apellidos", TRUE);
+		$usuario=$this->input->post("usuario", TRUE);
+		$tipo_usuario=$this->input->post("tipo_usuario", TRUE);
+		$estado=$this->input->post("estado", TRUE);
+		
+		$data=["id_usuario" => $id_usuario, "nombres" => $nombres, "apellidos" => $apellidos,  "nombre_usuario" => $usuario, "contrasenia" => $hash, "tipo_usuario" => $tipo_usuario, "estado" => $estado];
 		 		
 		$this->usuario_model-> actualizarUsuario($data);
 	}
@@ -70,10 +82,10 @@ class Usuario_controller extends CI_Controller {
 
 	public function findByCriteria(){ 
 		parent::logueado();
-		if($_POST["busqueda"] == null || $_POST["busqueda"]== ""){
+		if($this->input->post("busqueda", TRUE) == null || $this->input->post("busqueda", TRUE)== ""){
 			echo json_encode($this->usuario_model->getAll());
         }else{
-            echo json_encode($this->usuario_model->findByCriteria($_POST["busqueda"]));
+            echo json_encode($this->usuario_model->findByCriteria($this->input->post("busqueda", TRUE)));
         }
 		
 	}
@@ -118,15 +130,7 @@ class Usuario_controller extends CI_Controller {
 		}
 	}
 
-
-	// public function logueado() {
-	// 	if($this->session->userdata("logueado")){
-	// 	}else{
-	// 		redirect("inicioControl/index");
-	// 	}
-	// }
-			
-			
+		
 	
 
 

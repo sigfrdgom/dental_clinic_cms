@@ -25,10 +25,10 @@ class Categoria extends CI_Controller
     }
 
     public function findByCriteria(){ 
-		if($_POST["busqueda"] == null || $_POST["busqueda"]== ""){
+		if($this->input->post("busqueda", TRUE) == null || $this->input->post("busqueda", TRUE)== ""){
 			echo json_encode($this->categoria_model->getAll());
         }else{
-            echo json_encode($this->categoria_model->findByCriteria($_POST["busqueda"]));
+            echo json_encode($this->categoria_model->findByCriteria($this->input->post("busqueda", TRUE)));
         }
 		
     }

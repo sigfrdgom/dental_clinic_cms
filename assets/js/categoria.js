@@ -47,17 +47,24 @@ function recargar(){
 /////////////////////----------------------------------------POST y PUT------------------------------------------//////////////////
 document.getElementById('guardarCategoria').addEventListener('click', function(e){
 	e.preventDefault();
-    var nombre=document.getElementById('nombre').value
-	var descripcion=document.getElementById('descripcion').value
 
-	var datas= new FormData();
-	datas.append("nombre", nombre)
-	datas.append("descripcion", descripcion)
-	document.getElementById("nuevo").innerText="Agregar una nueva categoria"
+	if (validarCampo()) {
+		console.log("entro al if")
+	}else{
+		console.log("entro al elfe")
 
-	var controlador="agregarCategoria";
-	var metodo="POST"
-    if (this.value=="Modificar") {
+
+    	var nombre=document.getElementById('nombre').value
+		var descripcion=document.getElementById('descripcion').value
+
+		var datas= new FormData();
+		datas.append("nombre", nombre)
+		datas.append("descripcion", descripcion)
+		document.getElementById("nuevo").innerText="Agregar una nueva categoria"
+
+		var controlador="agregarCategoria";
+		var metodo="POST"
+    	if (this.value=="Modificar") {
 		controlador="actualizarCategoria";
 		// metodo="PUT"
 		var id_categoria=document.getElementById('id_categoria').value
@@ -76,10 +83,10 @@ document.getElementById('guardarCategoria').addEventListener('click', function(e
 	}
 	
 
-	fetch(url_server+controlador, {
+		fetch(url_server+controlador, {
         method: metodo,
         body: datas
-    }).then(data =>{
+    	}).then(data =>{
         //   console.log(data);
           if(data=="error"){
             respuesta.innerHTML=
@@ -88,7 +95,8 @@ document.getElementById('guardarCategoria').addEventListener('click', function(e
           }else{
 			recargar();
 			limpiar();	
-          }})
+		  }})
+	}
 
 });
 
@@ -177,6 +185,7 @@ document.getElementById("idModal").addEventListener("click", limpiar)
 function limpiar(){
 	document.getElementById('nombre').value="";
 	document.getElementById('descripcion').value="";
+	document.getElementById('mensaje').innerHTML="";
 	document.getElementById("nuevo").innerText="Agregar una nueva categoria"
     
 	// document.getElementById('oculto').style.display = 'none';
@@ -246,6 +255,42 @@ document.getElementById("busqueda").addEventListener("keyup", function(){
 	}
 	
 });
+
+
+function validarCampo(){
+		var comprobador=false;
+		var nombre=document.getElementById('nombre')
+		var descripcion=document.getElementById('descripcion')
+		var mensaje=document.getElementById('mensaje')
+
+		// console.log($.trim(nombres.value).length+"_"+$.trim(nombres.value))
+		if (($.trim(nombre.value)=="")||(!nombre.checkValidity)||($.trim(nombre.value).length<=4)) {
+			comprobador=true;
+			
+			if (nombre.validationMessage=="") {
+				mensaje.innerHTML=`Ingrese datos correctos en nombre por favor`
+			}else{
+				mensaje.innerHTML=`${nombre.validationMessage+" nombre"}`;
+			}
+			nombre.value="";
+			nombre.focus();
+
+			// console.log("nombre "+comprobador+nombres.validationMessage)
+			
+		}else if (($.trim(descripcion.value)=="")||(!descripcion.checkValidity)||($.trim(descripcion.value).length<=4)) {
+			comprobador=true;
+			
+			if (descripcion.validationMessage=="") {
+				mensaje.innerHTML=`Ingrese datos correctos en descripcion por favor`
+			}else{
+				mensaje.innerHTML=`${descripcion.validationMessage+" descripcion"}`;
+			}
+			descripcion.value="";
+			descripcion.focus();
+		}
+		return comprobador;
+    	
+	}
 
 
 

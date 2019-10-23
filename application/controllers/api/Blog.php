@@ -66,10 +66,10 @@ class Blog extends CI_Controller
     }
 
     public function findByCriteria(){ 
-		if($_POST["busqueda"] == null || $_POST["busqueda"]== ""){
+		if($this->input->post("busqueda", TRUE) == null || $this->input->post("busqueda", TRUE)== ""){
 			echo json_encode($this->publicacion_model->cargaBlog());
         }else{
-            echo json_encode($this->publicacion_model->findBlogByCriteria($_POST["busqueda"]));
+            echo json_encode($this->publicacion_model->findBlogByCriteria($this->input->post("busqueda", TRUE)));
         }
 		
     }

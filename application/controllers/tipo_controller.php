@@ -36,8 +36,8 @@ class Tipo_controller extends CI_Controller {
 
     //METODO QUE AGREGA DATOS A LA BASE DE DATOS
     public function agregarTipo(){
-        //deberia ir el espacion en blanco?
-        $data=["id_tipo" => null, "nombre" => $_POST['nombre'], "estado" => 1];
+		$nombre=$this->input->post("nombre", TRUE);
+        $data=["id_tipo" => null, "nombre" => $nombre, "estado" => 1];
         $this->tipo_model->agregarTipo($data);
     }
 
@@ -68,17 +68,18 @@ class Tipo_controller extends CI_Controller {
 
     //METODO CON EL QUE SE ACTUALIZA UN REGISTRO DE TIPO
     public function actualizarTipo(){
-        
-        $data=["id_tipo" => $_POST['id_tipo'], "nombre" => $_POST['nombre']];
+		$id_tipo=$this->input->post("id_tipo", TRUE);
+		$nombre=$this->input->post("nombre", TRUE);
+        $data=["id_tipo" => $id_tipo, "nombre" => $nombre];
     	$this->tipo_model->actualizarTipo($data);
         
 	}
 	
 	public function findByCriteria(){ 
-		if($_POST["busqueda"] == null || $_POST["busqueda"]== ""){
+		if($this->input->post("busqueda", TRUE) == null || $this->input->post("busqueda", TRUE)== ""){
 			echo json_encode($this->tipo_model->getAll());
         }else{
-            echo json_encode($this->tipo_model->findByCriteria($_POST["busqueda"]));
+            echo json_encode($this->tipo_model->findByCriteria($this->input->post("busqueda", TRUE)));
         }
 		
     }
