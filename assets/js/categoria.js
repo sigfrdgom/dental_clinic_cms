@@ -53,6 +53,7 @@ document.getElementById('guardarCategoria').addEventListener('click', function(e
 	var datas= new FormData();
 	datas.append("nombre", nombre)
 	datas.append("descripcion", descripcion)
+	document.getElementById("nuevo").innerText="Agregar una nueva categoria"
 
 	var controlador="agregarCategoria";
 	var metodo="POST"
@@ -155,6 +156,7 @@ function accion() {
 			document.getElementById('nombre').value=datos["nombre"];
 			document.getElementById('descripcion').value=datos["descripcion"];
 			
+			document.getElementById("nuevo").innerText="Modificando una categoria de la tabla"
 			// if (datos["estado"]==1) {
 			// 	document.getElementById('estado').checked=true;
 			// }
@@ -175,6 +177,7 @@ document.getElementById("idModal").addEventListener("click", limpiar)
 function limpiar(){
 	document.getElementById('nombre').value="";
 	document.getElementById('descripcion').value="";
+	document.getElementById("nuevo").innerText="Agregar una nueva categoria"
     
 	// document.getElementById('oculto').style.display = 'none';
 	// document.getElementById('estado').checked=0; 

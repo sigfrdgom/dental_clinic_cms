@@ -41,7 +41,8 @@ function recargar(){
 /////////////////////----------------------------------------POST y PUT------------------------------------------//////////////////
 document.getElementById('guardarTipo').addEventListener('click', function(e){
 	e.preventDefault();
-    var nombreTipo=document.getElementById('nombre').value
+	var nombreTipo=document.getElementById('nombre').value
+	document.getElementById("nuevo").innerText="Agregando un nuevo tipo"
 	
 	var datas= new FormData();
 	datas.append("nombre", nombreTipo)
@@ -138,14 +139,8 @@ function accion() {
 			datos=JSON.parse(this.responseText);
 			document.getElementById("id_tipo").value=datos["id_tipo"];
 			document.getElementById('nombre').value=datos["nombre"];
+			document.getElementById("nuevo").innerText="Modificando una tipo de la tabla"
 	
-    
-			// if (datos["estado"]==1) {
-			// 	document.getElementById("estado1").checked = true;
-			// }else{
-			// 	document.getElementById("estado2").checked = true;
-			// }
-            
             
         }};
     peticion.open('GET', url_server+'obtenerRegistro/'+this.value);
@@ -161,7 +156,7 @@ document.getElementById("idModal").addEventListener("click", limpiar)
 function limpiar(){
     // document.getElementById("oculto").setAttribute("hidden", "true")
     document.getElementById('nombre').value="";
-    
+    document.getElementById("nuevo").innerText="Agregando un nuevo tipo"
     // radio1= document.getElementById("estado1");
     // radio2= document.getElementById("estado2");
     // radio2.removeAttribute("checked")

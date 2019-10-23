@@ -93,8 +93,7 @@
 
             <!-- Modal Header -->
             <div class="modal-header" id="formUs">
-                <h4 class="modal-title" style="margin: 0% auto;" id="aggdct">Agregar un nuevo categoria</h4>
-                <h4 class="modal-title" style="margin: 0% auto; display:none;" id="mdfdct">Modificar un categoria</h4>
+                <h4 class="modal-title" style="margin: 0% auto;" id="nuevo">Agregar una nueva categoria</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
 

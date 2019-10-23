@@ -52,6 +52,7 @@ document.getElementById('guardarUsuario').addEventListener('click', function(e){
 	var nombre_usuario=document.getElementById('usuario')
 	var pass=document.getElementById('pass')
 	var tipo_usuario=document.querySelector('input[name="tipo_usuario"]:checked')
+	document.getElementById("nuevo").innerText="Agregar un usuario nuevo"
 
 
 	usuario = document.getElementById('usuario').value
@@ -197,7 +198,9 @@ function accion() {
     		document.getElementById('nombres').value=datos["nombres"];
    			document.getElementById('apellidos').value=datos["apellidos"];
 			document.getElementById('usuario').value=datos["nombre_usuario"];
-			document.getElementById('pass').value=datos["contrasenia"]; 
+			document.getElementById('pass').value=datos["contrasenia"];
+
+			document.getElementById("nuevo").innerText="Modificando un usuario de tabla"
 
 			switch (datos["tipo_usuario"]) {
 				case "ADMIN":
@@ -238,6 +241,7 @@ function limpiar(){
 	document.getElementById('usuario').value="";
 	document.getElementById('pass').value="";
 	document.getElementById("tipo3").checked = true;
+	document.getElementById("nuevo").innerText="Agregar un usuario nuevo"
 	 
     
     radio1= document.getElementById("estado1");
