@@ -41,7 +41,12 @@ class Contacto_controller extends CI_Controller {
     //METODO QUE AGREGA UN REGISTRO CONTACTO
     public function agregarContacto(){
 
-        $data=["id_contacto" => null, "nombre" =>$_POST['nombre'], "telefono" =>$_POST['celular'], "email"=> $_POST['email'], "comentario" => $_POST['comentario'], "estado" => 1];
+		$nombre=$this->input->post("nombre", TRUE);
+		$telefono=$this->input->post("telefono", TRUE);
+		$email=$this->input->post("email", TRUE);
+		$comentario=$this->input->post("comentario", TRUE);
+		
+        $data=["id_contacto" => null, "nombre" =>$nombre, "celular" =>$telefono, "email"=> $email, "comentario" => $comentario, "estado" => 1];
         $this->contacto_model->agregarContacto($data);
         
     }
@@ -68,17 +73,24 @@ class Contacto_controller extends CI_Controller {
     //METODO QUE SE ENCARGA DE ACTUALIZAR UN REGISTRO DE CONTACTO
     public function actualizarContacto(){
 		parent::logueado();
-        $data=["id_contacto" => $_POST['id_contacto'], "nombre" =>$_POST['nombre'], "celular" =>$_POST['telefono'], "email"=> $_POST['email'], "comentario" => $_POST['comentario']];
+
+		$nombre=$this->input->post("nombre", TRUE);
+		$id_contacto=$this->input->post("id_contacto", TRUE);
+		$telefono=$this->input->post("telefono", TRUE);
+		$email=$this->input->post("email", TRUE);
+		$comentario=$this->input->post("comentario", TRUE);
+		
+        $data=["id_contacto" => $id_contacto, "nombre" =>$nombre, "celular" =>$telefono, "email"=> $email, "comentario" => $comentario];
         $this->contacto_model->actualizarContacto($data);
         
 	}
 	
 	public function findByCriteria(){ 
 		parent::logueado();
-		if($_POST["busqueda"] == null || $_POST["busqueda"]== ""){
+		if($this->input->post("busqueda", TRUE) == null || $this->input->post("busqueda", TRUE)== ""){
 			echo json_encode($this->contacto_model->getAll());
         }else{
-            echo json_encode($this->contacto_model->findByCriteria($_POST["busqueda"]));
+            echo json_encode($this->contacto_model->findByCriteria($this->input->post("busqueda", TRUE)));
         }
 		
     }
@@ -86,7 +98,7 @@ class Contacto_controller extends CI_Controller {
     //METODO QUE SE ENCARGA DE ACTUALIZAR EL ESTADO DE UN REGISTRO DE CONTACTO
     public function actualizarContactoEstado(){
 		parent::logueado();
-        $this->contacto_model->actualizarContactoEstado($_POST['id_contacto']);
+        $this->contacto_model->actualizarContactoEstado($this->input->post("id_contacto", TRUE));
     }
 
 } ?>

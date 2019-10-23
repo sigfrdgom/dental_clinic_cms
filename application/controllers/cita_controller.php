@@ -39,7 +39,17 @@ class Cita_controller extends CI_Controller {
 
     //METODO QUE AGREGA UN REGISTRO CITA
     public function agregarCita(){
-        $data=["id_cita" => null, "nombre" => $_POST['nombre'], "celular" => $_POST['telefono'], "email" => $_POST['email'], "padecimientos" => $_POST['padecimientos'], "procedimiento" => $_POST['procedimiento'], "fecha" => $_POST['fecha'], "hora" => $_POST['hora'], "comentario" => $_POST['comentario'],"estado" =>1];
+
+		$nombre=$this->input->post("nombre", TRUE);
+		$telefono=$this->input->post("telefono", TRUE);
+		$email=$this->input->post("email", TRUE);
+		$padecimientos=$this->input->post("padecimientos", TRUE);
+		$procedimiento=$this->input->post("procedimiento", TRUE);
+		$fecha=$this->input->post("fecha", TRUE);
+		$hora=$this->input->post("hora", TRUE);
+		$comentario=$this->input->post("comentario", TRUE);
+
+        $data=["id_cita" => null, "nombre" => $nombre, "celular" => $telefono, "email" => $email, "padecimientos" => $padecimientos, "procedimiento" => $procedimiento, "fecha" => $fecha, "hora" => $hora, "comentario" => $comentario,"estado" =>1];
 
         $this->cita_model->agregarCita($data);
     }
@@ -66,19 +76,29 @@ class Cita_controller extends CI_Controller {
 
     //METODO QUE SE ENCARGA DE ACTUALIZAR UN REGISTRO DE CITA
     public function actualizarCita(){
-        parent::logueado();
+		parent::logueado();
+		
+		$id_cita=$this->input->post("id_cita", TRUE);
+		$nombre=$this->input->post("nombre", TRUE);
+		$telefono=$this->input->post("telefono", TRUE);
+		$email=$this->input->post("email", TRUE);
+		$padecimientos=$this->input->post("padecimientos", TRUE);
+		$procedimiento=$this->input->post("procedimiento", TRUE);
+		$fecha=$this->input->post("fecha", TRUE);
+		$hora=$this->input->post("hora", TRUE);
+		$comentario=$this->input->post("comentario", TRUE);
 
-        $data=["id_cita" => $_POST['id_cita'], "nombre" => $_POST['nombre'], "celular" => $_POST['telefono'], "email" => $_POST['email'], "padecimientos" => $_POST['padecimientos'], "procedimiento" => $_POST['procedimiento'], "fecha" => $_POST['fecha'], "hora" => $_POST['hora'], "comentario" => $_POST['comentario']];
+        $data=["id_cita" => $id_cita, "nombre" => $nombre, "celular" => $telefono, "email" => $email, "padecimientos" => $padecimientos, "procedimiento" => $procedimiento, "fecha" => $fecha, "hora" => $hora, "comentario" => $comentario];
         $this->cita_model-> actualizarCita($data);
 	}
 	
 
 	public function findByCriteria(){
         parent::logueado(); 
-		if($_POST["busqueda"] == null || $_POST["busqueda"]== ""){
+		if($this->input->post("busqueda", TRUE) == null || $this->input->post("busqueda", TRUE)== ""){
 			echo json_encode($this->cita_model->getAll());
         }else{
-            echo json_encode($this->cita_model->findByCriteria($_POST["busqueda"]));
+            echo json_encode($this->cita_model->findByCriteria($this->input->post("busqueda", TRUE)));
         }
 		
     }
@@ -86,7 +106,7 @@ class Cita_controller extends CI_Controller {
     //METODO QUE SE ENCARGA DE ACTUALIZAR EL ESTADO DE UN REGISTRO DE CITA
     public function actualizarCitaEstado(){
         parent::logueado(); 
-        $this->cita_model->actualizarCitaEstado($_POST['id_cita']);
+        $this->cita_model->actualizarCitaEstado($this->input->post("id_cita", TRUE));
     }
 
 

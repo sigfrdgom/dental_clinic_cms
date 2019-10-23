@@ -104,11 +104,11 @@
 
                     <label for="dnombres" class="mrg-spr-ex mt-3 font-weight-bold">Nombres del usuario: </label>
                     <input type="text" name="nombres" id="nombres" placeholder="Escribe los nombres del usuario" 
-                    class="form-control vinput" required pattern='[a-zA-zÑñÁÉÍÓÚáéíóúü ]{5,64}' maxlength="64" minlength="5">
+                    class="form-control vinput" required pattern='[a-zA-zÑñÁÉÍÓÚáéíóúü ]{5,64}' maxlength="64" minlength="5" onKeypress="return sololetras(event)">
 
                     <label for="dapellidos" class="mrg-spr-ex mt-3 font-weight-bold">Apellidos del usuario:</label>
                     <input type="text" name="apellidos" id="apellidos" placeholder="Escribe los apellidos del usuario" 
-                    class="form-control vinput" required pattern='[a-zA-zÑnÁÉÍÓÚáéíóúü ]{5,64}' maxlength="64" minlength="5"> 
+                    class="form-control vinput" required pattern='[a-zA-zÑnÁÉÍÓÚáéíóúü ]{5,64}' maxlength="64" minlength="5" onKeypress="return sololetras(event)"> 
 
                     <label for="dnombres" class="mrg-spr-ex mt-3 font-weight-bold">Usuario: </label>
                     <input type="text" name="usuario" id="usuario" placeholder="Escribe el nombre del usuario" 
