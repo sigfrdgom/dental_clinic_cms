@@ -2,7 +2,7 @@ window.addEventListener('load', recargar);
 var formulario=document.getElementById("formCategoria");
 var respuesta=document.getElementById("bodyCategoria");
 var url_api="http://localhost/dental_clinic_cms/api/categoria/";
-var url_server="http://localhost/dental_clinic_cms/categoria_controller/";
+var url_server="http://localhost/dental_clinic_cms/Categoria/";
 
 /////////////////////-----------------------------------------GET----------------------------------------//////////////////
 function recargar(){

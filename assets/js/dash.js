@@ -15,7 +15,7 @@ setInterval(() => {
 
 /////////////////////-----------------------------------------GET----------------------------------------//////////////////
 function recargarMsg(){
-    fetch(base_url+'contacto_controller/cargarDatosActivos/')
+    fetch(base_url+'Contacto/cargarDatosActivos/')
         .then(res => res.json())
 
         .then(datos => {
@@ -60,7 +60,7 @@ function recargarMsg(){
 
 
 function recargarCita(){            
-    fetch(base_url+'cita_controller/cargarDatosActivos/')
+    fetch(base_url+'Cita/cargarDatosActivos/')
         .then(res => res.json())
 
         .then(datos => {
@@ -117,7 +117,7 @@ function rechazarMsg() {
 		cancelButtonText: 'Cancelar',
 	}).then((result) => {
 		if (result.value) {
-			fetch('http://localhost/dental_clinic_cms/contacto_controller/eliminarContacto/'+this.value, {
+			fetch('http://localhost/dental_clinic_cms/Contacto/eliminarContacto/'+this.value, {
 				method: 'DELETE'
 				})
 				.then(() =>{
@@ -145,7 +145,7 @@ function rechazar() {
 		cancelButtonText: 'Cancelar',
 	}).then((result) => {
 		if (result.value) {
-			fetch('http://localhost/dental_clinic_cms/cita_controller/eliminarCita/'+this.value, {
+			fetch('http://localhost/dental_clinic_cms/Cita/eliminarCita/'+this.value, {
 				method: 'DELETE'
 				})
 				.then(() =>{
@@ -197,7 +197,7 @@ function mostrarMsg() {
 			
 		}};
 		
-    peticion.open('GET', 'http://localhost/dental_clinic_cms/contacto_controller/obtenerRegistro/'+this.value);
+    peticion.open('GET', 'http://localhost/dental_clinic_cms/Contacto/obtenerRegistro/'+this.value);
 	peticion.send();
 	// btn= document.getElementById('guardarContacto')
     // btn.removeAttribute("value")
@@ -245,7 +245,7 @@ function mostrarCita() {
 			// 	})
 
         }};
-    peticion.open('GET', 'http://localhost/dental_clinic_cms/cita_controller/obtenerRegistro/'+this.value);
+    peticion.open('GET', 'http://localhost/dental_clinic_cms/Cita/obtenerRegistro/'+this.value);
 	peticion.send();
 	// btn= document.getElementById('guardarCita')
     // btn.removeAttribute("value")

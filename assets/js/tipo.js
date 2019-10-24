@@ -2,7 +2,7 @@ window.addEventListener('load', recargar);
 var formulario=document.getElementById("formTipo");
 var respuesta=document.getElementById("bodyTipo");
 // var url_api="http://localhost/dental_clinic_cms/api/tipo/";
-var url_server="http://localhost/dental_clinic_cms/tipo_controller/";
+var url_server="http://localhost/dental_clinic_cms/Tipo/";
 
 
 /////////////////////-----------------------------------------GET----------------------------------------//////////////////

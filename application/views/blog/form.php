@@ -60,7 +60,7 @@ CKEDITOR.replace('editor', {
 
         height: 500,
         language: 'es',
-        filebrowserUploadUrl: "<?= base_url('upload_image') ?>",
+        filebrowserUploadUrl: "<?= base_url('UploadImage') ?>",
         filebrowserUploadMethod: 'form',
 
         embed_provider: '//ckeditor.iframe.ly/api/oembed?url={url}&callback={callback}',

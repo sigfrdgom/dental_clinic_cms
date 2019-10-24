@@ -9,10 +9,10 @@ class Testimonials extends CI_Controller
         //HACER USO DE LO METODO CONSTRUCTORE DEL PADRE 
         parent::__construct();
         //METODO CARGADO EN EL MODELO
-		$this->load->model('publicacion_model');
+		$this->load->model('PublicacionModel');
     }
 
     function get_testimonials(){
-        echo json_encode($this->publicacion_model->get_testimonials());
+        echo json_encode($this->PublicacionModel->get_testimonials());
     }
 }

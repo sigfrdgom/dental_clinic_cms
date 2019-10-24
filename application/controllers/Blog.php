@@ -7,7 +7,7 @@ class Blog extends CI_Controller
   public function __construct()
   {
     parent::__construct();
-		$this->load->model(array('publicacion_model', 'categoria_model'));
+		$this->load->model(array('PublicacionModel', 'CategoriaModel'));
 		parent::logueado();
   }
 
@@ -20,13 +20,13 @@ class Blog extends CI_Controller
 
   public function posts($keyword = "")
   {
-    $datos = ['posts' => $this->publicacion_model->get_all_posts($keyword)];
+    $datos = ['posts' => $this->PublicacionModel->get_all_posts($keyword)];
     $this->load->view('blog/posts', $datos);
   }
 
   public function create()
   {
-    $datos = ['categories' => $this->categoria_model->getAll_not_testimonial()];
+    $datos = ['categories' => $this->CategoriaModel->getAll_not_testimonial()];
     $this->load->view('templates/header');
     $this->load->view('blog/create', $datos);
     $this->load->view('templates/footer');
@@ -64,8 +64,8 @@ class Blog extends CI_Controller
   {
     $id = trim($id);
     $old_services = array();
-    if(!empty($id) && !empty($this->publicacion_model->findById($id))){
-      $old_services = (array)$this->publicacion_model->findById($id);
+    if(!empty($id) && !empty($this->PublicacionModel->findById($id))){
+      $old_services = (array)$this->PublicacionModel->findById($id);
     }else{
       $old_services = array(
         'recurso_av_1' => "",
@@ -114,9 +114,9 @@ class Blog extends CI_Controller
           $rutas = array_values($rutas);
           $this->deleteImage($rutas);
         }
-        $this->publicacion_model->update($datos);
+        $this->PublicacionModel->update($datos);
       }else{
-        $this->publicacion_model->create($datos);
+        $this->PublicacionModel->create($datos);
       }
       $message = array('message' => 'Registro Agregado con éxito');
       // $this->session->set_flashdata($message);
@@ -153,21 +153,21 @@ class Blog extends CI_Controller
   public function deletePosts($id)
   {
     // Convert stdclass to array
-    $data = json_decode(json_encode($this->publicacion_model->findById($id)), true);
+    $data = json_decode(json_encode($this->PublicacionModel->findById($id)), true);
     // get the last 3 register of the array
     $data = array_splice($data, -5, 4, true);
     // delete the keys of the array
     $data = array_values($data);
     $message = $this->deleteImage($data);
     // Delete the data from the database
-    $this->publicacion_model->delete($id);
+    $this->PublicacionModel->delete($id);
   }
 
   public function edit($id)
   {
     $datos = [
-      'blog' => $this->publicacion_model->findById($id),
-      'categories' => $this->categoria_model->getAll_not_testimonial()
+      'blog' => $this->PublicacionModel->findById($id),
+      'categories' => $this->CategoriaModel->getAll_not_testimonial()
     ];
     $this->load->view('templates/header');
     $this->load->view('blog/edit', $datos);

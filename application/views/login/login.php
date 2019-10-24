@@ -18,7 +18,7 @@
                 </div>
                 
                 <div class="pb-5 pt-3 my-3 px-0 mt-xl-0 pt-xl-0 pb-xl-2 ">
-                    <form class="login100-form validate-form"  id="formu" method="POST" action="<?= base_url('usuario_controller/loginUp')?>" >
+                    <form class="login100-form validate-form"  id="formu" method="POST" action="<?= base_url('Usuario/loginUp')?>" >
                         
                         <div class="mx-3 my-5 my-xl-4">
                             <div class="input-group" data-validate = "Ingrese usuario">

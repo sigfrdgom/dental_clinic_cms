@@ -99,7 +99,7 @@ class CI_Controller {
 		if($this->session->userdata("logueado")){
 		
 		}else{
-			redirect("inicioControl/index");
+			redirect("InicioControl/index");
 		}
 	}
 
