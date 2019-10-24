@@ -1,7 +1,11 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Blog extends CI_Controller
+// Import the libraries
+require_once APPPATH. 'libraries/REST_Controller.php';
+require_once APPPATH. 'libraries/Format.php';
+
+class Blog extends REST_Controller
 {
 
     public function __construct()
@@ -12,26 +16,26 @@ class Blog extends CI_Controller
 		$this->load->model('PublicacionModel');
     }
 
-    public function index($id = ""){ 
+    public function index_get($id = ""){ 
         if(!empty(trim($id))){
-            echo json_encode($this->PublicacionModel->get_posts($id));
+            $this->response($this->PublicacionModel->get_posts($id), 200);
         }else{
-            echo json_encode($this->PublicacionModel->get_posts());
+            $this->response($this->PublicacionModel->get_posts(), 200);
         }
     }
 
-    public function recent_posts(){ 
-        echo json_encode($this->PublicacionModel->get_recent_posts());
+    public function recent_posts_get(){ 
+        $this->response($this->PublicacionModel->get_recent_posts(), 200);
     }
 
-    public function search_posts($keyword = ""){ 
+    public function search_posts_get($keyword = ""){ 
         if(!empty($keyword)){
             $keyword=urldecode($keyword);
         }
-        echo json_encode($this->PublicacionModel->search_posts($keyword));
+        $this->response($this->PublicacionModel->search_posts($keyword), 200);
     }
 
-    public function search_pagination_posts($offset = 0, $pagesize = 5 , $category="", $keyword = "" ){ 
+    public function search_pagination_posts_get($offset = 0, $pagesize = 5 , $category="", $keyword = "" ){ 
         if($category == "any"){
             $category = "";
         }
@@ -39,39 +43,38 @@ class Blog extends CI_Controller
         if(!empty($keyword)){
             $keyword=urldecode($keyword);
         }
-        echo json_encode($this->PublicacionModel->search_pagination_posts($keyword, $offset, $pagesize, $category));
+        $this->response($this->PublicacionModel->search_pagination_posts($keyword, $offset, $pagesize, $category), 200);
     }
 
-    public function count_search_posts($category="", $keyword=""){
+    public function count_search_posts_get($category="", $keyword=""){
         if($category == "any"){
             $category = "";
         }
         $category = trim($category);
         $keyword = trim($keyword);
-        echo json_encode($this->PublicacionModel->count_search_posts($category, $keyword));
+        $this->response($this->PublicacionModel->count_search_posts($category, $keyword), 200);
     }
 
-    public function pagination_posts( $offset = 0, $pagesize = 5, $category=""){ 
-        echo json_encode($this->PublicacionModel->pagination_posts($offset,$pagesize, $category));
+    public function pagination_posts_get( $offset = 0, $pagesize = 5, $category=""){ 
+        $this->response($this->PublicacionModel->pagination_posts($offset,$pagesize, $category), 200);
     }
 
     //METODO CON EL QUE OBTENDRIA EL REGISTRO CATEGORIA
-    public function find($id = "")
+    public function find_get($id = "")
     {
-        echo json_encode((array)$this->PublicacionModel->findById($id));
+        $this->response((array)$this->PublicacionModel->findById($id), 200);
     }
 
-    public function count_posts(){
-        echo json_encode($this->PublicacionModel->count_posts());
+    public function count_posts_get(){
+        $this->response($this->PublicacionModel->count_posts());
     }
 
-    public function findByCriteria(){ 
+    public function findByCriteria_get(){ 
 		if($this->input->post("busqueda", TRUE) == null || $this->input->post("busqueda", TRUE)== ""){
-			echo json_encode($this->PublicacionModel->cargaBlog());
+			$this->response($this->PublicacionModel->cargaBlog(), 200);
         }else{
-            echo json_encode($this->PublicacionModel->findBlogByCriteria($this->input->post("busqueda", TRUE)));
+            $this->response($this->PublicacionModel->findBlogByCriteria($this->input->post("busqueda", TRUE)), 200);
         }
-		
     }
     
 }

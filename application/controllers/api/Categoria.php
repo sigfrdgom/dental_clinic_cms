@@ -1,7 +1,11 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Categoria extends CI_Controller
+// Import the libraries
+require_once APPPATH. 'libraries/REST_Controller.php';
+require_once APPPATH. 'libraries/Format.php';
+
+class Categoria extends REST_Controller
 {
 
     public function __construct()
@@ -13,22 +17,22 @@ class Categoria extends CI_Controller
     }
 
     //METODO QUE LLAMA LOS DATOS DE LA BASE DE DATOS Y REDICCIONA
-    public function index()
+    public function index_get()
     {
-        echo json_encode($this->CategoriaModel->getAll_not_testimonial());
+        $this->response($this->CategoriaModel->getAll_not_testimonial(), 200);
     }
 
     //METODO CON EL QUE OBTENDRIA EL REGISTRO CATEGORIA
-    public function obtenerRegistro($id)
+    public function obtenerRegistro_get($id)
     {
-        echo json_encode($this->CategoriaModel->obtenerRegistro($id));
+        $this->response($this->CategoriaModel->obtenerRegistro($id), 200);
     }
 
-    public function findByCriteria(){ 
+    public function findByCriteria_get(){ 
 		if($this->input->post("busqueda", TRUE) == null || $this->input->post("busqueda", TRUE)== ""){
-			echo json_encode($this->CategoriaModel->getAll());
+			$this->response($this->CategoriaModel->getAll(), 200);
         }else{
-            echo json_encode($this->CategoriaModel->findByCriteria($this->input->post("busqueda", TRUE)));
+            $this->response($this->CategoriaModel->findByCriteria($this->input->post("busqueda", TRUE)), 200);
         }
 		
     }
