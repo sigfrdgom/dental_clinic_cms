@@ -182,6 +182,7 @@ function accion() {
 
 document.getElementById("btnReset").addEventListener("click", limpiar)
 document.getElementById("idModal").addEventListener("click", limpiar)
+
 function limpiar(){
 	document.getElementById('nombre').value="";
 	document.getElementById('descripcion').value="";

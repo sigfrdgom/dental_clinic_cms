@@ -46,7 +46,7 @@ class Contacto_controller extends CI_Controller {
 		$email=$this->input->post("email", TRUE);
 		$comentario=$this->input->post("comentario", TRUE);
 		
-        $data=["id_contacto" => null, "nombre" =>$nombre, "celular" =>$telefono, "email"=> $email, "comentario" => $comentario, "estado" => 1];
+        $data=["id_contacto" => null, "nombre" =>$nombre, "telefono" =>$telefono, "email"=> $email, "comentario" => $comentario, "estado" => 1];
         $this->contacto_model->agregarContacto($data);
         
     }
@@ -80,7 +80,7 @@ class Contacto_controller extends CI_Controller {
 		$email=$this->input->post("email", TRUE);
 		$comentario=$this->input->post("comentario", TRUE);
 		
-        $data=["id_contacto" => $id_contacto, "nombre" =>$nombre, "celular" =>$telefono, "email"=> $email, "comentario" => $comentario];
+        $data=["id_contacto" => $id_contacto, "nombre" =>$nombre, "telefono" =>$telefono, "email"=> $email, "comentario" => $comentario];
         $this->contacto_model->actualizarContacto($data);
         
 	}
