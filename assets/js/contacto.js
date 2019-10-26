@@ -1,11 +1,12 @@
 window.addEventListener('load', recargar);
 // var formulario=document.getElementById("formContacto");
 var respuesta=document.getElementById("bodyContacto");
+var url_server="http://admin.clidesadentistas.com/api/Contacto/";
 
 
 /////////////////////-----------------------------------------GET----------------------------------------//////////////////
 function recargar(){
-    fetch('cargarDatosContacto')
+    fetch(url_server+'cargarDatosContacto')
             .then(res => res.json())
             .then(datos => {
 				var texto="";
@@ -84,7 +85,7 @@ function eliminar() {
 		cancelButtonText: 'Cancelar',
 	}).then((result) => {
 		if (result.value) {
-			fetch('eliminarContacto/'+this.value, {
+			fetch(url_server+'eliminarContacto/'+this.value, {
 				method: 'DELETE'
 				})
 				.then(() =>{
@@ -138,7 +139,7 @@ function accion() {
 			
 			var datas= new FormData();
 			datas.append("id_contacto", datos["id_contacto"])
-			fetch('actualizarContactoEstado/', {
+			fetch(url_server+'actualizarContactoEstado/', {
 				method: 'POST',
 				body: datas
 			}).then(data =>{
@@ -189,7 +190,7 @@ document.getElementById("busqueda").addEventListener("keyup", function(){
 	if (busqueda!==""&&busqueda!==" ") {
 		var datas= new FormData();
 		datas.append("busqueda", busqueda)
-		fetch('findByCriteria', {
+		fetch(url_server+'findByCriteria', {
         method: "POST",
         body: datas
     }).then(res => res.json()).then(datos => {

@@ -17,7 +17,7 @@ class Usuario extends CI_Controller {
 
     
     // METODO INDEX PARA VER LA PÁGINA PRINCIPAL
-	public function carga()
+	public function index()
 	{
 		parent::logueado();
 		$this->load->view('templates/header');

@@ -1,21 +1,22 @@
 window.addEventListener('load', recargar);
 var formulario=document.getElementById("formCategoria");
 var respuesta=document.getElementById("bodyCategoria");
-var url_api="http://localhost/dental_clinic_cms/api/categoria/";
-var url_server="http://localhost/dental_clinic_cms/Categoria/";
+var url_api="http://admin.clidesadentistas.com/api/Categoria/";
+var url_server="http://admin.clidesadentistas.com/Categoria/";
 
 /////////////////////-----------------------------------------GET----------------------------------------//////////////////
 function recargar(){
-    fetch('cargarCategoria')
+    fetch(url_server+'cargarCategoria')
             .then(res => res.json())
             .then(datos => {
 				var texto="";
 				datos.forEach(element => {
-					if (element.estado==1) {
-						estado="Activo";
-					}else{
-						estado="Desactivado";
-					}
+				//     var estado;
+				// 	if (element.estado==1) {
+				// 		estado="Activo";
+				// 	}else{
+				// 		estado="Desactivado";
+				// 	}
 				 texto+=`
 				<tr class="p-0 border-bottom border-info" id="tr${element.id_categoria}">
     				<td>${element.nombre}</td>
@@ -93,8 +94,9 @@ document.getElementById('guardarCategoria').addEventListener('click', function(e
 		  `ERROR`;
 		  
           }else{
+            limpiar(); 
 			recargar();
-			limpiar();	
+				
 		  }})
 	}
 
@@ -112,7 +114,7 @@ function eliminar() {
 				
 	}else{
 	Swal.fire({
-		title: '¿Esta seguro de dar de baja la categoria?',
+		title: 'Esta seguro de dar de baja la categoria?',
 		text: "Esta accion puede causar que cierto contenido no sea visible",
 		type: 'warning',
 		showCancelButton: true,
@@ -173,7 +175,7 @@ function accion() {
         }};
     peticion.open('GET', url_api+'obtenerRegistro/'+this.value);
 	peticion.send();
-	// document.getElementById('oculto').style.display = 'block';
+	
 	btn= document.getElementById('guardarCategoria')
     btn.removeAttribute("value")
 	btn.setAttribute("value", "Modificar")
@@ -184,6 +186,7 @@ document.getElementById("btnReset").addEventListener("click", limpiar)
 document.getElementById("idModal").addEventListener("click", limpiar)
 
 function limpiar(){
+    $('#agregarCategoria').modal('hide');
 	document.getElementById('nombre').value="";
 	document.getElementById('descripcion').value="";
 	document.getElementById('mensaje').innerHTML="";
@@ -194,7 +197,7 @@ function limpiar(){
 	var btn=document.getElementById('guardarCategoria')
     btn.removeAttribute("value")
 	btn.setAttribute("value", "Guardar");
-	$('#agregarCategoria').modal('hide');
+	
 }
 
 
@@ -212,7 +215,7 @@ document.getElementById("busqueda").addEventListener("keyup", function(){
 				// console.log(datos)
 				var texto="";
 				datos.forEach(element => {
-					
+					var estado;
 					if (element.estado==1) {
 						estado="Activo";
 					}else{
@@ -222,7 +225,7 @@ document.getElementById("busqueda").addEventListener("keyup", function(){
 				<tr class="p-0 border-bottom border-info" id="tr${element.id_categoria}">
     				<td>${element.nombre}</td>
 					<td>${element.descripcion}</td>
-					<td>${(element.estado == 0)?'Inactivo':'Activo'}</td>
+					<td>${estado}</td>
             		<td class="px-0 py-2">
 						<button class="btnEditar text-center btn btn-warning btn-rounded"  value="${element.id_categoria}" data-toggle="modal" data-target="#agregarCategoria">GESTIONAR</button>
 						
@@ -292,6 +295,14 @@ function validarCampo(){
 		return comprobador;
     	
 	}
+
+
+
+
+
+
+
+
 
 
 

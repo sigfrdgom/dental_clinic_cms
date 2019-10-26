@@ -1,8 +1,8 @@
 <html lang="es-SV">
 
-    <head>
+    <head><meta http-equiv="Content-Type" content="text/html; charset=gb18030">
         <!-- Meta INFO -->
-        <meta charset="utf-8">
+        
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="description" content="">
@@ -152,17 +152,17 @@
                             <li> <a class="waves-effect waves-dark" href="<?= base_url('/InicioControl/index2')?>" aria-expanded="false"><i class="fa fa-home text-white" style="font-size: 2em; "></i><span class="hide-menu">Dashboard</span></a></li>
 
 
-                            <li> <a class="waves-effect waves-dark" href="<?= base_url('Contacto/index')?>" aria-expanded="false"><i class="fa fa-envelope text-white" style="font-size: 2em;  "></i><span class="hide-menu"></span>Mensajes</a></li>
-                            <li> <a class="waves-effect waves-dark" href="<?= base_url('Cita/index')?>" aria-expanded="false"><i class="fa fa-medkit text-white" style="font-size: 2em;  "></i><span class="hide-menu"></span>Citas</a></li>
+                            <li> <a class="waves-effect waves-dark" href="<?= base_url('Contacto')?>" aria-expanded="false"><i class="fa fa-envelope text-white" style="font-size: 2em;  "></i><span class="hide-menu"></span>Mensajes</a></li>
+                            <li> <a class="waves-effect waves-dark" href="<?= base_url('Cita')?>" aria-expanded="false"><i class="fa fa-medkit text-white" style="font-size: 2em;  "></i><span class="hide-menu"></span>Citas</a></li>
 
 
                             <li> <a class="waves-effect waves-dark" href="<?= base_url('services')?>" aria-expanded="false"><i class="	fa fa-briefcase text-white" style="font-size: 2em;  "></i><span class="hide-menu"></span>Servicios</a></li>
                             <li> <a class="waves-effect waves-dark" href="<?= base_url('blog')?>" aria-expanded="false"><i class="fa fa-pencil text-white" style="font-size: 2em;  "></i><span class="hide-menu"></span>Blog</a></li>
                             <li> <a class="waves-effect waves-dark" href="<?= base_url('testimonials')?>" aria-expanded="false"><i class="fa fa-handshake-o text-white" style="font-size: 2em;  "></i><span class="hide-menu"></span>Testimonios</a></li>
 
-                            <li> <a class="waves-effect waves-dark" href="<?= base_url('Usuario/carga')?>" aria-expanded="false"><i class="fa fa-user-circle-o text-white" style="font-size: 2em;  "></i><span class="hide-menu">Usuarios</span></a></li>
-                            <li> <a class="waves-effect waves-dark" href="<?= base_url('Categoria/index')?>" aria-expanded="false"><i class="fa fa-list-ol text-white" style="font-size: 2em; "></i><span class="hide-menu"></span>Categorias</a></li>
-                            <li> <a class="waves-effect waves-dark" href="<?= base_url('Tipo/index')?>" aria-expanded="false"><i class="fa fa-gear text-white" style="font-size: 2em;; "></i><span class="hide-menu"></span>Tipo</a></li>
+                            <li> <a class="waves-effect waves-dark" href="<?= base_url('Usuario')?>" aria-expanded="false"><i class="fa fa-user-circle-o text-white" style="font-size: 2em;  "></i><span class="hide-menu">Usuarios</span></a></li>
+                            <li> <a class="waves-effect waves-dark" href="<?= base_url('Categoria')?>" aria-expanded="false"><i class="fa fa-list-ol text-white" style="font-size: 2em; "></i><span class="hide-menu"></span>Categorias</a></li>
+                            <li> <a class="waves-effect waves-dark" href="<?= base_url('Tipo')?>" aria-expanded="false"><i class="fa fa-gear text-white" style="font-size: 2em;; "></i><span class="hide-menu"></span>Tipo</a></li>
                             
 
                             <!-- <li> <a class="waves-effect waves-dark" href="<?= base_url('application/views/panelControl/pages-blank.html')?>" aria-expanded="false"><i class="fa fa-envelope text-white" style="font-size: 2em;  "></i><span class="hide-menu"></span>Mensajes</a></li> -->

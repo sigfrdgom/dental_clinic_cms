@@ -1,11 +1,11 @@
 window.addEventListener('load', recargar);
 var formulario=document.getElementById("formUsuario");
 var respuesta=document.getElementById("bodyUsuario");
-
+url='http://admin.clidesadentistas.com/Usuario/';
 
 /////////////////////-----------------------------------------GET----------------------------------------//////////////////
 function recargar(){
-    fetch('http://localhost/dental_clinic_cms/Usuario/cargarDatosUsuario')
+    fetch(url+'cargarDatosUsuario')
             .then(res => res.json())
             .then(datos => {
 				var texto="";
@@ -80,7 +80,7 @@ document.getElementById('guardarUsuario').addEventListener('click', function(e){
 		datas.append("tipo_usuario", tipo_usuario.value)
 
 
-	fetch('validarUsuario/'+usuario)
+	fetch(url+'validarUsuario/'+usuario)
 		.then(res => res.json())
 		.then(datos => {
 			if (datos == null ) {
@@ -115,7 +115,7 @@ document.getElementById('guardarUsuario').addEventListener('click', function(e){
 
 
 	function metodoIngreso(controlador, metodo, datas){
-		fetch(controlador, {
+		fetch(url+controlador, {
 			method: metodo,
 			body: datas
 		}) 
@@ -162,7 +162,7 @@ function eliminar() {
 		cancelButtonText: 'Cancelar',
 	}).then((result) => {
 		if (result.value) {
-			fetch('eliminarUsuario/'+this.value, {
+			fetch(url+'/eliminarUsuario/'+this.value, {
 				method: 'DELETE'
 			})
 			.then(() =>{
@@ -230,7 +230,7 @@ function accion() {
             
             
         }};
-    peticion.open('GET', 'obtenerRegistro/'+this.value);
+    peticion.open('GET', url+'obtenerRegistro/'+this.value);
 	peticion.send();
 	btn= document.getElementById('guardarUsuario')
     btn.removeAttribute("value")
@@ -273,7 +273,7 @@ document.getElementById("busqueda").addEventListener("keyup", function(){
 		var datas= new FormData();
 		datas.append("busqueda", busqueda)
 		
-		fetch('findByCriteria', {
+		fetch(url+'findByCriteria', {
         method: "POST",
         body: datas
 		})
@@ -293,12 +293,14 @@ document.getElementById("busqueda").addEventListener("keyup", function(){
 						<td>${element.apellidos}</td>
 						<td>${element.nombre_usuario}</td>
 						<td>${element.tipo_usuario}</td>
-						<td>${estado}</td>
-						<td class="py-2">
-							<button class="btnEditar text-center btn btn-warning btn-rounded"  value="${element.id_usuario}" data-toggle="modal" data-target="#agregarUsuario">EDITAR</button>
-							<button class="btnEliminar text-center btn btn-danger btn-rounded"  value="${element.id_usuario}">ELIMINAR</button>
-						</td>
-					</tr>`
+					    <td>${estado}</td>
+					    <td class="py-2">`;
+						if (element.id_usuario != 1) {
+						texto+=`<button class="btnEditar text-center btn btn-warning btn-rounded"  value="${element.id_usuario}" data-toggle="modal" data-target="#agregarUsuario">GESTIONAR</button>
+						<button class="btnEliminar text-center btn btn-danger btn-rounded"  value="${element.id_usuario}">BLOQUEAR</button>`;	
+						}
+            		texto += `</td>
+    			</tr>`;
 					});
 				if (datos.length>0) {
 					respuesta.innerHTML=texto;
@@ -386,8 +388,6 @@ function genUsuario() {
 			pass.value="";
 			pass.focus();
 		}
-		console.log("holaa")
-
 		return comprobador;
     	
 	}

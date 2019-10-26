@@ -1,11 +1,13 @@
 window.addEventListener('load', recargar);
 // var formulario=document.getElementById("formCita");
 var respuesta=document.getElementById("bodyCita");
+var url_api="http://admin.clidesadentistas.com/api/Cita/";
+var url_server="http://admin.clidesadentistas.com/Cita/";
 
 
 /////////////////////-----------------------------------------GET----------------------------------------//////////////////
 function recargar(){
-    fetch('cargarDatosCita')
+    fetch(url_api+'cargarDatosCita')
             .then(res => res.json())
             .then(datos => {
 				var texto="";
@@ -98,7 +100,7 @@ function eliminar() {
 		cancelButtonText: 'Cancelar',
 	}).then((result) => {
 		if (result.value) {
-			fetch('eliminarCita/'+this.value, {
+			fetch(url_api+'eliminarCita/'+this.value, {
 				method: 'DELETE'
 				})
 				.then(() =>{
@@ -155,7 +157,7 @@ function accion() {
 	   
 			var datas= new FormData();
 			datas.append("id_cita", datos["id_cita"])
-			fetch('actualizarCitaEstado/', {
+			fetch(url_server+'actualizarCitaEstado/', {
 				method: 'POST',
 				body: datas
 			}).then(data =>{
@@ -169,7 +171,7 @@ function accion() {
 				})
 
         }};
-    peticion.open('GET', 'obtenerRegistro/'+this.value);
+    peticion.open('GET', url_api+'obtenerRegistro/'+this.value);
 	peticion.send();
 	btn= document.getElementById('guardarCita')
     btn.removeAttribute("value")
@@ -206,7 +208,7 @@ function buscarCriterio(){
 	 var busqueda=document.getElementById("busqueda").value;
 	if (busqueda!==""&&busqueda!==" ") {
 		var datas= new FormData();
-		datas.append("busqueda", busqueda)
+		datas.append(url_server+"busqueda", busqueda)
 		fetch('findByCriteria', {
         method: "POST",
         body: datas

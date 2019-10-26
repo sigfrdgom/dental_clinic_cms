@@ -1,7 +1,11 @@
 <?php
-defined('BASEPATH') or exit('No direct script access allowed');
+// defined('BASEPATH') or exit('No direct script access allowed');
 
-class Services extends CI_Controller
+// Import the libraries
+require_once APPPATH. 'libraries/REST_Controller.php';
+require_once APPPATH. 'libraries/Format.php';
+
+class Services extends REST_Controller
 {
 
     public function __construct()
@@ -12,28 +16,27 @@ class Services extends CI_Controller
 		$this->load->model('PublicacionModel');
     }
 
-    public function index(){ 
-        echo json_encode($this->PublicacionModel->cargaServices());
+    public function index_get(){ 
+        $this->response($this->PublicacionModel->cargaServices(), 200);
     }
 
     //METODO CON EL QUE OBTENDRIA EL REGISTRO CATEGORIA
-    public function obtenerRegistro($id)
+    public function obtenerRegistro_get($id)
     {
-        echo json_encode($this->PublicacionModel->findById($id));
+        $this->response($this->PublicacionModel->findById($id), 200);
     }
 
-    public function findByCriteria(){ 
+    public function findByCriteria_post(){ 
 		if($this->input->post("busqueda", TRUE) == null || $this->input->post("busqueda", TRUE)== ""){
-			echo json_encode($this->PublicacionModel->findAll());
+			$this->response($this->PublicacionModel->findAll(), 200);
         }else{
-            echo json_encode($this->PublicacionModel->findByCriteria($this->input->post("busqueda", TRUE)));
+            $this->response($this->PublicacionModel->findByCriteria($this->input->post("busqueda", TRUE)), 200);
         }
-		
 	}
 	
 	
-	public function cargarServicios(){ 
-		echo json_encode($this->PublicacionModel->cargaServices());
+	public function cargarServicios_get(){ 
+		$this->response($this->PublicacionModel->cargaServices(), 200);
     }
 
 }
