@@ -33,8 +33,6 @@
         <!-- Sweet alert 2 -->
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
         
-        <!-- Import Fontaesome 5 but the time of load is so slow -->
-        <!-- <script src="https://kit.fontawesome.com/3b0ecff6a4.js" crossorigin="anonymous"></script> -->
     <head>
 
     <!-- Start of body -->
@@ -122,12 +120,6 @@
 
 
 
-
-
-
-
-
-
 					
                         <!-- Start Navbar items -->
                     </div>
@@ -157,12 +149,12 @@
 
 
                             <li> <a class="waves-effect waves-dark" href="<?= base_url('services')?>" aria-expanded="false"><i class="	fa fa-briefcase text-white" style="font-size: 2em;  "></i><span class="hide-menu"></span>Servicios</a></li>
-                            <li> <a class="waves-effect waves-dark" href="<?= base_url('blog')?>" aria-expanded="false"><i class="fa fa-pencil text-white" style="font-size: 2em;  "></i><span class="hide-menu"></span>Blog</a></li>
-                            <li> <a class="waves-effect waves-dark" href="<?= base_url('testimonials')?>" aria-expanded="false"><i class="fa fa-handshake-o text-white" style="font-size: 2em;  "></i><span class="hide-menu"></span>Testimonios</a></li>
+                            <li> <a class="waves-effect waves-dark" href="<?= base_url('blog')?>" aria-expanded="false"><i class="fas fa-blog text-white" style="font-size: 2em;"></i><span class="hide-menu"></span>Blog</a></li>
+                            <li> <a class="waves-effect waves-dark" href="<?= base_url('testimonials')?>" aria-expanded="false"><i class="fas fa-handshake text-white" style="font-size: 2em;"></i><span class="hide-menu"></span>Testimonios</a></li>
 
-                            <li> <a class="waves-effect waves-dark" href="<?= base_url('Usuario')?>" aria-expanded="false"><i class="fa fa-user-circle-o text-white" style="font-size: 2em;  "></i><span class="hide-menu">Usuarios</span></a></li>
+                            <li> <a class="waves-effect waves-dark" href="<?= base_url('Usuario')?>" aria-expanded="false"><i class="fas fa-users text-white" style="font-size: 2em;  "></i><span class="hide-menu">Usuarios</span></a></li>
                             <li> <a class="waves-effect waves-dark" href="<?= base_url('Categoria')?>" aria-expanded="false"><i class="fa fa-list-ol text-white" style="font-size: 2em; "></i><span class="hide-menu"></span>Categorias</a></li>
-                            <li> <a class="waves-effect waves-dark" href="<?= base_url('Tipo')?>" aria-expanded="false"><i class="fa fa-gear text-white" style="font-size: 2em;; "></i><span class="hide-menu"></span>Tipo</a></li>
+                            <li> <a class="waves-effect waves-dark" href="<?= base_url('Tipo')?>" aria-expanded="false"><i class="fas fa-cog text-white" style="font-size: 2em;; "></i><span class="hide-menu"></span>Tipo</a></li>
                             
 
                             <!-- <li> <a class="waves-effect waves-dark" href="<?= base_url('application/views/panelControl/pages-blank.html')?>" aria-expanded="false"><i class="fa fa-envelope text-white" style="font-size: 2em;  "></i><span class="hide-menu"></span>Mensajes</a></li> -->

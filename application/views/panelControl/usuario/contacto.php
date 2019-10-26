@@ -1,5 +1,5 @@
 <!-- Import Fontaesome 5 but the time of load is so slow -->
-<script src="https://kit.fontawesome.com/3b0ecff6a4.js" crossorigin="anonymous"></script>
+<!-- <script src="https://kit.fontawesome.com/3b0ecff6a4.js" crossorigin="anonymous"></script> -->
 
 <!-- Start content of page contacto-->
 <div class="container-fluid">

@@ -22,7 +22,8 @@ File: scss
  *	12. Forms
  *	14. Component
  */
-@import url(../icons/font-awesome/css/font-awesome.min.css);
+@import url(../icons/fontawesome-free-5.11.2-web/css/all.min.css);
+@import url(../icons/fontawesome-free-5.11.2-web/css/fontawesome.min.css);
 @import url(../icons/themify-icons/themify-icons.css);
 @import url("https://fonts.googleapis.com/css?family=Rubik:300,400,500,600,700");
 .skin-default-dark {
@@ -11361,10 +11362,10 @@ icons path
 @font-face {
   font-family: 'themify';
   src: url("fonts/themify.ttf") format("truetype"); }
-
+/* 
 @font-face {
-  font-family: 'FontAwesome';
-  src: url("fonts/fontawesome-webfont.ttf?v=4.7.0") format("truetype"); }
+  font-family: 'FontAwesome 5 Free';
+  src: url("fonts/fontawesome-webfont.ttf?v=4.7.0") format("truetype"); } */
 
 @font-face {
   font-family: 'Material Design Icons';
