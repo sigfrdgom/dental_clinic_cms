@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 // $config['base_url'] = 'http://localhost/dental_clinic_cms/';
-// $config['base_url'] = 'http://admin.clidesadentistas.com/';
+
 $config['base_url'] = 'http://localhost/dental_clinic_cms/';
 
 /*

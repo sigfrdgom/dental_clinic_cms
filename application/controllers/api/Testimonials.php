@@ -1,11 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-// Import the libraries
-require_once APPPATH. 'libraries/REST_Controller.php';
-require_once APPPATH. 'libraries/Format.php';
-
-class Testimonials extends REST_Controller
+class Testimonials extends CI_Controller
 {
 
     public function __construct()
@@ -16,7 +12,7 @@ class Testimonials extends REST_Controller
 		$this->load->model('PublicacionModel');
     }
 
-    function get_testimonials_get(){
-        $this->response($this->PublicacionModel->get_testimonials(), 200);
+    function get_testimonials(){
+        echo json_encode($this->PublicacionModel->get_testimonials());
     }
 }
