@@ -37,10 +37,10 @@ class Testimonials extends CI_Controller
     $config['upload_path'] = "uploads/";
     $config['file_name'] = "recurso_" . time();
 
-    $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp';
+    $config['allowed_types'] = 'bmp|gif|jpeg|jpg|jpe|png|tiff|tif';
     $config['max_size'] = "5120";
-    $config['max_width'] = "4096";
-    $config['max_height'] = "4096";
+    $config['max_width'] = "8120";
+    $config['max_height'] = "8120";
 
     $this->load->library('upload', $config);
     if (!$this->upload->do_upload($mi_archivo)) {
@@ -60,56 +60,45 @@ class Testimonials extends CI_Controller
     }
   }
 
-    public function guardarDatos($id = "")
+  public function guardarDatos($id = "")
   {
     $id = trim($id);
-    $old_services = array();
+    $old_posts = array();
     if(!empty($id) && !empty($this->PublicacionModel->findById($id))){
-      $old_services = (array)$this->PublicacionModel->findById($id);
+      $old_posts = (array)$this->PublicacionModel->findById($id);
     }else{
-      $old_services = array(
+      $old_posts = array(
         'recurso_av_1' => "",
-        'recurso_av_2' => "",
-        'recurso_av_3' => "",
-        'recurso_av_4' => "");
+      );
     }
 
     $data_files = array();
-    for ($i = 1; $i <= sizeof($_FILES); $i++) {
-      if (isset($_FILES['recurso' . $i]['name'])) {
-        if ($_FILES['recurso' . $i]['size'] > 0) {
-          $data_files = array_merge($data_files, array('file' . $i => $this->savePictures('recurso' . $i)));
+      if (isset($_FILES['recurso1']['name'])) {
+        if ($_FILES['recurso1']['size'] > 0) {
+          $data_files =  $this->savePictures('recurso1');
         }
       }
-    }
  
     $datos = [
       'id_publicacion' => trim($id) ? trim($id) : '',
       'id_usuario' => $this->session->userdata('id_usuario'),
-      'id_categoria' => 5,
+      'id_categoria' => $_POST['categoria'],
       'id_tipo' => 3,
       'titulo' => $_POST['titulo'],
       'texto_introduccion' => $_POST['texto_introduccion'],
-      'contenido' => "Testimonio",
+      'contenido' => $_POST['contenido'],
       'estado' => isset($_POST['estado']) ? $_POST['estado'] : true,
-      'recurso_av_1' => isset($data_files['file1']) ?  $data_files['file1']["upload_data"]['file_name'] : $old_services['recurso_av_1'],
-      'recurso_av_2' => isset($data_files['file2']) ?  $data_files['file2']["upload_data"]['file_name'] : $old_services['recurso_av_2'],
-      'recurso_av_3' => isset($data_files['file3']) ?  $data_files['file3']["upload_data"]['file_name'] : $old_services['recurso_av_3'],
-      'recurso_av_4' => isset($data_files['file4']) ?  $data_files['file4']["upload_data"]['file_name'] : $old_services['recurso_av_4']
+      'recurso_av_1' => isset($data_files["upload_data"]) ?  $data_files["upload_data"]['file_name'] : $old_posts['recurso_av_1'],
     ];
 
     try {
       if(!empty($id)){
-        $data_img = $datos;
-        $data_img = array_splice($data_img, -5, 4, true);
         $rutas = array();
         $found_img = false;
-        for ($i=1; $i <=sizeof($data_img) ; $i++) { 
-          if($data_img['recurso_av_'.$i] != $old_services['recurso_av_'.$i]){
-            $rutas = array_merge($rutas, (array)$old_services['recurso_av_'.$i]);
+          if($datos['recurso_av_1'] != $old_posts['recurso_av_1']){
+            $rutas = array_merge($rutas, (array)$old_posts['recurso_av_1']);
             $found_img = true;
           }
-        }
         if($found_img == true){
           $rutas = array_values($rutas);
           $this->deleteImage($rutas);
@@ -118,7 +107,7 @@ class Testimonials extends CI_Controller
       }else{
         $this->PublicacionModel->create($datos);
       }
-      $message = array('message' => 'Registro Agregado con éxito');
+      // $message = array('message' => 'Registro Agregado con éxito');
       // $this->session->set_flashdata($message);
       redirect('testimonials');
     } catch (Exception $e) {
