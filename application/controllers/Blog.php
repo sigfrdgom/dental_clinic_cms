@@ -109,10 +109,9 @@ class Blog extends CI_Controller
       }
       // $message = array('message' => 'Registro Agregado con éxito');
       // $this->session->set_flashdata($message);
-      var_dump($data_files);
-      // redirect('blog');
+      redirect('blog');
     } catch (Exception $e) {
-      $message = array('error' => 'Error no se puedo agregar el registro ');
+      // $message = array('error' => 'Error no se puedo agregar el registro ');
       // $this->session->set_flashdata($message);
       redirect('blog');
     }

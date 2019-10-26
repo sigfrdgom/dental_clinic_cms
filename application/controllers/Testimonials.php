@@ -82,7 +82,7 @@ class Testimonials extends CI_Controller
     $datos = [
       'id_publicacion' => trim($id) ? trim($id) : '',
       'id_usuario' => $this->session->userdata('id_usuario'),
-      'id_categoria' => $_POST['categoria'],
+      'id_categoria' => 5,
       'id_tipo' => 3,
       'titulo' => $_POST['titulo'],
       'texto_introduccion' => $_POST['texto_introduccion'],
