@@ -10,7 +10,7 @@
             <div class="text-center bg-white border border-primary rounded">
                 
                 <div class="py-5 pt-xl-4 pb-xl-2">
-                    <i class="fa fa-user-circle-o login_img"></i>
+                    <i class="fas fa-user-circle login_img"></i>
                 </div>
 
                 <div class="pt-2">

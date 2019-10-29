@@ -1,14 +1,10 @@
 <?php
 // defined('BASEPATH') OR exit('No direct script access allowed');
 
-
-
 require_once APPPATH. 'libraries/REST_Controller.php';
 require_once APPPATH. 'libraries/Format.php';
 
 class Cita extends REST_Controller {
-
-
 
     public function __construct()
     {
@@ -16,33 +12,18 @@ class Cita extends REST_Controller {
         parent::__construct();
         //METODO CARGADO EN EL MODELO
 		$this->load->model('CitaModel');
-		// parent::logueado();
-
-        
     }
-
-
-    //METODO QUE LLAMA LOS DATOS DE LA BASE DE DATOS Y REDICCIONA Y CARGA TODA LA CITA
-//     public function index(){
-//         parent::logueado(); 
-//         $this->load->view('templates/header');
-// 		$this->load->view('panelControl/usuario/cita');
-// 		$this->load->view('templates/footer');
-// 	}
 	
 
 	public function cargarDatosCita_get(){ 
-        parent::logueado(); 
+        parent::logueado();  
         $this->response($this->CitaModel->getAll(), 200);
     }
     
-    
-
     public function cargarDatosActivos_get(){ 
-        parent::logueado(); 
+        parent::logueado();  
         $this->response($this->CitaModel->getActive(), 200);
     }
-
 
     //METODO QUE AGREGA UN REGISTRO CITA
     public function agregarCita_post(){
@@ -56,7 +37,16 @@ class Cita extends REST_Controller {
 		$hora=$this->input->post("hora", TRUE);
 		$comentario=$this->input->post("comentario", TRUE);
 
-        $data=["id_cita" => null, "nombre" => $nombre, "celular" => $telefono, "email" => $email, "padecimientos" => $padecimientos, "procedimiento" => $procedimiento, "fecha" => $fecha, "hora" => $hora, "comentario" => $comentario,"estado" =>1];
+        $data=[
+            "id_cita" => null, 
+            "nombre" => $nombre, 
+            "celular" => $telefono, 
+            "email" => $email, 
+            "padecimientos" => $padecimientos, 
+            "procedimiento" => $procedimiento, 
+            "fecha" => $fecha, 
+            "hora" => $hora, 
+            "comentario" => $comentario,"estado" =>1];
 
         $this->CitaModel->agregarCita($data);
         // $this->response( REST_Controller::HTTP_CREATED);
@@ -66,7 +56,7 @@ class Cita extends REST_Controller {
       
     //METODO QUE ELIMINA UN REGISTRO DE CITA
     public function eliminarCita_delete($id){
-        parent::logueado(); 
+        parent::logueado();  
         $this->CitaModel->eliminarCita($id);
     }
 
@@ -74,17 +64,15 @@ class Cita extends REST_Controller {
 
     //METODO CON EL QUE OBTENDRIA EL REGISTRO CITA
     public function obtenerRegistro($id){
-        parent::logueado(); 
+        parent::logueado();  
         echo json_encode($this->CitaModel->obtenerRegistro($id));
     
 	}
-	
-	
 
 
     //METODO QUE SE ENCARGA DE ACTUALIZAR UN REGISTRO DE CITA
     public function actualizarCita_post(){
-		parent::logueado();
+		parent::logueado(); 
 		
 		$id_cita=$this->input->post("id_cita", TRUE);
 		$nombre=$this->input->post("nombre", TRUE);
@@ -96,13 +84,21 @@ class Cita extends REST_Controller {
 		$hora=$this->input->post("hora", TRUE);
 		$comentario=$this->input->post("comentario", TRUE);
 
-        $data=["id_cita" => $id_cita, "nombre" => $nombre, "celular" => $telefono, "email" => $email, "padecimientos" => $padecimientos, "procedimiento" => $procedimiento, "fecha" => $fecha, "hora" => $hora, "comentario" => $comentario];
+        $data=["id_cita" => $id_cita, 
+            "nombre" => $nombre, 
+            "celular" => $telefono, 
+            "email" => $email, 
+            "padecimientos" => $padecimientos, 
+            "procedimiento" => $procedimiento, 
+            "fecha" => $fecha, 
+            "hora" => $hora, 
+            "comentario" => $comentario];
         $this->CitaModel-> actualizarCita($data);
 	}
 	
 
 	public function findByCriteria(){
-        parent::logueado(); 
+        parent::logueado();  
 		if($this->input->post("busqueda", TRUE) == null || $this->input->post("busqueda", TRUE)== ""){
 			echo json_encode($this->CitaModel->getAll());
         }else{
@@ -113,7 +109,7 @@ class Cita extends REST_Controller {
 
     //METODO QUE SE ENCARGA DE ACTUALIZAR EL ESTADO DE UN REGISTRO DE CITA
     public function actualizarCitaEstado(){
-        parent::logueado(); 
+        parent::logueado();  
         $this->CitaModel->actualizarCitaEstado($this->input->post("id_cita", TRUE));
     }
 
