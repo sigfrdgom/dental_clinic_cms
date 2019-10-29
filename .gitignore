@@ -36,3 +36,8 @@ uploads/*.png
 uploads/*.jpg
 uploads/*.gif
 uploads/posts/*
+
+#zip 
+*.zip
+*.rar
+*.tar
