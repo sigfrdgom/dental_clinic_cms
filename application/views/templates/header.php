@@ -144,7 +144,7 @@
 
                             <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="fas fa-mail-bulk text-white" style="font-size: 2em;  "></i><span class="hide-menu"></span>Mensajes</a>
                                 <ul aria-expanded="false" class="collapse">
-                                    <li> <a href="<?= base_url('/InicioControl/index2') ?>" aria-expanded="false"><i class="fas fa-sms text-white" style="font-size: 1.5em; "></i><span class="hide-menu">MSJ Recientes</span></a></li>
+                                    <li> <a href="<?= base_url('/InicioControl/index2') ?>" aria-expanded="false"><i class="fas fa-sms text-white" style="font-size: 1.5em; "></i><span class="hide-menu">SMS Recientes</span></a></li>
                                     <li> <a href="<?= base_url('Contacto') ?>" aria-expanded="false"><i class="fa fa-envelope text-white" style="font-size: 1.5em;  "></i><span class="hide-menu"></span>Mensajes</a></li>
                                     <li> <a href="<?= base_url('Cita') ?>" aria-expanded="false"><i class="fas fa-calendar-check text-white" style="font-size: 1.5em;  "></i><span class="hide-menu"></span>Citas</a></li>
                                 </ul>
@@ -171,7 +171,7 @@
 
                             <li> <a class="waves-effect waves-dark" href="<?= base_url('Usuario') ?>" aria-expanded="false"><i class="fas fa-users text-white" style="font-size: 2em;  "></i><span class="hide-menu">Usuarios</span></a></li>
 
-                            <li class=""><a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="fas fa-cog text-white" style="font-size: 2em;  "></i><span class="hide-menu"></span>Contenido</a>
+                            <li class=""><a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="fas fa-cog text-white" style="font-size: 2em;  "></i><span class="hide-menu"></span>Configuración</a>
                                 <ul aria-expanded="false" class="collapse">
                                     <li> <a href="<?= base_url('Categoria') ?>"><i class="fa fa-list-ol text-white" style="font-size: 1.5em; "></i><span class="hide-menu"></span>Categorias</a></li>
                                     <li> <a href="<?= base_url('Tipo') ?>"><i class="fas fa-cog text-white" style="font-size: 1.5em;; "></i><span class="hide-menu"></span>Tipo</a></li>

@@ -1,8 +1,13 @@
 window.addEventListener('load', recargar);
 var formulario=document.getElementById("formCategoria");
 var respuesta=document.getElementById("bodyCategoria");
-var url_api="http://admin.clidesadentistas.com/api/Categoria/";
-var url_server="http://admin.clidesadentistas.com/Categoria/";
+
+var path = window.location.pathname.split( '/' );
+var base_url = window.location.origin;
+base_url = base_url+"/"+path[1]+"/";
+
+var url_api= base_url+"api/Categoria/";
+var url_server= base_url+"Categoria/";
 
 /////////////////////-----------------------------------------GET----------------------------------------//////////////////
 function recargar(){

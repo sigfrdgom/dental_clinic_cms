@@ -1,9 +1,8 @@
 var path = window.location.pathname.split( '/' );
-// var base_url = window.location.origin;
-// base_url = base_url+"/"+path[1]+"/";
+var base_url = window.location.origin;
+base_url = base_url+"/"+path[1]+"/"+"api/";
 
-var url_base="http://admin.clidesadentistas.com/api/";
-
+// var base_url="http://admin.clidesadentistas.com/api/";
 
 window.addEventListener('load', recargarCita);
 window.addEventListener('load', recargarMsg);
@@ -18,7 +17,7 @@ setInterval(() => {
 
 /////////////////////-----------------------------------------GET----------------------------------------//////////////////
 function recargarMsg(){
-    fetch(url_base+'Contacto/cargarDatosActivos/')
+    fetch(base_url+'Contacto/cargarDatosActivos/')
         .then(res => res.json())
 
         .then(datos => {
@@ -62,8 +61,8 @@ function recargarMsg(){
 }
 
 
-function recargarCita(){            
-    fetch(url_base+'Cita/cargarDatosActivos/')
+function recargarCita(){  
+    fetch(base_url+'Cita/cargarDatosActivos/')
         .then(res => res.json())
 
         .then(datos => {
@@ -120,7 +119,7 @@ function rechazarMsg() {
 		cancelButtonText: 'Cancelar',
 	}).then((result) => {
 		if (result.value) {
-			fetch(url_base+'Contacto/eliminarContacto/'+this.value, {
+			fetch(base_url+'Contacto/eliminarContacto/'+this.value, {
 				method: 'DELETE'
 				})
 				.then(() =>{
@@ -148,7 +147,7 @@ function rechazar() {
 		cancelButtonText: 'Cancelar',
 	}).then((result) => {
 		if (result.value) {
-			fetch(url_base+'Cita/eliminarCita/'+this.value, {
+			fetch(base_url+'Cita/eliminarCita/'+this.value, {
 				method: 'DELETE'
 				})
 				.then(() =>{
@@ -200,7 +199,7 @@ function mostrarMsg() {
 			
 		}};
 		
-    peticion.open('GET', url_base+'Contacto/obtenerRegistro/'+this.value);
+    peticion.open('GET', base_url+'Contacto/obtenerRegistro/'+this.value);
 	peticion.send();
 	// btn= document.getElementById('guardarContacto')
     // btn.removeAttribute("value")
@@ -248,7 +247,7 @@ function mostrarCita() {
 			// 	})
 
         }};
-    peticion.open('GET', url_base+'Cita/obtenerRegistro/'+this.value);
+    peticion.open('GET', base_url+'Cita/obtenerRegistro/'+this.value);
 	peticion.send();
 	// btn= document.getElementById('guardarCita')
     // btn.removeAttribute("value")

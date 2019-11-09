@@ -1,7 +1,12 @@
 window.addEventListener('load', recargar);
 var formulario=document.getElementById("formUsuario");
 var respuesta=document.getElementById("bodyUsuario");
-url='http://admin.clidesadentistas.com/Usuario/';
+
+var path = window.location.pathname.split( '/' );
+var base_url = window.location.origin;
+base_url = base_url+"/"+path[1]+"/";
+
+url= base_url+'Usuario/';
 
 /////////////////////-----------------------------------------GET----------------------------------------//////////////////
 function recargar(){

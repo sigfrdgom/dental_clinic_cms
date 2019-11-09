@@ -13,3 +13,36 @@
             </div>
         </div>
     </div>
+
+    <div class="card-deck">
+        <div class="card" style="max-width: 400px;">
+            <img src="<?= base_url('assets/images/inicio/change-img.gif') ?>" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Imganes de Carrusel</h5>
+                <p class="card-text">Esta opción permite cambiar las imagenes de presentación del Carrusel que se muestran en la página de inicio.</p>
+
+                <div class="mx-3 mb-2">
+                    <a href="" class="btn btn-primary btn-block">Ver Imágenes</a>
+                </div>
+
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+
+            </div>
+        </div>
+        <div class="card" style="max-width: 400px;">
+            <img src="<?= base_url('assets/images/inicio/youtube-mobile.gif') ?>" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Cambiar video de la página de incio</h5>
+                <p class="card-text">Esta opción permite cambiar el video que se encuentra en la sección de incio de página de inicio.</p>
+
+                <div class="mx-3 mb-2">
+                    <a href="" class="btn btn-primary btn-block">Ver Video</a>
+                </div>
+
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+        </div>
+
+
+    </div>
+</div>

@@ -1,8 +1,12 @@
 window.addEventListener('load', recargar);
 // var formulario=document.getElementById("formContacto");
 var respuesta=document.getElementById("bodyContacto");
-var url_server="http://admin.clidesadentistas.com/api/Contacto/";
 
+var path = window.location.pathname.split( '/' );
+var base_url = window.location.origin;
+base_url = base_url+"/"+path[1]+"/";
+
+var url_server= base_url+"api/Contacto/";
 
 /////////////////////-----------------------------------------GET----------------------------------------//////////////////
 function recargar(){

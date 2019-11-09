@@ -2,8 +2,12 @@ window.addEventListener('load', recargar);
 var formulario=document.getElementById("formTipo");
 var respuesta=document.getElementById("bodyTipo");
 // var url_api="http://localhost/dental_clinic_cms/api/tipo/";
-var url_server="http://admin.clidesadentistas.com/tipo/";
 
+var path = window.location.pathname.split( '/' );
+var base_url = window.location.origin;
+base_url = base_url+"/"+path[1]+"/";
+
+var url_server= base_url+"tipo/";
 
 /////////////////////-----------------------------------------GET----------------------------------------//////////////////
 function recargar(){

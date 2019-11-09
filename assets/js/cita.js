@@ -1,9 +1,13 @@
 window.addEventListener('load', recargar);
 // var formulario=document.getElementById("formCita");
 var respuesta=document.getElementById("bodyCita");
-var url_api="http://admin.clidesadentistas.com/api/Cita/";
-var url_server="http://admin.clidesadentistas.com/Cita/";
 
+var path = window.location.pathname.split( '/' );
+var base_url = window.location.origin;
+base_url = base_url+"/"+path[1]+"/";
+
+var url_api= base_url+"/api/Cita/";
+var url_server= base_url+"Cita/";
 
 /////////////////////-----------------------------------------GET----------------------------------------//////////////////
 function recargar(){
