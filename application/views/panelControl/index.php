@@ -2,14 +2,14 @@
                
     <div class="row page-titles" style="background: #009ffb3f" >
         <div class="col-md-5 align-self-center">
-            <h4 class="text-themecolor text-dark">Dashboard</h4>
+            <h4 class="text-themecolor text-dark">Mensajes Recientes</h4>
         </div>
         <div class="col-md-7 align-self-center text-right text-dark">
             <div class="d-flex justify-content-end align-items-center">
                 <ol class="breadcrumb text-dark">
                     <li class="breadcrumb-item">INICIO</li>
                     <li class="breadcrumb-item">></li>
-                    <li class="breadcrumb-item active">DASHBOARD</li>
+                    <li class="breadcrumb-item active">Mensajes Recientes</li>
                 </ol>
             </div>
         </div>
