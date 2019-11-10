@@ -16,4 +16,11 @@ class HomePage extends CI_Controller
 		$this->load->view('templates/footer');
   }
 
+  public function showImages()
+  {
+    $this->load->view('templates/header');
+		$this->load->view('homePage/showImages');
+		$this->load->view('templates/footer');
+  }
+
 }
