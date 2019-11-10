@@ -77,7 +77,7 @@ $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
 	'username' => 'root',
-	'password' => '',
+	'password' => '12345',
 	'database' => 'clidesa_clinica_db',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
@@ -102,7 +102,7 @@ $db['default'] = array(
 // 'password' => 'clidesa_admin2019',
 // 'database' => 'clidesa_clinica_db',
 
-// Localhost
+// Localhost 
 
 // 'hostname' => 'localhost',
 // 'username' => 'root',
