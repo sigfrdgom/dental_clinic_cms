@@ -10,8 +10,6 @@ Paginador = function(divPaginador, tabla, tamPagina)
     this.pagActual = 1;         //asumiendo que se parte en página 1
     this.paginas = Math.floor((this.tabla.rows.length - 1) / this.tamPagina); //¿?
  
-	console.log(this.tabla.rows.length)
-
 
     this.SetPagina = function(num)
     {

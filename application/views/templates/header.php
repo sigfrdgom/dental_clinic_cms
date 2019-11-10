@@ -169,12 +169,13 @@
                             <li> <a class="waves-effect waves-dark" href="<?= base_url('Categoria') ?>" aria-expanded="false"><i class="fa fa-list-ol text-white" style="font-size: 2em; "></i><span class="hide-menu"></span>Categorias</a></li>
                             <li> <a class="waves-effect waves-dark" href="<?= base_url('Tipo') ?>" aria-expanded="false"><i class="fas fa-cog text-white" style="font-size: 2em;; "></i><span class="hide-menu"></span>Tipo</a></li> -->
 
-                            <li> <a class="waves-effect waves-dark" href="<?= base_url('Usuario') ?>" aria-expanded="false"><i class="fas fa-users text-white" style="font-size: 2em;  "></i><span class="hide-menu">Usuarios</span></a></li>
+							<li> <a class="waves-effect waves-dark" href="<?= base_url('Bitacora') ?>" aria-expanded="false"><i class="fas fa-cog text-white" style="font-size: 2em;  "></i><span class="hide-menu">Bitacora</span></a></li>
+							
+							<li> <a class="waves-effect waves-dark" href="<?= base_url('Usuario') ?>" aria-expanded="false"><i class="fas fa-users text-white" style="font-size: 2em;  "></i><span class="hide-menu">Usuarios</span></a></li>
 
                             <li class=""><a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="fas fa-cog text-white" style="font-size: 2em;  "></i><span class="hide-menu"></span>Configuración</a>
                                 <ul aria-expanded="false" class="collapse">
                                     <li> <a href="<?= base_url('Categoria') ?>"><i class="fa fa-list-ol text-white" style="font-size: 1.5em; "></i><span class="hide-menu"></span>Categorias</a></li>
-                                    <li> <a href="<?= base_url('Tipo') ?>"><i class="fas fa-cog text-white" style="font-size: 1.5em;; "></i><span class="hide-menu"></span>Tipo</a></li>
                                 </ul>
                             </li>
 
