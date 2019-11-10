@@ -2,9 +2,14 @@ window.addEventListener('load', recargar);
 var formulario=document.getElementById("formCategoria");
 var respuesta=document.getElementById("bodyCategoria");
 
-var path = window.location.pathname.split( '/' );
-var base_url = window.location.origin;
-base_url = base_url+"/"+path[1]+"/";
+var base_url = "";
+if(location.hostname =="localhost"){
+	var path = window.location.pathname.split( '/' );
+	base_url = window.location.origin;
+	base_url = base_url+"/"+path[1]+"/";
+}else{
+	base_url = location.protocol+"//"+location.hostname+"/";
+}
 
 var url_api= base_url+"api/Categoria/";
 var url_server= base_url+"Categoria/";

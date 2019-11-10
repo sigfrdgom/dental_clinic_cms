@@ -3,9 +3,14 @@ var formulario=document.getElementById("formTipo");
 var respuesta=document.getElementById("bodyTipo");
 // var url_api="http://localhost/dental_clinic_cms/api/tipo/";
 
-var path = window.location.pathname.split( '/' );
-var base_url = window.location.origin;
-base_url = base_url+"/"+path[1]+"/";
+var base_url = "";
+if(location.hostname =="localhost"){
+	var path = window.location.pathname.split( '/' );
+	base_url = window.location.origin;
+	base_url = base_url+"/"+path[1]+"/";
+}else{
+	base_url = location.protocol+"//"+location.hostname+"/";
+}
 
 var url_server= base_url+"tipo/";
 

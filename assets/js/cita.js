@@ -2,9 +2,14 @@ window.addEventListener('load', recargar);
 // var formulario=document.getElementById("formCita");
 var respuesta=document.getElementById("bodyCita");
 
-var path = window.location.pathname.split( '/' );
-var base_url = window.location.origin;
-base_url = base_url+"/"+path[1]+"/";
+var base_url = "";
+if(location.hostname =="localhost"){
+	var path = window.location.pathname.split( '/' );
+	base_url = window.location.origin;
+	base_url = base_url+"/"+path[1]+"/";
+}else{
+	base_url = location.protocol+"//"+location.hostname+"/";
+}
 
 var url_api= base_url+"/api/Cita/";
 var url_server= base_url+"Cita/";

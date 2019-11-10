@@ -1,6 +1,12 @@
-var path = window.location.pathname.split( '/' );
-var base_url = window.location.origin;
-base_url = base_url+"/"+path[1]+"/"+"api/";
+var base_url = "";
+if(location.hostname =="localhost"){
+	var path = window.location.pathname.split( '/' );
+	base_url = window.location.origin;
+	base_url = base_url+"/"+path[1]+"/";
+}else{
+	base_url = location.protocol+"//"+location.hostname+"/";
+}
+base_url = base_url+"/"+"api/";
 
 // var base_url="http://admin.clidesadentistas.com/api/";
 

@@ -23,9 +23,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/dental_clinic_cms/';
+// $config['base_url'] = 'http://localhost/dental_clinic_cms/';
+// $config['base_url'] = 'http://admin.clidesadentistas.com/';
 
-//$config['base_url'] = 'http://admin.clidesadentistas.com/';
+$protocol = stripos($_SERVER['SERVER_PROTOCOL'],'https') === true ? 'https://' : 'http://';
+if($_SERVER['HTTP_HOST'] === "localhost"){
+    $config['base_url'] = $protocol.'localhost/dental_clinic_cms/';
+}else{
+    $config['base_url'] = $protocol.'admin.clidesadentistas.com/';
+}
 
 /*
 |--------------------------------------------------------------------------

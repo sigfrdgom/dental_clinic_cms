@@ -14,3 +14,10 @@
         </div>
     </div>
     
+<?php 
+$protocol = stripos($_SERVER['SERVER_PROTOCOL'],'https') === true ? 'https://' : 'http://';
+$domain = $_SERVER['HTTP_HOST'];
+
+echo "<h1>".$protocol."</h1>";
+echo "<h1>".$domain."</h1>";
+?>
