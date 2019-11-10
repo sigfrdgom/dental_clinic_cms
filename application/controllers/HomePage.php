@@ -23,4 +23,11 @@ class HomePage extends CI_Controller
 		$this->load->view('templates/footer');
   }
 
+  public function formImage()
+  {
+    $this->load->view('templates/header');
+		$this->load->view('homePage/formImage');
+		$this->load->view('templates/footer');
+  }
+
 }

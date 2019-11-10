@@ -169,7 +169,7 @@
                             <li> <a class="waves-effect waves-dark" href="<?= base_url('Categoria') ?>" aria-expanded="false"><i class="fa fa-list-ol text-white" style="font-size: 2em; "></i><span class="hide-menu"></span>Categorias</a></li>
                             <li> <a class="waves-effect waves-dark" href="<?= base_url('Tipo') ?>" aria-expanded="false"><i class="fas fa-cog text-white" style="font-size: 2em;; "></i><span class="hide-menu"></span>Tipo</a></li> -->
 
-							<li> <a class="waves-effect waves-dark" href="<?= base_url('Bitacora') ?>" aria-expanded="false"><i class="fas fa-cog text-white" style="font-size: 2em;  "></i><span class="hide-menu">Bitacora</span></a></li>
+							<li> <a class="waves-effect waves-dark" href="<?= base_url('Bitacora') ?>" aria-expanded="false"><i class="fas fa-address-book text-white" style="font-size: 2em;  "></i><span class="hide-menu">Bitacora</span></a></li>
 							
 							<li> <a class="waves-effect waves-dark" href="<?= base_url('Usuario') ?>" aria-expanded="false"><i class="fas fa-users text-white" style="font-size: 2em;  "></i><span class="hide-menu">Usuarios</span></a></li>
 

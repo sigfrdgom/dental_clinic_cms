@@ -22,7 +22,7 @@
                     <h5 class="card-title">Imganes de Carrusel</h5>
                     <p class="card-text">Esta opción permite cambiar las imagenes de presentación del Carrusel que se muestran en la página de inicio.</p>
 
-                    <div class="mx-3 mb-2">
+                    <div class="row p-2">
                         <a href="<?= base_url('homePage/showImages')?>" class="btn btn-primary btn-block">Ver Imágenes</a>
                     </div>
 
@@ -36,7 +36,7 @@
                     <h5 class="card-title">Cambiar video de la página de incio</h5>
                     <p class="card-text">Esta opción permite cambiar el video que se encuentra en la sección de incio de página de inicio.</p>
 
-                    <div class="mx-3 mb-2">
+                    <div class="row p-2">
                         <a href="" class="btn btn-primary btn-block">Ver Video</a>
                     </div>
 
@@ -50,7 +50,7 @@
                     <h5 class="card-title">Cambiar hario de la página de incio</h5>
                     <p class="card-text">Esta opción permite cambiar el horario que se encuentra en la sección de incio de página de inicio.</p>
 
-                    <div class="mx-3 mb-2">
+                    <div class="row p-2">
                         <a href="" class="btn btn-primary btn-block">Ver horairo</a>
                     </div>
 
