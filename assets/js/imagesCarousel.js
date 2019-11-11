@@ -20,39 +20,47 @@ function refresh_cards() {
 		.then(res => { return res.json() })
 		.then(response => {
 			content = "";
-			response.forEach(element => {
-				content += `
-			<div class="col-lg-3 col-md-6">
-                <div class="card">
-                    <img class="card-img-top img-responsive" src="${element.recurso_av_1 ? base_url+'uploads/inicio/'+element.recurso_av_1 : base_url+'assets/images/default/no-image-available-icon.jpg'}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">${element.titulo}</h5>
-                        <p class="card-text">${element.texto_introduccion}</p>
-						<div class="col-12 mx-auto text-center">`;
-				if (element.estado == 1) {
+			if(response.length > 0){
+				response.forEach(element => {
 					content += `
-							<i class="fa fa-eye" style="font-size: 3em; color: #00aeef;"></i>
-							`;
-				} else {
+				<div class="col-lg-3 col-md-6">
+					<div class="card">
+						<img class="card-img-top img-responsive" src="${element.recurso_av_1 ? base_url+'uploads/inicio/'+element.recurso_av_1 : base_url+'assets/images/default/no-image-available-icon.jpg'}" class="card-img-top" alt="...">
+						<div class="card-body">
+							<h5 class="card-title">${element.titulo}</h5>
+							<p class="card-text">${element.texto_introduccion}</p>
+							<div class="col-12 mx-auto text-center">`;
+					if (element.estado == 1) {
+						content += `
+								<i class="fa fa-eye" style="font-size: 3em; color: #00aeef;"></i>
+								`;
+					} else {
+						content += `
+								<i class="fa fa-eye-slash" style="font-size: 3em; color: gray;"></i>
+								`;
+					}
 					content += `
-							<i class="fa fa-eye-slash" style="font-size: 3em; color: gray;"></i>
-							`;
-				}
-				content += `
-                    </div>
-                    </div>
-                    
-                    <div class="row p-2">
-                        <a href="${base_url}/homePage/edit/${element.id_publicacion}" class="btn btn-warning mx-auto col-5">Editar</a>
-                        <button type="button" name="btn-eliminar" value="${element.id_publicacion}" class="btn btn-danger mx-auto col-5">Eliminar</button>
-                    </div>
-                    <div class="card-footer text-center">
-                        <small class="text-muted">${element.fecha_ingreso}</small>
-                    </div>
-                </div>
-            </div>
-			`;
-			});
+						</div>
+						</div>
+						
+						<div class="row p-2">
+							<a href="${base_url}/homePage/edit/${element.id_publicacion}" class="btn btn-warning mx-auto col-5">Editar</a>
+							<button type="button" name="btn-eliminar" value="${element.id_publicacion}" class="btn btn-danger mx-auto col-5">Eliminar</button>
+						</div>
+						<div class="card-footer text-center">
+							<small class="text-muted">${element.fecha_ingreso}</small>
+						</div>
+					</div>
+				</div>
+				`;
+				});
+			}else{
+				content = `
+				<div class="col-12 card p-2">
+					<h2 class="text-center">No existen registros</h2>
+				</div>
+				`;
+			}
 
 			document.getElementById('image-content').innerHTML = content;
 
