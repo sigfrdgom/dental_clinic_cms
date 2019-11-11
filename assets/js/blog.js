@@ -22,7 +22,6 @@ function refresh_posts(){
 		document.getElementById('paginador'),
 		document.getElementsByClassName('card'),
 		5); p.Mostrar(); 
-
 		
     });
 }

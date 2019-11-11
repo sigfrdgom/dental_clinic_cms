@@ -1,5 +1,5 @@
 <?php
-// defined('BASEPATH') or exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 // Import the libraries
 require_once APPPATH. 'libraries/REST_Controller.php';
