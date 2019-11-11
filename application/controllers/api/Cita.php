@@ -11,7 +11,7 @@ class Cita extends REST_Controller {
         //HACER USO DE LO METODO CONSTRUCTORE DEL PADRE 
         parent::__construct();
         //METODO CARGADO EN EL MODELO
-		$this->load->model('CitaModel');
+		$this->load->model(array('CitaModel', 'BitacoraModel'));
     }
 	
 
@@ -57,60 +57,45 @@ class Cita extends REST_Controller {
     //METODO QUE ELIMINA UN REGISTRO DE CITA
     public function eliminarCita_delete($id){
         parent::logueado();  
-        $this->CitaModel->eliminarCita($id);
+		$this->CitaModel->eliminarCita($id);
+
+		//BITACORA DE ELIMINADO
+		$data=parent::bitacora("Elimino una Cita", "Cita Eliminada");	
+		$this->BitacoraModel->agregarBitacora($data);
+		
+
     }
 
 
 
     //METODO CON EL QUE OBTENDRIA EL REGISTRO CITA
-    public function obtenerRegistro($id){
-        parent::logueado();  
-        echo json_encode($this->CitaModel->obtenerRegistro($id));
+    public function obtenerRegistro_get($id){
+		parent::logueado();
+		$this->response($this->CitaModel->obtenerRegistro($id), 200);
     
 	}
 
-
-    //METODO QUE SE ENCARGA DE ACTUALIZAR UN REGISTRO DE CITA
-    public function actualizarCita_post(){
-		parent::logueado(); 
-		
-		$id_cita=$this->input->post("id_cita", TRUE);
-		$nombre=$this->input->post("nombre", TRUE);
-		$telefono=$this->input->post("telefono", TRUE);
-		$email=$this->input->post("email", TRUE);
-		$padecimientos=$this->input->post("padecimientos", TRUE);
-		$procedimiento=$this->input->post("procedimiento", TRUE);
-		$fecha=$this->input->post("fecha", TRUE);
-		$hora=$this->input->post("hora", TRUE);
-		$comentario=$this->input->post("comentario", TRUE);
-
-        $data=["id_cita" => $id_cita, 
-            "nombre" => $nombre, 
-            "celular" => $telefono, 
-            "email" => $email, 
-            "padecimientos" => $padecimientos, 
-            "procedimiento" => $procedimiento, 
-            "fecha" => $fecha, 
-            "hora" => $hora, 
-            "comentario" => $comentario];
-        $this->CitaModel-> actualizarCita($data);
-	}
 	
 
-	public function findByCriteria(){
+	public function findByCriteria_post(){
         parent::logueado();  
 		if($this->input->post("busqueda", TRUE) == null || $this->input->post("busqueda", TRUE)== ""){
-			echo json_encode($this->CitaModel->getAll());
+			$this->response($this->CitaModel->getAll(), 200);
         }else{
-            echo json_encode($this->CitaModel->findByCriteria($this->input->post("busqueda", TRUE)));
-        }
+			$this->response($this->CitaModel->findByCriteria($this->input->post("busqueda", TRUE)), 200);
+
+		}
 		
     }
 
     //METODO QUE SE ENCARGA DE ACTUALIZAR EL ESTADO DE UN REGISTRO DE CITA
-    public function actualizarCitaEstado(){
+    public function actualizarCitaEstado_post(){
         parent::logueado();  
-        $this->CitaModel->actualizarCitaEstado($this->input->post("id_cita", TRUE));
+		$this->CitaModel->actualizarCitaEstado($this->input->post("id_cita", TRUE));
+		
+		//BITACORA DE EDITADO
+		$data=parent::bitacora("Visualizo una Cita", "Cita Leida");	
+		$this->BitacoraModel->agregarBitacora($data);
     }
 
 

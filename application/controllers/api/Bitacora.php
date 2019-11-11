@@ -14,26 +14,9 @@ class Bitacora extends REST_Controller
         parent::__construct();
         //METODO CARGADO EN EL MODELO
 		$this->load->model('BitacoraModel');
+		parent::logueado();
 	}
 	
-
-	//METODO QUE AGREGA UN REGISTRO CONTACTO
-    public function agregarBitacora_post(){
-
-		$accion=$this->input->post("accion", TRUE);
-		$usuario=$this->input->post("usuario", TRUE);
-		$titulo=$this->input->post("titulo", TRUE);
-		
-        $data=["id_bitacora" => null,
-			  "accion" =>$accion,
-			  "titulo" =>$titulo,
-              "usuario" =>$usuario, 
-              "fecha"=> null];
-        $this->BitacoraModel->agregarBitacora($data);
-        $this->response($data, REST_Controller::HTTP_CREATED);
-        
-    }
-
 
     public function cargarBitacora_get(){ 
         $this->response($this->BitacoraModel->getAll(), 200);

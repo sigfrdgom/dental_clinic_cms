@@ -14,7 +14,7 @@ class Contacto extends REST_Controller
         //HACER USO DE LO METODO CONSTRUCTORE DEL PADRE 
         parent::__construct();
         //METODO CARGADO EN EL MODELO
-		$this->load->model('ContactoModel');
+				$this->load->model(array('ContactoModel', 'BitacoraModel'));
     }
 
     //METODO QUE LLAMA LOS DATOS DE LA BASE DE DATOS Y REDICCIONA Y CARGA TODA LA CONTACTO
@@ -49,52 +49,42 @@ class Contacto extends REST_Controller
     }
 
     //METODO QUE ELIMINA UN REGISTRO DE CONTACTO
-    public function eliminarContacto($id){
-		parent::logueado();
-        $this->ContactoModel->eliminarContacto($id);
+    public function eliminarContacto_delete($id){
+			parent::logueado();
+			$this->ContactoModel->eliminarContacto($id);
+
+			//BITACORA DE ELIMINADO
+			
+			$data=parent::bitacora("Elimino un Contacto", "Contacto Eliminado");	
+			$this->BitacoraModel->agregarBitacora($data);
     }
+
 
     //METODO CON EL QUE OBTENDRIA EL REGISTRO CONTACTO
     public function obtenerRegistro_get($id){
-		parent::logueado();
-		$this->response($this->ContactoModel->obtenerRegistro($id), 200);
-        // echo json_encode($this->ContactoModel->obtenerRegistro($id));
-       
+			parent::logueado();
+			$this->response($this->ContactoModel->obtenerRegistro($id), 200);       
     }
 
-
-    //METODO QUE SE ENCARGA DE ACTUALIZAR UN REGISTRO DE CONTACTO
-    public function actualizarContacto_post(){
-		parent::logueado();
-		$nombre=$this->input->post("nombre", TRUE);
-		$id_contacto=$this->input->post("id_contacto", TRUE);
-		$telefono=$this->input->post("telefono", TRUE);
-		$email=$this->input->post("email", TRUE);
-		$comentario=$this->input->post("comentario", TRUE);
-		
-        $data=["id_contacto" => $id_contacto, 
-              "nombre" =>$nombre, 
-              "telefono" =>$telefono, 
-              "email"=> $email, 
-              "comentario" => $comentario];
-        $this->ContactoModel->actualizarContacto($data);
-        
-	}
 	
 	public function findByCriteria_post(){ 
 		parent::logueado();
 		if($this->input->post("busqueda", TRUE) == null || $this->input->post("busqueda", TRUE)== ""){
-			echo json_encode($this->ContactoModel->getAll());
-        }else{
-            echo json_encode($this->ContactoModel->findByCriteria($this->input->post("busqueda", TRUE)));
-        }
+			$this->response($this->ContactoModel->getAll(), 200);
+		}else{
+			$this->response($this->ContactoModel->findByCriteria($this->input->post("busqueda", TRUE)), 200);
+		}
 		
     }
 
     //METODO QUE SE ENCARGA DE ACTUALIZAR EL ESTADO DE UN REGISTRO DE CONTACTO
     public function actualizarContactoEstado_post(){
-		parent::logueado();
-        $this->ContactoModel->actualizarContactoEstado($this->input->post("id_contacto", TRUE));
+			parent::logueado();
+			$this->ContactoModel->actualizarContactoEstado($this->input->post("id_contacto", TRUE));
+			
+			//BITACORA DE EDITADO
+			$data=parent::bitacora("Visualizo un Contacto", "Contacto Leido");	
+			$this->BitacoraModel->agregarBitacora($data);
     }
 
 } ?>

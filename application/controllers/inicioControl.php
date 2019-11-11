@@ -19,9 +19,7 @@ class InicioControl extends CI_Controller {
 
 	public function index()
 	{
-		
-		$this->load->view('login/login');
-		
+		$this->load->view('login/login');	
 	}
 
 
@@ -40,12 +38,7 @@ class InicioControl extends CI_Controller {
 
 	public function finalizarSesion()
 	{
-		$data=[ "id_bitacora" => null,
-			    "accion" =>"Finazalizacion de sesion",
-				"titulo" => $this->session->userdata('nombre'),
-				"usuario" => $this->session->userdata('id_usuario') 
-				];
-					
+		$data=parent::bitacora("Finalizo su Sesion", $this->session->userdata('nombre'));	
 		$this->BitacoraModel->agregarBitacora($data);
 		$this->session->sess_destroy();
 		

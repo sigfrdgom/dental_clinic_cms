@@ -3,8 +3,12 @@
 class BitacoraModel extends CI_Model{
 
     //CONSULTA PARA CARGAR LO DATOS DE LA TABLA BITACORA
-    public function getAll(){  
-        return $this->db->get('bitacora')->result();
+    public function getAll(){ 
+		$this->db->from('bitacora');
+        $this->db->order_by('fecha','DESC');
+        $query = $this->db->get();
+        return $query->result();
+        // return $this->db->get('bitacora')->result();
     }
 
   

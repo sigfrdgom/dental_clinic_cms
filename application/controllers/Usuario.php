@@ -44,6 +44,10 @@ class Usuario extends CI_Controller {
 		$tipo_usuario=$this->input->post("tipo_usuario", TRUE);
 		$data=["id_usuario" => null, "nombres" => $nombres, "apellidos" => $apellidos,  "nombre_usuario" => $usuario, "contrasenia" => self::hash($this->input->post("pass", TRUE)), "tipo_usuario" => $tipo_usuario, "estado" => 1];
 		$this->UsuarioModel->agregarUsuario($data);
+
+		//BITACORA DE CREADO
+		$data=parent::bitacora("Agrego un Usuario", "Usuario Nuevo Creado");	
+		$this->BitacoraModel->agregarBitacora($data);
     }
 
       
@@ -51,6 +55,11 @@ class Usuario extends CI_Controller {
     public function eliminarUsuario($id){
 		parent::logueado();
 		$this->UsuarioModel->eliminarUsuario($id);
+		
+		//BITACORA DE BORRADO
+		$data=parent::bitacora("Borro un Usuario", "Usuario Eliminado");	
+		$this->BitacoraModel->agregarBitacora($data);
+		
 		if ($this->session->userdata('id_usuario')==$id && $id !=1) {
 			parent::destroy();
 		}
@@ -77,6 +86,10 @@ class Usuario extends CI_Controller {
 		$data=["id_usuario" => $id_usuario, "nombres" => $nombres, "apellidos" => $apellidos,  "nombre_usuario" => $usuario, "contrasenia" => $hash, "tipo_usuario" => $tipo_usuario, "estado" => $estado];
 		 		
 		$this->UsuarioModel-> actualizarUsuario($data);
+
+		//BITACORA DE ACTUALIZACION
+		$data=parent::bitacora("Modifico un Usuario", "Usuario Modificado");	
+		$this->BitacoraModel->agregarBitacora($data);
 	}
 
 
@@ -116,12 +129,10 @@ class Usuario extends CI_Controller {
 					'logueado' => TRUE);					   
 					$this->session->set_userdata($usuario_data);
 		
-        			$data=["id_bitacora" => null,
-			  				"accion" =>"Inicio de sesion",
-							"titulo" => $usuario->nombres,
-							"usuario" => $usuario->id_usuario];
-					
+					//PARTE BITACORA
+        			$data=parent::bitacora("Inicio de su Sesion", $usuario->nombres);	
 					$this->BitacoraModel->agregarBitacora($data);
+		
 					redirect('InicioControl/index2');
 				}else{
 					redirect('');

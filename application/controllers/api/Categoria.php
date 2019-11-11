@@ -11,7 +11,8 @@ class Categoria extends REST_Controller
     public function __construct()
     {
         //HACER USO DE LO METODO CONSTRUCTORE DEL PADRE 
-        parent::__construct();
+		parent::__construct();
+		parent::logueado();
         //METODO CARGADO EN EL MODELO
 		$this->load->model('CategoriaModel');
     }

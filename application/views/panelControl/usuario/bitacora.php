@@ -39,16 +39,18 @@
                 <table class="table table-borderless table-hover display" id="ajaxTabla">
                     <thead class="text-white bg-clidesa-celeste">
                         <tr>
-                            <!-- <th class='secret'>ID</th> -->
+							<!-- <th class='secret'>ID</th> -->
+							<th>Tipo de Usuario</th>
                             <th>Usuario</th>
-                            <th>Historial de acciones</th>
+							<th>Historial de acciones</th>
+							<th>Titulo</th>
                             <th>Fecha y hora</th>
-                            <th colspan="2">Acciones
+                            <!-- <th colspan="2">Acciones
                                 <a href="#" title="Acciones de gestion"  data-toggle="popover" data-trigger="focus"
                                     data-content="Sirven para Eliminar o modificar algun registros de la tabla.">
                                     <i class="fa fa-fw fa-question-circle pop-help text-white" style="font-size:1.3em;"></i>
                                 </a>
-                            </th>
+                            </th> -->
                         </tr>
                     </thead>
                     <tbody id="bodyBitacora">

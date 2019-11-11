@@ -26,21 +26,26 @@ function recargar(){
 				// 		estado="Activo";
 				// 	}else{
 				// 		estado="Desactivado";
+
+				// <td class="px-0 py-2">
+				// 		<button class="btnEditar text-center btn btn-warning btn-rounded"  value="${element.id_bitacora}" data-toggle="modal" data-target="#agregarBitacora">VER A DETALLE</button>
+				
+				// 		</td>
+
 				// 	}
 				 texto+=`
 				<tr class="p-0 border-bottom border-info" id="tr${element.id_bitacora}">
-    				<td>${element.usuario}</td>
+					<td>${element.tipo_usuario}</td>	
+					<td>${element.usuario}</td>
 					<td>${element.accion}</td>
+					<td>${element.titulo}</td>
 					<td>${element.fecha}</td>
-            		<td class="px-0 py-2">
-						<button class="btnEditar text-center btn btn-warning btn-rounded"  value="${element.id_bitacora}" data-toggle="modal" data-target="#agregarBitacora">VER A DETALLE</button>
-				
-						</td>
+            		
     			</tr>`
 				});
-					// document.getElementById('oculto').style.display = 'none';
+
 					respuesta.innerHTML=texto;
-					asignarEventos();
+					// asignarEventos();
 
 					var p = new Paginador(
 						document.getElementById('paginador'),
@@ -91,18 +96,18 @@ function recargar(){
 
 /////////////////////----------------------------------------PREPARACION DE EVENTOS--------------------------------------//////////////////
 
-function asignarEventos(){
-    var btnEditar=document.getElementsByClassName('btnEditar');
-	// var btnEliminar=document.getElementsByClassName('btnEliminar');
+// function asignarEventos(){
+//     var btnEditar=document.getElementsByClassName('btnEditar');
+// 	// var btnEliminar=document.getElementsByClassName('btnEliminar');
 	
-	for (var index = 0; index <btnEditar.length; index++) {
+// 	for (var index = 0; index <btnEditar.length; index++) {
 	
-		//PARA EMPEZAR A CARGAR
-        btnEditar[index].addEventListener('click', accion);
-        // btnEliminar[index].addEventListener('click', eliminar);
+// 		//PARA EMPEZAR A CARGAR
+//         // btnEditar[index].addEventListener('click', accion);
+//         // btnEliminar[index].addEventListener('click', eliminar);
         
-    }
-}
+//     }
+// }
 
 
 /////////////////////----------------------------------------PREPARACION DE DATOS EN FORMULARIO------------------------------------//////////////////
@@ -168,18 +173,17 @@ document.getElementById("busqueda").addEventListener("keyup", function(){
 				datos.forEach(element => {
 				 texto+=`
 				 <tr class="p-0 border-bottom border-info" id="tr${element.id_bitacora}">
-				 <td>${element.usuario}</td>
-				 <td>${element.accion}</td>
-				 <td>${element.fecha}</td>
-				 <td class="px-0 py-2">
-					 <button class="btnEditar text-center btn btn-warning btn-rounded"  value="${element.id_bitacora}" data-toggle="modal" data-target="#agregarBitacora">VER A DETALLE</button>
-			 
-					 </td>
-			 	</tr>`
+					<td>${element.tipo_usuario}</td>	
+					<td>${element.usuario}</td>
+					<td>${element.accion}</td>
+					<td>${element.titulo}</td>
+					<td>${element.fecha}</td>
+            		
+    			</tr>`
 				});
 					if (datos.length>0) {
 						respuesta.innerHTML=texto;
-						asignarEventos();
+						// asignarEventos();
 						var p = new Paginador(
 							document.getElementById('paginador'),
 							document.getElementById('ajaxTabla'),
@@ -191,9 +195,6 @@ document.getElementById("busqueda").addEventListener("keyup", function(){
 					
 			})
 		
-
-
-
 	}else{
 		document.getElementById("busqueda").value="";
 		recargar();

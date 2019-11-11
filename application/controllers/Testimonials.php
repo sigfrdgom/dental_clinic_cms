@@ -7,7 +7,7 @@ class Testimonials extends CI_Controller
   public function __construct()
   {
     parent::__construct();
-		$this->load->model(array('PublicacionModel', 'CategoriaModel'));
+		$this->load->model(array('PublicacionModel', 'CategoriaModel', 'BitacoraModel'));
 		parent::logueado();
   }
 
@@ -103,9 +103,18 @@ class Testimonials extends CI_Controller
           $rutas = array_values($rutas);
           $this->deleteImage($rutas);
         }
-        $this->PublicacionModel->update($datos);
+				$this->PublicacionModel->update($datos);
+
+				//BITACORA DE MODIFICO
+				$data=parent::bitacora("Modifico un Testimonio", $_POST['titulo']);
+				$this->BitacoraModel->agregarBitacora($data);
+				
       }else{
-        $this->PublicacionModel->create($datos);
+				$this->PublicacionModel->create($datos);
+				
+				//BITACORA DE CREADO
+				$data=parent::bitacora("Creo un Nuevo TESTIMONIO", $_POST['titulo']);
+				$this->BitacoraModel->agregarBitacora($data);
       }
       // $message = array('message' => 'Registro Agregado con éxito');
       // $this->session->set_flashdata($message);
@@ -148,7 +157,11 @@ class Testimonials extends CI_Controller
     $data = array_values($data);
     $message = $this->deleteImage($data);
     // Delete the data from the database
-    $this->PublicacionModel->delete($id);
+		$this->PublicacionModel->delete($id);
+		
+		//BITACORA DE ELIMINADO
+		$data=parent::bitacora("Elimino un Testimonio", "TESTIMONIO ELIMINADO");
+		$this->BitacoraModel->agregarBitacora($data);
   }
 
   public function edit($id)

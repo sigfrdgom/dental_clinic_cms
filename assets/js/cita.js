@@ -11,7 +11,7 @@ if(location.hostname =="localhost"){
 	base_url = location.protocol+"//"+location.hostname+"/";
 }
 
-var url_api= base_url+"/api/Cita/";
+var url_api= base_url+"api/Cita/";
 var url_server= base_url+"Cita/";
 
 /////////////////////-----------------------------------------GET----------------------------------------//////////////////
@@ -36,65 +36,9 @@ function recargar(){
 					respuesta.innerHTML=texto;
 					asignarEventos();
 				})
-
-				// <td>${element.padecimientos}</td>
-				// <td>${element.celular}</td>
-				// <td>${element.email}</td>
-				// <td>${element.comentario}</td>
-
 			
 
 }
-/////////////////////----------------------------------------POST y PUT------------------------------------------//////////////////
-// document.getElementById('guardarCita').addEventListener('click', function(e){
-// 	e.preventDefault();
-// 	var nombre=document.getElementById('nombre').value
-// 	// var apellido=document.getElementById('apellido').value
-// 	var telefono=document.getElementById('telefono').value
-// 	var email=document.getElementById('email').value
-// 	var padecimientos=document.getElementById('padecimientos').value
-// 	var procedimiento=document.getElementById('procedimiento').value
-// 	var fecha=document.getElementById('fecha').value
-// 	var hora=document.getElementById('hora').value
-// 	var comentario=document.getElementById('comentario').value
-
-// 	var datas= new FormData();
-// 	datas.append("nombre", nombre)
-// 	// datas.append("apellido", apellido)
-// 	datas.append("telefono", telefono)
-// 	datas.append("email", email)
-// 	datas.append("padecimientos", padecimientos)
-// 	datas.append("procedimiento", procedimiento)
-// 	datas.append("fecha", fecha)
-// 	datas.append("hora", hora)
-// 	datas.append("comentario", comentario)
-
-// 	var controlador="agregarCita";
-// 	var metodo="POST"
-//     if (this.value=="Modificar") {
-// 		controlador="actualizarCita";
-// 		// metodo="PUT"
-// 		var id_cita=document.getElementById('id_cita').value
-// 		datas.append("id_cita", id_cita)
-			
-// 	}
-	
-
-// 	fetch(controlador, {
-//         method: metodo,
-//         body: datas
-//     }).then(data =>{
-//         //   console.log(data);
-//           if(data=="error"){
-//             respuesta.innerHTML=
-//           `ERROR`;
-//           }else{
-// 			recargar();
-// 			limpiar();	
-//           }})
-
-// });
-
 
 /////////////////////------------------------------------------------DELETE---------------------------------------------------//////////////////	
 function eliminar() {
@@ -166,19 +110,20 @@ function accion() {
 	   
 			var datas= new FormData();
 			datas.append("id_cita", datos["id_cita"])
-			fetch(url_server+'actualizarCitaEstado/', {
-				method: 'POST',
-				body: datas
-			}).then(data =>{
-				//   console.log(data);
-				  if(data=="error"){
-					respuesta.innerHTML=
-				  `ERROR`;
-				  }else{
-					recargar()
-				  }
-				})
-
+			if (datos["estado"]==1) {
+				fetch(url_api+'actualizarCitaEstado/', {
+					method: 'POST',
+					body: datas
+				}).then(data =>{
+					//   console.log(data);
+					  if(data=="error"){
+						respuesta.innerHTML=
+					  `ERROR`;
+					  }else{
+						recargar()
+					  }
+					})
+			}
         }};
     peticion.open('GET', url_api+'obtenerRegistro/'+this.value);
 	peticion.send();
@@ -188,28 +133,6 @@ function accion() {
     
 }
 
-// document.getElementById("btnReset").addEventListener("click", limpiar)
-// document.getElementById("idModal").addEventListener("click", limpiar)
-
-// function limpiar(){
-// 	document.getElementById('nombre').value="";
-// 	// document.getElementById('apellido').value="";
-// 	document.getElementById('telefono').value="";
-// 	document.getElementById('email').value="";
-// 	document.getElementById('padecimientos').value="";
-// 	document.getElementById('procedimiento').value="";
-// 	document.getElementById('fecha').value="";
-// 	document.getElementById('hora').value="";
-// 	document.getElementById('comentario').value="";
-    
-   
-// 	var btn=document.getElementById('guardarCita')
-//     btn.removeAttribute("value")
-// 	btn.setAttribute("value", "Guardar");
-// 	$('#agregarCita').modal('hide');
-// }
-
-// document.getElementById("globalBusqueda").addEventListener("keyup", buscarCriterio);
 
 document.getElementById("busqueda").addEventListener("keyup", buscarCriterio);
 
@@ -217,8 +140,8 @@ function buscarCriterio(){
 	 var busqueda=document.getElementById("busqueda").value;
 	if (busqueda!==""&&busqueda!==" ") {
 		var datas= new FormData();
-		datas.append(url_server+"busqueda", busqueda)
-		fetch('findByCriteria', {
+		datas.append("busqueda", busqueda)
+		fetch(url_api+'findByCriteria', {
         method: "POST",
         body: datas
     }).then(res => res.json()).then(datos => {

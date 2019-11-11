@@ -103,6 +103,18 @@ class CI_Controller {
 		}
 	}
 
+	public function bitacora($accion, $titulo) {
+		$data=[ "id_bitacora" => null,
+			    "accion" =>$accion,
+				"titulo" =>$titulo,
+				"usuario" => $this->session->userdata('nombre_usuario'),
+				"tipo_usuario" => $this->session->userdata('tipo_usuario'), 
+				];
+		return $data;
+	}
+
+
+
 
 	public function destroy(){
     // destroy session

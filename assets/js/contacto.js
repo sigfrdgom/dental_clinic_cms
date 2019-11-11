@@ -41,44 +41,6 @@ function recargar(){
 				// <td>${element.email}</td>
 
 }
-/////////////////////----------------------------------------POST y PUT------------------------------------------//////////////////
-// document.getElementById('guardarContacto').addEventListener('click', function(e){
-// 	e.preventDefault();
-// 	var nombre=document.getElementById('nombre').value
-// 	var telefono=document.getElementById('telefono').value
-// 	var email=document.getElementById('email').value
-// 	var comentario=document.getElementById('comentario').value
-
-// 	var datas= new FormData();
-// 	datas.append("nombre", nombre)
-// 	datas.append("telefono", telefono)
-// 	datas.append("email", email)
-// 	datas.append("comentario", comentario)
-// 	datas.append("estado", 1)
-
-// 	var controlador="agregarContacto";
-// 	var metodo="POST"
-//     if (this.value=="Modificar") {
-// 		controlador="actualizarContacto";
-// 		var id_contacto=document.getElementById('id_contacto').value
-// 		datas.append("id_contacto", id_contacto)
-			
-// 	}
-	
-
-// 	fetch(controlador, {
-//         method: metodo,
-//         body: datas
-//     }).then(data =>{
-//           if(data=="error"){
-//             respuesta.innerHTML=
-//           `ERROR`;
-//           }else{
-// 			recargar();
-// 			limpiar();	
-//           }})
-
-// });
 
 
 /////////////////////------------------------------------------------DELETE---------------------------------------------------//////////////////	
@@ -148,27 +110,29 @@ function accion() {
 			
 			var datas= new FormData();
 			datas.append("id_contacto", datos["id_contacto"])
-			fetch(url_server+'actualizarContactoEstado/', {
-				method: 'POST',
-				body: datas
-			}).then(data =>{
-				//   console.log(data);
-				  if(data=="error"){
-					respuesta.innerHTML=
-				  `ERROR`;
-				  }else{
-					recargar()
-				  }
-				})
+			
+			if (datos["estado"]==1) {
+				fetch(url_server+'actualizarContactoEstado/', {
+					method: 'POST',
+					body: datas
+				}).then(data =>{
+					//   console.log(data);
+					  if(data=="error"){
+						respuesta.innerHTML=
+					  `ERROR`;
+					  }else{
+						recargar()
+					  }
+					})
+			}
+			
 
 			
 		}};
 		
-    peticion.open('GET', 'obtenerRegistro/'+this.value);
+    peticion.open('GET', url_server+'obtenerRegistro/'+this.value);
 	peticion.send();
-	// btn= document.getElementById('guardarContacto')
-    // btn.removeAttribute("value")
-	// btn.setAttribute("value", "Modificar")
+	
     
 }
 

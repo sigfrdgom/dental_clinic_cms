@@ -6,7 +6,7 @@ if(location.hostname =="localhost"){
 }else{
 	base_url = location.protocol+"//"+location.hostname+"/";
 }
-base_url = base_url+"/"+"api/";
+base_url = base_url+"api/";
 
 // var base_url="http://admin.clidesadentistas.com/api/";
 
@@ -104,8 +104,8 @@ function recargarCita(){
                 var rechazarCita=document.getElementsByClassName('btnRechazar');
                 var contactoCita=document.getElementsByClassName('btnContactoCita');
                 for (var index = 0; index <rechazarCita.length; index++) {
+					
                     rechazarCita[index].addEventListener('click', rechazar);
-                    console.log("hola")
                     contactoCita[index].addEventListener('click', mostrarCita);
                 }
             })
