@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-11-2019 a las 15:16:33
+-- Tiempo de generación: 11-11-2019 a las 20:23:22
 -- Versión del servidor: 10.4.6-MariaDB
 -- Versión de PHP: 7.3.9
 
@@ -23,6 +23,28 @@ SET time_zone = "+00:00";
 --
 CREATE DATABASE IF NOT EXISTS `clidesa_clinica_db` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 USE `clidesa_clinica_db`;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `acercade`
+--
+
+CREATE TABLE `acercade` (
+  `id_acercade` int(11) NOT NULL,
+  `titulo` varchar(50) NOT NULL,
+  `contenido` text NOT NULL,
+  `estado` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `acercade`
+--
+
+INSERT INTO `acercade` (`id_acercade`, `titulo`, `contenido`, `estado`) VALUES
+(1, 'Acerca de Nosotros', '<p>Somos una empresa con m&aacute;s de 25 a&ntilde;os de experiencia, dedicada a la prevenci&oacute;n y cuidado de la <strong>salud integral</strong> en el &aacute;rea medico dental de la poblaci&oacute;n salvadore&ntilde;a y extranjera, principalmente los residentes de la zona occidental del pa&iacute;s.<br />\r\n<br />\r\nBrindando una cultura de atenci&oacute;n con <strong>calidez, profesionalismo, confiabilidad, comodidad, calidad y garant&iacute;a</strong> en nuestros servicios, cumpliendo con las expectativas de nuestros clientes en su salud m&eacute;dico dental. Buscando siempre como objetivo <strong>la soluci&oacute;n que m&aacute;s se adapte a tus necesidades, </strong> innov&aacute;ndonos en tecnolog&iacute;a y equipamiento m&eacute;dico.<br />\r\n<br />\r\nCumpliendo con los protocolos de bioseguridad por medio de equipo de ultrasonido, esterilizaci&oacute;n en frio y autoclave. Adem&aacute;s, contamos con nuestro personal debidamente capacitado para poder garantizar de esta forma la seguridad de nuestros clientes.<br />\r\n<br />\r\nUbicados en el coraz&oacute;n del Centro Hist&oacute;rico de la Ciudad de Santa Ana, nuestras instalaciones cumplen con est&aacute;ndares de salud avanzada, respaldada por un staff de profesionales y especialistas en el &aacute;rea Dental y Medicina. Nuestra prioridad es tu salud dental y la de tu familia.</p>\r\n', 1),
+(2, 'Misión', '<p>Somos una empresa de salud ubicada en la ciudad de Santa Ana, ofreciendo servicios m&eacute;dico dental a nuestros clientes una atenci&oacute;n humanizada con calidez, profesionalismo, confiabilidad, comodidad, calidad y garant&iacute;a en nuestros servicios para satisfacer sus necesidades, desde las soluciones m&aacute;s sencillas hasta rehabilitaciones de alta complejidad y con un alto compromiso de desarrollo, logrando as&iacute;, sonrisas saludables.<br />\r\n<br />\r\nSi necesitas un tratamiento m&eacute;dico dental, estamos para ti.</p>\r\n', 1),
+(3, 'Visión', '<p class=\"text-justify\">\r\n                            Ser la mejor opción en el cuidado de la salud medico dental para la población de la zona occidental del país, brindando la mejor atención a nuestros clientes internos y externos, nacionales y extranjeros, garantizándoles los mejores resultados en los servicios brindados  por nuestros especialistas de cada área.                                 \r\n</p>', 1);
 
 -- --------------------------------------------------------
 
@@ -188,7 +210,8 @@ INSERT INTO `publicacion` (`id_publicacion`, `id_usuario`, `id_categoria`, `id_t
 (19, 1, 1, 2, 'La cosita de la U', 'Es una cosita que fue hecha en chalchuapa', '<p>Es una cosita que fue hecha en chalchuapa</p>\r\n', 1, 'recurso_1571154014.jpg', '2019-10-15 15:40:14'),
 (20, 1, 1, 2, 'El enjuague bucal', 'Los enjuagues bucales o colutorios son soluciones que se emplean después del cepillado con el fin de eliminar gérmenes y bacterias. Existen diferentes enjuagues cuyo efecto varía en función de su composición. Así, podemos encontrar colutorios ricos en flúo', '<p>Los enjuagues bucales o colutorios son soluciones que se emplean despu&eacute;s del cepillado con el fin de eliminar g&eacute;rmenes y bacterias. Existen diferentes enjuagues cuyo efecto var&iacute;a en funci&oacute;n de su composici&oacute;n. As&iacute;, podemos encontrar colutorios ricos en fl&uacute;or, para la prevenci&oacute;n de la caries, especialmente eficaces durante la calcificaci&oacute;n del diente. Otros enjuagues est&aacute;n espec&iacute;ficamente indicados para combatir y eliminar la placa bacteriana o la halitosis.<br />\r\n<br />\r\nGeneralmente, se emplean como complemento en los tratamientos de la enfermedad periodontal, gingivitis o para reducir el desarrollo de placa bacteriana.<br />\r\n<br />\r\nNo es recomendable diluir los enjuagues en agua, ya que disminuye la eficacia del producto, y evitar la ingesta de alimentos al menos durante los 30 minutos siguientes al uso del colutorio.<br />\r\n<br />\r\nSe estima que el uso de un colutorio dos veces al d&iacute;a durante al menos 30 segundos reduce el desarrollo de placa bacteriana un 50 por ciento m&aacute;s que el cepillado.</p>\r\n', 1, 'recurso_1571158765.jpg', '2019-10-15 16:59:25'),
 (31, 1, 5, 3, 'Quality and satisfaction', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has sur', 'Testimonio', 1, 'recurso_1571249901.jpg', '2019-10-16 18:18:21'),
-(32, 1, 5, 3, 'Perfect Tooth', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has sur', 'Testimonio', 1, 'recurso_1571250007.jpg', '2019-10-16 18:20:07');
+(32, 1, 5, 3, 'Perfect Tooth', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has sur', 'Testimonio', 1, 'recurso_1571250007.jpg', '2019-10-16 18:20:07'),
+(43, 1, 6, 4, 'Playa', 'descripcion', '', 0, 'recurso_1573499287.png', '2019-11-11 15:02:22');
 
 -- --------------------------------------------------------
 
@@ -243,6 +266,12 @@ INSERT INTO `usuario` (`id_usuario`, `nombres`, `apellidos`, `nombre_usuario`, `
 --
 
 --
+-- Indices de la tabla `acercade`
+--
+ALTER TABLE `acercade`
+  ADD PRIMARY KEY (`id_acercade`);
+
+--
 -- Indices de la tabla `bitacora`
 --
 ALTER TABLE `bitacora`
@@ -292,6 +321,12 @@ ALTER TABLE `usuario`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `acercade`
+--
+ALTER TABLE `acercade`
+  MODIFY `id_acercade` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT de la tabla `bitacora`
 --
 ALTER TABLE `bitacora`
@@ -319,7 +354,7 @@ ALTER TABLE `contacto`
 -- AUTO_INCREMENT de la tabla `publicacion`
 --
 ALTER TABLE `publicacion`
-  MODIFY `id_publicacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id_publicacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo`
