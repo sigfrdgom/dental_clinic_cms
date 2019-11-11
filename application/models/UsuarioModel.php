@@ -100,6 +100,20 @@ class UsuarioModel extends CI_Model{
        }  
     }
 
+      //CONSULTA PARA OBTENER UN REGISTRO DE USUARIO
+      public function obtenerUsuario($id = ""){
+        try {
+           $this->db->select('nombres, nombre_usuario, tipo_usuario');
+           $this->db->from('usuario');
+           $this->db->where('id_usuario', $id);
+           $consulta = $this->db->get();
+        //    $resultado = $consulta->row();
+           return $consulta;
+       } catch (mysqli_sql_exception $e) {
+           return 0;
+       }  
+   }
+
 
 }
 

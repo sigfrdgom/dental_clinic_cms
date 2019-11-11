@@ -9,9 +9,9 @@ class Usuario extends CI_Controller {
     {
         //HACER USO DE LO METODO CONSTRUCTORE DEL PADRE 
         parent::__construct();
-        //METODO CARGADO EN EL MODELO
-        $this->load->model('UsuarioModel');
-	
+		//METODO CARGADO EN EL MODELO
+		$this->load->model(array('UsuarioModel', 'BitacoraModel'));
+        
         
     }
 
@@ -115,6 +115,13 @@ class Usuario extends CI_Controller {
 			   		'tipo_usuario' => $usuario->tipo_usuario,
 					'logueado' => TRUE);					   
 					$this->session->set_userdata($usuario_data);
+		
+        			$data=["id_bitacora" => null,
+			  				"accion" =>"Inicio de sesion",
+							"titulo" => $usuario->nombres,
+							"usuario" => $usuario->id_usuario];
+					
+					$this->BitacoraModel->agregarBitacora($data);
 					redirect('InicioControl/index2');
 				}else{
 					redirect('');
@@ -126,7 +133,6 @@ class Usuario extends CI_Controller {
 			}
 		}else {
 			$this->load->view('login/login');
-			// $this->load->view('templates/footer');
 		}
 	}
 
