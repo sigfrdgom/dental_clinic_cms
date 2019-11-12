@@ -24,6 +24,13 @@ class HomePage extends CI_Controller
     $this->load->view('templates/footer');
   }
 
+  public function showVideo()
+  {
+    $this->load->view('templates/header');
+    $this->load->view('homePage/showVideo');
+    $this->load->view('templates/footer');
+  }
+
   public function create()
   {
     $this->load->view('templates/header');
@@ -37,6 +44,13 @@ class HomePage extends CI_Controller
     $datos = ['image' => $this->PublicacionModel->get_images_carousel_by_id($id)];
     $this->load->view('templates/header');
     $this->load->view('homePage/edit', $datos);
+    $this->load->view('templates/footer');
+  }
+
+  public function editVideo()
+  {
+    $this->load->view('templates/header');
+    $this->load->view('homePage/editVideo');
     $this->load->view('templates/footer');
   }
 

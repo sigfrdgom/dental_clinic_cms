@@ -5,7 +5,7 @@
         <input type="file" id="input-file-to-destroy" class="dropify" name="recurso1"
         data-default-file="<?= !empty($image->recurso_av_1) ? base_url('uploads/inicio/').$image->recurso_av_1 : '' ?>" 
         data-allowed-file-extensions="bmp gif jpeg jpg jpe png tiff tif" 
-        data-max-file-size="2M" data-height="500" 
+        data-max-file-size="5M" data-height="500" 
         data-max-height="8000" 
         data-max-width="8000" />
         <br />

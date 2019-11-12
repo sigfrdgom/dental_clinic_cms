@@ -37,7 +37,7 @@
                     <p class="card-text">Esta opción permite cambiar el video que se encuentra en la sección de incio de página de inicio.</p>
 
                     <div class="row p-2">
-                        <a href="" class="btn btn-primary btn-block">Ver Video</a>
+                        <a href="<?= base_url('homePage/showVideo')?>" class="btn btn-primary btn-block">Ver Video</a>
                     </div>
 
                 </div>
