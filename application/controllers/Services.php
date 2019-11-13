@@ -107,7 +107,7 @@ class Services extends CI_Controller
           //MESSAGE
           $message = array(
             'title' => 'Modificación',
-            'message' => 'Registro Modifico con éxito'
+            'message' => 'Registro Modificado con éxito'
           );
           $this->session->set_flashdata($message);
         }

@@ -17,24 +17,11 @@
     <label for="introduccion">Historia</label>
     <textarea class="form-control" name="texto_introduccion" id="" rows="5" maxlength="256" required><?= isset($testimonial->texto_introduccion) ? $testimonial->texto_introduccion : '' ?></textarea>
 </div>
-<div class="row m-3 mx-auto">
-    <div>
-        <img src="<?php if(isset($testimonial->recurso_av_1) ){
-            if(strlen($testimonial->recurso_av_1)>0){
-                echo base_url()."uploads/".$testimonial->recurso_av_1 ;
-            }else{
-                echo base_url().'assets/images/default/upload-img.png';
-            }
-        }else{
-            echo base_url().'assets/images/default/upload-img.png';
-        }
-         ?>" class="img-upload" alt="upload image" width="150" height="180">
-    </div>
-    <div class="m-3">
-        <div class="form-group">
-            <label for="recurso1">Imagen de presentación</label>
-            <input type="file" class="form-control file-upload" name="recurso1" accept=".jpg, .jpeg, .png, .gif, .bmp" aria-describedby="helpId" placeholder="">
-        </div>
+<div class="row ">
+    <div class="form-group col-5 mx-auto">
+        <label for="recurso1" >Seleccionar imagen</label>
+        <input type="file" id="input-file-to-destroy" class="dropify" name="recurso1" accept=".bmp, .gif, .jpeg, .jpg, .jpe, .png, .tiff, .tif" data-default-file="<?= !empty($testimonial->recurso_av_1) ? base_url('uploads/') . $testimonial->recurso_av_1 : '' ?>" data-allowed-file-extensions="bmp gif jpeg jpg jpe png tiff tif" data-max-file-size="5M" data-height="450" data-max-height="8000" data-max-width="8000" />
+        <br />
     </div>
 </div>
 
