@@ -3,12 +3,13 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Blog extends CI_Controller
 {
-    
+
   public function __construct()
   {
     parent::__construct();
-		$this->load->model(array('PublicacionModel', 'CategoriaModel', 'BitacoraModel'));
-		parent::logueado();
+    $this->load->model(array('PublicacionModel', 'CategoriaModel', 'BitacoraModel'));
+    $this->load->library('session');
+    parent::logueado();
   }
 
   public function index()
@@ -60,25 +61,25 @@ class Blog extends CI_Controller
     }
   }
 
-    public function guardarDatos($id = "")
+  public function guardarDatos($id = "")
   {
     $id = trim($id);
     $old_posts = array();
-    if(!empty($id) && !empty($this->PublicacionModel->findById($id))){
-      $old_posts = (array)$this->PublicacionModel->findById($id);
-    }else{
+    if (!empty($id) && !empty($this->PublicacionModel->findById($id))) {
+      $old_posts = (array) $this->PublicacionModel->findById($id);
+    } else {
       $old_posts = array(
         'recurso_av_1' => "",
       );
     }
 
     $data_files = array();
-      if (isset($_FILES['recurso1']['name'])) {
-        if ($_FILES['recurso1']['size'] > 0) {
-          $data_files =  $this->savePictures('recurso1');
-        }
+    if (isset($_FILES['recurso1']['name'])) {
+      if ($_FILES['recurso1']['size'] > 0) {
+        $data_files =  $this->savePictures('recurso1');
       }
- 
+    }
+
     $datos = [
       'id_publicacion' => trim($id) ? trim($id) : '',
       'id_usuario' => $this->session->userdata('id_usuario'),
@@ -92,42 +93,53 @@ class Blog extends CI_Controller
     ];
 
     try {
-      if(!empty($id)){
+      if (!empty($id)) {
         $rutas = array();
         $found_img = false;
-          if($datos['recurso_av_1'] != $old_posts['recurso_av_1']){
-            $rutas = array_merge($rutas, (array)$old_posts['recurso_av_1']);
-            $found_img = true;
-          }
-        if($found_img == true){
+        if ($datos['recurso_av_1'] != $old_posts['recurso_av_1']) {
+          $rutas = array_merge($rutas, (array) $old_posts['recurso_av_1']);
+          $found_img = true;
+        }
+        if ($found_img == true) {
           $rutas = array_values($rutas);
           $this->deleteImage($rutas);
         }
-				$this->PublicacionModel->update($datos);
-				
-				//BITACORA DE MODIFICO
-				$data=parent::bitacora("Modifico una Publicacion", $_POST['titulo']);
-				$this->BitacoraModel->agregarBitacora($data);
-
-      }else{
-				$this->PublicacionModel->create($datos);
-				
-				//BITACORA DE CREADO
-				$data=parent::bitacora("Creo una Nueva Publicacion", $_POST['titulo']);
-				$this->BitacoraModel->agregarBitacora($data);
+        if ($this->PublicacionModel->update($datos)) {
+          //MESSAGE
+          $message = array(
+            'title' => 'Modificación',
+            'message' => 'Registro Modifico con éxito');
+          $this->session->set_flashdata($message);
+        }
+        //BITACORA DE MODIFICO
+        $data = parent::bitacora("Modifico una Publicacion", $_POST['titulo']);
+        $this->BitacoraModel->agregarBitacora($data);
+      } else {
+        if ($this->PublicacionModel->create($datos)) {
+          //MESSAGE
+          $message = array(
+            'title' => 'Creación',
+            'message' => 'Registro Agregado con éxito');
+          $this->session->set_flashdata($message);
+        }
+        //BITACORA DE CREADO
+        $data = parent::bitacora("Creo una Nueva Publicacion", $_POST['titulo']);
+        $this->BitacoraModel->agregarBitacora($data);
       }
-      // $message = array('message' => 'Registro Agregado con éxito');
-      // $this->session->set_flashdata($message);
+
       redirect('blog');
     } catch (Exception $e) {
-      // $message = array('error' => 'Error no se puedo agregar el registro ');
-      // $this->session->set_flashdata($message);
+      $message = array(
+        'title' => 'error',
+        'error' => 'Error no se puedo agregar el registro ');
+      $this->session->set_flashdata($message);
       redirect('blog');
     }
   }
 
 
-  private function deleteImage($data){
+  private function deleteImage($data)
+  {
     $message = array();
     for ($i = 0; $i < sizeof($data); $i++) {
       if (isset($data[$i])) {
@@ -136,13 +148,13 @@ class Blog extends CI_Controller
           if (file_exists($path) == true) {
             if (!is_dir($path)) {
               if (unlink($path)) {
-                $message= array('message' => 'deleted successfully');
+                $message = array('message' => 'deleted successfully');
               }
             }
           }
         } catch (Exception $e) {
-          $message= array('error' => 'deleted successfully'); 
-         }
+          $message = array('error' => 'deleted successfully');
+        }
       }
     }
     return $message;
@@ -158,11 +170,16 @@ class Blog extends CI_Controller
     $data = array_values($data);
     $message = $this->deleteImage($data);
     // Delete the data from the database
-		$this->PublicacionModel->delete($id);
-		
-		//BITACORA DE ELIMINADO
-		$data=parent::bitacora("Elimino una Publicacion", "PUBLICACION ELIMINADO");
-		$this->BitacoraModel->agregarBitacora($data);
+    if($this->PublicacionModel->delete($id)){
+      //MESSAGE
+      $message = array(
+        'title' => 'Eliminación',
+        'message' => 'Se eliminó correctamente el registro');
+      $this->session->set_flashdata($message);
+    }
+    //BITACORA DE ELIMINADO
+    $data = parent::bitacora("Elimino una Publicacion", "PUBLICACION ELIMINADO");
+    $this->BitacoraModel->agregarBitacora($data);
   }
 
   public function edit($id)
@@ -175,6 +192,4 @@ class Blog extends CI_Controller
     $this->load->view('blog/edit', $datos);
     $this->load->view('templates/footer');
   }
-
-
 }

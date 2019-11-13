@@ -18,8 +18,10 @@
     <link href="<?= base_url('assets/css/style.css') ?>" rel="stylesheet">
     <link href="<?= base_url('assets/css/pages/dashboard1.css') ?>" rel="stylesheet">
     <link href="<?= base_url('assets/css/clidesa.css') ?>" rel="stylesheet">
+    <!-- Dropify Image--->
     <link rel="stylesheet" href="<?= base_url('assets/plugins/dropify/css/dropify.min.css') ?>">
-
+    <!-- Toast CSS -->
+    <link rel="stylesheet" href="<?= base_url('assets/plugins/jquery.toast/css/jquery.toast.min.css') ?>">
     <!-- End of CSS styleshets -->
 
     <!-- Extra BAD CSS -->

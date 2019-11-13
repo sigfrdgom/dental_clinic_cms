@@ -22,6 +22,52 @@
 
     <div class="row">
         <div class="card card-body" style="background: #fefefe">
+        
+
+            <div id="div-message">
+                <?php if (!empty($this->session->flashdata('message'))) { ?>
+                    <script>
+                        window.addEventListener('load', listener);
+
+                        function listener() {
+                            $.toast({
+                                heading: `<?= $this->session->flashdata('title') ?>`,
+                                text: `<?= $this->session->flashdata('message') ?>`,
+                                showHideTransition: 'fade',
+                                allowToastClose: true,
+                                icon: 'success',
+                                hideAfter: 3000,
+                                stack: 6,
+                                position: 'top-right',
+                                loaderBg: '#ff6849',
+                                bgColor: '#46e1b6',
+                                textColor: '#ffffff', 
+                            });
+                        }
+                    </script>
+                <?php } else if (!empty($this->session->flashdata('error'))) { ?>
+                    <script>
+                        window.addEventListener('load', listener);
+
+                        function listener() {
+                            $.toast({
+                                heading: `<?= $this->session->flashdata('title') ?>`,
+                                text: `<?= $this->session->flashdata('error') ?>`,
+                                showHideTransition: 'fade',
+                                allowToastClose: true,
+                                icon: 'error',
+                                hideAfter: 3000,
+                                stack: 6,
+                                position: 'top-right',
+                                loaderBg: '#ff6849',
+                                bgColor: '#ef5350',
+                                textColor: '#ffffff',
+                            });
+                        }
+                    </script>
+                <?php }
+                ?>
+            </div>
 
             <!-- Start of search box of table -->
             <div class="mb-2">
@@ -36,7 +82,7 @@
             </div>
             <!-- End of search box of table -->
 
-			<div id="paginador"></div>
+            <div id="paginador"></div>
             <div id="cards-content">
 
             </div>
@@ -44,7 +90,7 @@
         </div>
     </div>
 
-</div>  
+</div>
 <!-- Import services javascript    -->
 <script src="<?= base_url('assets/js/blog.js') ?>"></script>
 <script src="<?= base_url('assets/js/paginadorDiv.js') ?>"></script>
