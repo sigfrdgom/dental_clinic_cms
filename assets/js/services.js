@@ -2,26 +2,23 @@ window.addEventListener('load', listener);
 var url_base = window.location.href;
 
 function listener() {
-	document.getElementById('busqueda').addEventListener('keyup', recargar_tbody);
-	recargar_tbody();
+	document.getElementById('busqueda').addEventListener('keyup', refresh);
+	refresh();
 }
 
-function recargar_tbody(){
+function refresh(){
 	const busqueda = document.getElementById('busqueda').value;
 	fetch(url_base+'/tbody/'+busqueda)
     .then(res => {return res.text()})
     .then(response => {
-        document.getElementById('tbody-content').innerHTML = response;
+        document.getElementById('cards-content').innerHTML = response;
         let btnDelete = document.getElementsByClassName('btn-delete');
         for(i=0; i<btnDelete.length; i++){
             btnDelete[i].addEventListener('click', deleteService);
 		}
-
-		
-
 		var p = new Paginador(
 			document.getElementById('paginador'),
-			document.getElementById('ajaxTabla'),
+			document.getElementsByClassName('card'),
 			5); p.Mostrar(); 
     });
 }
@@ -47,10 +44,25 @@ function deleteService() {
 						'!El servicio ha sido eliminada!',
 						'success'
 					  );
-					  recargar_tbody();
-					  
+					  refresh();
+					  showMessage();
 				})
 		}
 	})
+}
 
+function showMessage(){
+	$.toast({
+		heading: `Eliminación`,
+		text: `Registro eliminado con éxito`,
+		showHideTransition: 'fade',
+		allowToastClose: true,
+		icon: 'success',
+		hideAfter: 3000,
+		stack: 6,
+		position: 'top-right',
+		loaderBg: '#ff6849',
+		bgColor: '#46e1b6',
+		textColor: '#ffffff', 
+	});
 }

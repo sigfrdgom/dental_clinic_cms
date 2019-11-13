@@ -21,7 +21,7 @@ class Services extends CI_Controller
   public function tbody($keyword = "")
   {
     $datos = ['services' => $this->PublicacionModel->search_services($keyword)];
-    $this->load->view('services/tbody', $datos);
+    $this->load->view('services/cards', $datos);
   }
 
   public function create()
@@ -103,14 +103,26 @@ class Services extends CI_Controller
           $rutas = array_values($rutas);
           $this->deleteImage($rutas);
         }
-				$this->PublicacionModel->update($datos);
+				if ($this->PublicacionModel->update($datos)) {
+          //MESSAGE
+          $message = array(
+            'title' => 'Modificación',
+            'message' => 'Registro Modifico con éxito');
+          $this->session->set_flashdata($message);
+        }
 				
 				//BITACORA DE MODIFICO
 				$data=parent::bitacora("Modifico un Servicio", $_POST['titulo']);
 				$this->BitacoraModel->agregarBitacora($data);
 				
       }else{
-				$this->PublicacionModel->create($datos);
+				if ($this->PublicacionModel->create($datos)) {
+          //MESSAGE
+          $message = array(
+            'title' => 'Creación',
+            'message' => 'Registro Agregado con éxito');
+          $this->session->set_flashdata($message);
+        }
 				
 				//BITACORA DE CREADO
 				$data=parent::bitacora("Creo un Nuevo Servicio", $_POST['titulo']);
@@ -170,8 +182,13 @@ class Services extends CI_Controller
     $data = array_values($data);
     $message = $this->deleteImage($data);
     // Delete the data from the database
-		$this->PublicacionModel->delete($id);
-
+		if($this->PublicacionModel->delete($id)){
+      //MESSAGE
+      $message = array(
+        'title' => 'Eliminación',
+        'message' => 'Se eliminó correctamente el registro');
+      $this->session->set_flashdata($message);
+    }
 		//BITACORA DE ELIMINADO
 		$data=parent::bitacora("Elimino un Servicio", "SERVICIO ELIMINADO");
 		$this->BitacoraModel->agregarBitacora($data);

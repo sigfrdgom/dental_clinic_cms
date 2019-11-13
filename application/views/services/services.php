@@ -19,11 +19,51 @@
     </div>
 
     <div class="row">
-        <?php if (isset($upload_data)) { ?>
-            <div class="alert alert-primary" role="alert">
-                <strong><?php var_dump($upload_data) ?></strong>
+        
+    <div id="div-message">
+                <?php if (!empty($this->session->flashdata('message'))) { ?>
+                    <script>
+                        window.addEventListener('load', listener);
+
+                        function listener() {
+                            $.toast({
+                                heading: `<?= $this->session->flashdata('title') ?>`,
+                                text: `<?= $this->session->flashdata('message') ?>`,
+                                showHideTransition: 'fade',
+                                allowToastClose: true,
+                                icon: 'success',
+                                hideAfter: 3000,
+                                stack: 6,
+                                position: 'top-right',
+                                loaderBg: '#ff6849',
+                                bgColor: '#46e1b6',
+                                textColor: '#ffffff', 
+                            });
+                        }
+                    </script>
+                <?php } else if (!empty($this->session->flashdata('error'))) { ?>
+                    <script>
+                        window.addEventListener('load', listener);
+
+                        function listener() {
+                            $.toast({
+                                heading: `<?= $this->session->flashdata('title') ?>`,
+                                text: `<?= $this->session->flashdata('error') ?>`,
+                                showHideTransition: 'fade',
+                                allowToastClose: true,
+                                icon: 'error',
+                                hideAfter: 3000,
+                                stack: 6,
+                                position: 'top-right',
+                                loaderBg: '#ff6849',
+                                bgColor: '#ef5350',
+                                textColor: '#ffffff',
+                            });
+                        }
+                    </script>
+                <?php }
+                ?>
             </div>
-        <?php } ?>
 
         <div class="card card-body" style="background: #fefefe">
 
@@ -40,26 +80,11 @@
             </div>
             <!-- End of search box of table -->
 
-			<div id="paginador"></div>
-            <table class="table table-sm table-bordered table-borderless table-hover display" id="ajaxTabla">
-                <thead class="text-white bg-clidesa-celeste text-center">
-                    <tr>
-                        <th>Imagen</th>
-                        <th>Titulo</th>
-                        <th>Introduccion</th>
-                        <!-- <th>Contenido</th> -->
-                        <th>Estado</th>
-                        <!-- <th>Recurso 2</th>
-                        <th>Recuros 3</th>
-                        <th>Recurso 4</th> -->
-                        <th>Fecha</th>
-                        <th colspan="2">Acciones</th>
-                    </tr>
-                </thead>
-                <tbody id="tbody-content">
+            <div id="paginador"></div>
+            <div id="cards-content">
 
-                </tbody>
-            </table>
+            </div>
+            
         </div>
     </div>
 </div>
@@ -67,6 +92,5 @@
 </div>
 
 <!-- Import services javascript    -->
-
 <script src="<?= base_url('assets/js/services.js') ?>"></script>
-<script src="<?= base_url('assets/js/paginator.js') ?>"></script>
+<script src="<?= base_url('assets/js/paginadorDiv.js') ?>"></script>

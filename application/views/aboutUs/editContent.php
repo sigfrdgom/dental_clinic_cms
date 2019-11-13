@@ -1,5 +1,5 @@
 <!-- CKEditor -->
-<script src="<?= base_url('assets/js/ckeditor/ckeditor.js') ?>"></script>
+<script src="<?= base_url('assets/plugins/ckeditor/ckeditor.js') ?>"></script>
 
 <div class="container-fluid">
     <div class="row page-titles pt-2 pb-0" style="background: white">

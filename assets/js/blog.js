@@ -4,8 +4,6 @@ var url_base = window.location.href;
 function listener() {
 	document.getElementById('busqueda').addEventListener('keyup',refresh_posts);
 	refresh_posts();
-	
-
 }
 
 function refresh_posts(){

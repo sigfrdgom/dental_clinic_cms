@@ -8,7 +8,6 @@ class Blog extends CI_Controller
   {
     parent::__construct();
     $this->load->model(array('PublicacionModel', 'CategoriaModel', 'BitacoraModel'));
-    $this->load->library('session');
     parent::logueado();
   }
 
@@ -131,7 +130,7 @@ class Blog extends CI_Controller
     } catch (Exception $e) {
       $message = array(
         'title' => 'error',
-        'error' => 'Error no se puedo agregar el registro ');
+        'error' => $e );
       $this->session->set_flashdata($message);
       redirect('blog');
     }

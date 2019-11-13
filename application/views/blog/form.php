@@ -1,5 +1,5 @@
 <!-- CKEditor -->
-<script src="<?= base_url('assets/js/ckeditor/ckeditor.js')?>"></script>
+<script src="<?= base_url('assets/plugins/ckeditor/ckeditor.js')?>"></script>
 
 <h2 class="text-center"><?= isset($blog->titulo) ? 'EDITAR UNA PUBLICACIÓN' : 'AGREGAR UNA PUBLICACIÓN'  ?> </h2>
 

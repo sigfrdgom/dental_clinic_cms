@@ -1,5 +1,5 @@
 <!-- CKEditor -->
-<script src="<?= base_url('assets/js/ckeditor/ckeditor.js') ?>"></script>
+<script src="<?= base_url('assets/plugins/ckeditor/ckeditor.js') ?>"></script>
 
 <div class="col-11 mx-auto p-2">
     <h2 class="text-center">Contenido</h2>
