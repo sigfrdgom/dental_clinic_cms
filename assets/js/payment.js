@@ -98,8 +98,24 @@ function deleteImage() {
 						'success'
 					);
 					refresh_cards();
+					showMessage();
 				})
 		}
 	})
+}
 
+function showMessage(){
+	$.toast({
+		heading: `Eliminación`,
+		text: `Registro eliminado correctamente`,
+		showHideTransition: 'fade',
+		allowToastClose: true,
+		icon: 'success',
+		hideAfter: 3000,
+		stack: 6,
+		position: 'top-right',
+		loaderBg: '#ff6849',
+		bgColor: '#46e1b6',
+		textColor: '#ffffff', 
+	});
 }

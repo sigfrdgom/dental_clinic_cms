@@ -54,7 +54,7 @@ function deleteService() {
 function showMessage(){
 	$.toast({
 		heading: `Eliminación`,
-		text: `Registro eliminado con éxito`,
+		text: `Registro eliminado correctamente`,
 		showHideTransition: 'fade',
 		allowToastClose: true,
 		icon: 'success',
