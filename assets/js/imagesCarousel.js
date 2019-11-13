@@ -24,7 +24,7 @@ function refresh_cards() {
 				response.forEach(element => {
 					content += `
 				<div class="col-lg-3 col-md-6">
-					<div class="card">
+					<div class="card" style="height: 96%">
 						<img class="card-img-top img-responsive" src="${element.recurso_av_1 ? base_url+'uploads/inicio/'+element.recurso_av_1 : base_url+'assets/images/default/no-image-available-icon.jpg'}" class="card-img-top" alt="...">
 						<div class="card-body">
 							<h5 class="card-title">${element.titulo}</h5>

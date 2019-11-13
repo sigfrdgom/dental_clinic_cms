@@ -15,6 +15,9 @@
     </div>
 
     <div class="row">
+
+    <?php $this->load->view('components/toastMessages'); ?>
+
         <div class="col-11 p-2 card mx-auto">
             <div class="row col-12 p-3 mx-auto">
                 <div class="row col-12 p-4">

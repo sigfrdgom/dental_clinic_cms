@@ -97,17 +97,30 @@ class HomePage extends CI_Controller
           $rutas = array_values($rutas);
           $this->deleteImage($rutas);
         }
-        $this->PublicacionModel->update($datos);
+        if ($this->PublicacionModel->update($datos)) {
+          //MESSAGE
+          $message = array(
+            'title' => 'Modificación',
+            'message' => 'Registro Modifico con éxito'
+          );
+          $this->session->set_flashdata($message);
+        }
       } else {
-        $this->PublicacionModel->create($datos);
+        if ($this->PublicacionModel->create($datos)) {
+          //MESSAGE
+          $message = array(
+            'title' => 'Creación',
+            'message' => 'Registro Agregado con éxito'
+          );
+          $this->session->set_flashdata($message);
+        }
       }
-      // $message = array('message' => 'Registro Agregado con éxito');
-      // $this->session->set_flashdata($message);
       redirect('homePage/showImages');
     } catch (Exception $e) {
-
-      // $message = array('error' => 'Error no se puedo agregar el registro ');
-      // $this->session->set_flashdata($message);
+      $message = array(
+        'title' => 'error',
+        'error' => $e );
+      $this->session->set_flashdata($message);
       redirect('homePage/showImages');
     }
   }
@@ -177,7 +190,14 @@ class HomePage extends CI_Controller
     $data = array_values($data);
     $message = $this->deleteImage($data);
     // Delete the data from the database
-    $this->PublicacionModel->delete($id);
+    if ($this->PublicacionModel->delete($id)) {
+      //MESSAGE
+      $message = array(
+        'title' => 'Eliminación',
+        'message' => 'Se eliminó correctamente el registro'
+      );
+      $this->session->set_flashdata($message);
+    }
   }
 
 }

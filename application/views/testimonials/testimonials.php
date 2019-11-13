@@ -21,6 +21,9 @@
     </div>
 
     <div class="row">
+
+    <?php $this->load->view('components/toastMessages'); ?>
+
         <div class="card card-body" style="background: #fefefe">
 
             <!-- Start of search box of table -->

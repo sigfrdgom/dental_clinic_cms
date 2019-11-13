@@ -23,7 +23,7 @@ function refresh_cards() {
 				response.forEach(element => {
 					content += `
 				<div class="col-lg-3 col-md-6">
-					<div class="card">
+					<div class="card" style="height: 96%">
                         
                         <div class="card-body">
 							<h5 class="card-title">${element.titulo}</h5>

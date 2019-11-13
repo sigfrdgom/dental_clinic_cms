@@ -55,25 +55,50 @@ class Payment extends CI_Controller
 
         try {
             if (!empty($id)) {
-                $this->PublicacionModel->update($datos);
+                if ($this->PublicacionModel->update($datos)) {
+                    //MESSAGE
+                    $message = array(
+                      'title' => 'Modificación',
+                      'message' => 'Registro Modifico con éxito'
+                    );
+                    $this->session->set_flashdata($message);
+                  }
                 //BITACORA DE MODIFICO
                 $data = parent::bitacora("Modifico una Método de Pago", $_POST['titulo']);
                 $this->BitacoraModel->agregarBitacora($data);
             } else {
-                $this->PublicacionModel->create($datos);
+                if ($this->PublicacionModel->create($datos)) {
+                    //MESSAGE
+                    $message = array(
+                      'title' => 'Creación',
+                      'message' => 'Registro Agregado con éxito'
+                    );
+                    $this->session->set_flashdata($message);
+                  }
                 //BITACORA DE CREADO
                 $data = parent::bitacora("Creo una Nuevo Método de Pago", $_POST['titulo']);
                 $this->BitacoraModel->agregarBitacora($data);
             }
             redirect('payment');
         } catch (Exception $e) {
+            $message = array(
+                'title' => 'error',
+                'error' => $e );
+              $this->session->set_flashdata($message);
             redirect('payment');
         }
     }
 
     public function delete($id)
     {
-        $this->PublicacionModel->delete($id);
+        if ($this->PublicacionModel->delete($id)) {
+            //MESSAGE
+            $message = array(
+              'title' => 'Eliminación',
+              'message' => 'Se eliminó correctamente el registro'
+            );
+            $this->session->set_flashdata($message);
+          }
         //BITACORA DE ELIMINADO
         $data = parent::bitacora("Elimino una Publicacion", "PUBLICACION ELIMINADO");
         $this->BitacoraModel->agregarBitacora($data);

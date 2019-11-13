@@ -36,7 +36,14 @@ class AboutUs extends CI_Controller
       'estado' => isset($_POST['estado']) ? $_POST['estado'] : true,
     ];
 
-    $this->AcercadeModel->update($datos);
+    if ($this->AcercadeModel->update($datos)) {
+      //MESSAGE
+      $message = array(
+        'title' => 'Modificación',
+        'message' => 'Registro Modifico con éxito'
+      );
+      $this->session->set_flashdata($message);
+    }
     redirect('aboutUs');
   }
 }

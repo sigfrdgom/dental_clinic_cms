@@ -17,6 +17,8 @@
         </div>
     </div>
 
+    <?php $this->load->view('components/toastMessages'); ?>
+
     <div class="row" id="image-content">
 
     </div>
