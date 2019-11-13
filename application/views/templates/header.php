@@ -161,7 +161,8 @@
                                 <ul aria-expanded="false" class="collapse">
                                     <li> <a href="<?= base_url('HomePage') ?>" aria-expanded="false"><i class="fas fa-images text-white" style="font-size: 1.5em;  "></i><span class="hide-menu"></span>Inicio</a></li>
                                     <li> <a href="<?= base_url('AboutUs') ?>" aria-expanded="false"><i class="fas fa-comment-alt text-white" style="font-size: 1.5em;"></i><span class="hide-menu"></span>Acerca de</a></li>
-                                    <li> <a href="<?= base_url('services') ?>" aria-expanded="false"><i class="	fa fa-briefcase text-white" style="font-size: 1.5em;  "></i><span class="hide-menu"></span>Servicios</a></li>
+                                    <li> <a href="<?= base_url('payment') ?>" aria-expanded="false"><i class="fas fa-money-check-alt text-white" style="font-size: 1.5em;  "></i><span class="hide-menu"></span>Métodos de Pago</a></li>
+                                    <li> <a href="<?= base_url('services') ?>" aria-expanded="false"><i class="fa fa-briefcase text-white" style="font-size: 1.5em;  "></i><span class="hide-menu"></span>Servicios</a></li>
                                     <li> <a href="<?= base_url('blog') ?>" aria-expanded="false"><i class="fas fa-blog text-white" style="font-size: 1.5em;"></i><span class="hide-menu"></span>Blog</a></li>
                                     <li> <a href="<?= base_url('testimonials') ?>" aria-expanded="false"><i class="fas fa-handshake text-white" style="font-size: 1.5em;"></i><span class="hide-menu"></span>Testimonios</a></li>
                                 </ul>

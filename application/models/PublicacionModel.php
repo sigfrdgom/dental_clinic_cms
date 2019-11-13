@@ -349,4 +349,31 @@ class PublicacionModel extends CI_Model
         $this->db->order_by('fecha_ingreso', 'DESC');
         return $this->db->get('publicacion')->result();
     }
+
+    /**-------------------------------------- PAYMENT METHODS ---------------------------------- */
+
+    public function get_all_payments()
+    {
+        $this->db->where('id_tipo', 6);
+        // $this->db->where('id_categoria', 7);
+        return $this->db->get('publicacion')->result();
+    }
+
+    public function get_payment_by_id($id = "")
+    {
+        $id = trim($id);
+        $this->db->where('id_publicacion', $id);
+        $this->db->where('id_tipo', 6);
+        // $this->db->where('id_categoria', 7);
+        return $this->db->get('publicacion')->row();
+    }
+
+    public function get_payments_api()
+    {
+        $this->db->where('id_tipo', 6);
+        // $this->db->where('id_categoria', 7);
+        $this->db->where('estado', '1');
+        return $this->db->get('publicacion')->result();
+    }
+
 }

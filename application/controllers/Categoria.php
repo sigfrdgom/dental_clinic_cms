@@ -32,7 +32,6 @@ class Categoria extends CI_Controller {
     }
 
 
-
     //METODO QUE AGREGA DATOS CATEGORIA
     public function agregarCategoria(){
 		$nombre=$this->input->post("nombre", TRUE);
