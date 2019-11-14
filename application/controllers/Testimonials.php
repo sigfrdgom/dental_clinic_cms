@@ -163,7 +163,9 @@ class Testimonials extends CI_Controller
   public function deleteTestimonials($id)
   {
     // Convert stdclass to array
-    $data = json_decode(json_encode($this->PublicacionModel->findById($id)), true);
+		$data = json_decode(json_encode($this->PublicacionModel->findById($id)), true);
+		
+		$datos=$this->PublicacionModel->findById($id);
     // get the last 3 register of the array
     $data = array_splice($data, -5, 4, true);
     // delete the keys of the array
@@ -180,7 +182,7 @@ class Testimonials extends CI_Controller
     }
 		
 		//BITACORA DE ELIMINADO
-		$data=parent::bitacora("Elimino un Testimonio", "TESTIMONIO ELIMINADO");
+		$data=parent::bitacora("Elimino un Testimonio", $datos->titulo);
 		$this->BitacoraModel->agregarBitacora($data);
   }
 

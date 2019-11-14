@@ -162,7 +162,9 @@ class Blog extends CI_Controller
   public function deletePosts($id)
   {
     // Convert stdclass to array
-    $data = json_decode(json_encode($this->PublicacionModel->findById($id)), true);
+		$data = json_decode(json_encode($this->PublicacionModel->findById($id)), true);
+		
+		$datos=$this->PublicacionModel->findById($id);
     // get the last 3 register of the array
     $data = array_splice($data, -5, 4, true);
     // delete the keys of the array
@@ -176,8 +178,9 @@ class Blog extends CI_Controller
         'message' => 'Se eliminó correctamente el registro');
       $this->session->set_flashdata($message);
     }
-    //BITACORA DE ELIMINADO
-    $data = parent::bitacora("Elimino una Publicacion", "PUBLICACION ELIMINADO");
+		//BITACORA DE ELIMINADO
+		
+    $data = parent::bitacora("Elimino una Publicacion", $datos->titulo);
     $this->BitacoraModel->agregarBitacora($data);
   }
 

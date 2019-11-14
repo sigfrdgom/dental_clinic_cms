@@ -178,7 +178,8 @@ class Services extends CI_Controller
   {
     // Covert stdclass to array
     $data = json_decode(json_encode($this->PublicacionModel->findById($id)), true);
-    // get the last 3 register of the array
+		$datos=$this->PublicacionModel->findById($id);
+		// get the last 3 register of the array
     $data = array_splice($data, -5, 4, true);
     // delete the keys of the array
     $data = array_values($data);
@@ -193,7 +194,7 @@ class Services extends CI_Controller
       $this->session->set_flashdata($message);
     }
     //BITACORA DE ELIMINADO
-    $data = parent::bitacora("Elimino un Servicio", "SERVICIO ELIMINADO");
+    $data = parent::bitacora("Elimino un Servicio", $datos->titulo);
     $this->BitacoraModel->agregarBitacora($data);
   }
 

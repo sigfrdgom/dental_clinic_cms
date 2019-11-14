@@ -14,22 +14,36 @@ if(location.hostname =="localhost"){
 var url_api= base_url+"api/Categoria/";
 var url_server= base_url+"Categoria/";
 
+var url_server2= base_url+"Tipo/";
+
 /////////////////////-----------------------------------------GET----------------------------------------//////////////////
+
+
+
+
+
 function recargar(){
     fetch(url_server+'cargarCategoria')
             .then(res => res.json())
             .then(datos => {
 				var texto="";
-				datos.forEach(element => {
-				//     var estado;
-				// 	if (element.estado==1) {
-				// 		estado="Activo";
-				// 	}else{
-				// 		estado="Desactivado";
-				// 	}
+				var datoFecth=datos
+				
+				fetch(url_server2+'cargarDatosTipo')
+            	.then(res => res.json())
+            	.then(data => {
+					
+					var tipo = new Array();
+					data.forEach(element => {
+					tipo[element.id_tipo] = element.nombre;
+					})
+
+
+				datoFecth.forEach(element => {
 				 texto+=`
 				<tr class="p-0 border-bottom border-info" id="tr${element.id_categoria}">
-    				<td>${element.nombre}</td>
+					<td>${tipo[element.id_tipo]}</td>
+					<td>${element.nombre}</td>
 					<td>${element.descripcion}</td>
 					<td>${(element.estado == 0)?'Inactivo':'Activo'}</td>
             		<td class="px-0 py-2">
@@ -42,14 +56,20 @@ function recargar(){
 						</td>
     			</tr>`
 				});
-					// document.getElementById('oculto').style.display = 'none';
+					
 					respuesta.innerHTML=texto;
 					asignarEventos();
 
 					var p = new Paginador(
 						document.getElementById('paginador'),
 						document.getElementById('ajaxTabla'),
-						5); p.Mostrar(); 
+						5); p.Mostrar();
+						
+						
+					})
+
+
+
 				})
 					
 			
@@ -60,11 +80,9 @@ document.getElementById('guardarCategoria').addEventListener('click', function(e
 	e.preventDefault();
 
 	if (validarCampo()) {
-		console.log("entro al if")
+		
 	}else{
-		console.log("entro al elfe")
-
-
+		
     	var nombre=document.getElementById('nombre').value
 		var descripcion=document.getElementById('descripcion').value
 
@@ -72,7 +90,8 @@ document.getElementById('guardarCategoria').addEventListener('click', function(e
 		datas.append("nombre", nombre)
 		datas.append("descripcion", descripcion)
 		document.getElementById("nuevo").innerText="Agregar una nueva categoria"
-
+		var id_tipo = document.getElementById("tipo").value;
+		datas.append("id_tipo", id_tipo)
 		var controlador="agregarCategoria";
 		var metodo="POST"
     	if (this.value=="Modificar") {
@@ -175,6 +194,7 @@ function accion() {
 			document.getElementById("id_categoria").value=datos["id_categoria"];
 			document.getElementById('nombre').value=datos["nombre"];
 			document.getElementById('descripcion').value=datos["descripcion"];
+			document.getElementById('tipo').value=datos["id_tipo"]
 			
 			document.getElementById("nuevo").innerText="Modificando una categoria de la tabla"
 			// if (datos["estado"]==1) {
@@ -196,7 +216,8 @@ document.getElementById("btnReset").addEventListener("click", limpiar)
 document.getElementById("idModal").addEventListener("click", limpiar)
 
 function limpiar(){
-    $('#agregarCategoria').modal('hide');
+	$('#agregarCategoria').modal('hide');
+	document.getElementById('tipo').value=1;
 	document.getElementById('nombre').value="";
 	document.getElementById('descripcion').value="";
 	document.getElementById('mensaje').innerHTML="";
@@ -222,20 +243,25 @@ document.getElementById("busqueda").addEventListener("keyup", function(){
         method: "POST",
         body: datas
     }).then(res => res.json()).then(datos => {
-				// console.log(datos)
+				
 				var texto="";
-				datos.forEach(element => {
-					var estado;
-					if (element.estado==1) {
-						estado="Activo";
-					}else{
-						estado="Desactivado";
-					}
-				 texto+=`
-				<tr class="p-0 border-bottom border-info" id="tr${element.id_categoria}">
-    				<td>${element.nombre}</td>
+				var datoFecth=datos
+				fetch(url_server2+'cargarDatosTipo')
+            	.then(res => res.json())
+            	.then(data => {
+					
+					var tipo = new Array();
+					data.forEach(element => {
+					tipo[element.id_tipo] = element.nombre;					
+					})
+					datoFecth.forEach(element => {
+					
+					texto+=`
+					<tr class="p-0 border-bottom border-info" id="tr${element.id_categoria}">
+					<td>${tipo[element.id_tipo]}</td>
+					<td>${element.nombre}</td>
 					<td>${element.descripcion}</td>
-					<td>${estado}</td>
+					<td>${(element.estado == 0)?'Inactivo':'Activo'}</td>
             		<td class="px-0 py-2">
 						<button class="btnEditar text-center btn btn-warning btn-rounded"  value="${element.id_categoria}" data-toggle="modal" data-target="#agregarCategoria">GESTIONAR</button>
 						
@@ -246,7 +272,8 @@ document.getElementById("busqueda").addEventListener("keyup", function(){
 						</td>
     			</tr>`
 				});
-					if (datos.length>0) {
+				
+					if (datoFecth.length>0) {
 						respuesta.innerHTML=texto;
 						asignarEventos();
 						var p = new Paginador(
@@ -260,7 +287,7 @@ document.getElementById("busqueda").addEventListener("keyup", function(){
 					
 			})
 		
-
+});
 
 
 	}else{

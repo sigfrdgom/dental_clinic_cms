@@ -10,7 +10,7 @@ class Tipo extends CI_Controller {
         //HACER USO DE LO METODO CONSTRUCTORE DEL PADRE 
         parent::__construct();
         //METODO CARGADO EN EL MODELO
-		$this->load->model('TipoModel');
+		$this->load->model(array('UsuarioModel', 'BitacoraModel','TipoModel'));
 		parent::logueado();
 
 
@@ -38,7 +38,13 @@ class Tipo extends CI_Controller {
     public function agregarTipo(){
 		$nombre=$this->input->post("nombre", TRUE);
         $data=["id_tipo" => null, "nombre" => $nombre, "estado" => 1];
-        $this->TipoModel->agregarTipo($data);
+		$this->TipoModel->agregarTipo($data);
+
+		
+		$data=parent::bitacora("Agrego un nuevo Tipo", "Tipo ".$nombre);	
+		$this->BitacoraModel->agregarBitacora($data);
+
+		
     }
 
 
@@ -50,13 +56,21 @@ class Tipo extends CI_Controller {
 
     public function eliminarTipo($id){
         parent::logueado(); 
-        $this->TipoModel->actualizarTipoEstado($id);
+		$this->TipoModel->actualizarTipoEstado($id);
+		
+		$datos=$this->TipoModel->obtenerRegistro($id);
+		$data=parent::bitacora("Desactivo un Tipo", "Tipo ".$datos->nombre);	
+		$this->BitacoraModel->agregarBitacora($data);
 	}
 	
 
 	public function activarTipo($id){
         parent::logueado(); 
-        $this->TipoModel->actualizarTipoActivar($id);
+		$this->TipoModel->actualizarTipoActivar($id);
+
+		$datos=$this->TipoModel->obtenerRegistro($id);
+		$data=parent::bitacora("Activo un Tipo", "Tipo ".$datos->nombre);	
+		$this->BitacoraModel->agregarBitacora($data);
     }
 
     //METODO CON EL QUE OBTENDRIA EL REGISTRO TIPO
@@ -71,7 +85,11 @@ class Tipo extends CI_Controller {
 		$id_tipo=$this->input->post("id_tipo", TRUE);
 		$nombre=$this->input->post("nombre", TRUE);
         $data=["id_tipo" => $id_tipo, "nombre" => $nombre];
-    	$this->TipoModel->actualizarTipo($data);
+		$this->TipoModel->actualizarTipo($data);
+		
+	
+		$data=parent::bitacora("Actualizo un Tipo", "Tipo ".$nombre);	
+		$this->BitacoraModel->agregarBitacora($data);
         
 	}
 	

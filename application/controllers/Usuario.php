@@ -46,7 +46,7 @@ class Usuario extends CI_Controller {
 		$this->UsuarioModel->agregarUsuario($data);
 
 		//BITACORA DE CREADO
-		$data=parent::bitacora("Agrego un Usuario", "Usuario Nuevo Creado");	
+		$data=parent::bitacora("Agrego un Usuario", "Usuario ".$nombres);	
 		$this->BitacoraModel->agregarBitacora($data);
     }
 
@@ -57,7 +57,8 @@ class Usuario extends CI_Controller {
 		$this->UsuarioModel->eliminarUsuario($id);
 		
 		//BITACORA DE BORRADO
-		$data=parent::bitacora("Borro un Usuario", "Usuario Eliminado");	
+		$datos=$this->UsuarioModel->obtenerRegistro($id);
+		$data=parent::bitacora("Borro un Usuario", "Usuario ".$datos->nombres);	
 		$this->BitacoraModel->agregarBitacora($data);
 		
 		if ($this->session->userdata('id_usuario')==$id && $id !=1) {
@@ -88,7 +89,8 @@ class Usuario extends CI_Controller {
 		$this->UsuarioModel-> actualizarUsuario($data);
 
 		//BITACORA DE ACTUALIZACION
-		$data=parent::bitacora("Modifico un Usuario", "Usuario Modificado");	
+		
+		$data=parent::bitacora("Modifico un Usuario", "Usuario ".$nombres);	
 		$this->BitacoraModel->agregarBitacora($data);
 	}
 

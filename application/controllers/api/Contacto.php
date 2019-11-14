@@ -54,8 +54,8 @@ class Contacto extends REST_Controller
 			$this->ContactoModel->eliminarContacto($id);
 
 			//BITACORA DE ELIMINADO
-			
-			$data=parent::bitacora("Elimino un Contacto", "Contacto Eliminado");	
+			$dato=$this->ContactoModel->obtenerRegistro($id);
+			$data=parent::bitacora("Elimino un Contacto", "Contacto Eliminado de ".$dato->nombre);	
 			$this->BitacoraModel->agregarBitacora($data);
     }
 
@@ -83,7 +83,8 @@ class Contacto extends REST_Controller
 			$this->ContactoModel->actualizarContactoEstado($this->input->post("id_contacto", TRUE));
 			
 			//BITACORA DE EDITADO
-			$data=parent::bitacora("Visualizo un Contacto", "Contacto Leido");	
+			$dato=$this->ContactoModel->obtenerRegistro($this->input->post("id_contacto", TRUE));
+			$data=parent::bitacora("Visualizo un Contacto", "Contacto Leido de ".$dato->nombre);	
 			$this->BitacoraModel->agregarBitacora($data);
     }
 

@@ -8,14 +8,15 @@ class Categoria extends CI_Controller {
         //HACER USO DE LO METODO CONSTRUCTORE DEL PADRE 
         parent::__construct();
         //METODO CARGADO EN EL MODELO
-		$this->load->model(array('CategoriaModel', 'BitacoraModel'));
+		$this->load->model(array('CategoriaModel', 'BitacoraModel', 'TipoModel'));
 		parent::logueado();
     }
 
     public function index()
 	{
+		$datos = ['tipos' => $this->TipoModel->getAll()];
 		$this->load->view('templates/header');
-		$this->load->view('panelControl/usuario/categoria');
+		$this->load->view('panelControl/usuario/categoria', $datos);
 		$this->load->view('templates/footer');
 	}
     
@@ -36,7 +37,8 @@ class Categoria extends CI_Controller {
     public function agregarCategoria(){
 		$nombre=$this->input->post("nombre", TRUE);
 		$descripcion=$this->input->post("descripcion", TRUE);
-        $data=["id_categoria" => null, "nombre" => $nombre, "descripcion" => $descripcion, "estado" => 1];
+		$id_tipo=$this->input->post("id_tipo", TRUE);
+        $data=["id_categoria" => null, "nombre" => $nombre, "descripcion" => $descripcion, "estado" => 1,  "id_tipo" => $id_tipo];
     
 		$this->CategoriaModel->agregarCategoria($data);
 
@@ -50,7 +52,9 @@ class Categoria extends CI_Controller {
         // $this->CategoriaModel->eliminarCategoria($id);
 		$this->CategoriaModel->actualizarCategoriaEstado($id);
 
-		$data=parent::bitacora("Desactivo una Categoria", "Categoria Desactivada");	
+
+		$datos=$this->CategoriaModel->obtenerRegistro($id);
+		$data=parent::bitacora("Desactivo una Categoria", "Categoria ".$datos->nombre);	
 		$this->BitacoraModel->agregarBitacora($data);
 
         
@@ -59,7 +63,8 @@ class Categoria extends CI_Controller {
 	public function activarCategoria($id){
 		$this->CategoriaModel->actualizarCategoriaActivo($id);
 
-		$data=parent::bitacora("Activo una Categoria", "Categoria Activada");	
+		$datos=$this->CategoriaModel->obtenerRegistro($id);
+		$data=parent::bitacora("Activo una Categoria", "Categoria ".$datos->nombre);	
 		$this->BitacoraModel->agregarBitacora($data);        
     }
 
@@ -69,10 +74,11 @@ class Categoria extends CI_Controller {
 		$id_categoria=$this->input->post("id_categoria", TRUE);
 		$nombre=$this->input->post("nombre", TRUE);
 		$descripcion=$this->input->post("descripcion", TRUE);
-		$data=["id_categoria" => $id_categoria, "nombre" => $nombre, "descripcion" => $descripcion];
+		$id_tipo=$this->input->post("id_tipo", TRUE);
+		$data=["id_categoria" => $id_categoria, "nombre" => $nombre, "descripcion" => $descripcion, "id_tipo" => $id_tipo];
 		$this->CategoriaModel->actualizarCategoria($data);
 		
-		$data=parent::bitacora("Modifico una Categoria", "Categoria Modificada");	
+		$data=parent::bitacora("Modifico una Categoria", "Categoria ".$nombre);	
 		$this->BitacoraModel->agregarBitacora($data);
 	}
 	

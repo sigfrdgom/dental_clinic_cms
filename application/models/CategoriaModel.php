@@ -38,7 +38,7 @@ class CategoriaModel extends CI_Model{
     //CONSULTA PARA OBTENER UN REGISTRO DE CATEGORIA
     public function obtenerRegistro($id = ""){
          try {
-            $this->db->select('id_categoria, nombre, descripcion, estado');
+            $this->db->select('id_categoria, nombre, descripcion, estado, id_tipo');
             $this->db->from('categoria');
             $this->db->where('id_categoria', $id);
             $consulta = $this->db->get();
@@ -78,7 +78,7 @@ class CategoriaModel extends CI_Model{
             if(!empty($datos)){
                 $datos = urldecode($datos);
             }
-        	$this->db->select('id_categoria, nombre, descripcion, estado');
+        	$this->db->select('id_categoria, nombre, descripcion, estado, id_tipo');
 			$this->db->like('nombre', $datos);
 			$this->db->or_like('descripcion', $datos);
 			return $this->db->get('categoria')->result();

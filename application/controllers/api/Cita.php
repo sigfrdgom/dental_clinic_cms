@@ -60,7 +60,8 @@ class Cita extends REST_Controller {
 		$this->CitaModel->eliminarCita($id);
 
 		//BITACORA DE ELIMINADO
-		$data=parent::bitacora("Elimino una Cita", "Cita Eliminada");	
+		$dato=$this->CitaModel->obtenerRegistro($id);
+		$data=parent::bitacora("Elimino una Cita", "Cita Eliminada de ".$dato->nombre);	
 		$this->BitacoraModel->agregarBitacora($data);
 		
 
@@ -94,7 +95,9 @@ class Cita extends REST_Controller {
 		$this->CitaModel->actualizarCitaEstado($this->input->post("id_cita", TRUE));
 		
 		//BITACORA DE EDITADO
-		$data=parent::bitacora("Visualizo una Cita", "Cita Leida");	
+		$dato=$this->CitaModel->obtenerRegistro($this->input->post("id_cita", TRUE));
+		$data=parent::bitacora("Visualizo una Cita", "Cita Leida de ".$dato->nombre);	
+		
 		$this->BitacoraModel->agregarBitacora($data);
     }
 
