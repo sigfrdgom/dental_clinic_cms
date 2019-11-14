@@ -13,7 +13,7 @@
 
         <div class="form-group">
             <label for="titulo">Título</label>
-            <input type="text" class="form-control" value="<?= isset($image->titulo) ? $image->titulo : '' ?>" name="titulo" id="" aria-describedby="helpId" maxlength="100" placeholder="Título de la Imágen" required>
+            <input type="text" class="form-control" value="<?= isset($image->titulo) ? $image->titulo : '' ?>" name="titulo" id="" aria-describedby="helpId" maxlength="100" placeholder="Título de la Imágen" >
         </div>
 
         <?php if (isset($image->estado)) { ?>
