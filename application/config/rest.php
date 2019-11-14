@@ -1,6 +1,6 @@
 <?php
 
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 /*
 |--------------------------------------------------------------------------
@@ -44,14 +44,14 @@ $config['rest_default_format'] = 'json';
 |
 */
 $config['rest_supported_formats'] = [
-    'json',
-    'array',
-    'csv',
-    'html',
-    'jsonp',
-    'php',
-    'serialized',
-    'xml',
+  'json',
+  'array',
+  'csv',
+  'html',
+  'jsonp',
+  'php',
+  'serialized',
+  'xml',
 ];
 
 /*
@@ -603,5 +603,8 @@ $config['allow_any_cors_domain'] = TRUE;
 | e.g. $config['allowed_origins'] = ['http://www.example.com', 'https://spa.example.com']
 |
 */
-$config['allowed_cors_origins'] = ['http://admin.clidesadentistas.com', 'http://clidesadentistas.com'];
+$config['allowed_cors_origins'] = [
+  'http://admin.clidesadentistas.com', 'http://clidesadentistas.com',
+  'https://admin.clidesadentistas.com', 'https://clidesadentistas.com'
+];
 // $config['allowed_cors_origins'] = [];
