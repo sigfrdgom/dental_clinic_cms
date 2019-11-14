@@ -23,18 +23,18 @@
                 <div class="row col-12 p-4">
                     <h3 for="contenido"><?= $acercade[0]->titulo ?></h3>
                     <?= !empty($acercade[0]->contenido) ? $acercade[0]->contenido : '' ?>
-                    <a href="<?= base_url('aboutUs/editContent/').$acercade[0]->id_acercade ?>" class="btn btn-primary">Cambiar</a>
+                    <a href="<?= base_url('aboutUs/editContent/').$acercade[0]->id_estatico ?>" class="btn btn-primary">Cambiar</a>
                 </div>
                 <div class="row col-12 p-1 mx-auto">
                     <div class="col col-6" name="mision" id="mision">
                         <h3 for="contenido"><?= $acercade[1]->titulo ?></h3>
                         <?= !empty($acercade[1]->contenido) ? $acercade[1]->contenido : '' ?>
-                        <a href="<?= base_url('aboutUs/editContent/').$acercade[1]->id_acercade ?>"  class="btn btn-primary">Cambiar</a>
+                        <a href="<?= base_url('aboutUs/editContent/').$acercade[1]->id_estatico ?>"  class="btn btn-primary">Cambiar</a>
                     </div>
                     <div class="col col-6" name="vision" id="vision">
                         <h3 for="contenido"><?= $acercade[2]->titulo ?></h3>
                         <?= !empty($acercade[2]->contenido) ? $acercade[2]->contenido : '' ?>
-                        <a href="<?= base_url('aboutUs/editContent/').$acercade[2]->id_acercade ?>" class="btn btn-primary">Cambiar</a>
+                        <a href="<?= base_url('aboutUs/editContent/').$acercade[2]->id_estatico ?>" class="btn btn-primary">Cambiar</a>
                     </div>
                 </div>
             </div>

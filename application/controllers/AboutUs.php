@@ -7,12 +7,12 @@ class AboutUs extends CI_Controller
   public function __construct()
   {
     parent::__construct();
-    $this->load->model(array('AcercadeModel'));
+    $this->load->model(array('ContenidoEstaticoModel'));
   }
 
   public function index()
   {
-    $datos = ['acercade' => $this->AcercadeModel->findAll()];
+    $datos = ['acercade' => $this->ContenidoEstaticoModel->findAll()];
     $this->load->view('templates/header');
     $this->load->view('aboutUs/aboutUs', $datos);
     $this->load->view('templates/footer');
@@ -21,7 +21,7 @@ class AboutUs extends CI_Controller
   public function editContent($id = "")
   {
     $id = trim($id);
-    $datos = ['acercade' => $this->AcercadeModel->findById($id)];
+    $datos = ['acercade' => $this->ContenidoEstaticoModel->findById($id)];
     $this->load->view('templates/header');
     $this->load->view('aboutUs/editContent', $datos);
     $this->load->view('templates/footer');
@@ -30,13 +30,13 @@ class AboutUs extends CI_Controller
   public function guardarDatos($id = "")
   {
     $datos = [
-      'id_acercade' => trim($id) ? trim($id) : '',
+      'id_estatico' => trim($id) ? trim($id) : '',
       'titulo' => $_POST['titulo'],
       'contenido' => $_POST['contenido'],
       'estado' => isset($_POST['estado']) ? $_POST['estado'] : true,
     ];
 
-    if ($this->AcercadeModel->update($datos)) {
+    if ($this->ContenidoEstaticoModel->update($datos)) {
       //MESSAGE
       $message = array(
         'title' => 'Modificación',
@@ -46,4 +46,6 @@ class AboutUs extends CI_Controller
     }
     redirect('aboutUs');
   }
+
+
 }

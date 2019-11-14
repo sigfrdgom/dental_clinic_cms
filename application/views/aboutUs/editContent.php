@@ -18,7 +18,7 @@
     </div>
 
     <div class="row card col-11 mx-auto p-2">
-        <form action="<?= base_url('aboutUs/guardarDatos/' . $acercade->id_acercade) ?>" method="post" enctype="multipart/form-data">
+        <form action="<?= base_url('aboutUs/guardarDatos/' . $acercade->id_estatico) ?>" method="post" enctype="multipart/form-data">
             <div class="col-11 mx-auto p-2">
                 <h2 class="text-center">Modificar Contenido</h2>
                 <div class="form-group mt-2">

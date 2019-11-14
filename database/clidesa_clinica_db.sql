@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-11-2019 a las 16:47:21
+-- Tiempo de generación: 14-11-2019 a las 19:29:20
 -- Versión del servidor: 10.4.6-MariaDB
 -- Versión de PHP: 7.3.9
 
@@ -23,28 +23,6 @@ SET time_zone = "+00:00";
 --
 CREATE DATABASE IF NOT EXISTS `clidesa_clinica_db` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 USE `clidesa_clinica_db`;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `acercade`
---
-
-CREATE TABLE `acercade` (
-  `id_acercade` int(11) NOT NULL,
-  `titulo` varchar(50) NOT NULL,
-  `contenido` text NOT NULL,
-  `estado` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `acercade`
---
-
-INSERT INTO `acercade` (`id_acercade`, `titulo`, `contenido`, `estado`) VALUES
-(1, 'Acerca de Nosotros', '<p>Somos una empresa con m&aacute;s de 25 a&ntilde;os de experiencia, dedicada a la prevenci&oacute;n y cuidado de la <strong>salud integral</strong> en el &aacute;rea medico dental de la poblaci&oacute;n salvadore&ntilde;a y extranjera, principalmente los residentes de la zona occidental del pa&iacute;s.<br />\r\n<br />\r\nBrindando una cultura de atenci&oacute;n con <strong>calidez, profesionalismo, confiabilidad, comodidad, calidad y garant&iacute;a</strong> en nuestros servicios, cumpliendo con las expectativas de nuestros clientes en su salud m&eacute;dico dental. Buscando siempre como objetivo <strong>la soluci&oacute;n que m&aacute;s se adapte a tus necesidades, </strong> innov&aacute;ndonos en tecnolog&iacute;a y equipamiento m&eacute;dico.<br />\r\n<br />\r\nCumpliendo con los protocolos de bioseguridad por medio de equipo de ultrasonido, esterilizaci&oacute;n en frio y autoclave. Adem&aacute;s, contamos con nuestro personal debidamente capacitado para poder garantizar de esta forma la seguridad de nuestros clientes.<br />\r\n<br />\r\nUbicados en el coraz&oacute;n del Centro Hist&oacute;rico de la Ciudad de Santa Ana, nuestras instalaciones cumplen con est&aacute;ndares de salud avanzada, respaldada por un staff de profesionales y especialistas en el &aacute;rea Dental y Medicina. Nuestra prioridad es tu salud dental y la de tu familia.</p>\r\n', 1),
-(2, 'Misión', '<p>Somos una empresa de salud ubicada en la ciudad de Santa Ana, ofreciendo servicios m&eacute;dico dental a nuestros clientes una atenci&oacute;n humanizada con calidez, profesionalismo, confiabilidad, comodidad, calidad y garant&iacute;a en nuestros servicios para satisfacer sus necesidades, desde las soluciones m&aacute;s sencillas hasta rehabilitaciones de alta complejidad y con un alto compromiso de desarrollo, logrando as&iacute;, sonrisas saludables.<br />\r\n<br />\r\nSi necesitas un tratamiento m&eacute;dico dental, estamos para ti.</p>\r\n', 1),
-(3, 'Visión', '<p class=\"text-justify\">\r\n                            Ser la mejor opción en el cuidado de la salud medico dental para la población de la zona occidental del país, brindando la mejor atención a nuestros clientes internos y externos, nacionales y extranjeros, garantizándoles los mejores resultados en los servicios brindados  por nuestros especialistas de cada área.                                 \r\n</p>', 1);
 
 -- --------------------------------------------------------
 
@@ -126,7 +104,11 @@ INSERT INTO `bitacora` (`id_bitacora`, `usuario`, `accion`, `fecha`, `titulo`, `
 (58, 'clidesa.admin', 'Modifico una Método de Pago', '2019-11-14 09:41:07', '', 'ADMIN'),
 (59, 'clidesa.admin', 'Modifico una Método de Pago', '2019-11-14 09:41:12', '', 'ADMIN'),
 (60, 'clidesa.admin', 'Modifico una Método de Pago', '2019-11-14 09:41:46', '', 'ADMIN'),
-(61, 'clidesa.admin', 'Modifico una Método de Pago', '2019-11-14 09:45:12', '', 'ADMIN');
+(61, 'clidesa.admin', 'Modifico una Método de Pago', '2019-11-14 09:45:12', '', 'ADMIN'),
+(62, 'clidesa.admin', 'Modifico una Método de Pago', '2019-11-14 10:40:11', 'PAGO CON TARJETA DE CREDITO O DEBITO', 'ADMIN'),
+(63, 'clidesa.admin', 'Modifico una Método de Pago', '2019-11-14 10:40:36', 'PAGO CON TARJETA DE CREDITO O DEBITO', 'ADMIN'),
+(64, 'clidesa.admin', 'Modifico una Método de Pago', '2019-11-14 10:41:12', 'TASA 0 CON DIFERENTES TARJETAS DE CRÉDITO NACIONAL', 'ADMIN'),
+(65, 'clidesa.admin', 'Modifico una Método de Pago', '2019-11-14 10:44:17', 'TASA 0 CON DIFERENTES TARJETAS DE CRÉDITO NACIONAL', 'ADMIN');
 
 -- --------------------------------------------------------
 
@@ -202,6 +184,29 @@ CREATE TABLE `contacto` (
   `fecha` timestamp NOT NULL DEFAULT current_timestamp(),
   `estado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `estatico`
+--
+
+CREATE TABLE `estatico` (
+  `id_estatico` int(11) NOT NULL,
+  `titulo` varchar(50) CHARACTER SET latin1 NOT NULL,
+  `contenido` text CHARACTER SET latin1 NOT NULL,
+  `estado` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `estatico`
+--
+
+INSERT INTO `estatico` (`id_estatico`, `titulo`, `contenido`, `estado`) VALUES
+(1, 'Acerca de Nosotros', '<p>Somos una empresa con m&aacute;s de 25 a&ntilde;os de experiencia, dedicada a la prevenci&oacute;n y cuidado de la <strong>salud integral</strong> en el &aacute;rea medico dental de la poblaci&oacute;n salvadore&ntilde;a y extranjera, principalmente los residentes de la zona occidental del pa&iacute;s.<br />\r\n<br />\r\nBrindando una cultura de atenci&oacute;n con <strong>calidez, profesionalismo, confiabilidad, comodidad, calidad y garant&iacute;a</strong> en nuestros servicios, cumpliendo con las expectativas de nuestros clientes en su salud m&eacute;dico dental. Buscando siempre como objetivo <strong>la soluci&oacute;n que m&aacute;s se adapte a tus necesidades, </strong> innov&aacute;ndonos en tecnolog&iacute;a y equipamiento m&eacute;dico.<br />\r\n<br />\r\nCumpliendo con los protocolos de bioseguridad por medio de equipo de ultrasonido, esterilizaci&oacute;n en frio y autoclave. Adem&aacute;s, contamos con nuestro personal debidamente capacitado para poder garantizar de esta forma la seguridad de nuestros clientes.<br />\r\n<br />\r\nUbicados en el coraz&oacute;n del Centro Hist&oacute;rico de la Ciudad de Santa Ana, nuestras instalaciones cumplen con est&aacute;ndares de salud avanzada, respaldada por un staff de profesionales y especialistas en el &aacute;rea Dental y Medicina. Nuestra prioridad es tu salud dental y la de tu familia.</p>\r\n', 1),
+(2, 'Misión', '<p>Somos una empresa de salud ubicada en la ciudad de Santa Ana, ofreciendo servicios m&eacute;dico dental a nuestros clientes una atenci&oacute;n humanizada con calidez, profesionalismo, confiabilidad, comodidad, calidad y garant&iacute;a en nuestros servicios para satisfacer sus necesidades, desde las soluciones m&aacute;s sencillas hasta rehabilitaciones de alta complejidad y con un alto compromiso de desarrollo, logrando as&iacute;, sonrisas saludables.<br />\r\n<br />\r\nSi necesitas un tratamiento m&eacute;dico dental, estamos para ti.</p>\r\n', 1),
+(3, 'Visión', '<p>Ser la mejor opci&oacute;n en el cuidado de la salud medico dental para la poblaci&oacute;n de la zona occidental del pa&iacute;s, brindando la mejor atenci&oacute;n a nuestros clientes internos y externos, nacionales y extranjeros, garantiz&aacute;ndoles los mejores resultados en los servicios brindados por nuestros especialistas de cada &aacute;rea.</p>\r\n', 1),
+(4, 'Video', 'https://www.youtube.com/embed/qAN3uMZkIW0', 1);
 
 -- --------------------------------------------------------
 
@@ -338,6 +343,12 @@ ALTER TABLE `contacto`
   ADD PRIMARY KEY (`id_contacto`);
 
 --
+-- Indices de la tabla `estatico`
+--
+ALTER TABLE `estatico`
+  ADD PRIMARY KEY (`id_estatico`);
+
+--
 -- Indices de la tabla `publicacion`
 --
 ALTER TABLE `publicacion`
@@ -366,7 +377,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `bitacora`
 --
 ALTER TABLE `bitacora`
-  MODIFY `id_bitacora` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `id_bitacora` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT de la tabla `categoria`
@@ -385,6 +396,12 @@ ALTER TABLE `cita`
 --
 ALTER TABLE `contacto`
   MODIFY `id_contacto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT de la tabla `estatico`
+--
+ALTER TABLE `estatico`
+  MODIFY `id_estatico` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `publicacion`

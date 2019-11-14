@@ -6,7 +6,7 @@ class HomePage extends CI_Controller
   public function __construct()
   {
     parent::__construct();
-    $this->load->model(array('PublicacionModel', 'CategoriaModel'));
+    $this->load->model(array('PublicacionModel', 'CategoriaModel','ContenidoEstaticoModel'));
     parent::logueado();
   }
 
@@ -26,8 +26,9 @@ class HomePage extends CI_Controller
 
   public function showVideo()
   {
+    $datos = ['video' => $this->ContenidoEstaticoModel->findById(4)];
     $this->load->view('templates/header');
-    $this->load->view('homePage/showVideo');
+    $this->load->view('homePage/showVideo', $datos);
     $this->load->view('templates/footer');
   }
 
@@ -200,4 +201,22 @@ class HomePage extends CI_Controller
     }
   }
 
+  public function guardarVideo($id){
+    $id = trim($id);
+    $datos = [
+      'id_estatico' => trim($id) ? trim($id) : '',
+      'titulo' => $_POST['titulo'] ? $_POST['titulo'] : "",
+      'contenido' => $_POST['URL-video'] ? $_POST['URL-video'] : "",
+      'estado' => isset($_POST['estado']) ? $_POST['estado'] : true,
+    ];
+    if ($this->ContenidoEstaticoModel->update($datos)) {
+      //MESSAGE
+      $message = array(
+        'title' => 'Modificación',
+        'message' => 'Registro Modificado con éxito'
+      );
+      $this->session->set_flashdata($message);
+    }
+    redirect('homePage/showVideo');
+  }
 }
