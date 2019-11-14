@@ -8,17 +8,17 @@
         <input type="text" class="form-control" value="<?= isset($payment->titulo) ? $payment->titulo : '' ?>" name="titulo" id="" maxlength="50" placeholder="">
     </div>
     <div class="form-group mt-2">
-    <label for="categoria">Categoria</label>
-    <select name="categoria" id="" class="form-control" required>
-        <?php foreach($categories as $category){ 
-            if(isset($payment->id_categoria)){ ?>
-                <option value="<?= $category->id_categoria ?>"  <?= ($category->id_categoria == $payment->id_categoria)  ? 'selected' : '' ?>  ><?= $category->nombre ?></option>
-            <?php } else{ ?>
-                <option value="<?= $category->id_categoria ?>" ><?= $category->nombre ?></option>
-                <?php }?>
-        <?php } ?>
-    </select>
-</div>
+        <label for="categoria">Categoria</label>
+        <select name="categoria" id="" class="form-control" required>
+            <?php foreach ($categories as $category) {
+                if (isset($payment->id_categoria)) { ?>
+                    <option value="<?= $category->id_categoria ?>" <?= ($category->id_categoria == $payment->id_categoria)  ? 'selected' : '' ?>><?= $category->nombre ?></option>
+                <?php } else { ?>
+                    <option value="<?= $category->id_categoria ?>"><?= $category->nombre ?></option>
+                <?php } ?>
+            <?php } ?>
+        </select>
+    </div>
     <?php if (isset($payment->estado)) { ?>
         <div class="form-group mt-2">
             <label for="estado">Estado</label>

@@ -17,11 +17,10 @@ function refresh_cards() {
 	fetch(base_url + "api/payment/payment")
 		.then(res => { return res.json() })
 		.then(response => {
-			content = "";
+			payMethods = "";
 			if(response.length > 0){
-                cont=1;
 				response.forEach(element => {
-					content += `
+					payMethods += `
 				<div class="col-lg-3 col-md-6">
 					<div class="card" style="height: 96%">
                         
@@ -30,15 +29,15 @@ function refresh_cards() {
 							<p class="card-text">${element.contenido}</p>
 							<div class="col-12 mx-auto text-center">`;
 					if (element.estado == 1) {
-						content += `
+						payMethods += `
 								<i class="fa fa-eye" style="font-size: 3em; color: #00aeef;"></i>
 								`;
 					} else {
-						content += `
+						payMethods += `
 								<i class="fa fa-eye-slash" style="font-size: 3em; color: gray;"></i>
 								`;
 					}
-					content += `
+					payMethods += `
 						</div>
 						</div>
 						
@@ -52,17 +51,16 @@ function refresh_cards() {
 					</div>
 				</div>
                 `;
-                cont += 1;
 				});
 			}else{
-				content = `
+				payMethods = `
 				<div class="col-12 card p-2">
 					<h2 class="text-center">No existen registros</h2>
 				</div>
 				`;
 			}
 
-			document.getElementById('image-content').innerHTML = content;
+			document.getElementById('image-content').innerHTML = payMethods;
 
 		}).then(() => {
 			asignEvents();
