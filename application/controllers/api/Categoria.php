@@ -20,7 +20,7 @@ class Categoria extends REST_Controller
     //METODO QUE LLAMA LOS DATOS DE LA BASE DE DATOS Y REDICCIONA
     public function index_get()
     {
-        $this->response($this->CategoriaModel->getAll_not_testimonial(), 200);
+        $this->response($this->CategoriaModel->get_blog_categories(), 200);
     }
 
     //METODO CON EL QUE OBTENDRIA EL REGISTRO CATEGORIA

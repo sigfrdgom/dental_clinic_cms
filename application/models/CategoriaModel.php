@@ -13,6 +13,42 @@ class CategoriaModel extends CI_Model{
         return $this->db->get('categoria')->result();
     }
 
+    public function get_services_categories(){  
+        $this->db->where('id_tipo', 1);
+        $this->db->where('estado', 1);
+        return $this->db->get('categoria')->result();
+    }
+
+    public function get_blog_categories(){  
+        $this->db->where('id_tipo', 2);
+        $this->db->where('estado', 1);
+        return $this->db->get('categoria')->result();
+    }
+
+    public function get_testimonials_categories(){  
+        $this->db->where('id_tipo', 3);
+        $this->db->where('estado', 1);
+        return $this->db->get('categoria')->result();
+    }
+
+    public function get_homepage_categories(){  
+        $this->db->where('id_tipo', 4);
+        $this->db->where('estado', 1);
+        return $this->db->get('categoria')->result();
+    }
+
+    public function get_aboutus_categories(){  
+        $this->db->where('id_tipo', 5);
+        $this->db->where('estado', 1);
+        return $this->db->get('categoria')->result();
+    }
+
+    public function get_payment_categories(){  
+        $this->db->where('id_tipo', 6);
+        $this->db->where('estado', 1);
+        return $this->db->get('categoria')->result();
+    }
+
     //CONSULTA PARA AGREGAR UN REGISTRO A LA TABLA CATEGORIA
     public function agregarCategoria($data){     
         try {

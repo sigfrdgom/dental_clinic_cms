@@ -20,7 +20,7 @@ class Payment extends CI_Controller
 
     public function create()
     {
-        $datos = ['categories' => $this->CategoriaModel->getAll_not_testimonial()];
+        $datos = ['categories' => $this->CategoriaModel->get_payment_categories()];
         $this->load->view('templates/header');
         $this->load->view('payment/create', $datos);
         $this->load->view('templates/footer');
@@ -30,7 +30,7 @@ class Payment extends CI_Controller
     {
         $datos = [
             'payment' => $this->PublicacionModel->findById($id),
-            'categories' => $this->CategoriaModel->getAll_not_testimonial()
+            'categories' => $this->CategoriaModel->get_payment_categories()
         ];
         $this->load->view('templates/header');
         $this->load->view('payment/edit', $datos);
@@ -44,7 +44,7 @@ class Payment extends CI_Controller
         $datos = [
             'id_publicacion' => trim($id) ? trim($id) : '',
             'id_usuario' => $this->session->userdata('id_usuario'),
-            'id_categoria' => 7,
+            'id_categoria' => $_POST['categoria'],
             'id_tipo' => 6,
             'titulo' => $_POST['titulo'],
             'texto_introduccion' => "",

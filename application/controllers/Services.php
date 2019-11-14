@@ -26,7 +26,7 @@ class Services extends CI_Controller
 
   public function create()
   {
-    $datos = ['categories' => $this->CategoriaModel->getAll_not_testimonial()];
+    $datos = ['categories' => $this->CategoriaModel->get_services_categories()];
     $this->load->view('templates/header');
     $this->load->view('services/create', $datos);
     $this->load->view('templates/footer');
@@ -144,7 +144,7 @@ class Services extends CI_Controller
   {
     $datos = [
       'services' => $this->PublicacionModel->findById($id),
-      'categories' => $this->CategoriaModel->getAll_not_testimonial()
+      'categories' => $this->CategoriaModel->get_services_categories()
     ];
     $this->load->view('templates/header');
     $this->load->view('services/edit', $datos);

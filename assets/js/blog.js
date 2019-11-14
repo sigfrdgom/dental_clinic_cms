@@ -11,6 +11,7 @@ function refresh_posts(){
 	fetch(url_base+'/posts/'+busqueda)
     .then(res => {return res.text()})
     .then(response => {
+		if(response.length > 0){
         document.getElementById('cards-content').innerHTML = response;
         let btnDelete = document.getElementsByClassName('btn-delete');
         for(i=0; i<btnDelete.length; i++){
@@ -20,7 +21,13 @@ function refresh_posts(){
 		document.getElementById('paginador'),
 		document.getElementsByClassName('card'),
 		5); p.Mostrar(); 
-		
+		}else{
+			document.getElementById('cards-content').innerHTML = `
+			<div class="col-12 card p-2">
+				<h2 class="text-center">No existen registros</h2>
+			</div>
+			`;
+		}
     });
 }
 

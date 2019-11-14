@@ -26,7 +26,7 @@ class Testimonials extends CI_Controller
 
   public function create()
   {
-    $datos = ['categories' => $this->CategoriaModel->getAll_not_testimonial()];
+    $datos = ['categories' => $this->CategoriaModel->get_testimonials_categories()];
     $this->load->view('templates/header');
     $this->load->view('testimonials/create', $datos);
     $this->load->view('templates/footer');
@@ -190,7 +190,7 @@ class Testimonials extends CI_Controller
   {
     $datos = [
       'testimonial' => $this->PublicacionModel->findById($id),
-      'categories' => $this->CategoriaModel->getAll_not_testimonial()
+      'categories' => $this->CategoriaModel->get_testimonials_categories()
     ];
     $this->load->view('templates/header');
     $this->load->view('testimonials/edit', $datos);

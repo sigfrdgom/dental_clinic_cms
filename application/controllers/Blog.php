@@ -26,7 +26,7 @@ class Blog extends CI_Controller
 
   public function create()
   {
-    $datos = ['categories' => $this->CategoriaModel->getAll_not_testimonial()];
+    $datos = ['categories' => $this->CategoriaModel->get_blog_categories()];
     $this->load->view('templates/header');
     $this->load->view('blog/create', $datos);
     $this->load->view('templates/footer');
@@ -188,7 +188,7 @@ class Blog extends CI_Controller
   {
     $datos = [
       'blog' => $this->PublicacionModel->findById($id),
-      'categories' => $this->CategoriaModel->getAll_not_testimonial()
+      'categories' => $this->CategoriaModel->get_blog_categories()
     ];
     $this->load->view('templates/header');
     $this->load->view('blog/edit', $datos);

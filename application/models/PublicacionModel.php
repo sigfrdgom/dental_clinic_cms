@@ -57,6 +57,8 @@ class PublicacionModel extends CI_Model
         }
     }
 
+    /** -------------------------------------- BLOG ------------------------------------------------------------------ */
+
     public function get_all_posts($keyword = "")
     {
         $keyword = trim($keyword);
@@ -188,6 +190,8 @@ class PublicacionModel extends CI_Model
         $this->db->limit($pagesize, $offset);
         return $this->db->get('publicacion')->result();
     }
+
+    /** ------------------------------------------ SERVICES ---------------------------------------------------------- */
 
     public function cargaServices()
     {
