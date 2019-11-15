@@ -111,7 +111,7 @@ class Blog extends CI_Controller
           );
           $this->session->set_flashdata($message);
           //BITACORA DE MODIFICO
-          $data = parent::bitacora("Modifico una Publicación", $_POST['titulo']);
+          $data = parent::bitacora("Modificó una Publicación", $_POST['titulo']);
           $this->BitacoraModel->agregarBitacora($data);
         }
       } else {
@@ -123,7 +123,7 @@ class Blog extends CI_Controller
           );
           $this->session->set_flashdata($message);
           //BITACORA DE CREADO
-          $data = parent::bitacora("Creo una Nueva Publicación", $_POST['titulo']);
+          $data = parent::bitacora("Creó una Nueva Publicación", $_POST['titulo']);
           $this->BitacoraModel->agregarBitacora($data);
         }
       }
@@ -181,7 +181,7 @@ class Blog extends CI_Controller
       );
       $this->session->set_flashdata($message);
       //BITACORA DE ELIMINADO
-      $data = parent::bitacora("Elimino una Publicación", $datos->titulo);
+      $data = parent::bitacora("Eliminó una Publicación", $datos->titulo);
       $this->BitacoraModel->agregarBitacora($data);
     }
   }

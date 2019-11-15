@@ -111,7 +111,7 @@ class Testimonials extends CI_Controller
           );
           $this->session->set_flashdata($message);
           //BITACORA DE MODIFICO
-          $data = parent::bitacora("Modifico un Testimonio", $_POST['titulo']);
+          $data = parent::bitacora("Modificó un Testimonio", $_POST['titulo']);
           $this->BitacoraModel->agregarBitacora($data);
         }
       } else {
@@ -123,7 +123,7 @@ class Testimonials extends CI_Controller
           );
           $this->session->set_flashdata($message);
           //BITACORA DE CREADO
-          $data = parent::bitacora("Creo un Nuevo TESTIMONIO", $_POST['titulo']);
+          $data = parent::bitacora("Creó un Nuevo TESTIMONIO", $_POST['titulo']);
           $this->BitacoraModel->agregarBitacora($data);
         }
       }
@@ -179,7 +179,7 @@ class Testimonials extends CI_Controller
       );
       $this->session->set_flashdata($message);
       //BITACORA DE ELIMINADO
-      $data = parent::bitacora("Elimino un Testimonio", $datos->titulo);
+      $data = parent::bitacora("Eliminó un Testimonio", $datos->titulo);
       $this->BitacoraModel->agregarBitacora($data);
     }
   }

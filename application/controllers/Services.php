@@ -111,7 +111,7 @@ class Services extends CI_Controller
           );
           $this->session->set_flashdata($message);
           //BITACORA DE MODIFICO
-          $data = parent::bitacora("Modifico un Servicio", $_POST['titulo']);
+          $data = parent::bitacora("Modificó un Servicio", $_POST['titulo']);
           $this->BitacoraModel->agregarBitacora($data);
         }
       } else {
@@ -123,7 +123,7 @@ class Services extends CI_Controller
           );
           $this->session->set_flashdata($message);
           //BITACORA DE CREADO
-          $data = parent::bitacora("Creo un Nuevo Servicio", $_POST['titulo']);
+          $data = parent::bitacora("Creó un Nuevo Servicio", $_POST['titulo']);
           $this->BitacoraModel->agregarBitacora($data);
         }
       }
@@ -191,7 +191,7 @@ class Services extends CI_Controller
       );
       $this->session->set_flashdata($message);
       //BITACORA DE ELIMINADO
-      $data = parent::bitacora("Elimino un Servicio", $datos->titulo);
+      $data = parent::bitacora("Eliminó un Servicio", $datos->titulo);
       $this->BitacoraModel->agregarBitacora($data);
     }
   }

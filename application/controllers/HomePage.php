@@ -106,7 +106,7 @@ class HomePage extends CI_Controller
           );
           $this->session->set_flashdata($message);
           //BITACORA DE MODIFICO
-          $data = parent::bitacora("Modifico una imagen de la página de inicio", $_POST['titulo']);
+          $data = parent::bitacora("Modificó una imagen de la página de inicio", $_POST['titulo']);
           $this->BitacoraModel->agregarBitacora($data);
         }
       } else {
@@ -118,7 +118,7 @@ class HomePage extends CI_Controller
           );
           $this->session->set_flashdata($message);
           //BITACORA DE CREADO
-          $data = parent::bitacora("Se agrego una imagen de la página de inicio", $_POST['titulo']);
+          $data = parent::bitacora("Agregó una imagen de la página de inicio", $_POST['titulo']);
           $this->BitacoraModel->agregarBitacora($data);
         }
       }
@@ -207,7 +207,7 @@ class HomePage extends CI_Controller
       );
       $this->session->set_flashdata($message);
       //BITACORA DE ELIMINADO
-      $data = parent::bitacora("Elimino imagen de la página de inicio", $datos->titulo );
+      $data = parent::bitacora("Eliminó imagen de la página de inicio", $datos->titulo );
       $this->BitacoraModel->agregarBitacora($data);
     }
   }
@@ -228,7 +228,7 @@ class HomePage extends CI_Controller
         'message' => 'Registro Modificado con éxito'
       );
       $this->session->set_flashdata($message);
-      $data = parent::bitacora("Se cambio el video de la página de inicio", "Video");
+      $data = parent::bitacora("Cambio el video de la página de inicio", "Video");
       $this->BitacoraModel->agregarBitacora($data);
     }
     redirect('homePage/showVideo');

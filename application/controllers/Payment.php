@@ -63,7 +63,7 @@ class Payment extends CI_Controller
                     );
                     $this->session->set_flashdata($message);
                     //BITACORA DE MODIFICO
-                    $data = parent::bitacora("Modifico una Método de Pago", $_POST['titulo']);
+                    $data = parent::bitacora("Modificó una Método de Pago", $_POST['titulo']);
                     $this->BitacoraModel->agregarBitacora($data);
                 }
             } else {
@@ -75,7 +75,7 @@ class Payment extends CI_Controller
                     );
                     $this->session->set_flashdata($message);
                     //BITACORA DE CREADO
-                    $data = parent::bitacora("Creo una Nuevo Método de Pago", $_POST['titulo']);
+                    $data = parent::bitacora("Creó una Nuevo Método de Pago", $_POST['titulo']);
                     $this->BitacoraModel->agregarBitacora($data);
                 }
             }

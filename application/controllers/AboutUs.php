@@ -43,7 +43,7 @@ class AboutUs extends CI_Controller
         'message' => 'Registro Modificado con éxito'
       );
       $this->session->set_flashdata($message);
-      $data = parent::bitacora("Modifico texto Sobre Nosotros", $_POST['titulo']);
+      $data = parent::bitacora("Modificó texto Sobre Nosotros", $_POST['titulo']);
       $this->BitacoraModel->agregarBitacora($data);
     }
     redirect('aboutUs');
