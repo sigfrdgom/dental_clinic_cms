@@ -3,12 +3,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Testimonials extends CI_Controller
 {
-    
+
   public function __construct()
   {
     parent::__construct();
-		$this->load->model(array('PublicacionModel', 'CategoriaModel', 'BitacoraModel'));
-		parent::logueado();
+    $this->load->model(array('PublicacionModel', 'CategoriaModel', 'BitacoraModel'));
+    parent::logueado();
   }
 
   public function index()
@@ -64,21 +64,21 @@ class Testimonials extends CI_Controller
   {
     $id = trim($id);
     $old_posts = array();
-    if(!empty($id) && !empty($this->PublicacionModel->findById($id))){
-      $old_posts = (array)$this->PublicacionModel->findById($id);
-    }else{
+    if (!empty($id) && !empty($this->PublicacionModel->findById($id))) {
+      $old_posts = (array) $this->PublicacionModel->findById($id);
+    } else {
       $old_posts = array(
         'recurso_av_1' => "",
       );
     }
 
     $data_files = array();
-      if (isset($_FILES['recurso1']['name'])) {
-        if ($_FILES['recurso1']['size'] > 0) {
-          $data_files =  $this->savePictures('recurso1');
-        }
+    if (isset($_FILES['recurso1']['name'])) {
+      if ($_FILES['recurso1']['size'] > 0) {
+        $data_files =  $this->savePictures('recurso1');
       }
- 
+    }
+
     $datos = [
       'id_publicacion' => trim($id) ? trim($id) : '',
       'id_usuario' => $this->session->userdata('id_usuario'),
@@ -92,54 +92,54 @@ class Testimonials extends CI_Controller
     ];
 
     try {
-      if(!empty($id)){
+      if (!empty($id)) {
         $rutas = array();
         $found_img = false;
-          if($datos['recurso_av_1'] != $old_posts['recurso_av_1']){
-            $rutas = array_merge($rutas, (array)$old_posts['recurso_av_1']);
-            $found_img = true;
-          }
-        if($found_img == true){
+        if ($datos['recurso_av_1'] != $old_posts['recurso_av_1']) {
+          $rutas = array_merge($rutas, (array) $old_posts['recurso_av_1']);
+          $found_img = true;
+        }
+        if ($found_img == true) {
           $rutas = array_values($rutas);
           $this->deleteImage($rutas);
         }
-				if ($this->PublicacionModel->update($datos)) {
+        if ($this->PublicacionModel->update($datos)) {
           //MESSAGE
           $message = array(
             'title' => 'Modificación',
-            'message' => 'Registro Modificado con éxito');
+            'message' => 'Registro Modificado con éxito'
+          );
           $this->session->set_flashdata($message);
+          //BITACORA DE MODIFICO
+          $data = parent::bitacora("Modifico un Testimonio", $_POST['titulo']);
+          $this->BitacoraModel->agregarBitacora($data);
         }
-
-				//BITACORA DE MODIFICO
-				$data=parent::bitacora("Modifico un Testimonio", $_POST['titulo']);
-				$this->BitacoraModel->agregarBitacora($data);
-				
-      }else{
-				if ($this->PublicacionModel->create($datos)) {
+      } else {
+        if ($this->PublicacionModel->create($datos)) {
           //MESSAGE
           $message = array(
             'title' => 'Modificación',
             'message' => 'Registro Agregado con éxito'
           );
           $this->session->set_flashdata($message);
+          //BITACORA DE CREADO
+          $data = parent::bitacora("Creo un Nuevo TESTIMONIO", $_POST['titulo']);
+          $this->BitacoraModel->agregarBitacora($data);
         }
-				
-				//BITACORA DE CREADO
-				$data=parent::bitacora("Creo un Nuevo TESTIMONIO", $_POST['titulo']);
-				$this->BitacoraModel->agregarBitacora($data);
       }
       redirect('testimonials');
     } catch (Exception $e) {
       $message = array(
         'title' => 'error',
-        'error' => $e );
+        'error' => $e
+      );
       $this->session->set_flashdata($message);
       redirect('testimonials');
     }
   }
 
-  private function deleteImage($data){
+  private function deleteImage($data)
+  {
     $message = array();
     for ($i = 0; $i < sizeof($data); $i++) {
       if (isset($data[$i])) {
@@ -148,13 +148,13 @@ class Testimonials extends CI_Controller
           if (file_exists($path) == true) {
             if (!is_dir($path)) {
               if (unlink($path)) {
-                $message= array('message' => 'deleted successfully');
+                $message = array('message' => 'deleted successfully');
               }
             }
           }
         } catch (Exception $e) {
-          $message= array('error' => 'deleted successfully'); 
-         }
+          $message = array('error' => 'deleted successfully');
+        }
       }
     }
     return $message;
@@ -162,28 +162,26 @@ class Testimonials extends CI_Controller
 
   public function deleteTestimonials($id)
   {
-    // Convert stdclass to array
-		$data = json_decode(json_encode($this->PublicacionModel->findById($id)), true);
-		
-		$datos=$this->PublicacionModel->findById($id);
+    // Covert stdclass to array
+    $datos = $this->PublicacionModel->findById($id);
+    $data = (array) $datos;
     // get the last 3 register of the array
     $data = array_splice($data, -5, 4, true);
     // delete the keys of the array
     $data = array_values($data);
     $message = $this->deleteImage($data);
     // Delete the data from the database
-		if ($this->PublicacionModel->delete($id)) {
+    if ($this->PublicacionModel->delete($id)) {
       //MESSAGE
       $message = array(
         'title' => 'Eliminación',
         'message' => 'Se eliminó correctamente el registro'
       );
       $this->session->set_flashdata($message);
+      //BITACORA DE ELIMINADO
+      $data = parent::bitacora("Elimino un Testimonio", $datos->titulo);
+      $this->BitacoraModel->agregarBitacora($data);
     }
-		
-		//BITACORA DE ELIMINADO
-		$data=parent::bitacora("Elimino un Testimonio", $datos->titulo);
-		$this->BitacoraModel->agregarBitacora($data);
   }
 
   public function edit($id)
@@ -196,7 +194,4 @@ class Testimonials extends CI_Controller
     $this->load->view('testimonials/edit', $datos);
     $this->load->view('templates/footer');
   }
-
-
-
 }

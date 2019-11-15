@@ -110,11 +110,10 @@ class Services extends CI_Controller
             'message' => 'Registro Modificado con éxito'
           );
           $this->session->set_flashdata($message);
+          //BITACORA DE MODIFICO
+          $data = parent::bitacora("Modifico un Servicio", $_POST['titulo']);
+          $this->BitacoraModel->agregarBitacora($data);
         }
-
-        //BITACORA DE MODIFICO
-        $data = parent::bitacora("Modifico un Servicio", $_POST['titulo']);
-        $this->BitacoraModel->agregarBitacora($data);
       } else {
         if ($this->PublicacionModel->create($datos)) {
           //MESSAGE
@@ -123,11 +122,10 @@ class Services extends CI_Controller
             'message' => 'Registro Agregado con éxito'
           );
           $this->session->set_flashdata($message);
+          //BITACORA DE CREADO
+          $data = parent::bitacora("Creo un Nuevo Servicio", $_POST['titulo']);
+          $this->BitacoraModel->agregarBitacora($data);
         }
-
-        //BITACORA DE CREADO
-        $data = parent::bitacora("Creo un Nuevo Servicio", $_POST['titulo']);
-        $this->BitacoraModel->agregarBitacora($data);
       }
       redirect('services');
     } catch (Exception $e) {
@@ -177,9 +175,9 @@ class Services extends CI_Controller
   public function deleteService($id)
   {
     // Covert stdclass to array
-    $data = json_decode(json_encode($this->PublicacionModel->findById($id)), true);
-		$datos=$this->PublicacionModel->findById($id);
-		// get the last 3 register of the array
+    $datos = $this->PublicacionModel->findById($id);
+    $data = (array) $datos;
+    // get the last 3 register of the array
     $data = array_splice($data, -5, 4, true);
     // delete the keys of the array
     $data = array_values($data);
@@ -192,10 +190,10 @@ class Services extends CI_Controller
         'message' => 'Se eliminó correctamente el registro'
       );
       $this->session->set_flashdata($message);
+      //BITACORA DE ELIMINADO
+      $data = parent::bitacora("Elimino un Servicio", $datos->titulo);
+      $this->BitacoraModel->agregarBitacora($data);
     }
-    //BITACORA DE ELIMINADO
-    $data = parent::bitacora("Elimino un Servicio", $datos->titulo);
-    $this->BitacoraModel->agregarBitacora($data);
   }
 
   public function updateService($id)

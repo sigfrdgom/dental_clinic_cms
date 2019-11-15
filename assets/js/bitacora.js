@@ -50,7 +50,7 @@ function recargar(){
 					var p = new Paginador(
 						document.getElementById('paginador'),
 						document.getElementById('ajaxTabla'),
-						5); p.Mostrar(); 
+						10); p.Mostrar(); 
 				})
 					
 			
@@ -187,7 +187,7 @@ document.getElementById("busqueda").addEventListener("keyup", function(){
 						var p = new Paginador(
 							document.getElementById('paginador'),
 							document.getElementById('ajaxTabla'),
-							2); p.Mostrar(); 	
+							10); p.Mostrar(); 	
 					}else{
 						respuesta.innerHTML="NO HAY REGISTRO COINCIDENTES";
 					 

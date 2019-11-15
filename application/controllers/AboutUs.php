@@ -7,7 +7,7 @@ class AboutUs extends CI_Controller
   public function __construct()
   {
     parent::__construct();
-    $this->load->model(array('ContenidoEstaticoModel'));
+    $this->load->model(array('ContenidoEstaticoModel', 'BitacoraModel'));
   }
 
   public function index()
@@ -43,9 +43,9 @@ class AboutUs extends CI_Controller
         'message' => 'Registro Modificado con éxito'
       );
       $this->session->set_flashdata($message);
+      $data = parent::bitacora("Modifico texto Sobre Nosotros", $_POST['titulo']);
+      $this->BitacoraModel->agregarBitacora($data);
     }
     redirect('aboutUs');
   }
-
-
 }

@@ -6,7 +6,7 @@ class HomePage extends CI_Controller
   public function __construct()
   {
     parent::__construct();
-    $this->load->model(array('PublicacionModel', 'CategoriaModel','ContenidoEstaticoModel'));
+    $this->load->model(array('PublicacionModel', 'CategoriaModel', 'ContenidoEstaticoModel', 'BitacoraModel'));
     parent::logueado();
   }
 
@@ -105,6 +105,9 @@ class HomePage extends CI_Controller
             'message' => 'Registro Modificado con éxito'
           );
           $this->session->set_flashdata($message);
+          //BITACORA DE MODIFICO
+          $data = parent::bitacora("Modifico una imagen de la página de inicio", $_POST['titulo']);
+          $this->BitacoraModel->agregarBitacora($data);
         }
       } else {
         if ($this->PublicacionModel->create($datos)) {
@@ -114,13 +117,17 @@ class HomePage extends CI_Controller
             'message' => 'Registro Agregado con éxito'
           );
           $this->session->set_flashdata($message);
+          //BITACORA DE CREADO
+          $data = parent::bitacora("Se agrego una imagen de la página de inicio", $_POST['titulo']);
+          $this->BitacoraModel->agregarBitacora($data);
         }
       }
       redirect('homePage/showImages');
     } catch (Exception $e) {
       $message = array(
         'title' => 'error',
-        'error' => $e );
+        'error' => $e
+      );
       $this->session->set_flashdata($message);
       redirect('homePage/showImages');
     }
@@ -184,7 +191,8 @@ class HomePage extends CI_Controller
   public function delete($id)
   {
     // Covert stdclass to array
-    $data = json_decode(json_encode($this->PublicacionModel->findById($id)), true);
+    $datos = $this->PublicacionModel->findById($id);
+    $data = (array) $datos;
     // get the last 3 register of the array
     $data = array_splice($data, -5, 4, true);
     // delete the keys of the array
@@ -198,10 +206,14 @@ class HomePage extends CI_Controller
         'message' => 'Se eliminó correctamente el registro'
       );
       $this->session->set_flashdata($message);
+      //BITACORA DE ELIMINADO
+      $data = parent::bitacora("Elimino imagen de la página de inicio", $datos->titulo );
+      $this->BitacoraModel->agregarBitacora($data);
     }
   }
 
-  public function guardarVideo($id){
+  public function guardarVideo($id)
+  {
     $id = trim($id);
     $datos = [
       'id_estatico' => trim($id) ? trim($id) : '',
@@ -216,6 +228,8 @@ class HomePage extends CI_Controller
         'message' => 'Registro Modificado con éxito'
       );
       $this->session->set_flashdata($message);
+      $data = parent::bitacora("Se cambio el video de la página de inicio", "Video");
+      $this->BitacoraModel->agregarBitacora($data);
     }
     redirect('homePage/showVideo');
   }
