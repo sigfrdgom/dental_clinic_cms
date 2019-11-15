@@ -80,8 +80,8 @@ class HomePage extends CI_Controller
       'id_categoria' => 6,
       'id_tipo' => 4,
       'titulo' => $_POST['titulo'],
-      'texto_introduccion' => $_POST['texto_introduccion'],
-      'contenido' => "",
+      'texto_introduccion' => "",
+      'contenido' => $_POST['contenido'],
       'estado' => isset($_POST['estado']) ? $_POST['estado'] : true,
       'recurso_av_1' => isset($data_files["upload_data"]) ?  $data_files["upload_data"]['file_name'] : $old_posts['recurso_av_1'],
     ];

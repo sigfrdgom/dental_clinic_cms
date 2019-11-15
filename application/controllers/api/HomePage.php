@@ -13,7 +13,11 @@ class HomePage extends REST_Controller
         //HACER USO DE LO METODO CONSTRUCTORE DEL PADRE 
         parent::__construct();
         //METODO CARGADO EN EL MODELO
-        $this->load->model('ContenidoEstaticoModel');
+        $this->load->model('PublicacionModel');
+    }
+
+    public function carousel_get(){
+        $this->response($this->PublicacionModel->get_images_carousel_api(), 200);
     }
 
     // public function createVideo(){
@@ -26,5 +30,6 @@ class HomePage extends REST_Controller
     //     ];
     //     $this->ContenidoEstaticoModel->create($data);
     // }
+
 
 }

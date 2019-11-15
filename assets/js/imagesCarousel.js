@@ -28,7 +28,7 @@ function refresh_cards() {
 						<img class="card-img-top img-responsive" src="${element.recurso_av_1 ? base_url+'uploads/inicio/'+element.recurso_av_1 : base_url+'assets/images/default/no-image-available-icon.jpg'}" class="card-img-top" alt="...">
 						<div class="card-body">
 							<h5 class="card-title">${element.titulo}</h5>
-							<p class="card-text">${element.texto_introduccion}</p>
+							<p class="card-text">${element.contenido}</p>
 							<div class="col-12 mx-auto text-center">`;
 					if (element.estado == 1) {
 						content += `
