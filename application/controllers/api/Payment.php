@@ -25,5 +25,13 @@ class Payment extends REST_Controller
         }
     }
 
+    public function payment_api_get($id = ""){ 
+        if(!empty(trim($id))){
+            $this->response($this->PublicacionModel->get_payment_by_id($id), 200);
+        }else{
+            $this->response($this->PublicacionModel->get_payments_api(), 200);
+        }
+    }
+
 
 }
