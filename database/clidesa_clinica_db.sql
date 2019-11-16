@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-11-2019 a las 19:29:20
+-- Tiempo de generación: 16-11-2019 a las 19:20:56
 -- Versión del servidor: 10.4.6-MariaDB
 -- Versión de PHP: 7.3.9
 
@@ -108,7 +108,83 @@ INSERT INTO `bitacora` (`id_bitacora`, `usuario`, `accion`, `fecha`, `titulo`, `
 (62, 'clidesa.admin', 'Modifico una Método de Pago', '2019-11-14 10:40:11', 'PAGO CON TARJETA DE CREDITO O DEBITO', 'ADMIN'),
 (63, 'clidesa.admin', 'Modifico una Método de Pago', '2019-11-14 10:40:36', 'PAGO CON TARJETA DE CREDITO O DEBITO', 'ADMIN'),
 (64, 'clidesa.admin', 'Modifico una Método de Pago', '2019-11-14 10:41:12', 'TASA 0 CON DIFERENTES TARJETAS DE CRÉDITO NACIONAL', 'ADMIN'),
-(65, 'clidesa.admin', 'Modifico una Método de Pago', '2019-11-14 10:44:17', 'TASA 0 CON DIFERENTES TARJETAS DE CRÉDITO NACIONAL', 'ADMIN');
+(65, 'clidesa.admin', 'Modifico una Método de Pago', '2019-11-14 10:44:17', 'TASA 0 CON DIFERENTES TARJETAS DE CRÉDITO NACIONAL', 'ADMIN'),
+(66, 'clidesa.admin', 'Finalizo su Sesion', '2019-11-14 14:31:30', 'Clidesa', 'ADMIN'),
+(67, 'clidesa.admin', 'Inicio de su Sesion', '2019-11-14 14:31:33', 'Clidesa', 'ADMIN'),
+(68, 'clidesa.admin', 'Finalizo su Sesion', '2019-11-14 14:31:38', 'Clidesa', 'ADMIN'),
+(69, 'clidesa.admin', 'Inicio de su Sesion', '2019-11-14 14:31:55', 'Clidesa', 'ADMIN'),
+(70, 'clidesa.admin', 'Finalizo su Sesion', '2019-11-14 14:31:57', 'Clidesa', 'ADMIN'),
+(71, 'clidesa.admin', 'Inicio de su Sesion', '2019-11-14 14:32:16', 'Clidesa', 'ADMIN'),
+(72, 'clidesa.admin', 'Finalizo su Sesion', '2019-11-14 14:40:25', 'Clidesa', 'ADMIN'),
+(73, 'clidesa.admin', 'Inicio de su Sesion', '2019-11-14 14:40:41', 'Clidesa', 'ADMIN'),
+(74, 'clidesa.admin', 'Finalizo su Sesion', '2019-11-14 14:52:55', 'Clidesa', 'ADMIN'),
+(75, 'clidesa.admin', 'Inicio de su Sesion', '2019-11-14 14:53:05', 'Clidesa', 'ADMIN'),
+(76, 'clidesa.admin', 'Finalizo su Sesion', '2019-11-14 16:07:55', 'Clidesa', 'ADMIN'),
+(77, 'clidesa.admin', 'Inicio de su Sesion', '2019-11-14 16:07:57', 'Clidesa', 'ADMIN'),
+(78, 'clidesa.admin', 'Inicio de su Sesion', '2019-11-14 16:28:41', 'Clidesa', 'ADMIN'),
+(79, 'clidesa.admin', 'Finalizo su Sesion', '2019-11-14 17:03:54', 'Clidesa', 'ADMIN'),
+(80, 'clidesa.admin', 'Inicio de su Sesion', '2019-11-14 17:04:04', 'Clidesa', 'ADMIN'),
+(81, 'clidesa.admin', 'Finalizo su Sesion', '2019-11-14 17:42:58', 'Clidesa', 'ADMIN'),
+(82, 'clidesa.admin', 'Inicio de su Sesion', '2019-11-14 17:43:05', 'Clidesa', 'ADMIN'),
+(83, 'clidesa.admin', 'Inicio de su Sesion', '2019-11-14 20:24:41', 'Clidesa', 'ADMIN'),
+(84, 'clidesa.admin', 'Inicio de su Sesion', '2019-11-14 23:08:42', 'Clidesa', 'ADMIN'),
+(85, 'clidesa.admin', 'Creo una Nuevo Método de Pago', '2019-11-14 23:09:00', '23', 'ADMIN'),
+(86, 'clidesa.admin', 'Elimino una Publicacion', '2019-11-14 23:13:36', 'PUBLICACION ELIMINADO', 'ADMIN'),
+(87, 'clidesa.admin', 'Inicio de su Sesion', '2019-11-15 07:41:23', 'Clidesa', 'ADMIN'),
+(88, 'clidesa.admin', 'Inicio de su Sesion', '2019-11-15 10:01:41', 'Clidesa', 'ADMIN'),
+(89, 'clidesa.admin', 'Creo una Nueva Publicacion', '2019-11-15 10:44:15', '2332', 'ADMIN'),
+(90, 'clidesa.admin', 'Elimino una Publicacion', '2019-11-15 10:44:20', '2332', 'ADMIN'),
+(91, 'clidesa.admin', 'Creo un Nuevo TESTIMONIO', '2019-11-15 10:44:43', 'Principales razones para ir al dentista', 'ADMIN'),
+(92, 'clidesa.admin', 'Elimino un Testimonio', '2019-11-15 10:44:55', 'Principales razones para ir al dentista', 'ADMIN'),
+(93, 'clidesa.admin', 'Elimino imagen de la página de inicio', '2019-11-15 10:52:49', NULL, 'ADMIN'),
+(94, 'clidesa.admin', 'Elimino imagen de la página de inicio', '2019-11-15 10:54:00', NULL, 'ADMIN'),
+(95, 'clidesa.admin', 'Creo una Nueva Publicacion', '2019-11-15 10:54:49', '2332', 'ADMIN'),
+(96, 'clidesa.admin', 'Elimino una Publicacion', '2019-11-15 10:54:55', NULL, 'ADMIN'),
+(97, 'clidesa.admin', 'Elimino imagen de la página de inicio', '2019-11-15 10:59:22', NULL, 'ADMIN'),
+(98, 'clidesa.admin', 'Elimino imagen de la página de inicio', '2019-11-15 11:04:43', '2323', 'ADMIN'),
+(99, 'clidesa.admin', 'Creo una Nueva Publicacion', '2019-11-15 11:08:00', '3232', 'ADMIN'),
+(100, 'clidesa.admin', 'Elimino una Publicacion', '2019-11-15 11:08:07', NULL, 'ADMIN'),
+(101, 'clidesa.admin', 'Creo una Nueva Publicacion', '2019-11-15 11:08:59', '32', 'ADMIN'),
+(102, 'clidesa.admin', 'Elimino una Publicacion', '2019-11-15 11:09:02', '32', 'ADMIN'),
+(103, 'clidesa.admin', 'Se agrego una imagen de la página de inicio', '2019-11-15 11:13:43', '32', 'ADMIN'),
+(104, 'clidesa.admin', 'Modifico una imagen de la página de inicio', '2019-11-15 11:13:48', '32sdsd', 'ADMIN'),
+(105, 'clidesa.admin', 'Modifico una Método de Pago', '2019-11-15 11:27:37', 'Acerca de Nosotros', 'ADMIN'),
+(106, 'clidesa.admin', 'Modifico una Método de Pago', '2019-11-15 11:27:54', 'Misión', 'ADMIN'),
+(107, 'clidesa.admin', 'Modifico texto de Sobre Nosotros', '2019-11-15 11:28:36', 'Misión', 'ADMIN'),
+(108, 'clidesa.admin', 'Modifico texto de Sobre Nosotros', '2019-11-15 11:28:40', 'Acerca de Nosotros', 'ADMIN'),
+(109, 'clidesa.admin', 'Creó una Nueva Publicación', '2019-11-15 11:35:17', '32', 'ADMIN'),
+(110, 'clidesa.admin', 'Eliminó una Publicación', '2019-11-15 11:35:19', '32', 'ADMIN'),
+(111, 'clidesa.admin', 'Modificó texto Sobre Nosotros', '2019-11-15 11:35:43', 'Acerca de Nosotros', 'ADMIN'),
+(112, 'clidesa.admin', 'Inicio de su Sesion', '2019-11-15 12:50:16', 'Clidesa', 'ADMIN'),
+(113, 'clidesa.admin', 'Inicio de su Sesion', '2019-11-15 20:36:15', 'Clidesa', 'ADMIN'),
+(114, 'clidesa.admin', 'Inicio de su Sesion', '2019-11-16 09:00:24', 'Clidesa', 'ADMIN'),
+(115, 'clidesa.admin', 'Agrego una Categoria', '2019-11-16 10:08:04', 'Categoria Horarios', 'ADMIN'),
+(116, 'clidesa.admin', 'Agregó un registro de horario', '2019-11-16 11:24:50', 'Contenido', 'ADMIN'),
+(117, 'clidesa.admin', 'Eliminó registro de horario', '2019-11-16 11:24:59', '', 'ADMIN'),
+(118, 'clidesa.admin', 'Agregó un registro de horario', '2019-11-16 11:26:25', 'Contenido', 'ADMIN'),
+(119, 'clidesa.admin', 'Eliminó registro de horario', '2019-11-16 11:26:28', '', 'ADMIN'),
+(120, 'clidesa.admin', 'Agregó un registro de horario', '2019-11-16 11:29:22', 'Contenido', 'ADMIN'),
+(121, 'clidesa.admin', 'Agregó un registro de horario', '2019-11-16 11:30:58', 'Contenido', 'ADMIN'),
+(122, 'clidesa.admin', 'Agregó un registro de horario', '2019-11-16 11:32:20', 'Contenido', 'ADMIN'),
+(123, 'clidesa.admin', 'Eliminó registro de horario', '2019-11-16 11:37:43', '', 'ADMIN'),
+(124, 'clidesa.admin', 'Eliminó registro de horario', '2019-11-16 11:44:29', '', 'ADMIN'),
+(125, 'clidesa.admin', 'Agregó un registro de horario', '2019-11-16 11:52:17', 'Contenido', 'ADMIN'),
+(126, 'clidesa.admin', 'Agregó un registro de horario', '2019-11-16 11:54:28', 'Contenido', 'ADMIN'),
+(127, 'clidesa.admin', 'Agregó un registro de horario', '2019-11-16 11:55:09', 'Contenido', 'ADMIN'),
+(128, 'clidesa.admin', 'Modificó un registro de horario', '2019-11-16 12:08:56', 'Contenido', 'ADMIN'),
+(129, 'clidesa.admin', 'Modificó un registro de horario', '2019-11-16 12:10:10', 'Contenido', 'ADMIN'),
+(130, 'clidesa.admin', 'Modificó un registro de horario', '2019-11-16 12:10:13', 'Contenido', 'ADMIN'),
+(131, 'clidesa.admin', 'Modificó un registro de horario', '2019-11-16 12:10:27', 'Contenido', 'ADMIN'),
+(132, 'clidesa.admin', 'Agregó un registro de horario', '2019-11-16 12:10:39', 'Contenido', 'ADMIN'),
+(133, 'clidesa.admin', 'Modificó un registro de horario', '2019-11-16 12:10:44', 'Contenido', 'ADMIN'),
+(134, 'clidesa.admin', 'Modificó un registro de horario', '2019-11-16 12:10:48', 'Contenido', 'ADMIN'),
+(135, 'clidesa.admin', 'Modificó un registro de horario', '2019-11-16 12:11:12', 'Contenido', 'ADMIN'),
+(136, 'clidesa.admin', 'Modificó un registro de horario', '2019-11-16 12:11:27', 'Contenido', 'ADMIN'),
+(137, 'clidesa.admin', 'Modificó un registro de horario', '2019-11-16 12:14:09', 'Contenido', 'ADMIN'),
+(138, 'clidesa.admin', 'Modificó un registro de horario', '2019-11-16 12:14:35', 'Contenido', 'ADMIN'),
+(139, 'clidesa.admin', 'Modificó un registro de horario', '2019-11-16 12:14:46', 'Contenido', 'ADMIN'),
+(140, 'clidesa.admin', 'Eliminó registro de horario', '2019-11-16 12:16:27', '', 'ADMIN'),
+(141, 'clidesa.admin', 'Eliminó registro de horario', '2019-11-16 12:16:29', '', 'ADMIN');
 
 -- --------------------------------------------------------
 
@@ -128,6 +204,8 @@ CREATE TABLE `categoria` (
 -- Volcado de datos para la tabla `categoria`
 --
 
+TRUNCATE TABLE categoria;
+
 INSERT INTO `categoria` (`id_categoria`, `id_tipo`, `nombre`, `descripcion`, `estado`) VALUES
 (1, 2, 'Dentista general', 'La categoria para clasificar contenido acorde a odontologia general.', 1),
 (2, 2, 'Especialidades Dentales', 'La categoria para clasificar contenido acorde a especialidades dentales.', 1),
@@ -140,7 +218,8 @@ INSERT INTO `categoria` (`id_categoria`, `id_tipo`, `nombre`, `descripcion`, `es
 (9, 1, 'Dentista General', 'La categoria para clasificar contenido acorde a odontologia general.', 1),
 (10, 1, 'Especialidades dentales', 'La categoría para clasificar contenido acorde a especialidades dentales.', 1),
 (11, 1, 'Especialidades medicas', 'La categoría para clasificar contenido acorde a especialidades medicas.', 1),
-(12, 1, 'Otros servicios de salud', 'La categoria para clasificar contenido acorde a otros servicios de salud .', 1);
+(12, 1, 'Otros servicios de salud', 'La categoria para clasificar contenido acorde a otros servicios de salud .', 1),
+(13, 4, 'Horarios', 'La categoría para clasificar los horarios', 1);
 
 -- --------------------------------------------------------
 
@@ -203,9 +282,9 @@ CREATE TABLE `estatico` (
 --
 
 INSERT INTO `estatico` (`id_estatico`, `titulo`, `contenido`, `estado`) VALUES
-(1, 'Acerca de Nosotros', '<p>Somos una empresa con m&aacute;s de 25 a&ntilde;os de experiencia, dedicada a la prevenci&oacute;n y cuidado de la <strong>salud integral</strong> en el &aacute;rea medico dental de la poblaci&oacute;n salvadore&ntilde;a y extranjera, principalmente los residentes de la zona occidental del pa&iacute;s.<br />\r\n<br />\r\nBrindando una cultura de atenci&oacute;n con <strong>calidez, profesionalismo, confiabilidad, comodidad, calidad y garant&iacute;a</strong> en nuestros servicios, cumpliendo con las expectativas de nuestros clientes en su salud m&eacute;dico dental. Buscando siempre como objetivo <strong>la soluci&oacute;n que m&aacute;s se adapte a tus necesidades, </strong> innov&aacute;ndonos en tecnolog&iacute;a y equipamiento m&eacute;dico.<br />\r\n<br />\r\nCumpliendo con los protocolos de bioseguridad por medio de equipo de ultrasonido, esterilizaci&oacute;n en frio y autoclave. Adem&aacute;s, contamos con nuestro personal debidamente capacitado para poder garantizar de esta forma la seguridad de nuestros clientes.<br />\r\n<br />\r\nUbicados en el coraz&oacute;n del Centro Hist&oacute;rico de la Ciudad de Santa Ana, nuestras instalaciones cumplen con est&aacute;ndares de salud avanzada, respaldada por un staff de profesionales y especialistas en el &aacute;rea Dental y Medicina. Nuestra prioridad es tu salud dental y la de tu familia.</p>\r\n', 1),
-(2, 'Misión', '<p>Somos una empresa de salud ubicada en la ciudad de Santa Ana, ofreciendo servicios m&eacute;dico dental a nuestros clientes una atenci&oacute;n humanizada con calidez, profesionalismo, confiabilidad, comodidad, calidad y garant&iacute;a en nuestros servicios para satisfacer sus necesidades, desde las soluciones m&aacute;s sencillas hasta rehabilitaciones de alta complejidad y con un alto compromiso de desarrollo, logrando as&iacute;, sonrisas saludables.<br />\r\n<br />\r\nSi necesitas un tratamiento m&eacute;dico dental, estamos para ti.</p>\r\n', 1),
-(3, 'Visión', '<p>Ser la mejor opci&oacute;n en el cuidado de la salud medico dental para la poblaci&oacute;n de la zona occidental del pa&iacute;s, brindando la mejor atenci&oacute;n a nuestros clientes internos y externos, nacionales y extranjeros, garantiz&aacute;ndoles los mejores resultados en los servicios brindados por nuestros especialistas de cada &aacute;rea.</p>\r\n', 1),
+(1, 'Acerca de Nosotros', '<p style=\"text-align:justify\">Somos una empresa con m&aacute;s de 25 a&ntilde;os de experiencia, dedicada a la prevenci&oacute;n y cuidado de la <strong>salud integral</strong> en el &aacute;rea medico dental de la poblaci&oacute;n salvadore&ntilde;a y extranjera, principalmente los residentes de la zona occidental del pa&iacute;s.<br />\r\n<br />\r\nBrindando una cultura de atenci&oacute;n con <strong>calidez, profesionalismo, confiabilidad, comodidad, calidad y garant&iacute;a</strong> en nuestros servicios, cumpliendo con las expectativas de nuestros clientes en su salud m&eacute;dico dental. Buscando siempre como objetivo <strong>la soluci&oacute;n que m&aacute;s se adapte a tus necesidades, </strong> innov&aacute;ndonos en tecnolog&iacute;a y equipamiento m&eacute;dico.<br />\r\n<br />\r\nCumpliendo con los protocolos de bioseguridad por medio de equipo de ultrasonido, esterilizaci&oacute;n en frio y autoclave. Adem&aacute;s, contamos con nuestro personal debidamente capacitado para poder garantizar de esta forma la seguridad de nuestros clientes.<br />\r\n<br />\r\nUbicados en el coraz&oacute;n del Centro Hist&oacute;rico de la Ciudad de Santa Ana, nuestras instalaciones cumplen con est&aacute;ndares de salud avanzada, respaldada por un staff de profesionales y especialistas en el &aacute;rea Dental y Medicina. Nuestra prioridad es tu salud dental y la de tu familia.</p>\r\n', 1),
+(2, 'Misión', '<p style=\"text-align:justify\">Somos una empresa de salud ubicada en la ciudad de Santa Ana, ofreciendo servicios m&eacute;dico dental a nuestros clientes una atenci&oacute;n humanizada con calidez, profesionalismo, confiabilidad, comodidad, calidad y garant&iacute;a en nuestros servicios para satisfacer sus necesidades, desde las soluciones m&aacute;s sencillas hasta rehabilitaciones de alta complejidad y con un alto compromiso de desarrollo, logrando as&iacute;, sonrisas saludables.<br />\r\n<br />\r\nSi necesitas un tratamiento m&eacute;dico dental, estamos para ti.</p>\r\n', 1),
+(3, 'Visión', '<p style=\"text-align:justify\">Ser la mejor opci&oacute;n en el cuidado de la salud medico dental para la poblaci&oacute;n de la zona occidental del pa&iacute;s, brindando la mejor atenci&oacute;n a nuestros clientes internos y externos, nacionales y extranjeros, garantiz&aacute;ndoles los mejores resultados en los servicios brindados por nuestros especialistas de cada &aacute;rea.</p>\r\n', 1),
 (4, 'Video', 'https://www.youtube.com/embed/qAN3uMZkIW0', 1);
 
 -- --------------------------------------------------------
@@ -263,7 +342,14 @@ INSERT INTO `publicacion` (`id_publicacion`, `id_usuario`, `id_categoria`, `id_t
 (37, 1, 7, 6, 'PAGO POR PROCEDIMIENTO', '', '<p>Se cancela en cada visita la parte del tratamiento que se realiza.</p>\r\n\r\n<p>&nbsp;</p>\r\n', 1, '', '2019-11-13 22:03:13'),
 (38, 1, 7, 6, 'PLAN DENTAL CLIDESA', '', '<p>Proximamente...</p>\r\n', 1, '', '2019-11-13 22:03:35'),
 (39, 1, 8, 6, '', '', '<p>Consultar con tu aseguradora si posees cobertura dental o medica en tu p&oacute;liza.</p>\r\n', 1, '', '2019-11-13 22:07:18'),
-(40, 1, 8, 6, '', '', '<p>Presentarte a nuestra cl&iacute;nica con tu carnet vigente de asegurado.</p>\r\n', 1, '', '2019-11-13 22:09:01');
+(40, 1, 8, 6, '', '', '<p>Presentarte a nuestra cl&iacute;nica con tu carnet vigente de asegurado.</p>\r\n', 1, '', '2019-11-13 22:09:01'),
+(47, 1, 6, 4, 'CREEMOS QUE TODOS DEBEN TENER FÁCIL ACCESO AL MEJOR CUIDADO DENTAL', '', 'CREEMOS QUE TODOS DEBEN TENER FÁCIL ACCESO AL MEJOR CUIDADO DENTAL', 1, 'recurso_1573833974.jpg', '2019-11-15 16:06:14'),
+(48, 1, 6, 4, 'ENTRA A NUESTRAS INNOVADORAS INSTALACIONES', '', '<p>ENTRA A NUESTRAS INNOVADORAS INSTALACIONES</p>\r\n', 1, 'recurso_1573834012.jpg', '2019-11-15 16:06:52'),
+(60, 1, 6, 4, '32sdsd', '', '<p>32</p>\r\n', 1, 'recurso_1573838023.png', '2019-11-15 17:13:43'),
+(62, 1, 13, 4, '', '', 'Lunes - Viernes', 1, NULL, '2019-11-16 16:36:57'),
+(65, 1, 13, 4, '', '', 'sdds', 1, '', '2019-11-16 17:29:22'),
+(70, 1, 13, 4, '', '', 'sdds', 1, '', '2019-11-16 17:55:09'),
+(71, 1, 13, 4, '', '', 'dsdssssdssdsdsd', 1, '', '2019-11-16 18:10:39');
 
 -- --------------------------------------------------------
 
@@ -377,13 +463,13 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `bitacora`
 --
 ALTER TABLE `bitacora`
-  MODIFY `id_bitacora` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `id_bitacora` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=142;
 
 --
 -- AUTO_INCREMENT de la tabla `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT de la tabla `cita`
@@ -407,7 +493,7 @@ ALTER TABLE `estatico`
 -- AUTO_INCREMENT de la tabla `publicacion`
 --
 ALTER TABLE `publicacion`
-  MODIFY `id_publicacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id_publicacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo`

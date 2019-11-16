@@ -15,7 +15,7 @@ class AboutUs extends REST_Controller
         $this->load->model('ContenidoEstaticoModel');
     }
 
-    public function aboutUs_by_id_get($id = ""){ 
+    public function aboutus_by_id_get($id = ""){ 
         if(!empty(trim($id))){
             $this->response($this->ContenidoEstaticoModel->findById($id), 200);
         }

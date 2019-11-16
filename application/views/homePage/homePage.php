@@ -51,7 +51,7 @@
                     <p class="card-text">Esta opción permite cambiar el horario que se encuentra en la sección de incio de página de inicio.</p>
 
                     <div class="row p-2">
-                        <a href="" class="btn btn-primary btn-block">Ver horairo</a>
+                        <a href="<?= base_url('homePage/horarios')?>" class="btn btn-primary btn-block">Ver horairo</a>
                     </div>
 
                 </div>

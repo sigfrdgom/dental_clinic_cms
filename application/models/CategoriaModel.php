@@ -4,6 +4,7 @@ class CategoriaModel extends CI_Model{
 
     //CONSULTA PARA CARGAR LO DATOS DE LA TABLA CATEGORIA
     public function getAll(){  
+        $this->db->order_by('id_tipo ASC, id_categoria ASC');
         return $this->db->get('categoria')->result();
     }
 
