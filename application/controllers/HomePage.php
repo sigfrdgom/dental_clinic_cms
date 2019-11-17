@@ -307,4 +307,42 @@ class HomePage extends CI_Controller
     }
   }
 
+  public function descripcion(){
+    $datos = ['descripcion' => $this->ContenidoEstaticoModel->findById(5)];
+    $this->load->view('templates/header');
+    $this->load->view('homePage/descripcion', $datos);
+    $this->load->view('templates/footer');
+  }
+
+  public function editContent($id = "")
+  {
+    $id = trim($id);
+    $datos = ['descripcion' => $this->ContenidoEstaticoModel->findById($id)];
+    $this->load->view('templates/header');
+    $this->load->view('homepage/editContent', $datos);
+    $this->load->view('templates/footer');
+  }
+
+  public function guardarDescripcion($id = "")
+  {
+    $datos = [
+      'id_estatico' => trim($id) ? trim($id) : '',
+      'titulo' => $_POST['titulo'],
+      'contenido' => $_POST['contenido'],
+      'estado' => isset($_POST['estado']) ? $_POST['estado'] : true,
+    ];
+
+    if ($this->ContenidoEstaticoModel->update($datos)) {
+      //MESSAGE
+      $message = array(
+        'title' => 'Modificación',
+        'message' => 'Registro Modificado con éxito'
+      );
+      $this->session->set_flashdata($message);
+      $data = parent::bitacora("Modificó texto Sobre Nosotros", $_POST['titulo']);
+      $this->BitacoraModel->agregarBitacora($data);
+    }
+    redirect('homepage/descripcion');
+  }
+
 }

@@ -16,44 +16,62 @@
 
     <div class="row">
         <div class="col-lg-3 col-md-6">
-            <div class="card ">
+            <div class="card " style="height: 96%">
                 <img class="card-img-top img-responsive" src="<?= base_url('assets/images/inicio/change-img.gif') ?>" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">Imganes de Carrusel</h5>
                     <p class="card-text">Esta opción permite cambiar las imagenes de presentación del Carrusel que se muestran en la página de inicio.</p>
-
-                    <div class="row p-2">
-                        <a href="<?= base_url('homePage/showImages')?>" class="btn btn-primary btn-block">Ver Imágenes</a>
-                    </div>
-
+                </div>
+                <div class="row p-4">
+                    <a href="<?= base_url('homePage/showImages') ?>" class="btn btn-primary btn-block">Ver Imágenes</a>
                 </div>
             </div>
         </div>
         <div class="col-lg-3 col-md-6">
-            <div class="card ">
+            <div class="card " style="height: 96%">
                 <img class="card-img-top img-responsive" src="<?= base_url('assets/images/inicio/youtube-mobile.gif') ?>" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">Cambiar video de la página de incio</h5>
                     <p class="card-text">Esta opción permite cambiar el video que se encuentra en la sección de incio de página de inicio.</p>
-
-                    <div class="row p-2">
-                        <a href="<?= base_url('homePage/showVideo')?>" class="btn btn-primary btn-block">Ver Video</a>
-                    </div>
-
+                </div>
+                <div class="row p-4">
+                    <a href="<?= base_url('homePage/showVideo') ?>" class="btn btn-primary btn-block">Ver Video</a>
                 </div>
             </div>
         </div>
         <div class="col-lg-3 col-md-6">
-            <div class="card ">
+            <div class="card " style="height: 96%">
                 <img class="card-img-top img-responsive" src="<?= base_url('assets/images/inicio/horario.jpg') ?>" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">Cambiar hario de la página de incio</h5>
-                    <p class="card-text">Esta opción permite cambiar el horario que se encuentra en la sección de incio de página de inicio.</p>
-
-                    <div class="row p-2">
-                        <a href="<?= base_url('homePage/horarios')?>" class="btn btn-primary btn-block">Ver horairo</a>
-                    </div>
-
+                    <p class="card-text">Esta opción permite cambiar el horario que se encuentra en la página de inicio.</p>
+                </div>
+                <div class="row p-4">
+                    <a href="<?= base_url('homePage/horarios') ?>" class="btn btn-primary btn-block">Ver horairo</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+            <div class="card " style="height: 96%">
+                <img class="card-img-top img-responsive" src="<?= base_url('assets/images/inicio/services.png') ?>" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Cambiar breve descipcion de la página de incio</h5>
+                    <p class="card-text">Esta opción permite cambar la descripcion que se encuentra en la página de inicio.</p>
+                </div>
+                <div class="row p-4">
+                    <a href="<?= base_url('homePage/descripcion') ?>" class="btn btn-primary btn-block">Ver descripción</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+            <div class="card " style="height: 96%">
+                <img class="card-img-top img-responsive" src="<?= base_url('assets/images/inicio/acercade.jpg') ?>" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Cambiar breve descipcion de la página de incio</h5>
+                    <p class="card-text">Esta opción permite cambar la descripcion que se encuentra en la página de inicio.</p>
+                </div>
+                <div class="row p-4">
+                    <a href="<?= base_url('homePage/descripcion') ?>" class="btn btn-primary btn-block">Ver descripción</a>
                 </div>
             </div>
         </div>
