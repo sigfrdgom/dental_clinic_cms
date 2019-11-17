@@ -10,8 +10,8 @@ base_url = base_url+"api/";
 
 // var base_url="http://admin.clidesadentistas.com/api/";
 
-window.addEventListener('load', recargarCita);
-window.addEventListener('load', recargarMsg);
+window.addEventListener('DOMContentLoaded', recargarCita);
+window.addEventListener('DOMContentLoaded', recargarMsg);
 
 var respuesta=document.getElementById("msg_inbox");
 var cita=document.getElementById("cita_inbox");

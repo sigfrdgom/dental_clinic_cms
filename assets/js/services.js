@@ -1,4 +1,4 @@
-window.addEventListener('load', listener);
+window.addEventListener('DOMContentLoaded', listener);
 var url_base = window.location.href;
 
 function listener() {

@@ -13,13 +13,21 @@ class HomePage extends REST_Controller
         //HACER USO DE LO METODO CONSTRUCTORE DEL PADRE 
         parent::__construct();
         //METODO CARGADO EN EL MODELO
-        $this->load->model('PublicacionModel');
+        $this->load->model(array('PublicacionModel', 'ContenidoEstaticoModel'));
     }
 
     /*** ------------------------------------ API METHODS ---------------------------------------------- */
 
     public function carousel_get(){
         $this->response($this->PublicacionModel->get_images_carousel_api(), 200);
+    }
+
+    public function video_get(){
+        $this->response($this->ContenidoEstaticoModel->findById(4), 200);
+    }
+
+    public function description_get(){
+        $this->response($this->ContenidoEstaticoModel->findById(5), 200);
     }
 
     public function clasification_services_api_get($id = ""){

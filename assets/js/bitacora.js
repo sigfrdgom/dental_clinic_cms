@@ -1,4 +1,4 @@
-window.addEventListener('load', recargar);
+window.addEventListener('DOMContentLoaded', recargar);
 // var formulario=document.getElementById("formBitacora");
 var respuesta=document.getElementById("bodyBitacora");
 

@@ -1,4 +1,4 @@
-window.addEventListener('load', listener);
+window.addEventListener('DOMContentLoaded', listener);
 
 function listener(){
     document.getElementById('btn-cambiar-video').addEventListener('click', changeUrl);

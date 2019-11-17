@@ -1,4 +1,4 @@
-window.addEventListener('load', recargar);
+window.addEventListener('DOMContentLoaded', recargar);
 var formulario=document.getElementById("formTipo");
 var respuesta=document.getElementById("bodyTipo");
 // var url_api="http://localhost/dental_clinic_cms/api/tipo/";

@@ -7,7 +7,7 @@ if(location.hostname =="localhost"){
 	base_url = location.protocol+"//"+location.hostname+"/";
 }
 
-window.addEventListener('load', listener);
+window.addEventListener('DOMContentLoaded', listener);
 
 function listener() {
     var images = document.querySelectorAll('input[type="file"]');

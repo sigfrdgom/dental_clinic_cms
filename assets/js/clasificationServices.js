@@ -1,4 +1,4 @@
-window.addEventListener('load', listener);
+window.addEventListener('DOMContentLoaded', listener);
 
 var base_url = "";
 if (location.hostname == "localhost") {

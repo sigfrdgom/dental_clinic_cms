@@ -1,7 +1,7 @@
 <div id="div-message">
     <?php if (!empty($this->session->flashdata('message'))) { ?>
         <script>
-            window.addEventListener('load', listener);
+            window.addEventListener('DOMContentLoaded', listener);
 
             function listener() {
                 $.toast({
@@ -21,7 +21,7 @@
         </script>
     <?php } else if (!empty($this->session->flashdata('error'))) { ?>
         <script>
-            window.addEventListener('load', listener);
+            window.addEventListener('DOMContentLoaded', listener);
 
             function listener() {
                 $.toast({
