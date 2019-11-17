@@ -25,8 +25,9 @@ function schedules() {
 					content += `
 					<tr>
 					<td class="align-middle">${element.contenido}</td>
-					<td class="align-middle"><button type="button" name="btn-show" value="${element.id_publicacion}" class="btn btn-warning">Editar</button></editar>
-					<td class="align-middle"><button type="button" name="btn-delete" value="${element.id_publicacion}" class="btn btn-danger">Eliminar</button></editar>
+					<td class="align-middle">${element.estado == true ? "Visible" : "Oculto"}</td>
+					<td class="align-middle"><button type="button" name="btn-show" value="${element.id_publicacion}" class="btn btn-warning">Editar</button></td>
+					<td class="align-middle"><button type="button" name="btn-delete" value="${element.id_publicacion}" class="btn btn-danger">Eliminar</button></td>
 				</tr>
                 `;
 				});
@@ -47,38 +48,56 @@ function schedules() {
 function asignEvents() {
 	btnDelete = document.getElementsByName("btn-delete");
 	btnShow = document.getElementsByName("btn-show");
+	// btnState = document.getElementsByName("btn-state");
 	for (let i = 0; i < btnDelete.length; i++) {
 		btnShow[i].addEventListener('click', showForm);
 		btnDelete[i].addEventListener('click', deleteSchedule);
+		// btnState[i].addEventListener('click', stateHandle);
 	}
 }
 
-function showForm(){
+function showForm() {
 	$('#modalForm').modal('show');
-	fetch(base_url + "api/homepage/schedules/"+this.value)
+	fetch(base_url + "api/homepage/schedules/" + this.value)
 		.then(res => { return res.json() })
 		.then(response => {
-			content = "";
-			if (response.length > 0) {
-				response.forEach(element => {
-					document.getElementById('id_horario').value=element.id_publicacion;
-					document.getElementById('contenido').value=element.contenido;
-				});
-			} 
+			document.getElementById('id_horario').value = response.id_publicacion;
+			document.getElementById('contenido').value = response.contenido;
+			document.getElementById('estado').value = response.estado;
+		}).then(() => {
+			document.getElementById('div-estado').style = "display: block";
 		});
 }
+
+// function stateHandle(e) {
+// 	fetch(base_url + "api/homepage/schedules/" + this.value)
+// 		.then(res => { return res.json() })
+// 		.then(response => {
+// 				document.getElementById('id_horario').value = response.id_publicacion;
+// 				document.getElementById('contenido').value = response.contenido;
+// 				if (response.estado == true) {
+// 					document.getElementById('estado').value = false;
+// 				}
+// 				if (response.estado == false) {
+// 					document.getElementById('estado').value = true;
+// 				}
+// 		}).then(
+// 			() => {
+// 				save(e);
+// 			}
+// 		);
+// }
 
 function save(e) {
 	e.preventDefault();
 	let form = document.getElementById('fromSchedule');
 	let data = new FormData(form);
-	console.log(data.get('id_publicacion'));
-	if(data.get('id_publicacion')){
-
-	}
+	console.log(form);
+	console.log(data.get('estado'));
 	if (data.get('contenido') !== "") {
-		id = data.get('id_publicacion') === "" ? "": "/"+data.get('id_publicacion');
-		fetch(base_url + "homepage/guardarSchedules"+id, {
+
+		id = data.get('id_publicacion') === "" ? "" : "/" + data.get('id_publicacion');
+		fetch(base_url + "homepage/guardarSchedules" + id, {
 			method: 'POST',
 			body: data
 		})
@@ -87,7 +106,7 @@ function save(e) {
 				clear();
 				var message = {
 					"heading": id === "" ? "Creación" : "Modificación",
-					"text": "El registro fue "+ (id === "" ? "creado" : "modificado") +" correctamente",
+					"text": "El registro fue " + (id === "" ? "creado" : "modificado") + " correctamente",
 					"ok": true
 				};
 				showMessage(message);
@@ -97,17 +116,19 @@ function save(e) {
 
 	} else {
 		var message = {
-			"heading":"Error",
-			"text":"El contenido no puede estar vacío",
+			"heading": "Error",
+			"text": "El contenido no puede estar vacío",
 			"ok": false
 		};
 		showMessage(message);
 	}
 }
 
-function clear(){
-	$('#modalForm').modal('hide');
+function clear() {
+	document.getElementById('id_horario').value = "";
 	document.getElementById('fromSchedule').reset();
+	document.getElementById('div-estado').style = "display: none";
+	$('#modalForm').modal('hide');
 }
 
 function deleteSchedule() {
@@ -160,12 +181,12 @@ function showMessage(message) {
 		text: message['text'],
 		showHideTransition: 'fade',
 		allowToastClose: true,
-		icon: message['ok'] ? 'success' :'error',
+		icon: message['ok'] ? 'success' : 'error',
 		hideAfter: 3000,
 		stack: 6,
 		position: 'top-right',
 		loaderBg: '#ff6849',
-		bgColor: message['ok'] ? '#46e1b6':'#ef5350',
+		bgColor: message['ok'] ? '#46e1b6' : '#ef5350',
 		textColor: '#ffffff',
 	});
 }

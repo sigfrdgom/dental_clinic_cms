@@ -333,6 +333,7 @@ class PublicacionModel extends CI_Model
     public function get_all_images_carousel()
     {
         $this->db->where('id_tipo', 4);
+        $this->db->where('id_categoria', 6);
         $this->db->order_by('fecha_ingreso', 'DESC');
         return $this->db->get('publicacion')->result();
     }
@@ -342,6 +343,7 @@ class PublicacionModel extends CI_Model
         $id = trim($id);
         $this->db->where('id_publicacion', $id);
         $this->db->where('id_tipo', 4);
+        $this->db->where('id_categoria', 6);
         $this->db->order_by('fecha_ingreso', 'DESC');
         return $this->db->get('publicacion')->row();
     }
@@ -349,6 +351,7 @@ class PublicacionModel extends CI_Model
     public function get_images_carousel_api()
     {
         $this->db->where('id_tipo', 4);
+        $this->db->where('id_categoria', 6);
         $this->db->where('estado', '1');
         $this->db->order_by('fecha_ingreso', 'DESC');
         return $this->db->get('publicacion')->result();
@@ -358,12 +361,29 @@ class PublicacionModel extends CI_Model
     {
         $this->db->where('id_tipo', 4);
         $this->db->where('id_categoria', 13);
-        $this->db->where('estado', '1');
         $this->db->order_by('fecha_ingreso', 'ASC');
         return $this->db->get('publicacion')->result();
     }
 
     public function get_schedules_by_id($id)
+    {
+        $this->db->where('id_publicacion', $id);
+        $this->db->where('id_tipo', 4);
+        $this->db->where('id_categoria', 13);
+        $this->db->order_by('fecha_ingreso', 'ASC');
+        return $this->db->get('publicacion')->row();
+    }
+
+    public function get_schedules_api()
+    {
+        $this->db->where('id_tipo', 4);
+        $this->db->where('id_categoria', 13);
+        $this->db->where('estado', '1');
+        $this->db->order_by('fecha_ingreso', 'ASC');
+        return $this->db->get('publicacion')->result();
+    }
+
+    public function get_schedules_by_id_api($id)
     {
         $this->db->where('id_publicacion', $id);
         $this->db->where('id_tipo', 4);
