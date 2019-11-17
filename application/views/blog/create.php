@@ -14,7 +14,7 @@
     </div>
 
     <div class="row">
-        <div class="card col-9 col-md-10 col-sm-12 mx-auto mt-4">
+        <div class="card col-12 col-sm-12 col-md-10 col-lg-8 mx-auto mt-4">
             <form action="<?=  base_url('blog/guardarDatos' )?>" method="post" enctype="multipart/form-data" class="p-3"  >
                 <?php $this->load->view('blog/form'); ?>
             </form>

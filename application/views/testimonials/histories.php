@@ -32,7 +32,7 @@ foreach ($testimonials as $testimonial) {
             <div class="col-6 col-sm-6 col-md-2 col-lg-2 col-xl-2">
                 <div class="container h-100">
                     <div class="row align-items-center h-100">
-                        <div class="col-12 mx-auto">
+                        <div class="col-12 mx-auto p-2">
                             <!-- <div class="jumbotron"> -->
                             <a href="<?= base_url("testimonials/edit/" . $testimonial->id_publicacion) ?>" class="btn btn-warning  btn-edit mx-auto btn-block">Editar</a>
                             <button class="btn btn-danger btn-delete mx-auto btn-block" value="<?= $testimonial->id_publicacion ?>">Eliminar</button>

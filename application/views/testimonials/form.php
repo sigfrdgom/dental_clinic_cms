@@ -18,7 +18,7 @@
     <textarea class="form-control" name="texto_introduccion" id="" rows="5" maxlength="256" required><?= isset($testimonial->texto_introduccion) ? $testimonial->texto_introduccion : '' ?></textarea>
 </div>
 <div class="row ">
-    <div class="form-group col-5 mx-auto">
+    <div class="form-group col-8 col-sm-10 col-sm-8 col-md-6 mx-auto">
         <label for="recurso1" >Seleccionar imagen</label>
         <input type="file" id="input-file-to-destroy" class="dropify" name="recurso1" accept=".bmp, .gif, .jpeg, .jpg, .jpe, .png, .tiff, .tif" data-default-file="<?= !empty($testimonial->recurso_av_1) ? base_url('uploads/') . $testimonial->recurso_av_1 : '' ?>" data-allowed-file-extensions="bmp gif jpeg jpg jpe png tiff tif" data-max-file-size="5M" data-height="450" data-max-height="8000" data-max-width="8000" />
         <br />

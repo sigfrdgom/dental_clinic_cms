@@ -33,7 +33,7 @@
     <textarea class="form-control" name="texto_introduccion" id="" rows="3" required><?= isset($services->texto_introduccion) ? $services->texto_introduccion : '' ?></textarea>
 </div>
 <div class="row ">
-    <div class="form-group col-8 mx-auto">
+    <div class="form-group col-12 col-sm-12 col-sm-10 col-md-10 mx-auto">
         <label for="recurso1" >Seleccionar imagen</label>
         <input type="file" id="input-file-to-destroy" class="dropify" name="recurso1" accept=".bmp, .gif, .jpeg, .jpg, .jpe, .png, .tiff, .tif" data-default-file="<?= !empty($services->recurso_av_1) ? base_url('uploads/') . $services->recurso_av_1 : '' ?>" data-allowed-file-extensions="bmp gif jpeg jpg jpe png tiff tif" data-max-file-size="5M" data-height="350" data-max-height="8000" data-max-width="8000" />
         <br />

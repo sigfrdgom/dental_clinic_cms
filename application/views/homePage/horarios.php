@@ -25,8 +25,8 @@
 
     <?php $this->load->view('components/toastMessages'); ?>
 
-    <div class="col-8 row card mx-auto">
-        <div class="card mx-auto">
+    <div class="col-12 col-sm-12 col-md-10 col-lg-8 row card mx-auto">
+        <div class="card mx-auto responsive">
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-borderless table-hover display">

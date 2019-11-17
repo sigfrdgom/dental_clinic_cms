@@ -15,7 +15,7 @@
     </div>
 
     <div class="row">
-        <form action="<?=  base_url('homePage/guardarDatos' )?>" method="post" enctype="multipart/form-data" class="col-lg-8 col-sm-8 col-md-8 col-lg-8 mx-auto">
+        <form action="<?=  base_url('homePage/guardarDatos' )?>" method="post" enctype="multipart/form-data" class="col-12 col-sm-12 col-md-10 col-lg-8 mx-auto">
             <?php $this->load->view('homePage/formImage'); ?>
         </form>
     </div>

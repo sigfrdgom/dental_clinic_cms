@@ -1,9 +1,6 @@
-<!-- Import Fontaesome 5 but the time of load is so slow -->
-<!-- <script src="https://kit.fontawesome.com/3b0ecff6a4.js" crossorigin="anonymous"></script> -->
-
-<div class="container">    
+<div class="container ">    
     <div class="container-fluid align-middle">
-        <div class="row card-deck mx-0 "> 
+        <div class="row mx-0 "> 
             <div class="col my-3 mx-0">
                 <div class="card">
                     <div class="card-img-top text-center mt-5" >
@@ -48,7 +45,7 @@
 </div>
 
 <div class="container-fluid my-5">           
-    <div class="row card-deck">
+    <div class="row ">
         
         <div class="col my-3 mx-2">
             <div class="card">
@@ -117,7 +114,7 @@
 </div>
 
 <div class="container-fluid mt-5">
-    <div class="row card-deck">
+    <div class="row">
         
         <div class="col my-3 mx-2" >
             <div class="card" >

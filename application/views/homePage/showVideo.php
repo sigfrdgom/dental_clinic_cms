@@ -15,7 +15,7 @@
     </div>
 
     <div class="row">
-        <div class="col-8 mx-auto card p-4">
+        <div class="col-12 col-sm-12 col-md-10 col-lg-8  mx-auto card p-4">
             <form action="<?= base_url('homePage/guardarVideo/'.$video->id_estatico) ?>" method="post">
                 <h2 class="text-center">Video de la página de inicio</h2>
                 <div class="form-row p-3">
