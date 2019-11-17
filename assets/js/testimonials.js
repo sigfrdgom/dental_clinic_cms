@@ -30,7 +30,7 @@ function refresh_testimonials(){
 
 function deleteTestimonials() {
 	Swal.fire({
-		title: '¿Esta seguro de eliminar la publicación?',
+		title: '¿Esta seguro de eliminar el testimonio?',
 		text: "Esta accion no es reversible",
 		type: 'warning',
 		showCancelButton: true,

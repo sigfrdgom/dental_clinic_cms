@@ -133,7 +133,7 @@ function clear() {
 
 function deleteSchedule() {
 	Swal.fire({
-		title: '¿Esta seguro de eliminar la imágen?',
+		title: '¿Esta seguro de eliminar el registro?',
 		text: "Esta accion no es reversible",
 		type: 'warning',
 		showCancelButton: true,

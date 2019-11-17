@@ -76,7 +76,7 @@ function asignEvents() {
 
 function deleteImage() {
 	Swal.fire({
-		title: '¿Esta seguro de eliminar la imágen?',
+		title: '¿Esta seguro de eliminar el método de pago?',
 		text: "Esta accion no es reversible",
 		type: 'warning',
 		showCancelButton: true,

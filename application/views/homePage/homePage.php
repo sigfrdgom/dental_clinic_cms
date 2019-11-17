@@ -47,7 +47,7 @@
                     <p class="card-text">Esta opción permite cambiar el horario que se encuentra en la página de inicio.</p>
                 </div>
                 <div class="row p-4">
-                    <a href="<?= base_url('homePage/horarios') ?>" class="btn btn-primary btn-block">Ver horairo</a>
+                    <a href="<?= base_url('homePage/horarios') ?>" class="btn btn-primary btn-block">Ver horario</a>
                 </div>
             </div>
         </div>
@@ -59,7 +59,7 @@
                     <p class="card-text">Esta opción permite cambiar servicios de la página de inicio agregando un breve descripción .</p>
                 </div>
                 <div class="row p-4">
-                    <a href="<?= base_url('homePage/showClasifcationServices') ?>" class="btn btn-primary btn-block">Ver descripción</a>
+                    <a href="<?= base_url('homePage/showClasifcationServices') ?>" class="btn btn-primary btn-block">Ver clasificación</a>
                 </div>
             </div>
         </div>
