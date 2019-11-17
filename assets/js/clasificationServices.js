@@ -88,7 +88,7 @@ function deleteImage() {
 		cancelButtonText: 'Cancelar',
 	}).then((result) => {
 		if (result.value) {
-			fetch(base_url + 'homePage/delete/' + this.value, {
+			fetch(base_url + 'homePage/deleteClasificatonService/' + this.value, {
 				method: 'DELETE'
 			})
 				.then(() => {

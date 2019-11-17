@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div class="row page-titles pt-2 pb-0" style="background: white">
         <div class="col-md-5 align-self-center mb-2">
-            <h4 class="text-themecolor text-dark float-left mt-2">Añadir clasificación servicios &nbsp; &nbsp;</h4>
+            <h4 class="text-themecolor text-dark float-left mt-2">Añadir clasificación de servicios &nbsp; &nbsp;</h4>
 
         </div>
         <div class="col-md-7 align-self-center text-right text-dark">

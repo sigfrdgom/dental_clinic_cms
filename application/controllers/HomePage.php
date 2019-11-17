@@ -429,7 +429,7 @@ class HomePage extends CI_Controller
           );
           $this->session->set_flashdata($message);
           //BITACORA DE MODIFICO
-          $data = parent::bitacora("Modificó una imagen de la página de inicio", $_POST['titulo']);
+          $data = parent::bitacora("Modificó una clasificación de servicios en la página de inicio", $_POST['titulo']);
           $this->BitacoraModel->agregarBitacora($data);
         }
       } else {
@@ -441,7 +441,7 @@ class HomePage extends CI_Controller
           );
           $this->session->set_flashdata($message);
           //BITACORA DE CREADO
-          $data = parent::bitacora("Agregó una imagen de la página de inicio", $_POST['titulo']);
+          $data = parent::bitacora("Agregó una clasificación de servicios en la página de inicio", $_POST['titulo']);
           $this->BitacoraModel->agregarBitacora($data);
         }
       }
@@ -453,6 +453,30 @@ class HomePage extends CI_Controller
       );
       $this->session->set_flashdata($message);
       redirect('homePage/showClasifcationServices');
+    }
+  }
+
+  public function deleteClasificatonService($id)
+  {
+    // Covert stdclass to array
+    $datos = $this->PublicacionModel->findById($id);
+    $data = (array) $datos;
+    // get the last 3 register of the array
+    $data = array_splice($data, -5, 4, true);
+    // delete the keys of the array
+    $data = array_values($data);
+    $message = $this->deleteImage($data);
+    // Delete the data from the database
+    if ($this->PublicacionModel->delete($id)) {
+      //MESSAGE
+      $message = array(
+        'title' => 'Eliminación',
+        'message' => 'Se eliminó correctamente el registro'
+      );
+      $this->session->set_flashdata($message);
+      //BITACORA DE ELIMINADO
+      $data = parent::bitacora("Eliminó una clasificación de servicios en la página de inicio", $datos->titulo );
+      $this->BitacoraModel->agregarBitacora($data);
     }
   }
 }

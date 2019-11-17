@@ -31,6 +31,15 @@ class HomePage extends REST_Controller
         }
     }
 
+    public function schedules_api_get($id = ""){
+        $id = trim($id);
+        if(!empty($id)){
+            $this->response($this->PublicacionModel->get_schedules_by_id_api($id), 200);
+        }else{
+            $this->response($this->PublicacionModel->get_schedules_api(), 200);
+        }
+    }
+
     /*** ------------------------------------ SYSTEM METHODS ---------------------------------------------- */
 
     public function schedules_get($id = ""){
