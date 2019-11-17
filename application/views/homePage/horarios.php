@@ -73,6 +73,14 @@
                                 filebrowserUploadMethod: 'form',
                                 embed_provider: '//ckeditor.iframe.ly/api/oembed?url={url}&callback={callback}',
                             });
+                            CKEDITOR.on('instanceReady', function(e) {
+                                // First time
+                                e.editor.document.getBody().setStyle('background-color', '#00aeef');
+                                // in case the user switches to source and back
+                                e.editor.on('contentDom', function() {
+                                    e.editor.document.getBody().setStyle('background-color', '#00aeef');
+                                });
+                            });
                         </script>
                     </div>
                     <div class="form-group" id="div-estado" style="display: none;">

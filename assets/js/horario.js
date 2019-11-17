@@ -16,7 +16,7 @@ function listener() {
 }
 
 function schedules() {
-	fetch(base_url + "api/homepage/schedules")
+	fetch(base_url + "api/HomePage/schedules")
 		.then(res => { return res.json() })
 		.then(response => {
 			content = "";
@@ -24,7 +24,7 @@ function schedules() {
 				response.forEach(element => {
 					content += `
 					<tr>
-					<td class="align-middle">${element.contenido}</td>
+					<td class="align-middle bg-clidesa-celeste">${element.contenido}</td>
 					<td class="align-middle">${element.estado == true ? "Visible" : "Oculto"}</td>
 					<td class="align-middle"><button type="button" name="btn-show" value="${element.id_publicacion}" class="btn btn-warning">Editar</button></td>
 					<td class="align-middle"><button type="button" name="btn-delete" value="${element.id_publicacion}" class="btn btn-danger">Eliminar</button></td>
@@ -58,7 +58,7 @@ function asignEvents() {
 
 function showForm() {
 	$('#modalForm').modal('show');
-	fetch(base_url + "api/homepage/schedules/" + this.value)
+	fetch(base_url + "api/HomePage/schedules/" + this.value)
 		.then(res => { return res.json() })
 		.then(response => {
 			document.getElementById('id_horario').value = response.id_publicacion;
@@ -71,7 +71,7 @@ function showForm() {
 }
 
 // function stateHandle(e) {
-// 	fetch(base_url + "api/homepage/schedules/" + this.value)
+// 	fetch(base_url + "api/HomePage/schedules/" + this.value)
 // 		.then(res => { return res.json() })
 // 		.then(response => {
 // 				document.getElementById('id_horario').value = response.id_publicacion;
@@ -98,7 +98,7 @@ function save(e) {
 	if (data.get('contenido') !== "") {
 
 		id = data.get('id_publicacion') === "" ? "" : "/" + data.get('id_publicacion');
-		fetch(base_url + "homepage/guardarSchedules" + id, {
+		fetch(base_url + "HomePage/guardarSchedules" + id, {
 			method: 'POST',
 			body: data
 		})
@@ -145,7 +145,7 @@ function deleteSchedule() {
 		cancelButtonText: 'Cancelar',
 	}).then((result) => {
 		if (result.value) {
-			fetch(base_url + 'homePage/deleteSchedule/' + this.value, {
+			fetch(base_url + 'HomePage/deleteSchedule/' + this.value, {
 				method: 'DELETE'
 			})
 				.then(() => {

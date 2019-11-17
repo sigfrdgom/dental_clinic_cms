@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-11-2019 a las 08:22:13
+-- Tiempo de generación: 17-11-2019 a las 10:02:12
 -- Versión del servidor: 10.4.6-MariaDB
 -- Versión de PHP: 7.3.9
 
@@ -21,7 +21,7 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `clidesa_clinica_db`
 --
-CREATE DATABASE IF NOT EXISTS `clidesa_clinica_db` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+CREATE DATABASE IF NOT EXISTS `clidesa_clinica_db` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `clidesa_clinica_db`;
 
 -- --------------------------------------------------------
@@ -54,7 +54,18 @@ INSERT INTO `bitacora` (`id_bitacora`, `usuario`, `accion`, `fecha`, `titulo`, `
 (298, 'clidesa.admin', 'Modificó una clasificación de servicios en la página de inicio', '2019-11-17 01:06:53', 'Dentista Generalw', 'ADMIN'),
 (299, 'clidesa.admin', 'Modificó una clasificación de servicios en la página de inicio', '2019-11-17 01:07:10', 'Dentista General', 'ADMIN'),
 (300, 'clidesa.admin', 'Modificó una Publicación', '2019-11-17 01:19:15', 'Principales razones para ir al dentista', 'ADMIN'),
-(301, 'clidesa.admin', 'Modificó una Publicación', '2019-11-17 01:20:03', 'Brackets y la ortodoncia', 'ADMIN');
+(301, 'clidesa.admin', 'Modificó una Publicación', '2019-11-17 01:20:03', 'Brackets y la ortodoncia', 'ADMIN'),
+(302, 'clidesa.admin', 'Modificó un registro de horario', '2019-11-17 02:35:59', 'Horario', 'ADMIN'),
+(303, 'clidesa.admin', 'Modificó un registro de horario', '2019-11-17 02:36:49', 'Horario', 'ADMIN'),
+(304, 'clidesa.admin', 'Agregó un registro de horario', '2019-11-17 02:36:56', 'Horario', 'ADMIN'),
+(305, 'clidesa.admin', 'Eliminó registro de horario', '2019-11-17 02:36:58', 'Horario', 'ADMIN'),
+(306, 'clidesa.admin', 'Modificó un registro de horario', '2019-11-17 02:37:50', 'Horario', 'ADMIN'),
+(307, 'clidesa.admin', 'Modificó un registro de horario', '2019-11-17 02:38:33', 'Horario', 'ADMIN'),
+(308, 'clidesa.admin', 'Modificó un registro de horario', '2019-11-17 02:38:44', 'Horario', 'ADMIN'),
+(309, 'clidesa.admin', 'Modificó un registro de horario', '2019-11-17 02:40:18', 'Horario', 'ADMIN'),
+(310, 'clidesa.admin', 'Modificó un registro de horario', '2019-11-17 02:40:22', 'Horario', 'ADMIN'),
+(311, 'clidesa.admin', 'Modificó un registro de horario', '2019-11-17 02:41:28', 'Horario', 'ADMIN'),
+(312, 'clidesa.admin', 'Modificó un registro de horario', '2019-11-17 02:41:32', 'Horario', 'ADMIN');
 
 -- --------------------------------------------------------
 
@@ -132,6 +143,13 @@ CREATE TABLE `contacto` (
   `fecha` timestamp NOT NULL DEFAULT current_timestamp(),
   `estado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `contacto`
+--
+
+INSERT INTO `contacto` (`id_contacto`, `nombre`, `telefono`, `email`, `comentario`, `fecha`, `estado`) VALUES
+(7, 'Juan Perez', '5037459-54123', 'kevin.martinez@gmail.com', 'Hola esto es una prueba', '2019-11-17 08:12:41', 1);
 
 -- --------------------------------------------------------
 
@@ -214,13 +232,13 @@ INSERT INTO `publicacion` (`id_publicacion`, `id_usuario`, `id_categoria`, `id_t
 (40, 1, 8, 6, '', '', '<p>Presentarte a nuestra cl&iacute;nica con tu carnet vigente de asegurado.</p>\r\n', 1, '', '2019-11-13 22:09:01'),
 (47, 1, 6, 4, 'CREEMOS QUE TODOS DEBEN TENER FÁCIL ACCESO AL MEJOR CUIDADO DENTAL', '', 'CREEMOS QUE TODOS DEBEN TENER FÁCIL ACCESO AL MEJOR CUIDADO DENTAL', 1, 'recurso_1573833974.jpg', '2019-11-15 16:06:14'),
 (48, 1, 6, 4, 'ENTRA A NUESTRAS INNOVADORAS INSTALACIONES', '', '<p>ENTRA A NUESTRAS INNOVADORAS INSTALACIONES</p>\r\n', 1, 'recurso_1573834012.jpg', '2019-11-15 16:06:52'),
-(90, 1, 13, 4, '', '', 'Lunes - Viernes', 1, '', '2019-11-17 05:21:50'),
+(90, 1, 13, 4, '', '', '<p>Lunes - Viernes</p>\n', 1, '', '2019-11-17 05:21:50'),
 (91, 1, 13, 4, '', '', '8:00AM - 12:30MD y 2:00PM - 5:30PM', 1, '', '2019-11-17 05:21:59'),
-(92, 1, 13, 4, '', '', 'Sábados ', 1, '', '2019-11-17 05:22:09'),
+(92, 1, 13, 4, '', '', '<p>S&aacute;bados</p>\n', 1, '', '2019-11-17 05:22:09'),
 (93, 1, 13, 4, '', '', '8:00AM - 12:30MD', 1, '', '2019-11-17 05:22:18'),
 (94, 1, 13, 4, '', '', 'Domingos  ', 1, '', '2019-11-17 05:22:27'),
 (95, 1, 13, 4, '', '', 'Cerrado', 1, '', '2019-11-17 05:22:35'),
-(96, 1, 13, 4, '', '', '15 Septiembre Cerrado por asueto', 1, '', '2019-11-17 05:22:45'),
+(96, 1, 13, 4, '', '', '<p><span style=\"font-size:18px\">15 Septiembre Cerrado por asueto</span></p>\n', 1, '', '2019-11-17 05:22:45'),
 (97, 1, 14, 4, 'Dentista General', '', '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui unde, ipsam odit laboriosam.</p>\r\n', 1, 'recurso_1573968298.jpg', '2019-11-17 05:24:58'),
 (98, 1, 14, 4, 'Especialidades dentales', '', '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui unde, ipsam odit laboriosam.</p>\r\n', 1, 'recurso_1573968325.jpg', '2019-11-17 05:25:25'),
 (99, 1, 14, 4, 'Especialidades medicas', '', '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui unde, ipsam odit laboriosam.</p>\r\n', 1, 'recurso_1573968352.jpg', '2019-11-17 05:25:52'),
@@ -338,7 +356,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `bitacora`
 --
 ALTER TABLE `bitacora`
-  MODIFY `id_bitacora` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=302;
+  MODIFY `id_bitacora` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=313;
 
 --
 -- AUTO_INCREMENT de la tabla `categoria`
@@ -356,7 +374,7 @@ ALTER TABLE `cita`
 -- AUTO_INCREMENT de la tabla `contacto`
 --
 ALTER TABLE `contacto`
-  MODIFY `id_contacto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_contacto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `estatico`
@@ -368,7 +386,7 @@ ALTER TABLE `estatico`
 -- AUTO_INCREMENT de la tabla `publicacion`
 --
 ALTER TABLE `publicacion`
-  MODIFY `id_publicacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
+  MODIFY `id_publicacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo`

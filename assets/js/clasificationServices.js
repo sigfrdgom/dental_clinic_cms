@@ -16,7 +16,7 @@ function listener() {
 
 function refresh_cards() {
 	// const busqueda = document.getElementById('busqueda').value;
-	fetch(base_url + "api/homePage/clasification_services")
+	fetch(base_url + "api/HomePage/clasification_services")
 		.then(res => { return res.json() })
 		.then(response => {
 			content = "";
@@ -44,7 +44,7 @@ function refresh_cards() {
 						</div>
 						
 						<div class="row p-2">
-							<a href="${base_url}/homePage/editClasification/${element.id_publicacion}" class="btn btn-warning mx-auto col-5">Editar</a>
+							<a href="${base_url}/HomePage/editClasification/${element.id_publicacion}" class="btn btn-warning mx-auto col-5">Editar</a>
 							<button type="button" name="btn-eliminar" value="${element.id_publicacion}" class="btn btn-danger mx-auto col-5">Eliminar</button>
 						</div>
 						<div class="card-footer text-center">
@@ -88,7 +88,7 @@ function deleteImage() {
 		cancelButtonText: 'Cancelar',
 	}).then((result) => {
 		if (result.value) {
-			fetch(base_url + 'homePage/deleteClasificatonService/' + this.value, {
+			fetch(base_url + 'HomePage/deleteClasificatonService/' + this.value, {
 				method: 'DELETE'
 			})
 				.then(() => {
