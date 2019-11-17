@@ -17,18 +17,12 @@ class HomePage extends CI_Controller
     $this->load->view('templates/footer');
   }
 
+  /** -------------------------------- CAROUSEL IMAGES OF THE HOME PAGE ----------------------------------- **/
+
   public function showImages()
   {
     $this->load->view('templates/header');
     $this->load->view('homePage/showImages');
-    $this->load->view('templates/footer');
-  }
-
-  public function showVideo()
-  {
-    $datos = ['video' => $this->ContenidoEstaticoModel->findById(4)];
-    $this->load->view('templates/header');
-    $this->load->view('homePage/showVideo', $datos);
     $this->load->view('templates/footer');
   }
 
@@ -45,13 +39,6 @@ class HomePage extends CI_Controller
     $datos = ['image' => $this->PublicacionModel->get_images_carousel_by_id($id)];
     $this->load->view('templates/header');
     $this->load->view('homePage/edit', $datos);
-    $this->load->view('templates/footer');
-  }
-
-  public function editVideo()
-  {
-    $this->load->view('templates/header');
-    $this->load->view('homePage/editVideo');
     $this->load->view('templates/footer');
   }
 
@@ -212,6 +199,23 @@ class HomePage extends CI_Controller
     }
   }
 
+  /*** ------------------------------ VIDEO OF THE HOME PAGE ------------------------------------------ */
+
+  public function showVideo()
+  {
+    $datos = ['video' => $this->ContenidoEstaticoModel->findById(4)];
+    $this->load->view('templates/header');
+    $this->load->view('homePage/showVideo', $datos);
+    $this->load->view('templates/footer');
+  }
+
+  public function editVideo()
+  {
+    $this->load->view('templates/header');
+    $this->load->view('homePage/editVideo');
+    $this->load->view('templates/footer');
+  }
+
   public function guardarVideo($id)
   {
     $id = trim($id);
@@ -233,6 +237,8 @@ class HomePage extends CI_Controller
     }
     redirect('homePage/showVideo');
   }
+
+  /** ------------------------------- SCHEDULES OF THE HOME PAGE ---------------------------------------- */
 
   public function horarios(){
     $this->load->view('templates/header');
@@ -307,6 +313,8 @@ class HomePage extends CI_Controller
     }
   }
 
+  /** ------------------------------- DESCRIPTION OF THE HOME PAGE ------------------------------------ */
+
   public function descripcion(){
     $datos = ['descripcion' => $this->ContenidoEstaticoModel->findById(5)];
     $this->load->view('templates/header');
@@ -339,10 +347,112 @@ class HomePage extends CI_Controller
         'message' => 'Registro Modificado con éxito'
       );
       $this->session->set_flashdata($message);
-      $data = parent::bitacora("Modificó texto Sobre Nosotros", $_POST['titulo']);
+      $data = parent::bitacora("Modificó descripción de la página de inicio", $_POST['titulo']);
       $this->BitacoraModel->agregarBitacora($data);
     }
     redirect('homepage/descripcion');
   }
 
+  /*** -------------------------------- CLASIFICATIONS SERVICES OF THE HOME PAGE -------------------------------**/
+
+  public function showClasifcationServices()
+  {
+    $this->load->view('templates/header');
+    $this->load->view('homePage/showClasifcationServices');
+    $this->load->view('templates/footer');
+  }
+
+  public function createClasification()
+  {
+    $this->load->view('templates/header');
+    $this->load->view('homePage/createClasification');
+    $this->load->view('templates/footer');
+  }
+
+  public function editClasification($id = "")
+  {
+    $id = trim($id);
+    $datos = ['clasificationServices' => $this->PublicacionModel->get_clasification_services_by_id($id)];
+    $this->load->view('templates/header');
+    $this->load->view('homePage/editClasification', $datos);
+    $this->load->view('templates/footer');
+  }
+
+  public function guardarClasificationServices($id = "")
+  {
+    $id = trim($id);
+    $old_posts = array();
+    if (!empty($id) && !empty($this->PublicacionModel->findById($id))) {
+      $old_posts = (array) $this->PublicacionModel->findById($id);
+    } else {
+      $old_posts = array(
+        'recurso_av_1' => "",
+      );
+    }
+
+    $data_files = array();
+    if (isset($_FILES['recurso1']['name'])) {
+      if ($_FILES['recurso1']['size'] > 0) {
+        $data_files =  $this->savePictures('recurso1', "uploads/inicio/");
+      }
+    }
+
+    $datos = [
+      'id_publicacion' => trim($id) ? trim($id) : '',
+      'id_usuario' => $this->session->userdata('id_usuario'),
+      'id_categoria' => 14,
+      'id_tipo' => 4,
+      'titulo' => $_POST['titulo'],
+      'texto_introduccion' => "",
+      'contenido' => $_POST['contenido'],
+      'estado' => isset($_POST['estado']) ? $_POST['estado'] : true,
+      'recurso_av_1' => isset($data_files["upload_data"]) ?  $data_files["upload_data"]['file_name'] : $old_posts['recurso_av_1'],
+    ];
+
+    try {
+      if (!empty($id)) {
+        $rutas = array();
+        $found_img = false;
+        if ($datos['recurso_av_1'] != $old_posts['recurso_av_1']) {
+          $rutas = array_merge($rutas, (array) $old_posts['recurso_av_1']);
+          $found_img = true;
+        }
+        if ($found_img == true) {
+          $rutas = array_values($rutas);
+          $this->deleteImage($rutas);
+        }
+        if ($this->PublicacionModel->update($datos)) {
+          //MESSAGE
+          $message = array(
+            'title' => 'Modificación',
+            'message' => 'Registro Modificado con éxito'
+          );
+          $this->session->set_flashdata($message);
+          //BITACORA DE MODIFICO
+          $data = parent::bitacora("Modificó una imagen de la página de inicio", $_POST['titulo']);
+          $this->BitacoraModel->agregarBitacora($data);
+        }
+      } else {
+        if ($this->PublicacionModel->create($datos)) {
+          //MESSAGE
+          $message = array(
+            'title' => 'Creación',
+            'message' => 'Registro Agregado con éxito'
+          );
+          $this->session->set_flashdata($message);
+          //BITACORA DE CREADO
+          $data = parent::bitacora("Agregó una imagen de la página de inicio", $_POST['titulo']);
+          $this->BitacoraModel->agregarBitacora($data);
+        }
+      }
+      redirect('homePage/showClasifcationServices');
+    } catch (Exception $e) {
+      $message = array(
+        'title' => 'error',
+        'error' => $e
+      );
+      $this->session->set_flashdata($message);
+      redirect('homePage/showClasifcationServices');
+    }
+  }
 }

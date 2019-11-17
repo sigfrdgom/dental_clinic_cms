@@ -55,11 +55,11 @@
             <div class="card " style="height: 96%">
                 <img class="card-img-top img-responsive" src="<?= base_url('assets/images/inicio/services.png') ?>" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">Cambiar breve descipcion de la página de incio</h5>
-                    <p class="card-text">Esta opción permite cambar la descripcion que se encuentra en la página de inicio.</p>
+                    <h5 class="card-title">Cambiar clasificación de servicios de página de incio</h5>
+                    <p class="card-text">Esta opción permite cambiar servicios de la página de inicio agregando un breve descripción .</p>
                 </div>
                 <div class="row p-4">
-                    <a href="<?= base_url('homePage/descripcion') ?>" class="btn btn-primary btn-block">Ver descripción</a>
+                    <a href="<?= base_url('homePage/showClasifcationServices') ?>" class="btn btn-primary btn-block">Ver descripción</a>
                 </div>
             </div>
         </div>
@@ -68,7 +68,7 @@
                 <img class="card-img-top img-responsive" src="<?= base_url('assets/images/inicio/acercade.jpg') ?>" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">Cambiar breve descipcion de la página de incio</h5>
-                    <p class="card-text">Esta opción permite cambar la descripcion que se encuentra en la página de inicio.</p>
+                    <p class="card-text">Esta opción permite cambiar la descripcion que se encuentra en la página de inicio.</p>
                 </div>
                 <div class="row p-4">
                     <a href="<?= base_url('homePage/descripcion') ?>" class="btn btn-primary btn-block">Ver descripción</a>

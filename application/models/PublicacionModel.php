@@ -390,7 +390,43 @@ class PublicacionModel extends CI_Model
         $this->db->where('id_categoria', 13);
         $this->db->where('estado', '1');
         $this->db->order_by('fecha_ingreso', 'ASC');
+        return $this->db->get('publicacion')->row();
+    }
+
+    public function get_clasification_services()
+    {
+        $this->db->where('id_tipo', 4);
+        $this->db->where('id_categoria', 14);
+        $this->db->order_by('fecha_ingreso', 'ASC');
         return $this->db->get('publicacion')->result();
+    }
+
+    public function get_clasification_services_by_id($id)
+    {
+        $this->db->where('id_publicacion', $id);
+        $this->db->where('id_tipo', 4);
+        $this->db->where('id_categoria', 14);
+        $this->db->order_by('fecha_ingreso', 'ASC');
+        return $this->db->get('publicacion')->row();
+    }
+
+    public function get_clasification_services_api()
+    {
+        $this->db->where('id_tipo', 4);
+        $this->db->where('id_categoria', 14);
+        $this->db->where('estado', '1');
+        $this->db->order_by('fecha_ingreso', 'ASC');
+        return $this->db->get('publicacion')->result();
+    }
+
+    public function get_clasification_services_by_id_api($id)
+    {
+        $this->db->where('id_publicacion', $id);
+        $this->db->where('id_tipo', 4);
+        $this->db->where('id_categoria', 14);
+        $this->db->where('estado', '1');
+        $this->db->order_by('fecha_ingreso', 'ASC');
+        return $this->db->get('publicacion')->row();
     }
 
     /**-------------------------------------- PAYMENT METHODS ---------------------------------- */

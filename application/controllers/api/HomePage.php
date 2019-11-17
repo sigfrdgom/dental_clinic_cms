@@ -16,9 +16,22 @@ class HomePage extends REST_Controller
         $this->load->model('PublicacionModel');
     }
 
+    /*** ------------------------------------ API METHODS ---------------------------------------------- */
+
     public function carousel_get(){
         $this->response($this->PublicacionModel->get_images_carousel_api(), 200);
     }
+
+    public function clasification_services_api_get($id = ""){
+        $id = trim($id);
+        if(!empty($id)){
+            $this->response($this->PublicacionModel->get_clasification_services_by_id_api($id), 200);
+        }else{
+            $this->response($this->PublicacionModel->get_clasification_services_api(), 200);
+        }
+    }
+
+    /*** ------------------------------------ SYSTEM METHODS ---------------------------------------------- */
 
     public function schedules_get($id = ""){
         parent::logueado();
@@ -27,6 +40,16 @@ class HomePage extends REST_Controller
             $this->response($this->PublicacionModel->get_schedules_by_id($id), 200);
         }else{
             $this->response($this->PublicacionModel->get_schedules(), 200);
+        }
+    }
+
+    public function clasification_services_get($id = ""){
+        parent::logueado();
+        $id = trim($id);
+        if(!empty($id)){
+            $this->response($this->PublicacionModel->get_clasification_services_by_id($id), 200);
+        }else{
+            $this->response($this->PublicacionModel->get_clasification_services(), 200);
         }
     }
 
