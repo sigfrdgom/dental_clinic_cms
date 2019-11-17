@@ -63,7 +63,7 @@ function recargar(){
 					var p = new Paginador(
 						document.getElementById('paginador'),
 						document.getElementById('ajaxTabla'),
-						5); p.Mostrar();
+						10); p.Mostrar();
 						
 						
 					})
