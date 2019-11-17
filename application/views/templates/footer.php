@@ -27,6 +27,13 @@
     <!-- Chart JS -->
     <script src="<?= base_url('assets/js/dashboard1.js') ?>"></script>
     <!-- Own JS files -->
+    
+    <!-- Moment js -->
+    <script src="<?= base_url('assets/plugins/moment/moment-with-locales.js') ?>"></script>
+    <script>
+        var languaje = navigator.language || navigator.userLanguage;
+        moment.lang(languaje);
+    </script>
 
     <!-- Dropify Image--->
     <script src="<?= base_url('assets/plugins/dropify/js/dropify.min.js') ?>"></script>
@@ -34,6 +41,7 @@
     <!-- Toast CSS -->
     <script src="<?= base_url('assets/plugins/jquery.toast/js/jquery.toast.min.js') ?>"></script>
     <script src="<?= base_url('assets/js/initPlugin/jquery.toast.init.js') ?>"></script>
+
 
     </body>
 

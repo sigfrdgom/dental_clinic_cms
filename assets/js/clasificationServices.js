@@ -48,7 +48,7 @@ function refresh_cards() {
 							<button type="button" name="btn-eliminar" value="${element.id_publicacion}" class="btn btn-danger mx-auto col-5">Eliminar</button>
 						</div>
 						<div class="card-footer text-center">
-							<small class="text-muted">${element.fecha_ingreso}</small>
+							<small class="text-muted">${moment(element.fecha_ingreso, 'YYYY-MM-DD HH:mm:SS').format('LLL')}</small>
 						</div>
 					</div>
 				</div>
