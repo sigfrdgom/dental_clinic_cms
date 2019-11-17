@@ -1,9 +1,12 @@
+<!-- CKEditor -->
+<script src="<?= base_url('assets/plugins/ckeditor/ckeditor.js') ?>"></script>
+
 <div class="container-fluid">
     <div class="row page-titles pt-2 pb-0" style="background: white">
         <div class="col-md-5 align-self-center mb-2">
             <h4 class="text-themecolor text-dark float-left mt-2">Horarios &nbsp; &nbsp;</h4>
             <button type="button" class="btn btn-outline-success mb-2 btn-rounded" data-toggle="modal" data-target="#modalForm" id="idModal">
-                <span class='fa fa-plus-square-o bigfonts'></span> Nuevo
+                <span class='fa fa-plus-square-o bigfonts'></span> Nuevo registro
             </button>
 
             <a href="#" title="Agregar Categoria" data-toggle="popover" data-trigger="focus" data-content="Sirve para agregar una nueva categoría de publicación de blog al sistema y manejar así las categorías del blog.">
@@ -27,7 +30,7 @@
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-borderless table-hover display">
-                        <thead class="text-center">
+                        <thead class="text-white bg-clidesa-celeste">
                             <th>Horarios De Atención</th>
                             <th>Estado</th>
                             <th colspan="2">Acciones</th>
@@ -60,8 +63,17 @@
                     <input type="hidden" name="id_publicacion" id="id_horario">
 
                     <div class="form-group">
-                        <label for="contenido" class="mrg-spr-ex mt-2">Contenido: </label>
-                        <input type="text" name="contenido" id="contenido" placeholder="Escribe el contenido del registro" class="form-control vinput" required pattern='[a-zA-zÑñÁÉÍÓÚáéíóúü0-9- ]{1,1500}' maxlength="1500" minlength="2">
+                        <label for="contenido">Contenido</label>
+                        <textarea name="contenido" id="contenido" required></textarea>
+                        <script>
+                            CKEDITOR.replace('contenido', {
+                                height: 100,
+                                language: 'es',
+                                filebrowserUploadUrl: "<?= base_url('UploadImage') ?>",
+                                filebrowserUploadMethod: 'form',
+                                embed_provider: '//ckeditor.iframe.ly/api/oembed?url={url}&callback={callback}',
+                            });
+                        </script>
                     </div>
                     <div class="form-group" id="div-estado" style="display: none;">
                         <label for="estado">Estado</label>

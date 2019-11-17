@@ -62,7 +62,8 @@ function showForm() {
 		.then(res => { return res.json() })
 		.then(response => {
 			document.getElementById('id_horario').value = response.id_publicacion;
-			document.getElementById('contenido').value = response.contenido;
+			// document.getElementById('contenido').value = response.contenido;
+			CKEDITOR.instances.contenido.setData(response.contenido);
 			document.getElementById('estado').value = response.estado;
 		}).then(() => {
 			document.getElementById('div-estado').style = "display: block";
@@ -92,8 +93,8 @@ function save(e) {
 	e.preventDefault();
 	let form = document.getElementById('fromSchedule');
 	let data = new FormData(form);
-	console.log(form);
-	console.log(data.get('estado'));
+	data.set('contenido', CKEDITOR.instances.contenido.getData());
+	console.log(CKEDITOR.instances.contenido.getData());
 	if (data.get('contenido') !== "") {
 
 		id = data.get('id_publicacion') === "" ? "" : "/" + data.get('id_publicacion');
@@ -126,6 +127,7 @@ function save(e) {
 
 function clear() {
 	document.getElementById('id_horario').value = "";
+	CKEDITOR.instances.contenido.setData("");
 	document.getElementById('fromSchedule').reset();
 	document.getElementById('div-estado').style = "display: none";
 	$('#modalForm').modal('hide');
