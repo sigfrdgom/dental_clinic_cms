@@ -17,9 +17,9 @@
         </div>
     </div>
 
-    <div class="row card col-12 col-sm-12 col-md-10 col-lg-8 mx-auto p-2">
+    <div class="row card col-12 col-sm-12 col-md-11 col-lg-11 mx-auto p-2">
         <form action="<?= base_url('aboutUs/guardarDatos/' . $acercade->id_estatico) ?>" method="post" enctype="multipart/form-data">
-            <div class="col-12 col-sm-12 col-md-10 col-lg-8 mx-auto p-2">
+            <div class="col-12 col-sm-12 col-md-10 col-lg-10 mx-auto p-2">
                 <h2 class="text-center">Modificar Contenido</h2>
                 <div class="form-group mt-2">
                     <label for="titulo">Titulo de la publicación</label>

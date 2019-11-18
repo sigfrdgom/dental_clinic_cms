@@ -25,7 +25,7 @@
                     <br/>
                     <?= !empty($descripcion->contenido) ? $descripcion->contenido : '' ?>
                     <br/>
-                    <a href="<?= base_url('homepage/editContent/').$descripcion->id_estatico ?>" class="btn btn-primary">Cambiar</a>
+                    <a href="<?= base_url('homePage/editContent/').$descripcion->id_estatico ?>" class="btn btn-primary">Cambiar</a>
                 </div>
             </div>
         </div>

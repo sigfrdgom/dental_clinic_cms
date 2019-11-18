@@ -16,7 +16,7 @@ function listener() {
 }
 
 function schedules() {
-	fetch(base_url + "api/HomePage/schedules")
+	fetch(base_url + "api/homePage/schedules")
 		.then(res => { return res.json() })
 		.then(response => {
 			content = "";
@@ -58,7 +58,7 @@ function asignEvents() {
 
 function showForm() {
 	$('#modalForm').modal('show');
-	fetch(base_url + "api/HomePage/schedules/" + this.value)
+	fetch(base_url + "api/homePage/schedules/" + this.value)
 		.then(res => { return res.json() })
 		.then(response => {
 			document.getElementById('id_horario').value = response.id_publicacion;
@@ -71,7 +71,7 @@ function showForm() {
 }
 
 // function stateHandle(e) {
-// 	fetch(base_url + "api/HomePage/schedules/" + this.value)
+// 	fetch(base_url + "api/homePage/schedules/" + this.value)
 // 		.then(res => { return res.json() })
 // 		.then(response => {
 // 				document.getElementById('id_horario').value = response.id_publicacion;
@@ -98,7 +98,7 @@ function save(e) {
 	if (data.get('contenido') !== "") {
 
 		id = data.get('id_publicacion') === "" ? "" : "/" + data.get('id_publicacion');
-		fetch(base_url + "HomePage/guardarSchedules" + id, {
+		fetch(base_url + "homePage/guardarSchedules" + id, {
 			method: 'POST',
 			body: data
 		})
@@ -145,7 +145,7 @@ function deleteSchedule() {
 		cancelButtonText: 'Cancelar',
 	}).then((result) => {
 		if (result.value) {
-			fetch(base_url + 'HomePage/deleteSchedule/' + this.value, {
+			fetch(base_url + 'homePage/deleteSchedule/' + this.value, {
 				method: 'DELETE'
 			})
 				.then(() => {

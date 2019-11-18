@@ -44,7 +44,7 @@ function refresh_cards() {
 						</div>
 						
 						<div class="row p-2">
-							<a href="${base_url}/HomePage/edit/${element.id_publicacion}" class="btn btn-warning mx-auto col-5">Editar</a>
+							<a href="${base_url}/homePage/edit/${element.id_publicacion}" class="btn btn-warning mx-auto col-5">Editar</a>
 							<button type="button" name="btn-eliminar" value="${element.id_publicacion}" class="btn btn-danger mx-auto col-5">Eliminar</button>
 						</div>
 						<div class="card-footer text-center">
@@ -88,7 +88,7 @@ function deleteImage() {
 		cancelButtonText: 'Cancelar',
 	}).then((result) => {
 		if (result.value) {
-			fetch(base_url + 'HomePage/delete/' + this.value, {
+			fetch(base_url + 'homePage/delete/' + this.value, {
 				method: 'DELETE'
 			})
 				.then(() => {

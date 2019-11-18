@@ -327,7 +327,7 @@ class HomePage extends CI_Controller
     $id = trim($id);
     $datos = ['descripcion' => $this->ContenidoEstaticoModel->findById($id)];
     $this->load->view('templates/header');
-    $this->load->view('homepage/editContent', $datos);
+    $this->load->view('homePage/editContent', $datos);
     $this->load->view('templates/footer');
   }
 
@@ -350,7 +350,7 @@ class HomePage extends CI_Controller
       $data = parent::bitacora("Modificó descripción de la página de inicio", $_POST['titulo']);
       $this->BitacoraModel->agregarBitacora($data);
     }
-    redirect('homepage/descripcion');
+    redirect('homePage/descripcion');
   }
 
   /*** -------------------------------- CLASIFICATIONS SERVICES OF THE HOME PAGE -------------------------------**/
