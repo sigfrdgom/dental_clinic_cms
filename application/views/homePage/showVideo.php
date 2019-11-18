@@ -28,7 +28,7 @@
                 </div>
                 <div class="col-12 col-sm-12 col-md-10 col-lg-8 mt-1 mb-5 mx-auto">
                     <div id="div-video" class="dentalclinic-video-area mb-2 embed-responsive embed-responsive-4by3" style="margin-top">
-                        <iframe class="embed-responsive-item" id="iframe-video" src="<?= $video->contenido ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" style=""></iframe>
+                        <iframe class="embed-responsive-item" id="iframe-video" src="<?= str_replace("watch?v=", "embed/", $video->contenido) ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" style=""></iframe>
                     </div>
                 </div>
                 <div class="row p-3">
