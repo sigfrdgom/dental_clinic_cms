@@ -36,8 +36,10 @@ function recargar(){
 					<td class="py-2">`;
 						if (element.id_usuario != 1) {
 						texto+=`<button class="btnEditar text-center btn btn-warning btn-rounded"  value="${element.id_usuario}" data-toggle="modal" data-target="#agregarUsuario">GESTIONAR</button>
-						<button class="btnEliminar text-center btn btn-danger btn-rounded"  value="${element.id_usuario}">BLOQUEAR</button>`;	
-						}
+						
+						<button class="btnEliminar text-center btn btn-rounded ${(element.estado==0)?'btn-success':'btn-danger'}" id="${element.id_usuario}" value="${element.id_usuario}" >${(element.estado==1)?'DAR BAJA':'ACTIVAR'}</button>`;	
+						
+					}
             		texto += `</td>
     			</tr>`;
 				});
@@ -160,10 +162,18 @@ function eliminar() {
 		text: "No se puede eliminar al usuario Administrador",
 		type: 'warning'
 	});
+
 	}else{
-		Swal.fire({
-		title: '¿Esta seguro de eliminar el usuario?',
-		text: "Esta accion no es reversible",
+		if (document.getElementById(this.value).innerText==="ACTIVAR") {
+			fetch(url+'usuarioActivado/'+this.value)
+				.then(() =>{
+					recargar();		
+				})
+				
+	}else{
+	Swal.fire({
+		title: 'Esta seguro de dar de baja al Usuario?',
+		text: "Esta accion causara que el usuario ya no tenga acceso",
 		type: 'warning',
 		showCancelButton: true,
 		confirmButtonColor: '#36bea6',
@@ -172,19 +182,18 @@ function eliminar() {
 		cancelButtonText: 'Cancelar',
 	}).then((result) => {
 		if (result.value) {
-			fetch(url+'/eliminarUsuario/'+this.value, {
-				method: 'DELETE'
-			})
-			.then(() =>{
-				Swal.fire(
-					'Eliminado',
-					'!El usuario ha sido eliminado',
-					'success'
-					)
-				recargar();		
-			})
+			fetch(url+'usuarioDesactivado/'+this.value)
+				.then(() =>{
+					Swal.fire(
+						'Dado de baja!',
+						'!Un Usuario ha sido dado de baja!',
+						'success'
+					  )
+					recargar();		
+				})
 		}
 	})
+	}
 	}
 }
 
@@ -307,7 +316,7 @@ document.getElementById("busqueda").addEventListener("keyup", function(){
 					    <td class="py-2">`;
 						if (element.id_usuario != 1) {
 						texto+=`<button class="btnEditar text-center btn btn-warning btn-rounded"  value="${element.id_usuario}" data-toggle="modal" data-target="#agregarUsuario">GESTIONAR</button>
-						<button class="btnEliminar text-center btn btn-danger btn-rounded"  value="${element.id_usuario}">BLOQUEAR</button>`;	
+						<button class="btnEliminar text-center btn btn-rounded ${(element.estado==0)?'btn-success':'btn-danger'}" id="${element.id_usuario}" value="${element.id_usuario}" >${(element.estado==1)?'DAR BAJA':'ACTIVAR'}</button>`;	
 						}
             		texto += `</td>
     			</tr>`;

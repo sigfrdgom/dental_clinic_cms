@@ -51,20 +51,58 @@ class Usuario extends CI_Controller {
     }
 
       
-    //METODO QUE ELIMINA UN REGISTRO DE USUARIO
-    public function eliminarUsuario($id){
+    // //METODO QUE ELIMINA UN REGISTRO DE USUARIO
+    // public function eliminarUsuario($id){
+	// 	parent::logueado();
+	// 	$this->UsuarioModel->eliminarUsuario($id);
+		
+	// 	//BITACORA DE BORRADO
+	// 	$datos=$this->UsuarioModel->obtenerRegistro($id);
+	// 	$data=parent::bitacora("Dio de baja un Usuario", "Usuario ".$datos->nombres);	
+	// 	$this->BitacoraModel->agregarBitacora($data);
+		
+	// 	if ($this->session->userdata('id_usuario')==$id && $id !=1) {
+	// 		parent::destroy();
+	// 	}
+	// }
+
+
+	public function usuarioActivado($id){
 		parent::logueado();
-		$this->UsuarioModel->eliminarUsuario($id);
+		$this->UsuarioModel->usuarioActivado($id);
 		
 		//BITACORA DE BORRADO
 		$datos=$this->UsuarioModel->obtenerRegistro($id);
-		$data=parent::bitacora("Borro un Usuario", "Usuario ".$datos->nombres);	
+		$data=parent::bitacora("Activo al Usuario", "Usuario ".$datos->nombres);	
+		$this->BitacoraModel->agregarBitacora($data);
+		
+	}
+	
+
+	public function usuarioDesactivado($id){
+		parent::logueado();
+		$this->UsuarioModel->usuarioDesactivado($id);
+		
+		//BITACORA DE BORRADO
+		$datos=$this->UsuarioModel->obtenerRegistro($id);
+		$data=parent::bitacora("Desactivo un Usuario", "Usuario ".$datos->nombres);	
 		$this->BitacoraModel->agregarBitacora($data);
 		
 		if ($this->session->userdata('id_usuario')==$id && $id !=1) {
 			parent::destroy();
 		}
     }
+	
+
+
+
+
+
+
+
+
+
+
 
     //METODO CON EL QUE OBTENDRIA EL REGISTRO USUARIO
     public function obtenerRegistro($id){
@@ -119,7 +157,7 @@ class Usuario extends CI_Controller {
 
 		if ($this->input->post()) {
 			$usuario =$this->UsuarioModel->loginUp($this->input->post('usuario'));
-			if ($usuario) {
+			if ($usuario&&($usuario->estado==1)) {
 
 				if (self::verify($this->input->post('pass'), $usuario->contrasenia)) {	
 					$usuario_data = array(

@@ -19,15 +19,40 @@ class UsuarioModel extends CI_Model{
 
 
     //CONSULTA PARA ELIMINAR UN REGISTRO A LA TABLA USUARIO
-    public function eliminarUsuario($id = ""){
-        try {
-            $this->db->where('id_usuario', $id);
-            $this->db->delete('usuario');
-            return 1;
+    // public function eliminarUsuario($id = ""){
+    //     try {
+    //         $this->db->where('id_usuario', $id);
+    //         $this->db->delete('usuario');
+    //         return 1;
+    //     } catch (mysqli_sql_exception $e) {
+    //         return 0;
+    //     }  
+	// }
+
+
+	public function usuarioActivado($id){
+		try {
+            $this->db->set('estado',1,FALSE);
+            $this->db->where('id_usuario',$id);
+            $this->db->update('usuario');
         } catch (mysqli_sql_exception $e) {
             return 0;
-        }  
-    }
+        }
+	   }
+
+
+	public function usuarioDesactivado($id){
+		try {
+            $this->db->set('estado',0,FALSE);
+            $this->db->where('id_usuario',$id);
+            $this->db->update('usuario');
+        } catch (mysqli_sql_exception $e) {
+            return 0;
+        }
+	   }
+	
+
+
 
     //CONSULTA PARA OBTENER UN REGISTRO DE USUARIO
     public function obtenerRegistro($id = ""){
