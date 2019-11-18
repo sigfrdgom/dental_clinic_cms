@@ -56,11 +56,11 @@ class Cita extends REST_Controller {
       
     //METODO QUE ELIMINA UN REGISTRO DE CITA
     public function eliminarCita_delete($id){
-        parent::logueado();  
+		parent::logueado();  
+		$dato=$this->CitaModel->obtenerRegistro($id);
 		$this->CitaModel->eliminarCita($id);
 
 		//BITACORA DE ELIMINADO
-		$dato=$this->CitaModel->obtenerRegistro($id);
 		$data=parent::bitacora("Elimino una Cita", "Cita Eliminada de ".$dato->nombre);	
 		$this->BitacoraModel->agregarBitacora($data);
 		

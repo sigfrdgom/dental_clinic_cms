@@ -51,10 +51,11 @@ class Contacto extends REST_Controller
     //METODO QUE ELIMINA UN REGISTRO DE CONTACTO
     public function eliminarContacto_delete($id){
 			parent::logueado();
+			$dato=$this->ContactoModel->obtenerRegistro($id);
 			$this->ContactoModel->eliminarContacto($id);
 
 			//BITACORA DE ELIMINADO
-			$dato=$this->ContactoModel->obtenerRegistro($id);
+			
 			$data=parent::bitacora("Elimino un Contacto", "Contacto Eliminado de ".$dato->nombre);	
 			$this->BitacoraModel->agregarBitacora($data);
     }
