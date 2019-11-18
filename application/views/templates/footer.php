@@ -32,7 +32,7 @@
     <script src="<?= base_url('assets/plugins/moment/moment-with-locales.js') ?>"></script>
     <script>
         var languaje = navigator.language || navigator.userLanguage;
-        moment.lang(languaje);
+        moment.locale(languaje);
     </script>
 
     <!-- Dropify Image--->

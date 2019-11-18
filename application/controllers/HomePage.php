@@ -221,8 +221,8 @@ class HomePage extends CI_Controller
     $id = trim($id);
     $datos = [
       'id_estatico' => trim($id) ? trim($id) : '',
-      'titulo' => $_POST['titulo'] ? $_POST['titulo'] : "",
-      'contenido' => $_POST['URL-video'] ? $_POST['URL-video'] : "",
+      'titulo' => isset($_POST['titulo']) ? $_POST['titulo'] : "",
+      'contenido' => isset($_POST['URL-video']) ? $_POST['URL-video'] : "",
       'estado' => isset($_POST['estado']) ? $_POST['estado'] : true,
     ];
     if ($this->ContenidoEstaticoModel->update($datos)) {
