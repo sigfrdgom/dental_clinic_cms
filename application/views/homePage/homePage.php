@@ -17,7 +17,7 @@
     <div class="row">
         <div class="col-lg-3 col-md-6">
             <div class="card " style="height: 96%">
-                <img class="card-img-top img-responsive" src="<?= base_url('assets/images/inicio/change-img.gif') ?>" class="card-img-top" alt="...">
+                <img class="card-img-top img-responsive" src="<?= base_url('assets/images/inicio/carousel.jpg') ?>" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">Imganes de Carrusel</h5>
                     <p class="card-text">Esta opción permite cambiar las imagenes de presentación del Carrusel que se muestran en la página de inicio.</p>

@@ -31,8 +31,8 @@ class AboutUs extends CI_Controller
   {
     $datos = [
       'id_estatico' => trim($id) ? trim($id) : '',
-      'titulo' => $_POST['titulo'],
-      'contenido' => $_POST['contenido'],
+      'titulo' => isset($_POST['titulo']) ? $_POST['titulo'] : "",
+      'contenido' => isset($_POST['contenido']) ? $_POST['contenido'] : "",
       'estado' => isset($_POST['estado']) ? $_POST['estado'] : true,
     ];
 

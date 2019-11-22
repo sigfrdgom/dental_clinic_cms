@@ -84,9 +84,9 @@ class Services extends CI_Controller
       'id_usuario' => $this->session->userdata('id_usuario'),
       'id_categoria' => $_POST['categoria'],
       'id_tipo' => 1,
-      'titulo' => $_POST['titulo'],
-      'texto_introduccion' => $_POST['texto_introduccion'],
-      'contenido' => $_POST['contenido'],
+      'titulo' => isset($_POST['titulo']) ? $_POST['titulo'] : "",
+      'texto_introduccion' => isset($_POST['texto_introduccion']) ? $_POST['texto_introduccion'] : "" ,
+      'contenido' => isset($_POST['contenido']) ? $_POST['contenido'] : "",
       'estado' => isset($_POST['estado']) ? $_POST['estado'] : true,
       'recurso_av_1' => isset($data_files["upload_data"]) ?  $data_files["upload_data"]['file_name'] : $old_posts['recurso_av_1'],
     ];
