@@ -36,8 +36,8 @@ class Services extends CI_Controller
   {
     $config['upload_path'] = "uploads/";
     $config['file_name'] = "recurso_" . time();
-
-    $config['allowed_types'] = 'bmp|gif|jpeg|jpg|jpe|png|tiff|tif';
+    $config['allowed_types'] = '*';
+    // $config['allowed_types'] = 'bmp|gif|jpeg|jpg|jpe|png|tiff|tif';
     $config['max_size'] = "5120";
     $config['max_width'] = "8120";
     $config['max_height'] = "4096";

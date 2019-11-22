@@ -72,3 +72,12 @@
     color: #00aeef;
     font-size: 15em;
     }
+
+    .icons-service{
+        background:#1f618d;
+        margin: 0 auto;
+        background: #457fca86; 
+        background: -webkit-linear-gradient(to right, #00afef81, #1b567ed0); 
+        background: linear-gradient(to right, #00afef81, #1b567ed0);       
+    }
+    

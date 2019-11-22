@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-11-2019 a las 03:40:31
+-- Tiempo de generación: 22-11-2019 a las 21:36:54
 -- Versión del servidor: 10.4.6-MariaDB
 -- Versión de PHP: 7.3.9
 
@@ -156,7 +156,37 @@ INSERT INTO `bitacora` (`id_bitacora`, `usuario`, `accion`, `fecha`, `titulo`, `
 (400, 'clidesa.admin', 'Eliminó una Publicación', '2019-11-21 20:36:47', 'La cosita de la U', 'ADMIN'),
 (401, 'clidesa.admin', 'Modificó un Servicio', '2019-11-21 20:37:58', 'Consulta medica especializada', 'ADMIN'),
 (402, 'clidesa.admin', 'Modificó un Servicio', '2019-11-21 20:38:30', 'Radiografía Digital', 'ADMIN'),
-(403, 'clidesa.admin', 'Modificó un Servicio', '2019-11-21 20:38:42', 'Implantes Dentales', 'ADMIN');
+(403, 'clidesa.admin', 'Modificó un Servicio', '2019-11-21 20:38:42', 'Implantes Dentales', 'ADMIN'),
+(404, 'clidesa.admin', 'Agregó una imagen de la galería de turismo médico', '2019-11-21 21:53:26', '', 'ADMIN'),
+(405, 'clidesa.admin', 'Eliminó imagen de la galería de torismo médico', '2019-11-21 21:56:52', '', 'ADMIN'),
+(406, 'clidesa.admin', 'Agregó una imagen de la galería de turismo médico', '2019-11-21 21:57:29', 'sd', 'ADMIN'),
+(407, 'clidesa.admin', 'Modificó una imagen de la galería de turismo médico', '2019-11-21 22:03:37', '', 'ADMIN'),
+(408, 'clidesa.admin', 'Modificó una imagen de la galería de turismo médico', '2019-11-21 22:04:16', '', 'ADMIN'),
+(409, 'clidesa.admin', 'Eliminó imagen de la galería de torismo médico', '2019-11-21 22:05:25', '', 'ADMIN'),
+(410, 'clidesa.admin', 'Inicio de su Sesion', '2019-11-22 06:58:54', 'Clidesa', 'ADMIN'),
+(411, 'clidesa.admin', 'Agrego una Categoria', '2019-11-22 10:11:38', 'Categoria Iconos de Servicios', 'ADMIN'),
+(412, 'clidesa.admin', 'Agrego una Categoria', '2019-11-22 10:13:44', 'Categoria Planes de Seguros', 'ADMIN'),
+(413, 'clidesa.admin', 'Agregó una clasificación de servicios en la página de inicio', '2019-11-22 11:08:25', '', 'ADMIN'),
+(414, 'clidesa.admin', 'Eliminó una clasificación de servicios en la página de inicio', '2019-11-22 11:24:02', '', 'ADMIN'),
+(415, 'clidesa.admin', 'Agregó una clasificación de servicios en la página de inicio', '2019-11-22 11:27:02', 'Dentista General', 'ADMIN'),
+(416, 'clidesa.admin', 'Agregó una clasificación de servicios en la página de inicio', '2019-11-22 13:32:13', ' Ortodoncia', 'ADMIN'),
+(417, 'clidesa.admin', 'Agregó una clasificación de servicios en la página de inicio', '2019-11-22 13:36:05', ' Prostodoncia', 'ADMIN'),
+(418, 'clidesa.admin', 'Agregó una clasificación de servicios en la página de inicio', '2019-11-22 13:37:09', ' Endodoncia', 'ADMIN'),
+(419, 'clidesa.admin', 'Agregó una clasificación de servicios en la página de inicio', '2019-11-22 13:38:42', ' Periodoncia', 'ADMIN'),
+(420, 'clidesa.admin', 'Agregó una clasificación de servicios en la página de inicio', '2019-11-22 13:39:43', 'Implantes Dentales', 'ADMIN'),
+(421, 'clidesa.admin', 'Agregó una clasificación de servicios en la página de inicio', '2019-11-22 13:40:24', 'Cirugía Maxilofacial', 'ADMIN'),
+(422, 'clidesa.admin', 'Agregó una clasificación de servicios en la página de inicio', '2019-11-22 13:41:20', 'Radiografía Digital', 'ADMIN'),
+(423, 'clidesa.admin', 'Agregó una clasificación de servicios en la página de inicio', '2019-11-22 13:42:08', 'Consulta médica especializada', 'ADMIN'),
+(424, 'clidesa.admin', 'Modificó una clasificación de servicios en la página de inicio', '2019-11-22 13:53:25', ' Endodoncia', 'ADMIN'),
+(425, 'clidesa.admin', 'Agregó un icono de servicios en la página de inicio', '2019-11-22 14:23:59', 'sddsdsdsd', 'ADMIN'),
+(426, 'clidesa.admin', 'Eliminó un icono de servicios en la página de inicio', '2019-11-22 14:24:04', 'sddsdsdsd', 'ADMIN'),
+(427, 'clidesa.admin', 'Agregó un icono de servicios en la página de inicio', '2019-11-22 14:26:54', '233232', 'ADMIN'),
+(428, 'clidesa.admin', 'Modificó un icono de servicios en la página de inicio', '2019-11-22 14:27:10', '233232sdsd', 'ADMIN'),
+(429, 'clidesa.admin', 'Modificó un icono de servicios en la página de inicio', '2019-11-22 14:27:15', '233232sdsd', 'ADMIN'),
+(430, 'clidesa.admin', 'Eliminó un icono de servicios en la página de inicio', '2019-11-22 14:27:47', '233232sdsd', 'ADMIN'),
+(431, 'clidesa.admin', 'Agregó un icono de servicios en la página de inicio', '2019-11-22 14:27:54', 'dsd', 'ADMIN'),
+(432, 'clidesa.admin', 'Modificó un icono de servicios en la página de inicio', '2019-11-22 14:28:00', 'dsdsdsd', 'ADMIN'),
+(433, 'clidesa.admin', 'Eliminó un icono de servicios en la página de inicio', '2019-11-22 14:28:02', 'dsdsdsd', 'ADMIN');
 
 -- --------------------------------------------------------
 
@@ -192,7 +222,9 @@ INSERT INTO `categoria` (`id_categoria`, `id_tipo`, `nombre`, `descripcion`, `es
 (13, 4, 'Horarios', 'La categoría para clasificar los horarios', 1),
 (14, 4, 'Clasificación de Servicios', 'La categoría para la clasificación de servicios', 1),
 (15, 7, 'Galería', 'La categoría para clasificar las imagines pertenecientes a la galería', 1),
-(16, 7, 'Fondo de Pantalla', 'La categoría para clasificar las imágenes de fondo de turismo médico', 1);
+(16, 7, 'Fondo de Pantalla', 'La categoría para clasificar las imágenes de fondo de turismo médico', 1),
+(17, 4, 'Iconos de Servicios', 'La categoría para clasificar los iconos de servicios que se encuentran en página de inicio', 1),
+(18, 6, 'Planes de Seguros', 'La categoría para la clasificar los planes de seguro', 1);
 
 -- --------------------------------------------------------
 
@@ -345,7 +377,16 @@ INSERT INTO `publicacion` (`id_publicacion`, `id_usuario`, `id_categoria`, `id_t
 (126, 1, 16, 7, 'ENCUENTRA TODO ESTO EN', '', '', 1, 'recurso_1574389009.jpg', '2019-11-22 02:16:49'),
 (128, 1, 16, 7, 'VISITA LAS BELLÍSIMAS PLAYAS', '', '', 1, 'recurso_1574389028.jpg', '2019-11-22 02:17:08'),
 (129, 1, 16, 7, 'EXPLORÁ NUESTROS MARAVILLOSOS BOSQUES', '', '', 1, 'recurso_1574389037.jpg', '2019-11-22 02:17:17'),
-(130, 1, 16, 7, 'CONOCÉ LAS REFRESCANTES AGUAS', '', '', 1, 'recurso_1574389052.jpg', '2019-11-22 02:17:32');
+(130, 1, 16, 7, 'CONOCÉ LAS REFRESCANTES AGUAS', '', '', 1, 'recurso_1574389052.jpg', '2019-11-22 02:17:32'),
+(134, 1, 17, 4, 'Dentista General', '', '', 1, 'recurso_1574443622.png', '2019-11-22 17:27:02'),
+(135, 1, 17, 4, ' Ortodoncia', '', '', 1, 'recurso_1574451133.png', '2019-11-22 19:32:13'),
+(136, 1, 17, 4, ' Prostodoncia', '', '', 1, 'recurso_1574451365.png', '2019-11-22 19:36:05'),
+(137, 1, 17, 4, ' Endodoncia', '', '', 1, 'recurso_1574452405.png', '2019-11-22 19:37:09'),
+(138, 1, 17, 4, ' Periodoncia', '', '', 1, 'recurso_1574451521.png', '2019-11-22 19:38:41'),
+(139, 1, 17, 4, 'Implantes Dentales', '', '', 1, 'recurso_1574451583.png', '2019-11-22 19:39:43'),
+(140, 1, 17, 4, 'Cirugía Maxilofacial', '', '', 1, 'recurso_1574451624.png', '2019-11-22 19:40:24'),
+(141, 1, 17, 4, 'Radiografía Digital', '', '', 1, 'recurso_1574451680.png', '2019-11-22 19:41:20'),
+(142, 1, 17, 4, 'Consulta médica especializada', '', '', 1, 'recurso_1574451728.png', '2019-11-22 19:42:08');
 
 -- --------------------------------------------------------
 
@@ -460,13 +501,13 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `bitacora`
 --
 ALTER TABLE `bitacora`
-  MODIFY `id_bitacora` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=404;
+  MODIFY `id_bitacora` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=434;
 
 --
 -- AUTO_INCREMENT de la tabla `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT de la tabla `cita`
@@ -490,7 +531,7 @@ ALTER TABLE `estatico`
 -- AUTO_INCREMENT de la tabla `publicacion`
 --
 ALTER TABLE `publicacion`
-  MODIFY `id_publicacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=131;
+  MODIFY `id_publicacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=146;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo`

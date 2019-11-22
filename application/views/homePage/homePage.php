@@ -76,6 +76,18 @@
             </div>
         </div>
 
+        <div class="col-lg-3 col-md-6">
+            <div class="card " style="height: 96%">
+                <img class="card-img-top img-responsive" src="<?= base_url('assets/images/inicio/icons.jpg') ?>" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Cambiar los iconos de servicios de la página de incio</h5>
+                    <p class="card-text">Esta opción permite cambiar los iconos de servicios que se encuentra en la página de inicio.</p>
+                </div>
+                <div class="row p-4">
+                    <a href="<?= base_url('homePage/iconsServices') ?>" class="btn btn-primary btn-block">Ver Iconos de Servicios</a>
+                </div>
+            </div>
+        </div>
 
     </div>
 

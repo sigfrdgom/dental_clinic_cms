@@ -429,6 +429,32 @@ class PublicacionModel extends CI_Model
         return $this->db->get('publicacion')->row();
     }
 
+    public function get_icons_services()
+    {
+        $this->db->where('id_tipo', 4);
+        $this->db->where('id_categoria', 17);
+        $this->db->order_by('fecha_ingreso', 'ASC');
+        return $this->db->get('publicacion')->result();
+    }
+
+    public function get_icons_services_by_id($id)
+    {
+        $this->db->where('id_publicacion', $id);
+        $this->db->where('id_tipo', 4);
+        $this->db->where('id_categoria', 17);
+        $this->db->order_by('fecha_ingreso', 'ASC');
+        return $this->db->get('publicacion')->row();
+    }
+
+    public function get_icons_services_api()
+    {
+        $this->db->where('id_tipo', 4);
+        $this->db->where('id_categoria', 17);
+        $this->db->where('estado', '1');
+        $this->db->order_by('fecha_ingreso', 'ASC');
+        return $this->db->get('publicacion')->result();
+    }
+
     /**-------------------------------------- PAYMENT METHODS ---------------------------------- */
 
     public function get_all_payments()

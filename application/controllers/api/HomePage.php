@@ -30,6 +30,10 @@ class HomePage extends REST_Controller
         $this->response($this->ContenidoEstaticoModel->findById(5), 200);
     }
 
+    public function icons_services_api_get(){
+        $this->response($this->PublicacionModel->get_icons_services_api(), 200);
+    }
+
     public function clasification_services_api_get($id = ""){
         $id = trim($id);
         if(!empty($id)){
@@ -67,6 +71,16 @@ class HomePage extends REST_Controller
             $this->response($this->PublicacionModel->get_clasification_services_by_id($id), 200);
         }else{
             $this->response($this->PublicacionModel->get_clasification_services(), 200);
+        }
+    }
+
+    public function icons_services_get($id = ""){
+        parent::logueado();
+        $id = trim($id);
+        if(!empty($id)){
+            $this->response($this->PublicacionModel->get_icons_services_by_id($id), 200);
+        }else{
+            $this->response($this->PublicacionModel->get_icons_services(), 200);
         }
     }
 
