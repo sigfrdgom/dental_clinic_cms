@@ -35,7 +35,7 @@
 <div class="row ">
     <div class="form-group col-12 col-sm-12 col-sm-10 col-md-10 col-lg-8 mx-auto">
         <label for="recurso1" >Seleccionar imagen</label>
-        <input type="file" id="input-file-to-destroy" class="dropify" name="recurso1" accept=".bmp, .gif, .jpeg, .jpg, .jpe, .png, .svg, .tiff, .tif" data-default-file="<?= !empty($blog->recurso_av_1) ? base_url('uploads/') . $blog->recurso_av_1 : '' ?>" data-allowed-file-extensions="bmp gif jpeg jpg jpe png svg tiff tif" data-max-file-size="5M" data-height="350" data-max-height="8000" data-max-width="8000" />
+        <input type="file" id="input-file-to-destroy" class="dropify" name="recurso1" accept=".bmp, .gif, .jpeg, .jpg, .jpe, .png, .svg, .tiff, .tif" data-default-file="<?= !empty($blog->recurso_av_1) ? base_url('uploads/blog/') . $blog->recurso_av_1 : '' ?>" data-allowed-file-extensions="bmp gif jpeg jpg jpe png svg tiff tif" data-max-file-size="5M" data-height="350" data-max-height="8000" data-max-width="8000" />
         <br />
     </div>
 </div>

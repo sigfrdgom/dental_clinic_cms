@@ -4,7 +4,7 @@ foreach ($testimonials as $testimonial) {
     <div class="card mb-3 form-shadow">
         <div class="row ">
             <div class="col-12 col-sm-6 col-md-3 col-lg-2 col-xl-2">
-                <img src="<?= !empty(trim($testimonial->recurso_av_1)) ? base_url("uploads/" . trim($testimonial->recurso_av_1)) : base_url("assets/images/blog/blog.png") ?>" class="card-img" alt="Imagen de presentación">
+                <img src="<?= !empty(trim($testimonial->recurso_av_1)) ? base_url("uploads/testimonials/" . trim($testimonial->recurso_av_1)) : base_url("assets/images/blog/blog.png") ?>" class="card-img" alt="Imagen de presentación">
             </div>
 
             <div class="col-12 col-sm-6 col-md-5 col-lg-6 col-xl-6">

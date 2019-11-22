@@ -34,7 +34,7 @@ class Blog extends CI_Controller
 
   private function savePictures($mi_archivo)
   {
-    $config['upload_path'] = "uploads/";
+    $config['upload_path'] = "uploads/blog/";
     $config['file_name'] = "recurso_" . time();
     $config['allowed_types'] = '*';
     // $config['allowed_types'] = 'bmp|gif|jpeg|jpg|jpe|png|tiff|tif';
@@ -145,7 +145,7 @@ class Blog extends CI_Controller
     $message = array();
     for ($i = 0; $i < sizeof($data); $i++) {
       if (isset($data[$i])) {
-        $path = "./uploads/" . $data[$i];
+        $path = "./uploads/blog/" . $data[$i];
         try {
           if (file_exists($path) == true) {
             if (!is_dir($path)) {
