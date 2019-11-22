@@ -32,10 +32,10 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 
 #Images Uploads
 
-# uploads/*.png
-# uploads/*.jpg
-# uploads/*.gif
-# uploads/posts/*
+uploads/*.png
+uploads/*.jpg
+uploads/*.gif
+uploads/posts/*
 
 #zip 
 *.zip

@@ -487,7 +487,7 @@ class PublicacionModel extends CI_Model
         $this->db->where('id_categoria', 15);
         $this->db->where('estado', '1');
         $this->db->order_by('id_categoria', 'ASC');
-        $this->db->order_by('fecha_ingreso', 'DESC');
+        // $this->db->order_by('fecha_ingreso', 'DESC');
         return $this->db->get('publicacion')->result();
     }
 

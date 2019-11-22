@@ -23,7 +23,7 @@
             </div>
         <?php } ?>
 
-        <div class="form-group">
+        <!-- <div class="form-group">
             <label for="contenido">Contenido</label>
             <textarea name="contenido" id="editor" required><?= isset($image->contenido) ? $image->contenido : '' ?></textarea>
             <script>
@@ -36,7 +36,7 @@
                 });
             </script>
         </div>
-    </div>
+    </div> -->
 
     <div class="row p-3">
         <button type="submit" id="btn-save" class="btn btn-primary mx-auto">Guardar</button>
