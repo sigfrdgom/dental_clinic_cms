@@ -458,4 +458,61 @@ class PublicacionModel extends CI_Model
         return $this->db->get('publicacion')->result();
     }
 
+
+    /**-------------------------------------- MEDICAL TOURSIM ------------------------------------- */
+
+    public function get_gallery_tourism()
+    {
+        $this->db->where('id_tipo', 7);
+        $this->db->where('id_categoria', 15);
+        $this->db->order_by('id_categoria', 'ASC');
+        return $this->db->get('publicacion')->result();
+    }
+
+    public function get_gallery_tourism_by_id($id = "")
+    {
+        $id = trim($id);
+        $this->db->where('id_publicacion', $id);
+        $this->db->where('id_tipo', 7);
+        $this->db->where('id_categoria', 15);
+        $this->db->order_by('id_categoria', 'ASC');
+        return $this->db->get('publicacion')->row();
+    }
+
+    public function get_gallery_tourism_api()
+    {
+        $this->db->where('id_tipo', 7);
+        $this->db->where('id_categoria', 15);
+        $this->db->where('estado', '1');
+        $this->db->order_by('id_categoria', 'ASC');
+        return $this->db->get('publicacion')->result();
+    }
+
+    public function get_wallpapers_tourism()
+    {
+        $this->db->where('id_tipo', 7);
+        $this->db->where('id_categoria', 16);
+        $this->db->order_by('id_categoria', 'ASC');
+        return $this->db->get('publicacion')->result();
+    }
+
+    public function get_wallpaper_tourism_by_id($id = "")
+    {
+        $id = trim($id);
+        $this->db->where('id_publicacion', $id);
+        $this->db->where('id_tipo', 7);
+        $this->db->where('id_categoria', 16);
+        $this->db->order_by('id_categoria', 'ASC');
+        return $this->db->get('publicacion')->row();
+    }
+
+    public function get_wallpaper_tourism_api()
+    {
+        $this->db->where('id_tipo', 7);
+        $this->db->where('id_categoria', 16);
+        $this->db->where('estado', '1');
+        $this->db->order_by('id_categoria', 'ASC');
+        return $this->db->get('publicacion')->result();
+    }
+
 }

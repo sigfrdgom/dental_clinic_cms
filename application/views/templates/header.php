@@ -167,6 +167,7 @@
                                     <li> <a href="<?= base_url('services') ?>" aria-expanded="false"><i class="fa fa-briefcase text-white" style="font-size: 1.5em;  "></i><span class="hide-menu"></span>Servicios</a></li>
                                     <li> <a href="<?= base_url('blog') ?>" aria-expanded="false"><i class="fas fa-blog text-white" style="font-size: 1.5em;"></i><span class="hide-menu"></span>Blog</a></li>
                                     <li> <a href="<?= base_url('testimonials') ?>" aria-expanded="false"><i class="fas fa-handshake text-white" style="font-size: 1.5em;"></i><span class="hide-menu"></span>Testimonios</a></li>
+                                    <li> <a href="<?= base_url('tourism') ?>" aria-expanded="false"><i class="fas fa-map-marked-alt text-white" style="font-size: 1.5em;"></i><span class="hide-menu"></span>Turismo Médico</a></li>
                                 </ul>
                             </li>
 
