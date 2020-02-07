@@ -126,7 +126,7 @@ class HomePage extends CI_Controller
     if (!empty($path_image)) {
       $config['upload_path'] = $path_image;
     } else {
-      $config['upload_path'] = "uploads/";
+      $config['upload_path'] = "uploads/inicio";
     }
     $config['file_name'] = "recurso_" . time();
     $config['allowed_types'] = '*';
@@ -149,16 +149,39 @@ class HomePage extends CI_Controller
         'upload_data' =>  $this->upload->data(),
         'state' => true
       );
+      $this->savePicturesThumbnail($data['upload_data']['file_name']);
       return $data;
     }
   }
 
-  private function deleteImage($data)
+  private function savePicturesThumbnail($name)
+  {
+    $config['image_library'] = 'gd2';
+    $config['source_image'] = "./uploads/inicio/".$name;
+    $config['create_thumb'] = FALSE;
+    $config['new_image'] = "uploads/thumbnails/inicio/".$name;
+    $config['maintain_ratio'] = TRUE;
+    // $config['width']         = 250;
+    // $config['height']       = 175;
+    $config['width']         = 350;
+    $config['height']       = 245;
+
+    $this->load->library('image_lib', $config);
+    if (!$this->image_lib->resize()) {
+      echo $this->image_lib->display_errors();
+    }
+  }
+
+  private function deleteImage($data, $path_img = "")
   {
     $message = array();
     for ($i = 0; $i < sizeof($data); $i++) {
       if (isset($data[$i])) {
-        $path = "./uploads/inicio/" . $data[$i];
+        if($path_img){
+          $path = $path_img . $data[$i];
+        }else{
+          $path = "./uploads/inicio/" . $data[$i];
+        }
         try {
           if (file_exists($path) == true) {
             if (!is_dir($path)) {
@@ -184,7 +207,9 @@ class HomePage extends CI_Controller
     $data = array_splice($data, -5, 4, true);
     // delete the keys of the array
     $data = array_values($data);
-    $message = $this->deleteImage($data);
+    $message = $this->deleteImage($data, "./uploads/inicio/");
+    // Delete thumbanails
+    $message = $this->deleteImage($data, "./uploads/thumbnails/inicio/");
     // Delete the data from the database
     if ($this->PublicacionModel->delete($id)) {
       //MESSAGE
@@ -194,7 +219,7 @@ class HomePage extends CI_Controller
       );
       $this->session->set_flashdata($message);
       //BITACORA DE ELIMINADO
-      $data = parent::bitacora("Eliminó imagen de la página de inicio", $datos->titulo );
+      $data = parent::bitacora("Eliminó imagen de la página de inicio", $datos->titulo);
       $this->BitacoraModel->agregarBitacora($data);
     }
   }
@@ -240,7 +265,8 @@ class HomePage extends CI_Controller
 
   /** ------------------------------- SCHEDULES OF THE HOME PAGE ---------------------------------------- */
 
-  public function horarios(){
+  public function horarios()
+  {
     $this->load->view('templates/header');
     $this->load->view('homePage/horarios');
     $this->load->view('templates/footer');
@@ -308,14 +334,15 @@ class HomePage extends CI_Controller
       );
       $this->session->set_flashdata($message);
       //BITACORA DE ELIMINADO
-      $data = parent::bitacora("Eliminó registro de horario", "Horario" );
+      $data = parent::bitacora("Eliminó registro de horario", "Horario");
       $this->BitacoraModel->agregarBitacora($data);
     }
   }
 
   /** ------------------------------- DESCRIPTION OF THE HOME PAGE ------------------------------------ */
 
-  public function descripcion(){
+  public function descripcion()
+  {
     $datos = ['descripcion' => $this->ContenidoEstaticoModel->findById(5)];
     $this->load->view('templates/header');
     $this->load->view('homePage/descripcion', $datos);
@@ -475,20 +502,21 @@ class HomePage extends CI_Controller
       );
       $this->session->set_flashdata($message);
       //BITACORA DE ELIMINADO
-      $data = parent::bitacora("Eliminó una clasificación de servicios en la página de inicio", $datos->titulo );
+      $data = parent::bitacora("Eliminó una clasificación de servicios en la página de inicio", $datos->titulo);
       $this->BitacoraModel->agregarBitacora($data);
     }
   }
 
-/**  ---------------------------------------- ICONS SERVICES ---------------------------------------------- */
+  /**  ---------------------------------------- ICONS SERVICES ---------------------------------------------- */
 
-public function iconsServices(){
-  $this->load->view('templates/header');
-  $this->load->view('homePage/iconsServices');
-  $this->load->view('templates/footer');
-}
+  public function iconsServices()
+  {
+    $this->load->view('templates/header');
+    $this->load->view('homePage/iconsServices');
+    $this->load->view('templates/footer');
+  }
 
-public function createIcon()
+  public function createIcon()
   {
     $this->load->view('templates/header');
     $this->load->view('homePage/createIcon');
@@ -601,9 +629,8 @@ public function createIcon()
       );
       $this->session->set_flashdata($message);
       //BITACORA DE ELIMINADO
-      $data = parent::bitacora("Eliminó un icono de servicios en la página de inicio", $datos->titulo );
+      $data = parent::bitacora("Eliminó un icono de servicios en la página de inicio", $datos->titulo);
       $this->BitacoraModel->agregarBitacora($data);
     }
   }
-
 }
